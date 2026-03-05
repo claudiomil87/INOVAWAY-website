@@ -35,7 +35,7 @@ export default function HeroSection() {
           className="mb-8 flex justify-center"
         >
           <Image
-            src="/logos/inovaway-transparent.png"
+            src="/logos/inovaway-wordmark.png"
             alt="INOVAWAY"
             width={220}
             height={80}

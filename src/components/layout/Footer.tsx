@@ -25,7 +25,7 @@ export default function Footer() {
           <div className="col-span-1 sm:col-span-2 lg:col-span-2">
             <Link href="/" className="inline-flex items-center gap-2">
               <Image
-                src="/logos/inovaway-transparent.png"
+                src="/logos/inovaway-wordmark.png"
                 alt="INOVAWAY"
                 width={130}
                 height={36}

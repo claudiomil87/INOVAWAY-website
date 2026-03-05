@@ -21,7 +21,7 @@ export default function Header() {
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2 shrink-0">
           <Image
-            src="/logos/inovaway-transparent.png"
+            src="/logos/inovaway-wordmark.png"
             alt="INOVAWAY"
             width={140}
             height={40}
