@@ -4,15 +4,6 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 
-const fadeUp = {
-  hidden: { opacity: 0, y: 30 },
-  visible: (delay = 0) => ({
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.6, delay, ease: "easeOut" },
-  }),
-};
-
 export default function HeroSection() {
   return (
     <section className="relative flex min-h-[calc(100vh-4rem)] items-center justify-center overflow-hidden px-4 py-20">
@@ -38,10 +29,9 @@ export default function HeroSection() {
       <div className="relative z-10 mx-auto max-w-5xl text-center">
         {/* Logo */}
         <motion.div
-          initial="hidden"
-          animate="visible"
-          custom={0}
-          variants={fadeUp}
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0 }}
           className="mb-8 flex justify-center"
         >
           <Image
@@ -56,10 +46,9 @@ export default function HeroSection() {
 
         {/* Badge */}
         <motion.div
-          initial="hidden"
-          animate="visible"
-          custom={0.1}
-          variants={fadeUp}
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.1 }}
           className="mb-6 inline-flex items-center gap-2 rounded-full border border-[#00FF41]/30 bg-[#00FF41]/10 px-4 py-1.5 text-sm text-[#00FF41]"
         >
           <span className="h-2 w-2 animate-pulse rounded-full bg-[#00FF41]" />
@@ -68,10 +57,9 @@ export default function HeroSection() {
 
         {/* Headline */}
         <motion.h1
-          initial="hidden"
-          animate="visible"
-          custom={0.2}
-          variants={fadeUp}
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
           className="text-4xl font-bold tracking-tight text-white md:text-6xl lg:text-7xl"
         >
           Seu negócio{" "}
@@ -88,10 +76,9 @@ export default function HeroSection() {
 
         {/* Subtext */}
         <motion.p
-          initial="hidden"
-          animate="visible"
-          custom={0.35}
-          variants={fadeUp}
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.35 }}
           className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-white/60 md:text-xl"
         >
           AI Agents autônomos trabalhando 24/7. Entregas em horas, não semanas.
@@ -99,10 +86,9 @@ export default function HeroSection() {
 
         {/* CTAs */}
         <motion.div
-          initial="hidden"
-          animate="visible"
-          custom={0.5}
-          variants={fadeUp}
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.5 }}
           className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row"
         >
           <Link

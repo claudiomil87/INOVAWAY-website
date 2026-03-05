@@ -110,7 +110,7 @@ export default function SquadSection() {
               {/* Avatar */}
               <div
                 className="relative mb-3 h-20 w-20 overflow-hidden rounded-full ring-2 ring-offset-2 ring-offset-[#0F172A]"
-                style={{ ringColor: agent.color }}
+                style={{ outlineColor: agent.color }}
               >
                 <Image
                   src={agent.avatar}
