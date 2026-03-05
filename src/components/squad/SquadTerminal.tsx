@@ -75,7 +75,7 @@ let lineCounter = 0;
 
 export default function SquadTerminal() {
   const [lines, setLines] = useState<TerminalLine[]>([]);
-  const bottomRef = useRef<HTMLDivElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
   const agentIndexRef = useRef(0);
   const msgIndexRef = useRef<Record<string, number>>({});
 
@@ -106,7 +106,9 @@ export default function SquadTerminal() {
   }, []);
 
   useEffect(() => {
-    bottomRef.current?.scrollIntoView({ behavior: "smooth" });
+    if (containerRef.current) {
+      containerRef.current.scrollTop = containerRef.current.scrollHeight;
+    }
   }, [lines]);
 
   return (
@@ -124,7 +126,7 @@ export default function SquadTerminal() {
       </div>
 
       {/* Terminal body */}
-      <div className="bg-[#060606] p-4 h-48 overflow-y-auto font-mono text-sm">
+      <div ref={containerRef} className="bg-[#060606] p-4 h-48 overflow-y-auto font-mono text-sm">
         {lines.map((line) => (
           <div key={line.id} className="flex gap-2 mb-1.5 leading-relaxed">
             <span className="text-white/30 shrink-0">[{line.timestamp}]</span>
@@ -134,7 +136,7 @@ export default function SquadTerminal() {
             <span className="text-[#00FF41]">{line.message}</span>
           </div>
         ))}
-        <div ref={bottomRef} />
+
       </div>
     </div>
   );
