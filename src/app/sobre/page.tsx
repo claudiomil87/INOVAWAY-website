@@ -1,5 +1,6 @@
-import type { Metadata } from "next";
 
+import type { Metadata } from "next";
+import EliteSquadSection from "@/components/squad/EliteSquadSection";
 export const metadata: Metadata = {
   title: "Sobre — INOVAWAY ELITE SQUAD | Conheça nossos AI Agents",
   description:
@@ -103,6 +104,14 @@ export default function SobrePage() {
             ))}
           </div>
         </div>
+
+        {/* Divider */}
+        <div className="my-16 border-t border-white/10" />
+
+        {/* Squad Section */}
+        <section id="squad">
+          <EliteSquadSection />
+        </section>
       </div>
     </div>
   );
