@@ -64,9 +64,9 @@ export default function SobrePage() {
             </span>
           </h1>
           <p className="text-lg text-white/60 max-w-2xl mx-auto leading-relaxed">
-            A INOVAWAY nasceu da crença de que tecnologia de ponta não deveria
-            ser privilégio de grandes empresas. Qualquer negócio — do micro ao
-            médio — merece infra, IA e estratégia de nível enterprise.
+            Com mais de 15 anos de inovação pura — de bots para Instagram em 2017
+            até AI Agents autônomos em 2026 — a INOVAWAY nasceu da crença de que tecnologia 
+            de ponta não deveria ser privilégio de grandes empresas.
           </p>
         </motion.div>
 
@@ -85,24 +85,24 @@ export default function SobrePage() {
             </h2>
             <div className="space-y-4 text-white/70 leading-relaxed">
               <p>
-                Era 2023. O mercado virou de cabeça pra baixo com a explosão da
+                A INOVAWAY tem mais de 15 anos de história pura em inovação. Lá
+                atrás, quando poucos acreditavam em automação, já estávamos
+                criando bots para Instagram — desde 2017. Automatizando o que
+                ninguém mais ousava automatizar.
+              </p>
+              <p>
+                Em 2023, o mercado virou de cabeça pra baixo com a explosão da
                 IA. Ferramentas que antes custavam uma fortuna ficaram
-                acessíveis. Modelos de linguagem que pareciam ficção científica
-                viraram API pública.
+                acessíveis. E a INOVAWAY estava pronta.
               </p>
               <p>
-                A questão era: quem ia aproveitar isso?
+                Não nascemos ontem. Evoluímos de bots simples para AI Agents
+                autônomos — o INOVAWAY ELITE SQUAD. Um time de 8 agentes
+                especializados trabalhando 24/7, sem descanso, sem desculpas.
               </p>
               <p>
-                Grandes empresas se movem devagar. Agências tradicionais
-                resistem à mudança. E os pequenos negócios — os mais ágeis de
-                todos — ficaram sem orientação.
-              </p>
-              <p>
-                A INOVAWAY nasceu pra preencher esse espaço. Não como uma
-                agência que terceiriza trabalho, cobra por hora e entrega
-                apresentação de PowerPoint. Mas como um squad de specialists
-                operados por IA, trabalhando 24/7, entregando resultado real.
+                Somos de Recife, Pernambuco — Rua do Apolo, coração do Recife
+                Antigo. Mas operamos globalmente, 100% digital.
               </p>
               <p>
                 Hoje, a INOVAWAY é um movimento: empreendedores tech que surfam

@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     title: "INOVAWAY — AI Agents que trabalham 24/7 para seu negócio",
     description:
       "Agência de AI Agents autônomos. Sites, chatbots, automações e mais — entregues em horas, não semanas.",
-    url: "https://inovaway.com",
+    url: "https://inovaway.org",
   },
 };
 

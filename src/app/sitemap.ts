@@ -1,7 +1,7 @@
 import { MetadataRoute } from "next";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = "https://inovaway.com";
+  const baseUrl = "https://inovaway.org";
   const lastModified = new Date("2026-03-05");
 
   return [

@@ -25,7 +25,7 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://inovaway.com"),
+  metadataBase: new URL("https://inovaway.org"),
   title: {
     default: "INOVAWAY — AI Agents que trabalham 24/7 para seu negócio",
     template: "%s | INOVAWAY",
@@ -43,7 +43,7 @@ export const metadata: Metadata = {
     "IA",
     "funil de vendas",
   ],
-  authors: [{ name: "INOVAWAY", url: "https://inovaway.com" }],
+  authors: [{ name: "INOVAWAY", url: "https://inovaway.org" }],
   creator: "INOVAWAY",
   publisher: "INOVAWAY",
   robots: {
@@ -60,7 +60,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "pt_BR",
-    url: "https://inovaway.com",
+    url: "https://inovaway.org",
     siteName: "INOVAWAY",
     title: "INOVAWAY — AI Agents que trabalham 24/7 para seu negócio",
     description:
@@ -95,8 +95,8 @@ const organizationSchema = {
   "@context": "https://schema.org",
   "@type": "Organization",
   name: "INOVAWAY",
-  url: "https://inovaway.com",
-  logo: "https://inovaway.com/logo.png",
+  url: "https://inovaway.org",
+  logo: "https://inovaway.org/logo.png",
   description:
     "Agência de AI Agents autônomos. Sites, chatbots, automações e mais — entregues em horas, não semanas.",
   contactPoint: {
@@ -111,12 +111,12 @@ const websiteSchema = {
   "@context": "https://schema.org",
   "@type": "WebSite",
   name: "INOVAWAY",
-  url: "https://inovaway.com",
+  url: "https://inovaway.org",
   potentialAction: {
     "@type": "SearchAction",
     target: {
       "@type": "EntryPoint",
-      urlTemplate: "https://inovaway.com/?q={search_term_string}",
+      urlTemplate: "https://inovaway.org/?q={search_term_string}",
     },
     "query-input": "required name=search_term_string",
   },

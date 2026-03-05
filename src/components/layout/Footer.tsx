@@ -105,12 +105,10 @@ export default function Footer() {
         {/* Bottom bar */}
         <div className="mt-10 border-t border-white/10 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-sm text-white/40">
-            © {currentYear} INOVAWAY. Todos os direitos reservados.
+            © {currentYear} INOVAWAY — CNPJ 18.652.375/0001-00
           </p>
           <p className="text-sm text-white/40">
-            Feito com{" "}
-            <span className="text-green-tech">♥</span>{" "}
-            no Brasil
+            Rua do Apolo, 161 — Recife, PE | inovaway@inovaway.org
           </p>
         </div>
       </div>

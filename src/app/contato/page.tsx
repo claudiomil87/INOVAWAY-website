@@ -7,8 +7,8 @@ const contactInfo = [
   {
     icon: "📧",
     label: "E-mail",
-    value: "hello@inovaway.com.br",
-    href: "mailto:hello@inovaway.com.br",
+    value: "inovaway@inovaway.org",
+    href: "mailto:inovaway@inovaway.org",
     detail: "Respondemos em até 1h",
   },
   {
@@ -21,7 +21,7 @@ const contactInfo = [
   {
     icon: "📍",
     label: "Localização",
-    value: "Brasil — Operamos 100% Digital",
+    value: "Recife, PE — Rua do Apolo, 161",
     href: null,
     detail: "Squad ativo 24/7",
   },
