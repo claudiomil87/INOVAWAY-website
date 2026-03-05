@@ -14,8 +14,8 @@ const contactInfo = [
   {
     icon: "📱",
     label: "WhatsApp",
-    value: "+55 (11) 99999-9999",
-    href: "https://wa.me/5511999999999",
+    value: "+55 (81) 98139-2929",
+    href: "https://wa.me/5581981392929",
     detail: "Seg–Sáb, 8h–22h",
   },
   {
@@ -148,7 +148,7 @@ export default function ContatoPage() {
 
             {/* WhatsApp CTA */}
             <a
-              href="https://wa.me/5511999999999?text=Oi%20squad%20INOVAWAY!%20Quero%20um%20diagn%C3%B3stico%20gratuito."
+              href="https://wa.me/5581981392929?text=Oi%20squad%20INOVAWAY!%20Quero%20um%20diagn%C3%B3stico%20gratuito."
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center justify-center gap-2 w-full rounded-xl bg-[#25D366] px-6 py-4 text-sm font-bold text-white hover:opacity-90 transition-opacity"
@@ -226,7 +226,7 @@ export default function ContatoPage() {
                       <input
                         id="phone"
                         type="tel"
-                        placeholder="(11) 99999-9999"
+                        placeholder="(81) 98139-2929"
                         className="w-full rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-white placeholder-white/30 focus:border-[#00FF41]/50 focus:outline-none focus:ring-1 focus:ring-[#00FF41]/30 transition-colors"
                       />
                       <p className="text-xs text-white/30 mt-1">
