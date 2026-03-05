@@ -7,9 +7,15 @@ import StatsSection from "@/components/sections/StatsSection";
 import CTASection from "@/components/sections/CTASection";
 
 export const metadata: Metadata = {
-  title: "INOVAWAY — Seu negócio nunca mais dorme.",
+  title: "INOVAWAY — AI Agents que trabalham 24/7 para seu negócio",
   description:
-    "AI Agents autônomos trabalhando 24/7. Entregas em horas, não semanas. Transforme seu negócio com inteligência artificial.",
+    "Agência de AI Agents autônomos. Sites, chatbots, automações e mais — entregues em horas, não semanas.",
+  openGraph: {
+    title: "INOVAWAY — AI Agents que trabalham 24/7 para seu negócio",
+    description:
+      "Agência de AI Agents autônomos. Sites, chatbots, automações e mais — entregues em horas, não semanas.",
+    url: "https://inovaway.com",
+  },
 };
 
 export default function HomePage() {

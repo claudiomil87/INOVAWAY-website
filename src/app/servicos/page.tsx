@@ -1,9 +1,15 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Serviços",
+  title: "Serviços — INOVAWAY | Sites, Chatbots, Automações com IA",
   description:
-    "Conheça os serviços da INOVAWAY: desenvolvimento web, mobile, automações e consultoria em tecnologia.",
+    "Criação de sites, chatbots inteligentes, automações, funis de venda e mais. Tudo feito por AI Agents especializados.",
+  openGraph: {
+    title: "Serviços — INOVAWAY | Sites, Chatbots, Automações com IA",
+    description:
+      "Criação de sites, chatbots inteligentes, automações, funis de venda e mais. Tudo feito por AI Agents especializados.",
+    url: "https://inovaway.com/servicos",
+  },
 };
 
 const services = [

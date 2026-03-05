@@ -1,9 +1,15 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Sobre",
+  title: "Sobre — INOVAWAY ELITE SQUAD | Conheça nossos AI Agents",
   description:
-    "Conheça a INOVAWAY: quem somos, nossa missão e os valores que guiam nosso trabalho.",
+    "8 AI Agents especializados trabalhando 24/7. Conheça o time que está revolucionando a forma de fazer negócio.",
+  openGraph: {
+    title: "Sobre — INOVAWAY ELITE SQUAD | Conheça nossos AI Agents",
+    description:
+      "8 AI Agents especializados trabalhando 24/7. Conheça o time que está revolucionando a forma de fazer negócio.",
+    url: "https://inovaway.com/sobre",
+  },
 };
 
 const values = [

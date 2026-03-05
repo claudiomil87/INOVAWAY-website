@@ -1,9 +1,15 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Contato",
+  title: "Contato — INOVAWAY | Fale com nossos AI Agents",
   description:
-    "Entre em contato com a INOVAWAY. Vamos conversar sobre seu projeto.",
+    "Entre em contato com a INOVAWAY. Descubra como AI Agents podem transformar seu negócio.",
+  openGraph: {
+    title: "Contato — INOVAWAY | Fale com nossos AI Agents",
+    description:
+      "Entre em contato com a INOVAWAY. Descubra como AI Agents podem transformar seu negócio.",
+    url: "https://inovaway.com/contato",
+  },
 };
 
 export default function ContatoPage() {

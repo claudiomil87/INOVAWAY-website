@@ -2,9 +2,15 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Produtos",
+  title: "Produtos — INOVAWAY | UpBro, HNBCRM, GMBAssist",
   description:
-    "Produtos INOVAWAY: soluções SaaS e ferramentas desenvolvidas para escalar negócios digitais.",
+    "Conheça nossos produtos: UpBro (chatbot SaaS), HNBCRM (CRM open source), GMBAssist (gestão Google Business).",
+  openGraph: {
+    title: "Produtos — INOVAWAY | UpBro, HNBCRM, GMBAssist",
+    description:
+      "Conheça nossos produtos: UpBro (chatbot SaaS), HNBCRM (CRM open source), GMBAssist (gestão Google Business).",
+    url: "https://inovaway.com/produtos",
+  },
 };
 
 const products = [
