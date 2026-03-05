@@ -34,6 +34,16 @@ Pensando no que nosso squad faz com mínima intervenção humana:
 | **Consultoria AI** | Estratégia de implementação de IA no negócio | Scout + Arch | Análise profunda |
 | **Auditoria de Segurança** | Análise de vulnerabilidades de sites/sistemas | Shield | OWASP based |
 | **QA/Testes** | Testes visuais, regressão, acessibilidade | Lens | Com screenshots |
+| **Copywriting & Conteúdo** | Textos para sites, ads, redes sociais, blogs | Spark | Tom de voz sob medida |
+| **Gestão de Anúncios** | Google Ads, Meta Ads, análise de performance | Spark + Scout | Data-driven |
+
+### 1.3 Serviços Futuros *(Em Breve)*
+
+| Serviço | O que é | Status |
+|---|---|---|
+| **Motion Design** | Animações e vídeos com Remotion | 🔜 Agent em desenvolvimento |
+| **Produção de Vídeo Avançada** | Vídeos profissionais com agent especializado | 🔜 Agent em desenvolvimento |
+| **Gestão de Redes Sociais** | Publicação, engajamento, analytics automatizados | 🔜 Agent em desenvolvimento |
 
 ---
 
@@ -67,7 +77,7 @@ Pensando no que nosso squad faz com mínima intervenção humana:
 | **Serviços** | Listar ofertas | Cards de cada serviço com descrição e CTA |
 | **Produtos** | Apresentar UpBro, HNBCRM, GMBAssist | Features, preços, demos |
 | **Portfolio/Cases** | Prova social | Cases de sucesso com resultados |
-| **Sobre** | Humanizar a marca | História, equipe (agentes!), missão |
+| **Sobre / Squad** | Humanizar a marca | História, **Meet the INOVAWAY ELITE SQUAD** (seção interativa), missão |
 | **Blog** | SEO e autoridade | Posts sobre AI, automação, marketing |
 | **Contato** | Captura de lead | Formulário, WhatsApp, agenda |
 | **FAQ** | Tire dúvidas | Perguntas frequentes sobre serviços |
@@ -91,29 +101,60 @@ Pensando no que nosso squad faz com mínima intervenção humana:
 ### 4.1 Nome
 **INOVAWAY**
 
-### 4.2 Logo
-> ❓ **PENDENTE**: Aprovar abordagem
-> 
-> - Opção A: Criar logo com Pixel (geração de imagem)
-> - Opção B: Usar apenas tipografia (nome é visualmente forte)
-> - Opção C: Combinar ícone + tipografia
+### 4.2 Logo — ✅ APROVADA
 
-### 4.3 Paleta de Cores Sugerida
+**Conceito:** Wordmark minimalista inspirado na Anthropic — logo tipográfico com barra invertida `\` em verde tech.
+
+**Leitura:** `INOVA \ WAY`
+
+**Elementos:**
+| Elemento | Cor | Hex |
+|----------|-----|-----|
+| `INOVA` | Branco puro | `#FFFFFF` |
+| `\` | Verde tech | `#00FF41` |
+| `WAY` | Branco puro | `#FFFFFF` |
+| Fundo | Dark navy | `#0F172A` |
+
+**Arquivos aprovados:**
+| Arquivo | Uso | Path |
+|---------|-----|------|
+| `inova-backslash-green.png` | Principal (dark mode) | `assets/logos/` |
+| `inovaway-transparent.png` | **Universal — usar no site** | `assets/logos/` |
+| `inovaway-white-bg.png` | Documentos impressos, light mode | `assets/logos/` |
+| `inovaway-mono-black.png` | Carimbos, impressão 1 cor | `assets/logos/` |
+| `inovaway-mono-white.png` | Bordado em fundo escuro, merch | `assets/logos/` |
+
+> ⚠️ **Para o site, usar preferencialmente `inovaway-transparent.png`** (fundo transparente, funciona sobre qualquer background).
+> Se precisar de versão diferente (tamanho, formato, cor), solicitar ao Pixel 🎨.
+
+**Mockups:**
+| Arquivo | Aplicação | Path |
+|---------|-----------|------|
+| `inovaway-mockup-laptop.png` | Hero section website | `assets/mockups/` |
+| `inovaway-mockup-card.png` | Cartão de visita | `assets/mockups/` |
+| `inovaway-mockup-hoodie.png` | Merch hoodie | `assets/mockups/` |
+
+**Brand Identity completa:** `docs/brand/INOVAWAY-BRAND-IDENTITY.md` + `.pdf`
+
+### 4.3 Paleta de Cores — ✅ APROVADA
 
 | Cor | Hex | Uso |
 |---|---|---|
-| Primária (Cyan) | `#06B6D4` | CTAs, highlights |
-| Secundária (Dark) | `#0F172A` | Background, textos |
-| Acento (Purple) | `#8B5CF6` | Gradientes, detalhes |
-| Texto | `#F8FAFC` | Sobre dark |
-| Texto Secundário | `#94A3B8` | Subtítulos |
+| **Dark Navy** | `#0F172A` | Fundo principal |
+| **Branco Puro** | `#FFFFFF` | Wordmark, tipografia |
+| **Verde Tech** | `#00FF41` | Barra `\`, CTAs, destaques |
+| **Cyan** | `#06B6D4` | Variação alternativa, gradientes |
+| **Purple** | `#8B5CF6` | Gradientes, fundos alternativos |
+| Texto secundário | `#94A3B8` | Subtítulos |
 
 ### 4.4 Estilo Visual
 - Moderno, tech, futurista
 - Dark mode como padrão
-- Gradientes sutis cyan → purple
+- Verde tech (#00FF41) como cor de destaque principal
+- Gradientes sutis cyan → purple como secundário
 - Animações suaves (framer-motion)
-- Tipografia: Inter ou similar
+- Tipografia: Inter (corpo), Geist (títulos), JetBrains Mono (código)
+- Mobile-first
 
 ---
 
