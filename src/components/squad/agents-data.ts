@@ -90,4 +90,14 @@ export const agents: Agent[] = [
     skills: ["GrowthHacking", "ContentStrategy", "SEO", "PaidAds", "CommunityBuilding"],
     statusMessage: "A/B testando dois títulos. O vencedor vai ser publicado em 3... 2... 1...",
   },
+  {
+    name: "Flux",
+    emoji: "🎬",
+    color: "#FF6B6B",
+    role: "Motion Designer & Video Producer",
+    avatar: "/squad/flux-avatar.webp",
+    bio: "Flux transforma ideias em movimento — cada frame é uma decisão, cada corte é uma emoção. Renderiza vídeos cinematográficos com IA, cria motion graphics hipnóticos e produz Reels que viralizam antes de você terminar de assistir.",
+    skills: ["MotionDesign", "VideoProduction", "KineticTypography", "AIVideoGen", "Narration"],
+    statusMessage: "Renderizando 450 frames em paralelo. ETA: antes do café esfriar.",
+  },
 ];

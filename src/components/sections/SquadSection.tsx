@@ -61,6 +61,13 @@ const squad = [
     avatar: "/squad/spark-avatar.webp",
     color: "#8B5CF6",
   },
+  {
+    name: "Flux",
+    emoji: "🎬",
+    role: "Motion Designer & Vídeos",
+    avatar: "/squad/flux-avatar.webp",
+    color: "#FF6B6B",
+  },
 ];
 
 export default function SquadSection() {

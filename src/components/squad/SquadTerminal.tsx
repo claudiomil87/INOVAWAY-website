@@ -60,6 +60,12 @@ const agentMessages: Record<string, string[]> = {
     "CTR improved by 23%",
     "Crafting viral content strategy..."
   ],
+  Flux: [
+    "Rendering 450 frames in parallel...",
+    "Veo 2: generating cinematic clip...",
+    "Composing narration + motion graphics",
+    "Reel ready: 15s vertical @ 30fps ✓"
+  ],
 };
 
 function getTimestamp() {

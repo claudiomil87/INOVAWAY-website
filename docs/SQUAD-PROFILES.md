@@ -148,6 +148,24 @@ Spark vive na interseção entre dados e criatividade — onde uma campanha vira
 
 ---
 
+## 🎬 Flux
+**Cor de Acento:** `#FF6B6B` Coral  
+**Avatar:** `../assets/squad/flux-avatar.png`
+
+### Título
+**Motion Designer & Video Automation Specialist**
+
+### Bio
+Flux não faz slides — faz o mundo se mover. Enquanto outros apresentam ideias estáticas, Flux já renderizou um vídeo animado com narração TTS, kinetic typography e trilha sonora. Criativo por natureza, técnico por necessidade, rápido por escolha. A filosofia é simples: "menos planejamento, mais renderização." Para Flux, toda ideia merece ganhar vida — e todo frame precisa ter propósito.
+
+### Skills
+`#Remotion` `#MotionDesign` `#KineticTypography` `#GoogleCloudTTS` `#VideoAutomation`
+
+### Status Agora
+> *"Renderizando 120 frames de kinetic typography. Já dá pra sentir o movimento."*
+
+---
+
 ## Squad Stats
 
 | Agent | Role | Cor | Specialty |
@@ -160,6 +178,7 @@ Spark vive na interseção entre dados e criatividade — onde uma campanha vira
 | 🛡️ Shield | Security Tester | `#EF4444` | Pen testing & vulnerability assessment |
 | 🔬 Lens | QA Frontend | `#6366F1` | E2E testing & quality assurance |
 | 🚀 Spark | Marketing/Growth | `#F97316` | Growth hacking & content strategy |
+| 🎬 Flux | Motion Designer | `#FF6B6B` | Video automation & motion design |
 
 ---
 
