@@ -22,7 +22,12 @@ export async function POST(request: NextRequest) {
           phone: body.phone,
           company: body.company,
         },
-        message: `Serviços: ${body.services?.join(', ') || 'N/A'}\nOrçamento: ${body.budget || 'N/A'}\nMensagem: ${body.message || 'N/A'}`,
+        message: [
+          body.company ? `Empresa: ${body.company}` : null,
+          `Serviços de interesse: ${body.services?.length ? body.services.join(', ') : 'Não especificado'}`,
+          `Orçamento aproximado: ${body.budget || 'Não informado'}`,
+          `\nMensagem do lead:\n${body.message || 'Sem mensagem adicional'}`,
+        ].filter(Boolean).join('\n'),
         channel: 'website',
         tags: ['website', 'inovaway.org'],
         temperature: 'warm',

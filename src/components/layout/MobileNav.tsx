@@ -43,7 +43,7 @@ export default function MobileNav({ links, open, onClose }: MobileNavProps) {
 
       {/* Drawer */}
       <div
-        className="fixed inset-y-0 right-0 z-50 w-72 max-w-full bg-navy-light md:hidden flex flex-col shadow-2xl"
+        className="fixed inset-y-0 right-0 z-50 w-80 max-w-full bg-[#0F172A] md:hidden flex flex-col shadow-2xl border-l border-white/10"
         role="dialog"
         aria-modal="true"
         aria-label="Menu de navegação"

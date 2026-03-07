@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { useState } from "react";
+import Link from "next/link";
 
 const contactInfo = [
   {
@@ -192,14 +193,77 @@ export default function ContatoPage() {
             transition={{ duration: 0.6, delay: 0.2 }}
           >
             {submitted ? (
-              <div className="rounded-2xl border border-[#00FF41]/20 bg-[#00FF41]/5 p-12 text-center h-full flex flex-col items-center justify-center min-h-[400px]">
-                <div className="text-6xl mb-6">✅</div>
-                <h2 className="text-2xl font-bold text-white mb-3">Recebido!</h2>
-                <p className="text-white/60 max-w-md">
-                  Arch já está processando. Em menos de 1h você recebe nossa
-                  análise inicial no e-mail ou WhatsApp.
-                </p>
-              </div>
+              <motion.div
+                className="rounded-2xl border border-[#00FF41]/20 bg-[#1E293B] p-12 text-center h-full flex flex-col items-center justify-center min-h-[480px]"
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.5 }}
+              >
+                {/* Animated check */}
+                <motion.div
+                  className="relative mb-8"
+                  initial={{ scale: 0 }}
+                  animate={{ scale: 1 }}
+                  transition={{ type: "spring", stiffness: 260, damping: 20, delay: 0.1 }}
+                >
+                  <div className="w-24 h-24 rounded-full border-4 border-[#00FF41] flex items-center justify-center relative">
+                    {/* Glow ring */}
+                    <motion.div
+                      className="absolute inset-0 rounded-full border-4 border-[#00FF41]"
+                      animate={{ scale: [1, 1.3, 1], opacity: [1, 0, 0] }}
+                      transition={{ duration: 1.5, repeat: Infinity, repeatDelay: 1 }}
+                    />
+                    <motion.svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      className="w-12 h-12"
+                      initial={{ pathLength: 0 }}
+                      animate={{ pathLength: 1 }}
+                      transition={{ duration: 0.6, delay: 0.3 }}
+                    >
+                      <motion.path
+                        d="M5 13l4 4L19 7"
+                        stroke="#00FF41"
+                        strokeWidth={2.5}
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        initial={{ pathLength: 0 }}
+                        animate={{ pathLength: 1 }}
+                        transition={{ duration: 0.6, delay: 0.3 }}
+                      />
+                    </motion.svg>
+                  </div>
+                </motion.div>
+
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.5 }}
+                >
+                  <h2 className="text-3xl font-bold text-white mb-3">
+                    Mensagem enviada com sucesso!
+                  </h2>
+                  <p className="text-white/60 max-w-md mx-auto mb-8 leading-relaxed">
+                    Nosso time vai analisar seu pedido e entrar em contato em até{" "}
+                    <span className="text-[#00FF41] font-semibold">1 hora</span>.
+                  </p>
+
+                  <div className="flex flex-col sm:flex-row gap-3 justify-center">
+                    <Link
+                      href="/"
+                      className="rounded-lg bg-[#00FF41] px-6 py-3 text-sm font-bold text-[#0F172A] transition-opacity hover:opacity-90"
+                    >
+                      ← Voltar para a home
+                    </Link>
+                    <button
+                      onClick={() => setSubmitted(false)}
+                      className="rounded-lg border border-white/20 px-6 py-3 text-sm font-medium text-white hover:border-white/40 transition-colors"
+                    >
+                      Enviar outra mensagem
+                    </button>
+                  </div>
+                </motion.div>
+              </motion.div>
             ) : (
               <div className="rounded-2xl border border-white/10 bg-[#1E293B] p-8">
                 <h2 className="text-xl font-semibold text-white mb-8">
