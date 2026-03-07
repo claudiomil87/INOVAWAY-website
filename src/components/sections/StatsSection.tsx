@@ -69,7 +69,7 @@ function AnimatedNumber({ value, suffix = "" }: { value: number; suffix?: string
 
 export default function StatsSection() {
   return (
-    <section className="px-4 py-20 md:py-32">
+    <section className="px-4 py-16 md:py-24">
       <div className="mx-auto max-w-7xl">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

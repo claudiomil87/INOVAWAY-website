@@ -54,7 +54,7 @@ const services = [
 
 export default function ServicesSection() {
   return (
-    <section className="px-4 py-20 md:py-28">
+    <section className="px-4 py-16 md:py-24">
       <div className="mx-auto max-w-7xl">
         {/* Header */}
         <motion.div
@@ -139,8 +139,10 @@ export default function ServicesSection() {
                     width={560}
                     height={360}
                     className="w-full h-full object-cover"
+                    style={{ mixBlendMode: "screen" }}
                     onError={(e) => {
                       (e.target as HTMLImageElement).src = svc.fallbackAvatar;
+                      (e.target as HTMLImageElement).style.mixBlendMode = "normal";
                       (e.target as HTMLImageElement).className = "w-40 h-40 object-cover rounded-full mx-auto my-8";
                     }}
                     loading="lazy"

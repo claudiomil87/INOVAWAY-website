@@ -141,7 +141,7 @@ export default function SquadSection() {
   const [selectedAgent, setSelectedAgent] = useState<Agent | null>(null);
 
   return (
-    <section id="squad" className="relative px-4 py-20 md:py-28" style={{ backgroundColor: "rgba(30,41,59,0.2)" }}>
+    <section id="squad" className="relative px-4 py-16 md:py-24" style={{ backgroundColor: "rgba(30,41,59,0.2)" }}>
       <div className="mx-auto max-w-7xl">
         {/* Header */}
         <motion.div
@@ -169,7 +169,7 @@ export default function SquadSection() {
         </motion.div>
 
         {/* ── Desktop Bento Grid ── */}
-        <div className="hidden md:grid grid-cols-4 gap-4 auto-rows-[160px]">
+        <div className="hidden md:grid grid-cols-4 gap-4 auto-rows-[220px]">
           {agents.map((agent, i) => (
             <BentoAgentCard
               key={agent.name}

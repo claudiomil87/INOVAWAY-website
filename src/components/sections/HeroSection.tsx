@@ -26,7 +26,7 @@ const heroImagePath = "/redesign/hero-squad-trio.png";
 
 export default function HeroSection() {
   return (
-    <section className="relative flex min-h-screen items-center justify-center overflow-hidden px-4 pt-24 pb-20">
+    <section className="relative flex min-h-screen items-center justify-center overflow-hidden px-4 pt-24 pb-16">
       {/* ── Grid dot pattern ── */}
       <div
         className="pointer-events-none absolute inset-0"
@@ -124,19 +124,20 @@ export default function HeroSection() {
             transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
             className="relative flex items-center justify-center"
           >
-            <div className="relative w-full max-w-md mx-auto">
+            <div className="relative w-full">
               {/* Glow backdrop */}
               <div
                 className="absolute inset-0 rounded-2xl blur-2xl"
-                style={{ background: "radial-gradient(circle, rgba(0,255,65,0.12) 0%, transparent 70%)" }}
+                style={{ background: "radial-gradient(circle, rgba(0,255,65,0.15) 0%, transparent 70%)" }}
               />
               <Image
                 src={heroImagePath}
                 alt="INOVAWAY Elite Squad"
-                width={560}
-                height={420}
+                width={720}
+                height={540}
                 priority
                 className="relative z-10 w-full h-auto rounded-2xl"
+                style={{ mixBlendMode: "screen" }}
                 onError={() => {}}
               />
             </div>

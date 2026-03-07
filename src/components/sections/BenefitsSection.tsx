@@ -33,7 +33,7 @@ const benefits = [
 
 export default function BenefitsSection() {
   return (
-    <section className="px-4 py-20 md:py-28">
+    <section className="px-4 py-16 md:py-24">
       <div className="mx-auto max-w-7xl">
         {/* Header */}
         <motion.div
