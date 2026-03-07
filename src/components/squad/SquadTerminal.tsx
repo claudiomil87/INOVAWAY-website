@@ -13,58 +13,58 @@ interface TerminalLine {
 
 const agentMessages: Record<string, string[]> = {
   Arch: [
-    "Delegating task #18 to Nova...",
-    "Analyzing system architecture...",
-    "Orchestrating parallel agents...",
-    "Decomposing workflow into parallel trees..."
+    "Delegando tarefa #18 para Nova...",
+    "Analisando arquitetura do sistema...",
+    "Orquestrando agents em paralelo...",
+    "Decompondo fluxo em árvores paralelas..."
   ],
   Pixel: [
-    "Generating brand assets...",
-    "Refining color palette...",
-    "Designing new UI components...",
-    "Adjusting kerning by 0.5px..."
+    "Gerando assets da marca...",
+    "Refinando paleta de cores...",
+    "Desenhando novos componentes visuais...",
+    "Ajustando tipografia e hierarquia..."
   ],
   Nova: [
-    "Building interactive components...",
-    "Optimizing bundle size: 98kb → 92kb",
-    "Fixing mobile layout on 375px...",
+    "Construindo componentes interativos...",
+    "Otimizando performance: 98kb → 92kb",
+    "Corrigindo layout mobile em 375px...",
     "Lighthouse score: 98/100 ✓"
   ],
   Forge: [
-    "Deploying to production... ✓",
-    "Running CI/CD pipeline...",
-    "Scaling infrastructure to 3x",
-    "Docker containers healthy"
+    "Publicando em produção... ✓",
+    "Executando pipeline de deploy...",
+    "Escalando infraestrutura 3x",
+    "Containers Docker saudáveis"
   ],
   Scout: [
-    "Analyzing market trends...",
-    "Researching 47 sources...",
-    "Synthesizing intel report...",
-    "Competitive analysis complete"
+    "Analisando tendências do mercado...",
+    "Pesquisando 47 fontes...",
+    "Sintetizando relatório de inteligência...",
+    "Análise competitiva concluída"
   ],
   Shield: [
-    "Running security audit...",
-    "Testing OWASP top 10...",
-    "Patching XSS vulnerability...",
-    "Pen test: 0 critical issues"
+    "Executando auditoria de segurança...",
+    "Testando segurança OWASP top 10...",
+    "Corrigindo vulnerabilidade XSS...",
+    "Pen test: 0 problemas críticos"
   ],
   Lens: [
-    "Running E2E test suite: 142/142 ✓",
-    "Testing on 12 viewports...",
-    "Logging edge case #37...",
-    "Accessibility audit complete"
+    "Suite E2E: 142/142 aprovados ✓",
+    "Testando em 12 resoluções...",
+    "Registrando edge case #37...",
+    "Auditoria de acessibilidade concluída"
   ],
   Spark: [
-    "A/B testing headlines...",
-    "Optimizing conversion funnel...",
-    "CTR improved by 23%",
-    "Crafting viral content strategy..."
+    "Testando variações de título A/B...",
+    "Otimizando funil de conversão...",
+    "CTR melhorou 23%",
+    "Criando estratégia de conteúdo viral..."
   ],
   Flux: [
-    "Rendering 450 frames in parallel...",
-    "Veo 2: generating cinematic clip...",
-    "Composing narration + motion graphics",
-    "Reel ready: 15s vertical @ 30fps ✓"
+    "Renderizando 450 frames em paralelo...",
+    "Veo 2: gerando clipe cinematográfico...",
+    "Compondo narração + motion graphics",
+    "Reel pronto: 15s vertical @ 30fps ✓"
   ],
 };
 
@@ -132,7 +132,7 @@ export default function SquadTerminal() {
       </div>
 
       {/* Terminal body */}
-      <div ref={containerRef} className="bg-[#060606] p-4 h-48 overflow-y-auto font-mono text-sm">
+      <div ref={containerRef} className="bg-[#060606] p-4 h-36 overflow-y-auto font-mono text-sm">
         {lines.map((line) => (
           <div key={line.id} className="flex gap-2 mb-1.5 leading-relaxed">
             <span className="text-white/30 shrink-0">[{line.timestamp}]</span>

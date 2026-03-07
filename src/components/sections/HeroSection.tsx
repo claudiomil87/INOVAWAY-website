@@ -16,7 +16,7 @@ const fadeUp = {
 };
 
 const quickBullets = [
-  "Site profissional no ar em dias, não semanas",
+  "Site e funil de vendas prontos em dias, não semanas",
   "Seu negócio funcionando 24 horas por dia, 7 dias por semana",
   "Sem burocracia. Sem enrolação. Sem surpresas no final",
   "Suporte humano de verdade — alguém que responde de verdade",

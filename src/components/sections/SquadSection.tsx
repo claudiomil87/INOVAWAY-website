@@ -185,13 +185,13 @@ export default function SquadSection() {
               onSelect={setSelectedAgent}
             />
           ))}
-          {/* Terminal spans 2 cols */}
+          {/* Terminal spans 2 cols, same row height as adjacent cards */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.5 }}
-            className="col-span-2 row-span-2"
+            className="col-span-2 row-span-1"
           >
             <SquadTerminal />
           </motion.div>

@@ -6,8 +6,6 @@ import Link from "next/link";
 import Image from "next/image";
 import { Lock, Zap, Gift } from "lucide-react";
 
-// Response time values that cycle
-const responseTimes = [47, 34, 12, 3, 28, 51, 8, 19, 42, 6, 23, 55, 15, 9, 37];
 
 const needOptions = [
   "Quero um site profissional",
@@ -26,18 +24,21 @@ const trustItems = [
 ];
 
 function ResponseTimer() {
-  const [timeIdx, setTimeIdx] = useState(0);
-  const [display, setDisplay] = useState(responseTimes[0]);
+  const [display, setDisplay] = useState(42);
   const [fade, setFade] = useState(true);
 
   useEffect(() => {
     const interval = setInterval(() => {
       setFade(false);
       setTimeout(() => {
-        setTimeIdx((prev) => {
-          const next = (prev + 1) % responseTimes.length;
-          setDisplay(responseTimes[next]);
-          return next;
+        setDisplay(prev => {
+          // Onda suave: desce gradualmente com pequena variação
+          const delta = Math.random() * 6 - 2; // -2 a +4 (tendência de descer)
+          const next = prev - delta;
+          // Se chegar perto do mínimo, sobe; se ultrapassar máximo, desce
+          if (next < 10) return Math.round(prev + Math.random() * 8 + 3);
+          if (next > 50) return Math.round(prev - Math.random() * 5 - 2);
+          return Math.round(Math.max(8, Math.min(52, next)));
         });
         setFade(true);
       }, 400);
