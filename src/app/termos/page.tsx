@@ -4,7 +4,43 @@ import { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Termos de Uso | INOVAWAY",
   description:
-    "Termos de Uso e Condições Gerais de Prestação de Serviços da INOVAWAY. Leia antes de utilizar nossos serviços.",
+    "Termos de Uso e Condições Gerais de Serviços da INOVAWAY. Leia antes de contratar ou utilizar nossas plataformas UpBro, HNBCRM e GMBAssist. Atualizado 2026.",
+  keywords: [
+    "termos de uso",
+    "condições gerais",
+    "INOVAWAY",
+    "UpBro",
+    "HNBCRM",
+    "GMBAssist",
+    "contrato de serviços",
+    "política de uso",
+  ],
+  openGraph: {
+    title: "Termos de Uso | INOVAWAY",
+    description:
+      "Termos de Uso e Condições Gerais de Serviços da INOVAWAY. Leia antes de contratar ou utilizar nossas plataformas UpBro, HNBCRM e GMBAssist. Atualizado 2026.",
+    url: "https://inovaway.org/termos",
+    type: "website",
+    locale: "pt_BR",
+    siteName: "INOVAWAY",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Termos de Uso — INOVAWAY",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Termos de Uso | INOVAWAY",
+    description:
+      "Termos de Uso e Condições Gerais da INOVAWAY. Leia antes de contratar ou utilizar as plataformas UpBro, HNBCRM e GMBAssist.",
+    images: ["/og-image.png"],
+    creator: "@inovaway",
+    site: "@inovaway",
+  },
 };
 
 const sections = [

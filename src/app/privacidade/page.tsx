@@ -4,7 +4,42 @@ import { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Política de Privacidade | INOVAWAY",
   description:
-    "Política de Privacidade da INOVAWAY em conformidade com a Lei Geral de Proteção de Dados (LGPD — Lei 13.709/2018).",
+    "Conheça a Política de Privacidade da INOVAWAY conforme a LGPD (Lei 13.709/2018). Saiba como coletamos, usamos e protegemos seus dados pessoais com segurança.",
+  keywords: [
+    "política de privacidade",
+    "LGPD",
+    "proteção de dados",
+    "privacidade",
+    "INOVAWAY",
+    "Lei 13.709",
+    "dados pessoais",
+  ],
+  openGraph: {
+    title: "Política de Privacidade | INOVAWAY",
+    description:
+      "Conheça a Política de Privacidade da INOVAWAY conforme a LGPD (Lei 13.709/2018). Saiba como coletamos, usamos e protegemos seus dados pessoais com segurança.",
+    url: "https://inovaway.org/privacidade",
+    type: "website",
+    locale: "pt_BR",
+    siteName: "INOVAWAY",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Política de Privacidade — INOVAWAY",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Política de Privacidade | INOVAWAY",
+    description:
+      "Conheça a Política de Privacidade da INOVAWAY conforme a LGPD. Saiba como coletamos, usamos e protegemos seus dados pessoais.",
+    images: ["/og-image.png"],
+    creator: "@inovaway",
+    site: "@inovaway",
+  },
 };
 
 const sections = [

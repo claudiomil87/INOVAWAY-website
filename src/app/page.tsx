@@ -11,12 +11,42 @@ import SocialProofNotification from "@/components/ui/SocialProofNotification";
 export const metadata: Metadata = {
   title: "INOVAWAY — Seu negócio crescendo 24h com AI Agents",
   description:
-    "Enquanto você descansa, nosso time de inteligência artificial trabalha pelo seu negócio. Sites em dias, automação 24/7, sem burocracia.",
+    "Enquanto você descansa, nossos AI Agents trabalham pelo seu negócio. Sites em dias, chatbots inteligentes, automações e funis de vendas 24/7. Comece agora!",
+  keywords: [
+    "AI Agents",
+    "automação 24/7",
+    "chatbot inteligente",
+    "criação de sites",
+    "funil de vendas",
+    "inteligência artificial",
+    "INOVAWAY",
+    "agência digital",
+  ],
   openGraph: {
     title: "INOVAWAY — Seu negócio crescendo 24h com AI Agents",
     description:
-      "Enquanto você descansa, nosso time de inteligência artificial trabalha pelo seu negócio. Sites em dias, automação 24/7, sem burocracia.",
+      "Enquanto você descansa, nossos AI Agents trabalham pelo seu negócio. Sites em dias, chatbots inteligentes, automações e funis de vendas 24/7. Comece agora!",
     url: "https://inovaway.org",
+    type: "website",
+    locale: "pt_BR",
+    siteName: "INOVAWAY",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "INOVAWAY — AI Agents que trabalham 24/7 para seu negócio",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "INOVAWAY — Seu negócio crescendo 24h com AI Agents",
+    description:
+      "Enquanto você descansa, nossos AI Agents trabalham pelo seu negócio. Sites em dias, chatbots, automações e funis de vendas 24/7.",
+    images: ["/og-image.png"],
+    creator: "@inovaway",
+    site: "@inovaway",
   },
 };
 
