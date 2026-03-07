@@ -1,63 +1,75 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
+import { Lock, Zap, Gift } from "lucide-react";
 
-const contactInfo = [
-  {
-    icon: "📧",
-    label: "E-mail",
-    value: "inovaway@inovaway.org",
-    href: "mailto:inovaway@inovaway.org",
-    detail: "Respondemos em até 1h",
-  },
-  {
-    icon: "📱",
-    label: "WhatsApp",
-    value: "+55 (81) 98139-2929",
-    href: "https://wa.me/5581981392929",
-    detail: "Seg–Sáb, 8h–22h",
-  },
-  {
-    icon: "📍",
-    label: "Localização",
-    value: "Recife, PE — Rua do Apolo, 161",
-    href: null,
-    detail: "Squad ativo 24/7",
-  },
+// Response time values that cycle
+const responseTimes = [47, 34, 12, 3, 28, 51, 8, 19, 42, 6, 23, 55, 15, 9, 37];
+
+const needOptions = [
+  "Quero um site profissional",
+  "Preciso de uma identidade visual",
+  "Quero aparecer no Google",
+  "Preciso de mais clientes",
+  "Meu negócio precisa de proteção digital",
+  "Quero anunciar nas redes sociais",
+  "Não sei por onde começar — me ajudem!",
 ];
 
-const services = [
-  "Criação de site",
-  "Funil de vendas",
-  "Chatbot / IA",
-  "Automações",
-  "CRM",
-  "Anúncios",
-  "Consultoria",
-  "Outra coisa",
+const trustItems = [
+  { icon: Lock, label: "Seus dados estão 100% seguros. Nunca vamos te encher de spam." },
+  { icon: Zap, label: "Resposta garantida em até 2 horas úteis" },
+  { icon: Gift, label: "O diagnóstico é gratuito. Sem pegadinha, sem compromisso." },
 ];
 
-const budgets = [
-  "Ainda não sei",
-  "Até R$ 2.000",
-  "R$ 2.000 – R$ 5.000",
-  "R$ 5.000 – R$ 15.000",
-  "Acima de R$ 15.000",
-];
+function ResponseTimer() {
+  const [timeIdx, setTimeIdx] = useState(0);
+  const [display, setDisplay] = useState(responseTimes[0]);
+  const [fade, setFade] = useState(true);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setFade(false);
+      setTimeout(() => {
+        setTimeIdx((prev) => {
+          const next = (prev + 1) % responseTimes.length;
+          setDisplay(responseTimes[next]);
+          return next;
+        });
+        setFade(true);
+      }, 400);
+    }, 7000);
+    return () => clearInterval(interval);
+  }, []);
+
+  return (
+    <div className="rounded-xl border border-[#00FF41]/20 bg-[#00FF41]/5 p-4">
+      <p className="text-xs text-white/40 mb-1">⏱️ Tempo médio de resposta</p>
+      <div
+        className="text-3xl font-bold transition-all duration-400"
+        style={{
+          color: "#00FF41",
+          opacity: fade ? 1 : 0,
+          transform: fade ? "translateY(0)" : "translateY(-4px)",
+          transition: "opacity 0.4s ease, transform 0.4s ease",
+        }}
+      >
+        {display} min
+      </div>
+      <p className="text-xs text-white/40 mt-1">
+        Squad ativo fora do horário comercial
+      </p>
+    </div>
+  );
+}
 
 export default function ContatoPage() {
-  const [selectedServices, setSelectedServices] = useState<string[]>([]);
-  const [budget, setBudget] = useState("");
+  const [selectedNeed, setSelectedNeed] = useState("");
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
-
-  function toggleService(s: string) {
-    setSelectedServices((prev) =>
-      prev.includes(s) ? prev.filter((x) => x !== s) : [...prev, s]
-    );
-  }
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -65,368 +77,432 @@ export default function ContatoPage() {
     try {
       const form = e.target as HTMLFormElement;
       const formData = new FormData(form);
-      const response = await fetch('/api/contact', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          name: formData.get('name'),
-          email: formData.get('email'),
-          phone: formData.get('phone'),
-          company: formData.get('company'),
-          services: selectedServices,
-          budget,
-          message: formData.get('message'),
+          name: formData.get("name"),
+          email: formData.get("email"),
+          phone: formData.get("phone"),
+          company: formData.get("company"),
+          segment: formData.get("segment"),
+          website: formData.get("website"),
+          need: selectedNeed,
+          message: formData.get("message"),
         }),
       });
       if (response.ok) {
         setSubmitted(true);
       } else {
-        alert('Erro ao enviar. Tente novamente.');
+        alert("Erro ao enviar. Tente novamente.");
       }
     } catch {
-      alert('Erro de conexão. Tente novamente.');
+      alert("Erro de conexão. Tente novamente.");
     } finally {
       setLoading(false);
     }
   }
 
   return (
-    <div className="min-h-screen py-20 px-4">
-      <div className="mx-auto max-w-6xl">
-        {/* Header */}
+    <div className="min-h-screen">
+      {/* ── MOBILE: form first, minimal header ── */}
+      <div className="md:hidden px-4 pt-20 pb-12">
         <motion.div
-          className="text-center mb-16"
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.5 }}
         >
-          <p className="text-[#00FF41] text-sm font-mono tracking-widest uppercase mb-4">
-            // contato
-          </p>
-          <h1 className="text-4xl font-bold text-white sm:text-5xl lg:text-6xl mb-6">
-            Vamos{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#00FF41] to-[#06B6D4]">
-              conversar?
-            </span>
-          </h1>
-          <p className="text-lg text-white/60 max-w-xl mx-auto">
-            Nossos agents estão prontos para ouvir você. Em menos de 1h você
-            sabe se somos o parceiro certo — e o que vamos fazer pelo seu
-            negócio.
-          </p>
-          <p className="mt-2 text-white/40 text-sm">
-            Respondemos via WhatsApp, e-mail ou Discord. Você escolhe.
-          </p>
+          <div className="text-center mb-6">
+            <h1 className="text-3xl font-bold text-white mb-2">
+              Vamos fazer seu negócio{" "}
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#00FF41] to-[#06B6D4]">
+                crescer?
+              </span>
+            </h1>
+            <p className="text-sm text-white/50">
+              ⚡ Respondemos em até 2 horas úteis. Diagnóstico gratuito.
+            </p>
+          </div>
+
+          {submitted ? (
+            <SuccessMessage />
+          ) : (
+            <ContactForm
+              selectedNeed={selectedNeed}
+              setSelectedNeed={setSelectedNeed}
+              loading={loading}
+              onSubmit={handleSubmit}
+            />
+          )}
         </motion.div>
+      </div>
 
-        <div className="grid grid-cols-1 gap-10 lg:grid-cols-3">
-          {/* Contact Info Sidebar */}
-          <motion.aside
-            className="lg:col-span-1 space-y-4"
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-          >
-            {/* Info cards */}
-            {contactInfo.map((item) =>
-              item.href ? (
-                <a
-                  key={item.label}
-                  href={item.href}
-                  target={item.href.startsWith("http") ? "_blank" : undefined}
-                  rel={
-                    item.href.startsWith("http")
-                      ? "noopener noreferrer"
-                      : undefined
-                  }
-                  className="flex gap-4 items-start rounded-xl border border-white/10 bg-[#1E293B] p-5 hover:border-[#00FF41]/30 transition-colors group"
-                >
-                  <span className="text-2xl shrink-0">{item.icon}</span>
-                  <div>
-                    <p className="text-xs text-white/40 mb-0.5">{item.label}</p>
-                    <p className="text-white font-medium group-hover:text-[#00FF41] transition-colors">
-                      {item.value}
-                    </p>
-                    <p className="text-xs text-white/40 mt-1">{item.detail}</p>
-                  </div>
-                </a>
-              ) : (
-                <div
-                  key={item.label}
-                  className="flex gap-4 items-start rounded-xl border border-white/10 bg-[#1E293B] p-5"
-                >
-                  <span className="text-2xl shrink-0">{item.icon}</span>
-                  <div>
-                    <p className="text-xs text-white/40 mb-0.5">{item.label}</p>
-                    <p className="text-white font-medium">{item.value}</p>
-                    <p className="text-xs text-white/40 mt-1">{item.detail}</p>
-                  </div>
-                </div>
-              )
-            )}
-
-            {/* Response time */}
-            <div className="rounded-xl border border-[#00FF41]/20 bg-[#00FF41]/5 p-5">
-              <p className="text-xs text-white/40 mb-1">⏱️ Tempo médio de resposta</p>
-              <p className="text-3xl font-bold text-[#00FF41]">47 min</p>
-              <p className="text-xs text-white/40 mt-1">
-                Squad ativo fora do horário comercial
-              </p>
-            </div>
-
-            {/* WhatsApp CTA */}
-            <a
-              href="https://wa.me/5581981392929?text=Oi%20squad%20INOVAWAY!%20Quero%20um%20diagn%C3%B3stico%20gratuito."
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center justify-center gap-2 w-full rounded-xl bg-[#25D366] px-6 py-4 text-sm font-bold text-white hover:opacity-90 transition-opacity"
-            >
-              <span>💬</span> Falar direto no WhatsApp
-            </a>
-          </motion.aside>
-
-          {/* Form */}
+      {/* ── DESKTOP: 2-column layout ── */}
+      <div className="hidden md:block py-20 px-4">
+        <div className="mx-auto max-w-6xl">
+          {/* Header */}
           <motion.div
-            className="lg:col-span-2"
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
+            className="text-center mb-12"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
           >
-            {submitted ? (
-              <motion.div
-                className="rounded-2xl border border-[#00FF41]/20 bg-[#1E293B] p-12 text-center h-full flex flex-col items-center justify-center min-h-[480px]"
-                initial={{ opacity: 0, scale: 0.95 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.5 }}
-              >
-                {/* Animated check */}
-                <motion.div
-                  className="relative mb-8"
-                  initial={{ scale: 0 }}
-                  animate={{ scale: 1 }}
-                  transition={{ type: "spring", stiffness: 260, damping: 20, delay: 0.1 }}
-                >
-                  <div className="w-24 h-24 rounded-full border-4 border-[#00FF41] flex items-center justify-center relative">
-                    {/* Glow ring */}
-                    <motion.div
-                      className="absolute inset-0 rounded-full border-4 border-[#00FF41]"
-                      animate={{ scale: [1, 1.3, 1], opacity: [1, 0, 0] }}
-                      transition={{ duration: 1.5, repeat: Infinity, repeatDelay: 1 }}
-                    />
-                    <motion.svg
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      className="w-12 h-12"
-                      initial={{ pathLength: 0 }}
-                      animate={{ pathLength: 1 }}
-                      transition={{ duration: 0.6, delay: 0.3 }}
-                    >
-                      <motion.path
-                        d="M5 13l4 4L19 7"
-                        stroke="#00FF41"
-                        strokeWidth={2.5}
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        initial={{ pathLength: 0 }}
-                        animate={{ pathLength: 1 }}
-                        transition={{ duration: 0.6, delay: 0.3 }}
-                      />
-                    </motion.svg>
-                  </div>
-                </motion.div>
-
-                <motion.div
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.5 }}
-                >
-                  <h2 className="text-3xl font-bold text-white mb-3">
-                    Mensagem enviada com sucesso!
-                  </h2>
-                  <p className="text-white/60 max-w-md mx-auto mb-8 leading-relaxed">
-                    Nosso time vai analisar seu pedido e entrar em contato em até{" "}
-                    <span className="text-[#00FF41] font-semibold">1 hora</span>.
-                  </p>
-
-                  <div className="flex flex-col sm:flex-row gap-3 justify-center">
-                    <Link
-                      href="/"
-                      className="rounded-lg bg-[#00FF41] px-6 py-3 text-sm font-bold text-[#0F172A] transition-opacity hover:opacity-90"
-                    >
-                      ← Voltar para a home
-                    </Link>
-                    <button
-                      onClick={() => setSubmitted(false)}
-                      className="rounded-lg border border-white/20 px-6 py-3 text-sm font-medium text-white hover:border-white/40 transition-colors"
-                    >
-                      Enviar outra mensagem
-                    </button>
-                  </div>
-                </motion.div>
-              </motion.div>
-            ) : (
-              <div className="rounded-2xl border border-white/10 bg-[#1E293B] p-8">
-                <h2 className="text-xl font-semibold text-white mb-8">
-                  Enviar mensagem pro squad
-                </h2>
-                <form onSubmit={handleSubmit} className="space-y-6">
-                  {/* Nome + Email */}
-                  <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
-                    <div>
-                      <label
-                        htmlFor="name"
-                        className="block text-sm font-medium text-white/70 mb-1.5"
-                      >
-                        Nome completo *
-                      </label>
-                      <input
-                        id="name"
-                        name="name"
-                        type="text"
-                        required
-                        placeholder="Seu nome"
-                        className="w-full rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-white placeholder-white/30 focus:border-[#00FF41]/50 focus:outline-none focus:ring-1 focus:ring-[#00FF41]/30 transition-colors"
-                      />
-                    </div>
-                    <div>
-                      <label
-                        htmlFor="email"
-                        className="block text-sm font-medium text-white/70 mb-1.5"
-                      >
-                        E-mail *
-                      </label>
-                      <input
-                        id="email"
-                        name="email"
-                        type="email"
-                        required
-                        placeholder="seu@email.com"
-                        className="w-full rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-white placeholder-white/30 focus:border-[#00FF41]/50 focus:outline-none focus:ring-1 focus:ring-[#00FF41]/30 transition-colors"
-                      />
-                    </div>
-                  </div>
-
-                  {/* Telefone + Empresa */}
-                  <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
-                    <div>
-                      <label
-                        htmlFor="phone"
-                        className="block text-sm font-medium text-white/70 mb-1.5"
-                      >
-                        WhatsApp{" "}
-                        <span className="text-white/30 text-xs">(opcional)</span>
-                      </label>
-                      <input
-                        id="phone"
-                        name="phone"
-                        type="tel"
-                        placeholder="(81) 98139-2929"
-                        className="w-full rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-white placeholder-white/30 focus:border-[#00FF41]/50 focus:outline-none focus:ring-1 focus:ring-[#00FF41]/30 transition-colors"
-                      />
-                      <p className="text-xs text-white/30 mt-1">
-                        Pra gente responder mais rápido
-                      </p>
-                    </div>
-                    <div>
-                      <label
-                        htmlFor="company"
-                        className="block text-sm font-medium text-white/70 mb-1.5"
-                      >
-                        Empresa / Projeto{" "}
-                        <span className="text-white/30 text-xs">(opcional)</span>
-                      </label>
-                      <input
-                        id="company"
-                        name="company"
-                        type="text"
-                        placeholder="Nome da sua empresa ou projeto"
-                        className="w-full rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-white placeholder-white/30 focus:border-[#00FF41]/50 focus:outline-none focus:ring-1 focus:ring-[#00FF41]/30 transition-colors"
-                      />
-                    </div>
-                  </div>
-
-                  {/* O que precisa */}
-                  <div>
-                    <label className="block text-sm font-medium text-white/70 mb-3">
-                      O que você precisa?
-                    </label>
-                    <div className="flex flex-wrap gap-2">
-                      {services.map((s) => (
-                        <button
-                          key={s}
-                          type="button"
-                          onClick={() => toggleService(s)}
-                          className={`rounded-full border px-4 py-2 text-xs font-medium transition-all ${
-                            selectedServices.includes(s)
-                              ? "border-[#00FF41] bg-[#00FF41]/20 text-[#00FF41]"
-                              : "border-white/10 bg-white/5 text-white/60 hover:border-white/30"
-                          }`}
-                        >
-                          {s}
-                        </button>
-                      ))}
-                    </div>
-                  </div>
-
-                  {/* Mensagem */}
-                  <div>
-                    <label
-                      htmlFor="message"
-                      className="block text-sm font-medium text-white/70 mb-1.5"
-                    >
-                      Conte mais sobre seu projeto *
-                    </label>
-                    <textarea
-                      id="message"
-                      name="message"
-                      required
-                      rows={5}
-                      placeholder="O que você quer construir? Qual problema quer resolver? Quanto mais contexto, melhor a gente consegue ajudar."
-                      className="w-full rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-white placeholder-white/30 focus:border-[#00FF41]/50 focus:outline-none focus:ring-1 focus:ring-[#00FF41]/30 transition-colors resize-none"
-                    />
-                  </div>
-
-                  {/* Orçamento */}
-                  <div>
-                    <label className="block text-sm font-medium text-white/70 mb-3">
-                      Orçamento aproximado{" "}
-                      <span className="text-white/30 text-xs">(opcional)</span>
-                    </label>
-                    <div className="flex flex-wrap gap-2">
-                      {budgets.map((b) => (
-                        <button
-                          key={b}
-                          type="button"
-                          onClick={() => setBudget(b)}
-                          className={`rounded-full border px-4 py-2 text-xs font-medium transition-all ${
-                            budget === b
-                              ? "border-[#06B6D4] bg-[#06B6D4]/20 text-[#06B6D4]"
-                              : "border-white/10 bg-white/5 text-white/60 hover:border-white/30"
-                          }`}
-                        >
-                          {b}
-                        </button>
-                      ))}
-                    </div>
-                  </div>
-
-                  {/* Submit */}
-                  <button
-                    type="submit"
-                    disabled={loading}
-                    className="w-full rounded-lg bg-[#00FF41] px-6 py-4 text-base font-bold text-[#0F172A] transition-opacity hover:opacity-90 disabled:opacity-60 disabled:cursor-not-allowed"
-                  >
-                    {loading ? '⏳ Enviando...' : '→ Enviar pro squad'}
-                  </button>
-                  <p className="text-center text-xs text-white/30">
-                    100% gratuito · Sem compromisso · Resposta em menos de 1h
-                  </p>
-                </form>
-              </div>
-            )}
+            <p className="text-[#00FF41] text-sm font-mono tracking-widest uppercase mb-3">
+              // diagnóstico gratuito
+            </p>
+            <h1 className="text-5xl font-bold text-white lg:text-6xl mb-4">
+              Vamos fazer seu negócio{" "}
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#00FF41] to-[#06B6D4]">
+                crescer?
+              </span>
+            </h1>
+            <p className="text-lg text-white/60 max-w-2xl mx-auto">
+              Preencha o formulário abaixo e receba um diagnóstico gratuito
+              do seu negócio digital. Sem compromisso. Sem enrolação.
+              Só oportunidade de crescer de verdade.
+            </p>
           </motion.div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
+            {/* Left: Spark image + info */}
+            <motion.div
+              initial={{ opacity: 0, x: -24 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="space-y-6"
+            >
+              {/* Spark image */}
+              <div className="relative flex items-center justify-center">
+                <div
+                  className="absolute inset-0 rounded-2xl blur-3xl"
+                  style={{ background: "radial-gradient(circle, rgba(0,255,65,0.15) 0%, transparent 70%)" }}
+                />
+                <Image
+                  src="/redesign/contact-spark.png"
+                  alt="Spark — Marketing Agent"
+                  width={400}
+                  height={400}
+                  className="relative z-10 w-full max-w-sm mx-auto"
+                  style={{ mixBlendMode: "screen" }}
+                  onError={(e) => {
+                    (e.target as HTMLImageElement).src = "/squad/spark-avatar.webp";
+                    (e.target as HTMLImageElement).style.mixBlendMode = "normal";
+                    (e.target as HTMLImageElement).className = "relative z-10 w-32 h-32 rounded-full mx-auto object-cover";
+                  }}
+                  priority
+                />
+              </div>
+
+              {/* Info card */}
+              <div className="rounded-2xl border border-white/10 bg-[#1E293B]/80 p-6 space-y-4">
+                <div>
+                  <p className="text-white font-semibold text-lg mb-1">🚀 Spark fala por todos nós:</p>
+                  <p className="text-white/60 text-sm leading-relaxed italic">
+                    "Preencha o formulário e em até 2 horas um especialista entra em contato.
+                    Vamos descobrir juntos o que seu negócio precisa pra crescer de verdade."
+                  </p>
+                </div>
+
+                <ResponseTimer />
+
+                <div className="flex flex-col gap-2 pt-2">
+                  {trustItems.map((item) => {
+                    const Icon = item.icon;
+                    return (
+                      <span key={item.label} className="flex items-start gap-2 text-sm text-white/50">
+                        <Icon className="h-4 w-4 shrink-0 mt-0.5" style={{ color: "#00FF41" }} />
+                        {item.label}
+                      </span>
+                    );
+                  })}
+                </div>
+
+                {/* WhatsApp CTA */}
+                <a
+                  href="https://wa.me/5581981392929?text=Oi%20squad%20INOVAWAY!%20Quero%20um%20diagn%C3%B3stico%20gratuito."
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-center gap-2 w-full rounded-xl bg-[#25D366] px-6 py-3 text-sm font-bold text-white hover:opacity-90 transition-opacity"
+                >
+                  <span>💬</span> Falar direto no WhatsApp
+                </a>
+              </div>
+            </motion.div>
+
+            {/* Right: Form */}
+            <motion.div
+              initial={{ opacity: 0, x: 24 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+            >
+              {submitted ? (
+                <SuccessMessage />
+              ) : (
+                <ContactForm
+                  selectedNeed={selectedNeed}
+                  setSelectedNeed={setSelectedNeed}
+                  loading={loading}
+                  onSubmit={handleSubmit}
+                />
+              )}
+            </motion.div>
+          </div>
         </div>
       </div>
     </div>
+  );
+}
+
+function ContactForm({
+  selectedNeed,
+  setSelectedNeed,
+  loading,
+  onSubmit,
+}: {
+  selectedNeed: string;
+  setSelectedNeed: (v: string) => void;
+  loading: boolean;
+  onSubmit: (e: React.FormEvent) => void;
+}) {
+  const inputClass =
+    "w-full rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-white placeholder-white/30 focus:border-[#00FF41]/50 focus:outline-none focus:ring-1 focus:ring-[#00FF41]/30 transition-colors text-sm";
+  const labelClass = "block text-sm font-medium text-white/70 mb-1.5";
+
+  return (
+    <div className="rounded-2xl border border-white/10 bg-[#1E293B] p-6 md:p-8">
+      <h2 className="text-lg font-semibold text-white mb-6">
+        📋 Conta pra gente sobre seu negócio
+      </h2>
+      <form onSubmit={onSubmit} className="space-y-5">
+        {/* Nome + Email */}
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+          <div>
+            <label htmlFor="name" className={labelClass}>
+              Seu nome *
+            </label>
+            <input
+              id="name"
+              name="name"
+              type="text"
+              required
+              placeholder="Como podemos te chamar?"
+              className={inputClass}
+            />
+          </div>
+          <div>
+            <label htmlFor="email" className={labelClass}>
+              Seu melhor e-mail *
+            </label>
+            <input
+              id="email"
+              name="email"
+              type="email"
+              required
+              placeholder="exemplo@suaempresa.com.br"
+              className={inputClass}
+            />
+          </div>
+        </div>
+
+        {/* WhatsApp + Empresa */}
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+          <div>
+            <label htmlFor="phone" className={labelClass}>
+              Seu WhatsApp *
+            </label>
+            <input
+              id="phone"
+              name="phone"
+              type="tel"
+              required
+              placeholder="(11) 99999-9999"
+              className={inputClass}
+            />
+          </div>
+          <div>
+            <label htmlFor="company" className={labelClass}>
+              Nome do seu negócio *
+            </label>
+            <input
+              id="company"
+              name="company"
+              type="text"
+              required
+              placeholder="Como se chama sua empresa?"
+              className={inputClass}
+            />
+          </div>
+        </div>
+
+        {/* Segmento + Site */}
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+          <div>
+            <label htmlFor="segment" className={labelClass}>
+              Qual é o seu ramo?
+            </label>
+            <input
+              id="segment"
+              name="segment"
+              type="text"
+              placeholder="Ex: restaurante, clínica, loja de roupas..."
+              className={inputClass}
+            />
+          </div>
+          <div>
+            <label htmlFor="website" className={labelClass}>
+              Você já tem um site?
+            </label>
+            <input
+              id="website"
+              name="website"
+              type="text"
+              placeholder="www.suaempresa.com.br (ou deixe vazio)"
+              className={inputClass}
+            />
+          </div>
+        </div>
+
+        {/* O que mais precisa */}
+        <div>
+          <label className={labelClass}>O que você mais precisa agora?</label>
+          <div className="flex flex-wrap gap-2">
+            {needOptions.map((opt) => (
+              <button
+                key={opt}
+                type="button"
+                onClick={() => setSelectedNeed(opt === selectedNeed ? "" : opt)}
+                className={`rounded-full border px-3 py-1.5 text-xs font-medium transition-all ${
+                  selectedNeed === opt
+                    ? "border-[#00FF41] bg-[#00FF41]/20 text-[#00FF41]"
+                    : "border-white/10 bg-white/5 text-white/60 hover:border-white/30"
+                }`}
+              >
+                {opt}
+              </button>
+            ))}
+          </div>
+        </div>
+
+        {/* Mensagem */}
+        <div>
+          <label htmlFor="message" className={labelClass}>
+            Conta mais sobre seu negócio
+          </label>
+          <textarea
+            id="message"
+            name="message"
+            rows={4}
+            placeholder="Me fala um pouco sobre o que você faz, seus desafios, o que você sonha pra sua empresa..."
+            className={`${inputClass} resize-none`}
+          />
+        </div>
+
+        {/* Submit */}
+        <button
+          type="submit"
+          disabled={loading}
+          className="w-full rounded-lg px-6 py-4 text-base font-bold text-[#0F172A] transition-all hover:opacity-90 disabled:opacity-60 disabled:cursor-not-allowed"
+          style={{
+            background: loading
+              ? "#4a7c59"
+              : "linear-gradient(135deg, #00FF41, #06B6D4)",
+          }}
+        >
+          {loading ? "⏳ Enviando..." : "Quero meu diagnóstico grátis →"}
+        </button>
+
+        <div className="flex flex-wrap justify-center gap-4 pt-1">
+          {[
+            { icon: "🔒", text: "100% seguro" },
+            { icon: "⚡", text: "Resposta em 2h" },
+            { icon: "🆓", text: "Sem compromisso" },
+          ].map((t) => (
+            <span key={t.text} className="flex items-center gap-1 text-xs text-white/30">
+              <span>{t.icon}</span> {t.text}
+            </span>
+          ))}
+        </div>
+      </form>
+    </div>
+  );
+}
+
+function SuccessMessage() {
+  return (
+    <motion.div
+      className="rounded-2xl border border-[#00FF41]/20 bg-[#1E293B] p-10 text-center flex flex-col items-center justify-center min-h-[480px]"
+      initial={{ opacity: 0, scale: 0.95 }}
+      animate={{ opacity: 1, scale: 1 }}
+      transition={{ duration: 0.5 }}
+    >
+      {/* Animated check */}
+      <motion.div
+        className="relative mb-8"
+        initial={{ scale: 0 }}
+        animate={{ scale: 1 }}
+        transition={{ type: "spring", stiffness: 260, damping: 20, delay: 0.1 }}
+      >
+        <div className="w-24 h-24 rounded-full border-4 border-[#00FF41] flex items-center justify-center relative">
+          <motion.div
+            className="absolute inset-0 rounded-full border-4 border-[#00FF41]"
+            animate={{ scale: [1, 1.3, 1], opacity: [1, 0, 0] }}
+            transition={{ duration: 1.5, repeat: Infinity, repeatDelay: 1 }}
+          />
+          <motion.svg
+            viewBox="0 0 24 24"
+            fill="none"
+            className="w-12 h-12"
+          >
+            <motion.path
+              d="M5 13l4 4L19 7"
+              stroke="#00FF41"
+              strokeWidth={2.5}
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              initial={{ pathLength: 0 }}
+              animate={{ pathLength: 1 }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+            />
+          </motion.svg>
+        </div>
+      </motion.div>
+
+      <motion.div
+        initial={{ opacity: 0, y: 10 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.5 }}
+      >
+        <h2 className="text-3xl font-bold text-white mb-3">
+          🎉 Chegou! Sua mensagem está com a gente.
+        </h2>
+        <p className="text-white/60 max-w-md mx-auto mb-4 leading-relaxed">
+          Recebemos seu pedido e já estamos analisando seu negócio.
+        </p>
+        <p className="text-white/60 max-w-md mx-auto mb-8 leading-relaxed">
+          Em até{" "}
+          <span className="text-[#00FF41] font-semibold">2 horas úteis</span>,
+          um dos nossos especialistas vai entrar em contato pelo WhatsApp ou
+          e-mail que você deixou.
+        </p>
+        <p className="text-white/40 text-sm mb-8">
+          Enquanto isso, fique à vontade pra conhecer mais sobre o nosso time e o que entregamos pra cada cliente. Até já! 🚀
+        </p>
+
+        <div className="flex flex-col sm:flex-row gap-3 justify-center">
+          <Link
+            href="/produtos"
+            className="rounded-lg bg-[#00FF41] px-6 py-3 text-sm font-bold text-[#0F172A] transition-opacity hover:opacity-90"
+          >
+            Conhecer nosso time →
+          </Link>
+          <Link
+            href="/"
+            className="rounded-lg border border-white/20 px-6 py-3 text-sm font-medium text-white hover:border-white/40 transition-colors"
+          >
+            ← Voltar para a home
+          </Link>
+        </div>
+      </motion.div>
+    </motion.div>
   );
 }

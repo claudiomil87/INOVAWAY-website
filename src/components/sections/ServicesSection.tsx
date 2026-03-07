@@ -4,11 +4,18 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
 
-// Service definitions with agent avatars
 const services = [
   {
-    title: "Design & Branding",
-    desc: "Identidade visual que encanta e converte. Logos, UI/UX, brand guidelines — tudo criado com IA e refinado com olhar humano.",
+    title: "Design & Identidade Visual",
+    desc: "Sua marca tem que ser bonita, profissional e memorável. A gente cria a identidade completa do seu negócio — do logo às artes das redes sociais — tudo alinhado, tudo com sua cara. Chega de parecer pequeno.",
+    deliverables: [
+      "Logo profissional (+ variações)",
+      "Manual de identidade da sua marca",
+      "Artes prontas pra Instagram e Facebook",
+      "Materiais de venda (flyer, cartão, banner)",
+      "Apresentações e propostas comerciais",
+      "Templates editáveis pra você usar sozinho",
+    ],
     color: "#EC4899",
     agentName: "Pixel",
     agentEmoji: "🎨",
@@ -18,8 +25,17 @@ const services = [
     tag: "Design",
   },
   {
-    title: "Desenvolvimento Web",
-    desc: "Sites e apps modernos, rápidos e acessíveis. Next.js, TypeScript, Tailwind — entregues em horas com performance máxima.",
+    title: "Sites e Aplicativos que Vendem",
+    desc: "Seu site é o seu vendedor que trabalha 24h. A gente constrói sites rápidos, modernos e que convertem visitante em cliente. Também criamos aplicativos pra deixar sua operação ainda mais profissional. Tudo funcionando no celular, tudo do jeitinho certo.",
+    deliverables: [
+      "Site profissional do zero (ou reformulação do atual)",
+      "Loja virtual (para quem quer vender online)",
+      "Landing pages pra capturar clientes",
+      "Integração com WhatsApp e redes sociais",
+      "Site rápido e que aparece no Google",
+      "Aplicativo personalizado pra seu negócio",
+      "Manutenção e atualizações inclusas",
+    ],
     color: "#06B6D4",
     agentName: "Nova",
     agentEmoji: "💻",
@@ -29,19 +45,37 @@ const services = [
     tag: "Web Dev",
   },
   {
-    title: "Segurança Digital",
-    desc: "Pen test, auditoria OWASP e hardening de infra. Seu produto seguro antes de chegar aos usuários.",
+    title: "Proteção Digital Completa",
+    desc: "Um ataque hacker pode destruir anos de trabalho em minutos. A gente protege seu negócio antes que isso aconteça. Monitoramento constante, blindagem total, e você dorme tranquilo sabendo que tudo está seguro.",
+    deliverables: [
+      "Auditoria completa de segurança do seu site",
+      "Certificado de segurança (cadeadinho verde no navegador)",
+      "Proteção contra invasões e vírus",
+      "Backup automático dos seus dados",
+      "Monitoramento 24/7 de ameaças",
+      "Relatório mensal de segurança",
+      "Resposta rápida em caso de incidente",
+    ],
     color: "#EF4444",
     agentName: "Shield",
     agentEmoji: "🛡️",
     image: "/redesign/service-shield-security.png",
     fallbackAvatar: "/squad/shield-avatar.webp",
     imageRight: false,
-    tag: "Security",
+    tag: "Segurança",
   },
   {
-    title: "Marketing Digital",
-    desc: "Growth hacking, SEO, anúncios e conteúdo viral. Mais leads, menos esforço — Spark cuida do seu crescimento.",
+    title: "Marketing que Realmente Vende",
+    desc: "Chega de jogar dinheiro fora em anúncio que não traz resultado. A gente cria estratégias de marketing que atraem clientes certos, na hora certa, pelo preço certo. Mais clientes. Mais vendas. Mais crescimento.",
+    deliverables: [
+      "Estratégia de marketing personalizada pro seu negócio",
+      "Criação e gestão de anúncios (Google, Instagram, Facebook)",
+      "Conteúdo pra redes sociais (textos + artes + vídeos)",
+      "Automação de mensagens e follow-up com clientes",
+      "Relatório de resultados todo mês (em linguagem simples)",
+      "SEO: aparecer no Google quando seu cliente te procurar",
+      "E-mail marketing e campanhas de promoção",
+    ],
     color: "#F97316",
     agentName: "Spark",
     agentEmoji: "🚀",
@@ -65,16 +99,16 @@ export default function ServicesSection() {
           className="mb-16 text-center"
         >
           <h2 className="text-3xl font-bold text-white md:text-4xl lg:text-5xl">
-            Nossos{" "}
+            O que a gente{" "}
             <span
               className="bg-clip-text text-transparent"
               style={{ backgroundImage: "linear-gradient(135deg, #06B6D4, #8B5CF6)" }}
             >
-              Serviços
+              entrega pra você
             </span>
           </h2>
           <p className="mx-auto mt-4 max-w-xl text-white/60">
-            Soluções completas para digitalizar, automatizar e escalar seu negócio.
+            Serviços de agência grande. Preço que cabe no seu bolso.
           </p>
         </motion.div>
 
@@ -87,7 +121,7 @@ export default function ServicesSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.1 }}
-              className={`grid grid-cols-1 lg:grid-cols-2 gap-10 items-center ${svc.imageRight ? "lg:flex-row-reverse" : ""}`}
+              className={`grid grid-cols-1 lg:grid-cols-2 gap-10 items-center`}
             >
               {/* Text — alternates side */}
               <div className={svc.imageRight ? "lg:order-1" : "lg:order-2"}>
@@ -99,6 +133,15 @@ export default function ServicesSection() {
                 </span>
                 <h3 className="text-2xl font-bold text-white mb-4 md:text-3xl">{svc.title}</h3>
                 <p className="text-white/60 leading-relaxed mb-6">{svc.desc}</p>
+                {/* Deliverables list */}
+                <ul className="space-y-2 mb-6">
+                  {svc.deliverables.map((item) => (
+                    <li key={item} className="flex items-start gap-2 text-sm text-white/50">
+                      <span style={{ color: svc.color }} className="mt-0.5 shrink-0">•</span>
+                      {item}
+                    </li>
+                  ))}
+                </ul>
                 <div className="flex items-center gap-3">
                   <div
                     className="relative h-10 w-10 overflow-hidden rounded-full"
@@ -132,7 +175,6 @@ export default function ServicesSection() {
                     minHeight: "260px",
                   }}
                 >
-                  {/* Try redesign image, fall back to avatar */}
                   <Image
                     src={svc.image}
                     alt={svc.title}
@@ -147,7 +189,6 @@ export default function ServicesSection() {
                     }}
                     loading="lazy"
                   />
-                  {/* Gradient border effect */}
                   <div
                     className="absolute inset-0 rounded-2xl pointer-events-none"
                     style={{ boxShadow: `inset 0 0 0 1px ${svc.color}20` }}

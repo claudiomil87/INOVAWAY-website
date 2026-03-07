@@ -4,16 +4,18 @@ import BenefitsSection from "@/components/sections/BenefitsSection";
 import SquadSection from "@/components/sections/SquadSection";
 import ServicesSection from "@/components/sections/ServicesSection";
 import StatsSection from "@/components/sections/StatsSection";
+import FAQSection from "@/components/sections/FAQSection";
 import CTASection from "@/components/sections/CTASection";
+import SocialProofNotification from "@/components/ui/SocialProofNotification";
 
 export const metadata: Metadata = {
   title: "INOVAWAY — Seu negócio crescendo 24h com AI Agents",
   description:
-    "9 Agentes de IA trabalhando sem parar pelo seu crescimento. Sites em 48h, automação 24/7, zero burocracia.",
+    "Enquanto você descansa, nosso time de inteligência artificial trabalha pelo seu negócio. Sites em dias, automação 24/7, sem burocracia.",
   openGraph: {
     title: "INOVAWAY — Seu negócio crescendo 24h com AI Agents",
     description:
-      "9 Agentes de IA trabalhando sem parar pelo seu crescimento. Sites em 48h, automação 24/7, zero burocracia.",
+      "Enquanto você descansa, nosso time de inteligência artificial trabalha pelo seu negócio. Sites em dias, automação 24/7, sem burocracia.",
     url: "https://inovaway.org",
   },
 };
@@ -31,8 +33,12 @@ export default function HomePage() {
       <ServicesSection />
       {/* 5. Stats — números animados */}
       <StatsSection />
-      {/* 6. CTA — final com squad formation */}
+      {/* 6. FAQ — perguntas frequentes */}
+      <FAQSection />
+      {/* 7. CTA — final com squad formation */}
       <CTASection />
+      {/* Social Proof Notifications — toast no canto inferior esquerdo */}
+      <SocialProofNotification />
     </>
   );
 }

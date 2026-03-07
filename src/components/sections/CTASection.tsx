@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { MessageCircle, DollarSign, Handshake } from "lucide-react";
+import { Lock, Zap, Trophy } from "lucide-react";
 import ShimmerButton from "@/components/ui/ShimmerButton";
 import MagneticButton from "@/components/ui/MagneticButton";
 
@@ -15,9 +15,9 @@ const squadAvatars = [
 ];
 
 const trustItems = [
-  { icon: MessageCircle, label: "Resposta em minutos" },
-  { icon: DollarSign, label: "Orçamento gratuito" },
-  { icon: Handshake, label: "Sem compromisso" },
+  { icon: Lock, label: "100% grátis, sem cartão de crédito" },
+  { icon: Zap, label: "Resposta em até 2 horas úteis" },
+  { icon: Trophy, label: "+200 empresas atendidas" },
 ];
 
 export default function CTASection() {
@@ -71,23 +71,26 @@ export default function CTASection() {
           </div>
 
           <h2 className="text-3xl font-bold text-white md:text-5xl lg:text-6xl">
-            Pronto para ter um{" "}
+            Seu concorrente já começou.{" "}
             <span
               className="bg-clip-text text-transparent"
               style={{ backgroundImage: "linear-gradient(135deg, #00FF41, #8B5CF6)" }}
             >
-              Elite Squad?
+              E você?
             </span>
           </h2>
 
           <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-white/60">
-            Seu time de IA começa a trabalhar em minutos
+            Diagnóstico gratuito do seu negócio digital.
+            Sem compromisso. Sem enrolação.{" "}
+            <span className="text-white font-medium">Só 10 vagas disponíveis este mês</span>{" "}
+            — e já foram metade.
           </p>
 
           <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
             <MagneticButton>
               <ShimmerButton href="/contato" variant="primary">
-                Falar com a INOVAWAY
+                Quero minha vaga grátis →
               </ShimmerButton>
             </MagneticButton>
             <ShimmerButton href="#squad" variant="secondary">

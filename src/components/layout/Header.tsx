@@ -7,9 +7,8 @@ import MobileNav from "./MobileNav";
 
 const navLinks = [
   { href: "/servicos", label: "Serviços" },
-  { href: "/produtos", label: "Produtos" },
-  { href: "/sobre", label: "Sobre" },
-  { href: "/contato", label: "Contato" },
+  { href: "/produtos", label: "Nosso Time" },
+  { href: "/sobre", label: "Sobre nós" },
 ];
 
 export default function Header() {
@@ -21,6 +20,11 @@ export default function Header() {
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
+
+  const allNavLinks = [
+    ...navLinks,
+    { href: "/contato", label: "Você está pronto?" },
+  ];
 
   return (
     <header
@@ -67,19 +71,35 @@ export default function Header() {
               />
             </Link>
           ))}
+          {/* "Você está pronto?" — destaque especial */}
+          <Link
+            href="/contato"
+            className="relative text-sm font-semibold py-1 group transition-all duration-300"
+            style={{ color: "#00FF41", textShadow: "0 0 8px rgba(0,255,65,0.4)" }}
+          >
+            Você está pronto?
+            <span
+              className="absolute bottom-0 left-0 h-px w-full origin-left scale-x-0 transition-transform duration-300 group-hover:scale-x-100"
+              style={{ backgroundColor: "#00FF41" }}
+            />
+          </Link>
         </nav>
 
-        {/* CTA — desktop: link with glow instead of blue button */}
+        {/* CTA — desktop */}
         <div className="hidden md:flex items-center gap-4">
           <Link
             href="/contato"
-            className="text-sm font-semibold text-white/70 transition-all duration-300 hover:text-[#00FF41] hover:drop-shadow-[0_0_8px_rgba(0,255,65,0.6)]"
+            className="rounded-lg px-4 py-2 text-sm font-bold transition-all duration-300"
+            style={{
+              background: "linear-gradient(135deg, #00FF41, #06B6D4)",
+              color: "#0F172A",
+            }}
           >
-            Fale Conosco
+            Começar agora →
           </Link>
         </div>
 
-        {/* Hamburger — mobile with 3-lines → X animation */}
+        {/* Hamburger — mobile */}
         <button
           className="md:hidden flex flex-col items-center justify-center gap-[5px] rounded-md p-2 text-white/70 hover:text-white w-10 h-10"
           onClick={() => setMobileOpen((o) => !o)}
@@ -106,7 +126,7 @@ export default function Header() {
 
       {/* Mobile Nav Drawer */}
       <MobileNav
-        links={navLinks}
+        links={allNavLinks}
         open={mobileOpen}
         onClose={() => setMobileOpen(false)}
       />

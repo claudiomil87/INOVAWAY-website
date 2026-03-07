@@ -2,15 +2,19 @@ import Image from "next/image";
 import Link from "next/link";
 
 const footerLinks = {
-  empresa: [
-    { href: "/sobre", label: "Sobre Nós" },
+  navegar: [
+    { href: "/", label: "Início" },
+    { href: "/produtos", label: "Nosso Time" },
     { href: "/servicos", label: "Serviços" },
-    { href: "/produtos", label: "Produtos" },
-    { href: "/contato", label: "Contato" },
+    { href: "/sobre", label: "Sobre nós" },
+    { href: "/contato", label: "Você está pronto?" },
   ],
-  legal: [
-    { href: "/privacidade", label: "Política de Privacidade" },
-    { href: "/termos", label: "Termos de Uso" },
+  servicos: [
+    { href: "/servicos", label: "Design & Identidade Visual" },
+    { href: "/servicos", label: "Sites e Aplicativos" },
+    { href: "/servicos", label: "Proteção Digital" },
+    { href: "/servicos", label: "Marketing que Vende" },
+    { href: "/contato", label: "Diagnóstico gratuito" },
   ],
 };
 
@@ -30,7 +34,7 @@ export default function Footer() {
       <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
           {/* Brand */}
-          <div className="col-span-1 sm:col-span-2 lg:col-span-2">
+          <div className="col-span-1 sm:col-span-2 lg:col-span-1">
             <Link href="/" className="inline-flex items-center gap-2 group">
               <Image
                 src="/logos/inovaway-wordmark.png"
@@ -41,7 +45,12 @@ export default function Footer() {
               />
             </Link>
             <p className="mt-4 max-w-xs text-sm text-white/60 leading-relaxed">
-              9 AI Agents trabalhando 24/7 pelo crescimento do seu negócio.
+              Seu time completo de inteligência artificial.
+              Trabalhamos pelo crescimento do seu negócio
+              enquanto você foca no que sabe fazer de melhor.
+            </p>
+            <p className="mt-3 text-xs text-white/30">
+              Feito com ❤️ pra empreendedores que querem crescer de verdade.
             </p>
             {/* Social links */}
             <div className="mt-6 flex gap-4">
@@ -57,7 +66,7 @@ export default function Footer() {
                 </svg>
               </a>
               <a
-                href="mailto:inovaway@inovaway.org"
+                href="mailto:contato@inovaway.org"
                 className="text-white/40 transition-all duration-300 hover:text-[#00FF41] hover:drop-shadow-[0_0_6px_rgba(0,255,65,0.5)]"
                 aria-label="Email"
               >
@@ -79,14 +88,37 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Empresa */}
+          {/* Navegar */}
           <div>
             <h3 className="text-sm font-semibold uppercase tracking-wider text-[#06B6D4]">
-              Empresa
+              Navegue
             </h3>
             <ul className="mt-4 space-y-3">
-              {footerLinks.empresa.map((link) => (
-                <li key={link.href}>
+              {footerLinks.navegar.map((link, i) => (
+                <li key={`${link.href}-${i}`}>
+                  <Link
+                    href={link.href}
+                    className={`text-sm transition-colors hover:text-[#00FF41] ${
+                      link.label === "Você está pronto?"
+                        ? "text-[#00FF41]/70 font-medium"
+                        : "text-white/60"
+                    }`}
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Serviços */}
+          <div>
+            <h3 className="text-sm font-semibold uppercase tracking-wider text-[#06B6D4]">
+              O que fazemos
+            </h3>
+            <ul className="mt-4 space-y-3">
+              {footerLinks.servicos.map((link, i) => (
+                <li key={`${link.href}-svc-${i}`}>
                   <Link
                     href={link.href}
                     className="text-sm text-white/60 transition-colors hover:text-[#00FF41]"
@@ -98,23 +130,20 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Legal */}
+          {/* Contato */}
           <div>
             <h3 className="text-sm font-semibold uppercase tracking-wider text-[#06B6D4]">
-              Legal
+              Fala com a gente
             </h3>
             <ul className="mt-4 space-y-3">
-              {footerLinks.legal.map((link) => (
-                <li key={link.href}>
-                  <Link
-                    href={link.href}
-                    className="text-sm text-white/60 transition-colors hover:text-[#00FF41]"
-                  >
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
+              <li className="text-sm text-white/60">📧 contato@inovaway.org</li>
+              <li className="text-sm text-white/60">💬 Resposta em até 2 horas</li>
+              <li className="text-sm text-white/60">🌍 Atendemos em todo o Brasil</li>
             </ul>
+            <div className="mt-4 space-y-1">
+              <p className="text-xs text-white/40">Seg a Sex: 9h às 18h</p>
+              <p className="text-xs text-white/40">Nossos agents: 24h por dia ⚡</p>
+            </div>
           </div>
         </div>
 
@@ -123,11 +152,17 @@ export default function Footer() {
           className="mt-10 border-t pt-8 flex flex-col sm:flex-row items-center justify-between gap-4"
           style={{ borderColor: "rgba(255,255,255,0.08)" }}
         >
-          <p className="text-sm text-white/40">
-            © {currentYear} INOVAWAY — CNPJ 18.652.375/0001-00
-          </p>
-          <p className="text-sm text-white/40">
-            Rua do Apolo, 161 — Recife, PE | inovaway@inovaway.org
+          <div className="flex flex-col sm:flex-row items-center gap-2 text-sm text-white/40">
+            <span>© {currentYear} Inovaway. Todos os direitos reservados.</span>
+            <span className="hidden sm:block">·</span>
+            <span className="flex gap-3">
+              <Link href="/privacidade" className="hover:text-white/60 transition-colors">Política de Privacidade</Link>
+              <span>|</span>
+              <Link href="/termos" className="hover:text-white/60 transition-colors">Termos de Uso</Link>
+            </span>
+          </div>
+          <p className="text-xs text-white/30 text-center">
+            🔒 Seus dados estão seguros com a gente. Nunca vendemos informações de clientes.
           </p>
         </div>
       </div>

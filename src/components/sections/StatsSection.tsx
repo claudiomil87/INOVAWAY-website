@@ -7,38 +7,42 @@ interface StatItem {
   value: string;
   label: string;
   numeric?: number;
+  prefix?: string;
   suffix?: string;
   color: string;
 }
 
 const stats: StatItem[] = [
   {
-    value: "9",
-    numeric: 9,
+    value: "+200",
+    numeric: 200,
+    prefix: "+",
     suffix: "",
-    label: "AI Agents especializados",
+    label: "Projetos entregues",
     color: "#00FF41",
   },
   {
-    value: "24/7",
-    label: "Operação contínua",
+    value: "24h",
+    label: "Trabalhando pelo seu negócio",
     color: "#06B6D4",
   },
   {
-    value: "Horas",
-    label: "Tempo de entrega",
+    value: "98%",
+    numeric: 98,
+    suffix: "%",
+    label: "Clientes satisfeitos",
     color: "#8B5CF6",
   },
   {
-    value: "100%",
-    numeric: 100,
-    suffix: "%",
-    label: "Automatizado",
+    value: "9",
+    numeric: 9,
+    suffix: "",
+    label: "Especialistas no seu time",
     color: "#00FF41",
   },
 ];
 
-function AnimatedNumber({ value, suffix = "" }: { value: number; suffix?: string }) {
+function AnimatedNumber({ value, suffix = "", prefix = "" }: { value: number; suffix?: string; prefix?: string }) {
   const [count, setCount] = useState(0);
   const ref = useRef(null);
   const inView = useInView(ref, { once: true });
@@ -62,7 +66,7 @@ function AnimatedNumber({ value, suffix = "" }: { value: number; suffix?: string
 
   return (
     <span ref={ref}>
-      {count}{suffix}
+      {prefix}{count}{suffix}
     </span>
   );
 }
@@ -76,7 +80,7 @@ export default function StatsSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="mb-12 text-center"
+          className="mb-4 text-center"
         >
           <h2 className="text-3xl font-bold text-white md:text-4xl">
             Números que{" "}
@@ -86,12 +90,15 @@ export default function StatsSection() {
                 backgroundImage: "linear-gradient(135deg, #00FF41, #06B6D4)",
               }}
             >
-              falam
+              falam por si
             </span>
           </h2>
+          <p className="mx-auto mt-3 max-w-xl text-white/50">
+            Resultado não é promessa. Resultado é isso aqui:
+          </p>
         </motion.div>
 
-        <div className="grid grid-cols-2 gap-6 md:grid-cols-4">
+        <div className="mt-12 grid grid-cols-2 gap-6 md:grid-cols-4">
           {stats.map((stat, i) => (
             <motion.div
               key={stat.label}
@@ -106,7 +113,7 @@ export default function StatsSection() {
                 style={{ color: stat.color }}
               >
                 {stat.numeric !== undefined ? (
-                  <AnimatedNumber value={stat.numeric} suffix={stat.suffix} />
+                  <AnimatedNumber value={stat.numeric} suffix={stat.suffix} prefix={stat.prefix} />
                 ) : (
                   stat.value
                 )}

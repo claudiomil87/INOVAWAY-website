@@ -156,15 +156,21 @@ export default function SquadSection() {
             Sempre online
           </div>
           <h2 className="text-3xl font-bold text-white md:text-4xl lg:text-5xl">
+            Conheça o seu{" "}
             <span
               className="bg-clip-text text-transparent"
               style={{ backgroundImage: "linear-gradient(135deg, #00FF41, #8B5CF6)" }}
             >
-              Elite Squad
+              novo time
             </span>
           </h2>
-          <p className="mx-auto mt-4 max-w-xl text-white/60">
-            9 AI Agents especializados trabalhando em sinergia. Clique em qualquer agent para conhecer seu perfil.
+          <p className="mx-auto mt-4 max-w-2xl text-white/60">
+            Imagina ter uma equipe completa — designer, programador, especialista em marketing,
+            segurança, pesquisa e muito mais — disponível pra você. Sem CLT, sem encargo,
+            sem dor de cabeça com funcionário. Esse é o Elite Squad da Inovaway.
+          </p>
+          <p className="mx-auto mt-2 max-w-xl text-white/40 text-sm">
+            9 especialistas de IA. Um objetivo: fazer seu negócio crescer.
           </p>
         </motion.div>
 

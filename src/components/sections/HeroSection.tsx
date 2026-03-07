@@ -16,10 +16,10 @@ const fadeUp = {
 };
 
 const quickBullets = [
-  "Sites em 48h",
-  "Automação 24/7",
-  "Zero burocracia",
-  "Suporte real",
+  "Site profissional no ar em dias, não semanas",
+  "Seu negócio funcionando 24 horas por dia, 7 dias por semana",
+  "Sem burocracia. Sem enrolação. Sem surpresas no final",
+  "Suporte humano de verdade — alguém que responde de verdade",
 ];
 
 const heroImagePath = "/redesign/hero-squad-trio.png";
@@ -87,7 +87,8 @@ export default function HeroSection() {
               variants={fadeUp}
               className="mx-auto lg:mx-0 mt-6 max-w-xl text-lg leading-relaxed text-white/60 md:text-xl"
             >
-              9 Agentes de IA trabalhando sem parar pelo seu crescimento
+              Enquanto você descansa, nosso time de inteligência artificial
+              trabalha pelo seu negócio. Todo dia. A noite toda. Sem parar.
             </motion.p>
 
             {/* CTAs */}
@@ -95,22 +96,22 @@ export default function HeroSection() {
               variants={fadeUp}
               className="mt-10 flex flex-col items-center lg:items-start justify-center lg:justify-start gap-4 sm:flex-row"
             >
-              <ShimmerButton href="#squad" variant="primary">
-                Conhecer o Squad
+              <ShimmerButton href="/contato" variant="primary">
+                Quero crescer agora →
               </ShimmerButton>
-              <ShimmerButton href="/servicos" variant="secondary">
-                Ver Serviços →
+              <ShimmerButton href="#squad" variant="secondary">
+                Ver como funciona ↓
               </ShimmerButton>
             </motion.div>
 
             {/* Quick bullets */}
             <motion.div
               variants={fadeUp}
-              className="mt-8 flex flex-wrap items-center justify-center lg:justify-start gap-x-6 gap-y-2"
+              className="mt-8 flex flex-col items-start justify-center lg:justify-start gap-y-2"
             >
               {quickBullets.map((b) => (
-                <span key={b} className="flex items-center gap-1.5 text-sm text-white/50">
-                  <CheckCircle className="h-4 w-4 shrink-0" style={{ color: "#00FF41" }} />
+                <span key={b} className="flex items-start gap-2 text-sm text-white/50">
+                  <CheckCircle className="h-4 w-4 shrink-0 mt-0.5" style={{ color: "#00FF41" }} />
                   {b}
                 </span>
               ))}
