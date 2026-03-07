@@ -43,7 +43,8 @@ export default function MobileNav({ links, open, onClose }: MobileNavProps) {
 
       {/* Drawer */}
       <div
-        className="fixed inset-y-0 right-0 z-50 w-80 max-w-full bg-[#0F172A] md:hidden flex flex-col shadow-2xl border-l border-white/10"
+        className="fixed inset-y-0 right-0 z-50 w-80 max-w-full md:hidden flex flex-col shadow-2xl border-l border-white/10"
+        style={{ backgroundColor: "#0F172A" }}
         role="dialog"
         aria-modal="true"
         aria-label="Menu de navegação"
@@ -91,9 +92,10 @@ export default function MobileNav({ links, open, onClose }: MobileNavProps) {
           <Link
             href="/contato"
             onClick={onClose}
-            className="block w-full rounded-md bg-cyan px-4 py-3 text-center text-sm font-semibold text-navy transition-opacity hover:opacity-90"
+            className="block w-full rounded-md px-4 py-3 text-center text-sm font-semibold transition-opacity hover:opacity-90"
+            style={{ backgroundColor: "#00FF41", color: "#0F172A" }}
           >
-            Fale Conosco
+            Começar agora →
           </Link>
         </div>
       </div>

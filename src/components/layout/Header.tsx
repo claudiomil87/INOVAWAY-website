@@ -31,8 +31,8 @@ export default function Header() {
       className="fixed top-0 w-full z-50 transition-all duration-300"
       style={{
         background: scrolled
-          ? "rgba(15, 23, 42, 0.85)"
-          : "rgba(15, 23, 42, 0.7)",
+          ? "rgba(15, 23, 42, 0.95)"
+          : "rgba(15, 23, 42, 0.9)",
         backdropFilter: "blur(12px)",
         WebkitBackdropFilter: "blur(12px)",
         borderBottom: "1px solid rgba(255,255,255,0.08)",
