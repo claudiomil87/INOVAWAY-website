@@ -28,7 +28,7 @@ export async function POST(request: NextRequest) {
           `Orçamento aproximado: ${body.budget || 'Não informado'}`,
           `\nMensagem do lead:\n${body.message || 'Sem mensagem adicional'}`,
         ].filter(Boolean).join('\n'),
-        channel: 'website',
+        channel: 'webchat',
         tags: ['website', 'inovaway.org'],
         temperature: 'warm',
       }),
