@@ -13,8 +13,8 @@ interface StatItem {
 
 const stats: StatItem[] = [
   {
-    value: "8",
-    numeric: 8,
+    value: "9",
+    numeric: 9,
     suffix: "",
     label: "AI Agents especializados",
     color: "#00FF41",

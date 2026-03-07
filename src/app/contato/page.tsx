@@ -50,6 +50,7 @@ export default function ContatoPage() {
   const [selectedServices, setSelectedServices] = useState<string[]>([]);
   const [budget, setBudget] = useState("");
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   function toggleService(s: string) {
     setSelectedServices((prev) =>
@@ -57,9 +58,35 @@ export default function ContatoPage() {
     );
   }
 
-  function handleSubmit(e: React.FormEvent) {
+  async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
-    setSubmitted(true);
+    setLoading(true);
+    try {
+      const form = e.target as HTMLFormElement;
+      const formData = new FormData(form);
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: formData.get('name'),
+          email: formData.get('email'),
+          phone: formData.get('phone'),
+          company: formData.get('company'),
+          services: selectedServices,
+          budget,
+          message: formData.get('message'),
+        }),
+      });
+      if (response.ok) {
+        setSubmitted(true);
+      } else {
+        alert('Erro ao enviar. Tente novamente.');
+      }
+    } catch {
+      alert('Erro de conexão. Tente novamente.');
+    } finally {
+      setLoading(false);
+    }
   }
 
   return (
@@ -190,6 +217,7 @@ export default function ContatoPage() {
                       </label>
                       <input
                         id="name"
+                        name="name"
                         type="text"
                         required
                         placeholder="Seu nome"
@@ -205,6 +233,7 @@ export default function ContatoPage() {
                       </label>
                       <input
                         id="email"
+                        name="email"
                         type="email"
                         required
                         placeholder="seu@email.com"
@@ -225,6 +254,7 @@ export default function ContatoPage() {
                       </label>
                       <input
                         id="phone"
+                        name="phone"
                         type="tel"
                         placeholder="(81) 98139-2929"
                         className="w-full rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-white placeholder-white/30 focus:border-[#00FF41]/50 focus:outline-none focus:ring-1 focus:ring-[#00FF41]/30 transition-colors"
@@ -243,6 +273,7 @@ export default function ContatoPage() {
                       </label>
                       <input
                         id="company"
+                        name="company"
                         type="text"
                         placeholder="Nome da sua empresa ou projeto"
                         className="w-full rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-white placeholder-white/30 focus:border-[#00FF41]/50 focus:outline-none focus:ring-1 focus:ring-[#00FF41]/30 transition-colors"
@@ -283,6 +314,7 @@ export default function ContatoPage() {
                     </label>
                     <textarea
                       id="message"
+                      name="message"
                       required
                       rows={5}
                       placeholder="O que você quer construir? Qual problema quer resolver? Quanto mais contexto, melhor a gente consegue ajudar."
@@ -317,9 +349,10 @@ export default function ContatoPage() {
                   {/* Submit */}
                   <button
                     type="submit"
-                    className="w-full rounded-lg bg-[#00FF41] px-6 py-4 text-base font-bold text-[#0F172A] transition-opacity hover:opacity-90"
+                    disabled={loading}
+                    className="w-full rounded-lg bg-[#00FF41] px-6 py-4 text-base font-bold text-[#0F172A] transition-opacity hover:opacity-90 disabled:opacity-60 disabled:cursor-not-allowed"
                   >
-                    → Enviar pro squad
+                    {loading ? '⏳ Enviando...' : '→ Enviar pro squad'}
                   </button>
                   <p className="text-center text-xs text-white/30">
                     100% gratuito · Sem compromisso · Resposta em menos de 1h
