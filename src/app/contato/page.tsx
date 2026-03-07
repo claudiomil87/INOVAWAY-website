@@ -48,7 +48,7 @@ function ResponseTimer() {
 
   return (
     <div className="rounded-xl border border-[#00FF41]/20 bg-[#00FF41]/5 p-4">
-      <p className="text-xs text-white/40 mb-1">⏱️ Tempo médio de resposta</p>
+      <p className="text-xs text-white/60 mb-1">⏱️ Tempo médio de resposta</p>
       <div
         className="text-3xl font-bold transition-all duration-400"
         style={{
@@ -60,7 +60,7 @@ function ResponseTimer() {
       >
         {display} min
       </div>
-      <p className="text-xs text-white/40 mt-1">
+      <p className="text-xs text-white/60 mt-1">
         Squad ativo fora do horário comercial
       </p>
     </div>
@@ -418,7 +418,7 @@ function ContactForm({
             { icon: "⚡", text: "Resposta em 2h" },
             { icon: "🆓", text: "Sem compromisso" },
           ].map((t) => (
-            <span key={t.text} className="flex items-center gap-1 text-xs text-white/30">
+            <span key={t.text} className="flex items-center gap-1 text-xs text-white/60">
               <span>{t.icon}</span> {t.text}
             </span>
           ))}
@@ -485,7 +485,7 @@ function SuccessMessage() {
           um dos nossos especialistas vai entrar em contato pelo WhatsApp ou
           e-mail que você deixou.
         </p>
-        <p className="text-white/40 text-sm mb-8">
+        <p className="text-white/60 text-sm mb-8">
           Enquanto isso, fique à vontade pra conhecer mais sobre o nosso time e o que entregamos pra cada cliente. Até já! 🚀
         </p>
 

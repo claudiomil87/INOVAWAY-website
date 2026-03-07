@@ -49,7 +49,7 @@ export default function Footer() {
               Trabalhamos pelo crescimento do seu negócio
               enquanto você foca no que sabe fazer de melhor.
             </p>
-            <p className="mt-3 text-xs text-white/30">
+            <p className="mt-3 text-xs text-white/60">
               Feito com ❤️ pra empreendedores que querem crescer de verdade.
             </p>
             {/* Social links */}
@@ -58,7 +58,7 @@ export default function Footer() {
                 href="https://wa.me/5581981392929"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-white/40 transition-all duration-300 hover:text-[#00FF41] hover:drop-shadow-[0_0_6px_rgba(0,255,65,0.5)]"
+                className="text-white/60 transition-all duration-300 hover:text-[#00FF41] hover:drop-shadow-[0_0_6px_rgba(0,255,65,0.5)]"
                 aria-label="WhatsApp"
               >
                 <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
@@ -67,7 +67,7 @@ export default function Footer() {
               </a>
               <a
                 href="mailto:contato@inovaway.org"
-                className="text-white/40 transition-all duration-300 hover:text-[#00FF41] hover:drop-shadow-[0_0_6px_rgba(0,255,65,0.5)]"
+                className="text-white/60 transition-all duration-300 hover:text-[#00FF41] hover:drop-shadow-[0_0_6px_rgba(0,255,65,0.5)]"
                 aria-label="Email"
               >
                 <svg className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
@@ -78,7 +78,7 @@ export default function Footer() {
                 href="https://instagram.com/inovaway"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-white/40 transition-all duration-300 hover:text-[#00FF41] hover:drop-shadow-[0_0_6px_rgba(0,255,65,0.5)]"
+                className="text-white/60 transition-all duration-300 hover:text-[#00FF41] hover:drop-shadow-[0_0_6px_rgba(0,255,65,0.5)]"
                 aria-label="Instagram"
               >
                 <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
@@ -141,8 +141,8 @@ export default function Footer() {
               <li className="text-sm text-white/60">🌍 Atendemos em todo o Brasil</li>
             </ul>
             <div className="mt-4 space-y-1">
-              <p className="text-xs text-white/40">Seg a Sex: 9h às 18h</p>
-              <p className="text-xs text-white/40">Nossos agents: 24h por dia ⚡</p>
+              <p className="text-xs text-white/60">Seg a Sex: 9h às 18h</p>
+              <p className="text-xs text-white/60">Nossos agents: 24h por dia ⚡</p>
             </div>
           </div>
         </div>
@@ -152,7 +152,7 @@ export default function Footer() {
           className="mt-10 border-t pt-8 flex flex-col sm:flex-row items-center justify-between gap-4"
           style={{ borderColor: "rgba(255,255,255,0.08)" }}
         >
-          <div className="flex flex-col sm:flex-row items-center gap-2 text-sm text-white/40">
+          <div className="flex flex-col sm:flex-row items-center gap-2 text-sm text-white/60">
             <span>© {currentYear} Inovaway. Todos os direitos reservados.</span>
             <span className="hidden sm:block">·</span>
             <span className="flex gap-3">
@@ -161,7 +161,7 @@ export default function Footer() {
               <Link href="/termos" className="hover:text-white/60 transition-colors">Termos de Uso</Link>
             </span>
           </div>
-          <p className="text-xs text-white/30 text-center">
+          <p className="text-xs text-white/60 text-center">
             🔒 Seus dados estão seguros com a gente. Nunca vendemos informações de clientes.
           </p>
         </div>

@@ -160,7 +160,7 @@ export default function ServicesSection() {
                   </div>
                   <div>
                     <p className="text-sm font-semibold text-white">{svc.agentEmoji} {svc.agentName}</p>
-                    <p className="text-xs text-white/40">Responsável pelo serviço</p>
+                    <p className="text-xs text-white/60">Responsável pelo serviço</p>
                   </div>
                 </div>
               </div>

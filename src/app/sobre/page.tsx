@@ -121,7 +121,7 @@ export default function SobrePage() {
   const [teamImgError, setTeamImgError] = useState(false);
 
   return (
-    <main className="min-h-screen" style={{ background: "#0F172A" }}>
+    <main className="min-h-screen overflow-x-hidden" style={{ background: "#0F172A" }}>
       {/* ── HERO ── */}
       <section className="relative pt-32 pb-20 px-4 text-center overflow-hidden">
         <div className="absolute inset-0 pointer-events-none">
@@ -311,7 +311,7 @@ export default function SobrePage() {
                   >
                     <Icon size={22} style={{ color: v.color }} />
                   </div>
-                  <h4 className="text-white font-black text-base mb-2">{v.title}</h4>
+                  <h3 className="text-white font-black text-base mb-2">{v.title}</h3>
                   <p className="text-white/60 text-sm leading-relaxed">{v.desc}</p>
                 </GlowCard>
               </motion.div>

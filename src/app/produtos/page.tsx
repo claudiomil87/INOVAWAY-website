@@ -141,7 +141,7 @@ export default function ProdutosPage() {
   const [hnbcrmImgError, setHnbcrmImgError] = useState(false);
 
   return (
-    <main className="min-h-screen" style={{ background: "#0F172A" }}>
+    <main className="min-h-screen overflow-x-hidden" style={{ background: "#0F172A" }}>
       {/* ── HERO ── */}
       <section className="relative pt-32 pb-20 px-4 text-center overflow-hidden">
         <div className="absolute inset-0 pointer-events-none">
@@ -198,7 +198,7 @@ export default function ProdutosPage() {
       </section>
 
       {/* ── UPBRO ── */}
-      <section className="px-4 pb-24 max-w-7xl mx-auto">
+      <section className="px-4 pb-24 max-w-7xl mx-auto overflow-hidden">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           {/* Text */}
           <motion.div
@@ -281,7 +281,7 @@ export default function ProdutosPage() {
                   >
                     <Icon size={20} style={{ color: f.color }} />
                   </div>
-                  <h4 className="text-white font-bold mb-1">{f.title}</h4>
+                  <h3 className="text-white font-bold mb-1 text-base">{f.title}</h3>
                   <p className="text-white/60 text-sm leading-relaxed">{f.desc}</p>
                 </GlowCard>
               </motion.div>
@@ -291,7 +291,7 @@ export default function ProdutosPage() {
       </section>
 
       {/* ── HNBCRM ── */}
-      <section className="px-4 pb-24 max-w-7xl mx-auto">
+      <section className="px-4 pb-24 max-w-7xl mx-auto overflow-hidden">
         {/* Divider */}
         <div className="w-full h-px bg-gradient-to-r from-transparent via-white/10 to-transparent mb-20" />
 
@@ -407,7 +407,7 @@ export default function ProdutosPage() {
                   >
                     <Icon size={20} style={{ color: f.color }} />
                   </div>
-                  <h4 className="text-white font-bold mb-1">{f.title}</h4>
+                  <h3 className="text-white font-bold mb-1 text-base">{f.title}</h3>
                   <p className="text-white/60 text-sm leading-relaxed">{f.desc}</p>
                 </GlowCard>
               </motion.div>

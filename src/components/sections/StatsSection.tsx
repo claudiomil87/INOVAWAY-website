@@ -1,7 +1,7 @@
 "use client";
 
-import { motion, useInView } from "framer-motion";
-import { useRef, useEffect, useState } from "react";
+import { motion, useInView, useMotionValue, useTransform, animate } from "framer-motion";
+import { useRef, useEffect } from "react";
 
 interface StatItem {
   value: string;
@@ -43,31 +43,24 @@ const stats: StatItem[] = [
 ];
 
 function AnimatedNumber({ value, suffix = "", prefix = "" }: { value: number; suffix?: string; prefix?: string }) {
-  const [count, setCount] = useState(0);
   const ref = useRef(null);
   const inView = useInView(ref, { once: true });
+  const motionValue = useMotionValue(0);
+  const rounded = useTransform(motionValue, (v) => Math.round(v));
 
   useEffect(() => {
     if (!inView) return;
-    let start = 0;
-    const duration = 1500;
-    const step = value / (duration / 16);
-    const timer = setInterval(() => {
-      start += step;
-      if (start >= value) {
-        setCount(value);
-        clearInterval(timer);
-      } else {
-        setCount(Math.floor(start));
-      }
-    }, 16);
-    return () => clearInterval(timer);
-  }, [inView, value]);
+    const controls = animate(motionValue, value, {
+      duration: 1.5,
+      ease: "easeOut",
+    });
+    return () => controls.stop();
+  }, [inView, value, motionValue]);
 
   return (
-    <span ref={ref}>
-      {prefix}{count}{suffix}
-    </span>
+    <motion.span ref={ref}>
+      {prefix}<motion.span>{rounded}</motion.span>{suffix}
+    </motion.span>
   );
 }
 
