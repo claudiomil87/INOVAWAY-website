@@ -1,61 +1,39 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { Zap, Bot, ShieldCheck, TrendingUp } from "lucide-react";
+import GlowCard from "@/components/ui/GlowCard";
 
 const benefits = [
   {
-    icon: "⚡",
+    icon: Zap,
     title: "Velocidade",
-    desc: "Entregas em horas, não semanas",
+    desc: "Sites e automações entregues em horas, não semanas",
     color: "#00FF41",
-    borderColor: "rgba(0,255,65,0.2)",
-    bgColor: "rgba(0,255,65,0.05)",
   },
   {
-    icon: "🤖",
-    title: "AI Agents",
-    desc: "Especialistas autônomos 24/7",
+    icon: Bot,
+    title: "IA 24/7",
+    desc: "Agents trabalhando enquanto você dorme",
     color: "#06B6D4",
-    borderColor: "rgba(6,182,212,0.2)",
-    bgColor: "rgba(6,182,212,0.05)",
   },
   {
-    icon: "📱",
-    title: "Mobile-First",
-    desc: "Tudo otimizado para mobile",
-    color: "#8B5CF6",
-    borderColor: "rgba(139,92,246,0.2)",
-    bgColor: "rgba(139,92,246,0.05)",
-  },
-  {
-    icon: "🔒",
+    icon: ShieldCheck,
     title: "Segurança",
-    desc: "Auditoria contínua, zero vulnerabilidade",
-    color: "#00FF41",
-    borderColor: "rgba(0,255,65,0.2)",
-    bgColor: "rgba(0,255,65,0.05)",
-  },
-  {
-    icon: "📊",
-    title: "Dados",
-    desc: "Decisões baseadas em métricas reais",
-    color: "#06B6D4",
-    borderColor: "rgba(6,182,212,0.2)",
-    bgColor: "rgba(6,182,212,0.05)",
-  },
-  {
-    icon: "🚀",
-    title: "Escala",
-    desc: "Um agent faz o trabalho de 10 pessoas",
+    desc: "Testes de segurança em cada entrega",
     color: "#8B5CF6",
-    borderColor: "rgba(139,92,246,0.2)",
-    bgColor: "rgba(139,92,246,0.05)",
+  },
+  {
+    icon: TrendingUp,
+    title: "Resultados",
+    desc: "Foco em ROI e crescimento real",
+    color: "#00FF41",
   },
 ];
 
 export default function BenefitsSection() {
   return (
-    <section className="px-4 py-20 md:py-32">
+    <section className="px-4 py-20 md:py-28">
       <div className="mx-auto max-w-7xl">
         {/* Header */}
         <motion.div
@@ -63,52 +41,47 @@ export default function BenefitsSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="mb-16 text-center"
+          className="mb-14 text-center"
         >
           <h2 className="text-3xl font-bold text-white md:text-4xl lg:text-5xl">
-            O que{" "}
+            Por que{" "}
             <span
               className="bg-clip-text text-transparent"
-              style={{
-                backgroundImage: "linear-gradient(135deg, #00FF41, #06B6D4)",
-              }}
+              style={{ backgroundImage: "linear-gradient(135deg, #00FF41, #06B6D4)" }}
             >
-              fazemos
+              INOVAWAY?
             </span>
           </h2>
           <p className="mx-auto mt-4 max-w-xl text-white/60">
-            Tecnologia de ponta combinada com inteligência artificial para transformar seu negócio.
+            Tecnologia de ponta com inteligência artificial para transformar seu negócio.
           </p>
         </motion.div>
 
-        {/* Cards grid */}
-        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {benefits.map((item, i) => (
-            <motion.div
-              key={item.title}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: i * 0.1 }}
-              whileHover={{ y: -4, transition: { duration: 0.2 } }}
-              className="rounded-xl border p-6"
-              style={{
-                borderColor: item.borderColor,
-                backgroundColor: item.bgColor,
-              }}
-            >
-              <div className="mb-4 text-4xl">{item.icon}</div>
-              <h3
-                className="text-lg font-semibold"
-                style={{ color: item.color }}
+        {/* 2x2 Grid */}
+        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
+          {benefits.map((item, i) => {
+            const Icon = item.icon;
+            return (
+              <motion.div
+                key={item.title}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: i * 0.1 }}
               >
-                {item.title}
-              </h3>
-              <p className="mt-2 text-sm leading-relaxed text-white/60">
-                {item.desc}
-              </p>
-            </motion.div>
-          ))}
+                <GlowCard glowColor={item.color} className="p-7 h-full">
+                  <div
+                    className="mb-4 inline-flex items-center justify-center rounded-xl p-3"
+                    style={{ backgroundColor: `${item.color}15` }}
+                  >
+                    <Icon className="h-6 w-6" style={{ color: item.color }} />
+                  </div>
+                  <h3 className="text-xl font-semibold text-white mb-2">{item.title}</h3>
+                  <p className="text-sm leading-relaxed text-white/60">{item.desc}</p>
+                </GlowCard>
+              </motion.div>
+            );
+          })}
         </div>
       </div>
     </section>

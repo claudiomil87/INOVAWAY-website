@@ -1,24 +1,44 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Link from "next/link";
+import Image from "next/image";
+import { MessageCircle, DollarSign, Handshake } from "lucide-react";
+import ShimmerButton from "@/components/ui/ShimmerButton";
+import MagneticButton from "@/components/ui/MagneticButton";
+
+const squadAvatars = [
+  { src: "/squad/arch-avatar.webp", color: "#8B5CF6", name: "Arch" },
+  { src: "/squad/pixel-avatar.webp", color: "#EC4899", name: "Pixel" },
+  { src: "/squad/nova-avatar.webp", color: "#06B6D4", name: "Nova" },
+  { src: "/squad/forge-avatar.webp", color: "#F59E0B", name: "Forge" },
+  { src: "/squad/scout-avatar.webp", color: "#10B981", name: "Scout" },
+];
+
+const trustItems = [
+  { icon: MessageCircle, label: "Resposta em minutos" },
+  { icon: DollarSign, label: "Orçamento gratuito" },
+  { icon: Handshake, label: "Sem compromisso" },
+];
 
 export default function CTASection() {
   return (
     <section className="relative overflow-hidden px-4 py-20 md:py-32">
-      {/* Background glow */}
+      {/* Aurora background */}
       <div className="pointer-events-none absolute inset-0">
-        <div className="absolute left-1/2 top-1/2 h-[600px] w-[600px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#00FF41]/5 blur-3xl" />
-        <div className="absolute left-1/3 top-1/2 h-[400px] w-[400px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#8B5CF6]/5 blur-3xl" />
+        <div
+          className="aurora-blob-1 absolute left-1/4 top-1/4 h-[500px] w-[500px] rounded-full blur-3xl"
+          style={{ background: "radial-gradient(circle, rgba(0,255,65,0.08) 0%, transparent 70%)" }}
+        />
+        <div
+          className="aurora-blob-2 absolute right-1/4 bottom-1/4 h-[400px] w-[400px] rounded-full blur-3xl"
+          style={{ background: "radial-gradient(circle, rgba(139,92,246,0.08) 0%, transparent 70%)" }}
+        />
       </div>
 
-      {/* Border gradient top */}
+      {/* Top divider gradient */}
       <div
         className="absolute left-0 right-0 top-0 h-px"
-        style={{
-          backgroundImage:
-            "linear-gradient(90deg, transparent, #00FF41, #06B6D4, transparent)",
-        }}
+        style={{ backgroundImage: "linear-gradient(90deg, transparent, #00FF41, #06B6D4, transparent)" }}
       />
 
       <div className="relative z-10 mx-auto max-w-4xl text-center">
@@ -28,43 +48,64 @@ export default function CTASection() {
           viewport={{ once: true }}
           transition={{ duration: 0.7 }}
         >
+          {/* Squad avatars row */}
+          <div className="mb-8 flex items-center justify-center">
+            <div className="flex -space-x-3">
+              {squadAvatars.map((av, i) => (
+                <motion.div
+                  key={av.name}
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.08, duration: 0.4 }}
+                  className="relative h-12 w-12 overflow-hidden rounded-full border-2 border-[#0F172A]"
+                  style={{ boxShadow: `0 0 12px ${av.color}50` }}
+                >
+                  <Image src={av.src} alt={av.name} fill className="object-cover" sizes="48px" loading="lazy" />
+                </motion.div>
+              ))}
+              <div className="relative flex h-12 w-12 items-center justify-center rounded-full border-2 border-[#0F172A] bg-[#1E293B] text-xs font-bold text-white/60">
+                +4
+              </div>
+            </div>
+          </div>
+
           <h2 className="text-3xl font-bold text-white md:text-5xl lg:text-6xl">
-            Pronto para{" "}
+            Pronto para ter um{" "}
             <span
               className="bg-clip-text text-transparent"
-              style={{
-                backgroundImage: "linear-gradient(135deg, #00FF41, #06B6D4)",
-              }}
+              style={{ backgroundImage: "linear-gradient(135deg, #00FF41, #8B5CF6)" }}
             >
-              inovar?
+              Elite Squad?
             </span>
           </h2>
 
           <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-white/60">
-            Fale com nosso time e descubra como AI Agents podem transformar seu negócio.
+            Seu time de IA começa a trabalhar em minutos
           </p>
 
           <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
-            <Link
-              href="/contato"
-              className="group relative w-full overflow-hidden rounded-lg px-10 py-4 text-base font-bold text-[#0F172A] transition-all hover:scale-105 sm:w-auto"
-              style={{ backgroundColor: "#00FF41" }}
-            >
-              <span className="relative z-10">Falar com a INOVAWAY</span>
-            </Link>
+            <MagneticButton>
+              <ShimmerButton href="/contato" variant="primary">
+                Falar com a INOVAWAY
+              </ShimmerButton>
+            </MagneticButton>
+            <ShimmerButton href="#squad" variant="secondary">
+              Conhecer o Squad →
+            </ShimmerButton>
           </div>
 
           {/* Trust indicators */}
           <div className="mt-12 flex flex-wrap items-center justify-center gap-6 text-sm text-white/40">
-            <span className="flex items-center gap-2">
-              <span style={{ color: "#00FF41" }}>✓</span> Resposta em minutos
-            </span>
-            <span className="flex items-center gap-2">
-              <span style={{ color: "#00FF41" }}>✓</span> Orçamento gratuito
-            </span>
-            <span className="flex items-center gap-2">
-              <span style={{ color: "#00FF41" }}>✓</span> Sem compromisso
-            </span>
+            {trustItems.map((item) => {
+              const Icon = item.icon;
+              return (
+                <span key={item.label} className="flex items-center gap-2">
+                  <Icon className="h-4 w-4 shrink-0" style={{ color: "#00FF41" }} />
+                  {item.label}
+                </span>
+              );
+            })}
           </div>
         </motion.div>
       </div>

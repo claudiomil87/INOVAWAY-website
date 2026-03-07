@@ -2,45 +2,59 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
+import Image from "next/image";
 
+// Service definitions with agent avatars
 const services = [
   {
-    icon: "🌐",
-    title: "Criação de Sites",
-    desc: "Sites modernos, rápidos e otimizados para conversão. Mobile-first, performance máxima.",
-    color: "#00FF41",
-    borderColor: "rgba(0,255,65,0.2)",
-    bgColor: "rgba(0,255,65,0.05)",
+    title: "Design & Branding",
+    desc: "Identidade visual que encanta e converte. Logos, UI/UX, brand guidelines — tudo criado com IA e refinado com olhar humano.",
+    color: "#EC4899",
+    agentName: "Pixel",
+    agentEmoji: "🎨",
+    image: "/redesign/service-pixel-design.png",
+    fallbackAvatar: "/squad/pixel-avatar.webp",
+    imageRight: false,
+    tag: "Design",
   },
   {
-    icon: "🤖",
-    title: "Chatbots IA (UpBro)",
-    desc: "Atendimento automatizado 24/7 com IA. Integre com WhatsApp, Instagram e mais.",
+    title: "Desenvolvimento Web",
+    desc: "Sites e apps modernos, rápidos e acessíveis. Next.js, TypeScript, Tailwind — entregues em horas com performance máxima.",
     color: "#06B6D4",
-    borderColor: "rgba(6,182,212,0.2)",
-    bgColor: "rgba(6,182,212,0.05)",
+    agentName: "Nova",
+    agentEmoji: "💻",
+    image: "/redesign/service-nova-dev.png",
+    fallbackAvatar: "/squad/nova-avatar.webp",
+    imageRight: true,
+    tag: "Web Dev",
   },
   {
-    icon: "⚙️",
-    title: "Automações & Integrações",
-    desc: "Elimine trabalho manual. Integre sistemas, automatize fluxos e escale sem equipe.",
-    color: "#8B5CF6",
-    borderColor: "rgba(139,92,246,0.2)",
-    bgColor: "rgba(139,92,246,0.05)",
+    title: "Segurança Digital",
+    desc: "Pen test, auditoria OWASP e hardening de infra. Seu produto seguro antes de chegar aos usuários.",
+    color: "#EF4444",
+    agentName: "Shield",
+    agentEmoji: "🛡️",
+    image: "/redesign/service-shield-security.png",
+    fallbackAvatar: "/squad/shield-avatar.webp",
+    imageRight: false,
+    tag: "Security",
   },
   {
-    icon: "🧠",
-    title: "Agentes IA Personalizados",
-    desc: "AI Agents sob medida para sua operação. Trabalham enquanto você dorme.",
-    color: "#00FF41",
-    borderColor: "rgba(0,255,65,0.2)",
-    bgColor: "rgba(0,255,65,0.05)",
+    title: "Marketing Digital",
+    desc: "Growth hacking, SEO, anúncios e conteúdo viral. Mais leads, menos esforço — Spark cuida do seu crescimento.",
+    color: "#F97316",
+    agentName: "Spark",
+    agentEmoji: "🚀",
+    image: "/redesign/service-spark-marketing.png",
+    fallbackAvatar: "/squad/spark-avatar.webp",
+    imageRight: true,
+    tag: "Marketing",
   },
 ];
 
 export default function ServicesSection() {
   return (
-    <section className="px-4 py-20 md:py-32">
+    <section className="px-4 py-20 md:py-28">
       <div className="mx-auto max-w-7xl">
         {/* Header */}
         <motion.div
@@ -54,9 +68,7 @@ export default function ServicesSection() {
             Nossos{" "}
             <span
               className="bg-clip-text text-transparent"
-              style={{
-                backgroundImage: "linear-gradient(135deg, #06B6D4, #8B5CF6)",
-              }}
+              style={{ backgroundImage: "linear-gradient(135deg, #06B6D4, #8B5CF6)" }}
             >
               Serviços
             </span>
@@ -66,30 +78,80 @@ export default function ServicesSection() {
           </p>
         </motion.div>
 
-        {/* Grid */}
-        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
+        {/* Alternating feature rows */}
+        <div className="flex flex-col gap-16">
           {services.map((svc, i) => (
             <motion.div
               key={svc.title}
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: i * 0.1 }}
-              whileHover={{ y: -4, transition: { duration: 0.2 } }}
-              className="rounded-xl border p-8"
-              style={{
-                borderColor: svc.borderColor,
-                backgroundColor: svc.bgColor,
-              }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+              className={`grid grid-cols-1 lg:grid-cols-2 gap-10 items-center ${svc.imageRight ? "lg:flex-row-reverse" : ""}`}
             >
-              <div className="mb-4 text-5xl">{svc.icon}</div>
-              <h3
-                className="text-xl font-semibold"
-                style={{ color: svc.color }}
-              >
-                {svc.title}
-              </h3>
-              <p className="mt-3 leading-relaxed text-white/60">{svc.desc}</p>
+              {/* Text — alternates side */}
+              <div className={svc.imageRight ? "lg:order-1" : "lg:order-2"}>
+                <span
+                  className="inline-block mb-4 rounded-full px-3 py-1 text-xs font-semibold"
+                  style={{ backgroundColor: `${svc.color}20`, color: svc.color, border: `1px solid ${svc.color}40` }}
+                >
+                  {svc.agentEmoji} {svc.tag}
+                </span>
+                <h3 className="text-2xl font-bold text-white mb-4 md:text-3xl">{svc.title}</h3>
+                <p className="text-white/60 leading-relaxed mb-6">{svc.desc}</p>
+                <div className="flex items-center gap-3">
+                  <div
+                    className="relative h-10 w-10 overflow-hidden rounded-full"
+                    style={{ boxShadow: `0 0 12px ${svc.color}60` }}
+                  >
+                    <Image
+                      src={svc.fallbackAvatar}
+                      alt={svc.agentName}
+                      fill
+                      className="object-cover"
+                      sizes="40px"
+                      loading="lazy"
+                    />
+                  </div>
+                  <div>
+                    <p className="text-sm font-semibold text-white">{svc.agentEmoji} {svc.agentName}</p>
+                    <p className="text-xs text-white/40">Responsável pelo serviço</p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Image card */}
+              <div className={svc.imageRight ? "lg:order-2" : "lg:order-1"}>
+                <motion.div
+                  whileHover={{ scale: 1.02, boxShadow: `0 20px 60px ${svc.color}20` }}
+                  transition={{ duration: 0.3 }}
+                  className="relative rounded-2xl overflow-hidden border"
+                  style={{
+                    borderColor: `${svc.color}30`,
+                    background: `linear-gradient(135deg, ${svc.color}08 0%, rgba(30,41,59,0.8) 100%)`,
+                    minHeight: "260px",
+                  }}
+                >
+                  {/* Try redesign image, fall back to avatar */}
+                  <Image
+                    src={svc.image}
+                    alt={svc.title}
+                    width={560}
+                    height={360}
+                    className="w-full h-full object-cover"
+                    onError={(e) => {
+                      (e.target as HTMLImageElement).src = svc.fallbackAvatar;
+                      (e.target as HTMLImageElement).className = "w-40 h-40 object-cover rounded-full mx-auto my-8";
+                    }}
+                    loading="lazy"
+                  />
+                  {/* Gradient border effect */}
+                  <div
+                    className="absolute inset-0 rounded-2xl pointer-events-none"
+                    style={{ boxShadow: `inset 0 0 0 1px ${svc.color}20` }}
+                  />
+                </motion.div>
+              </div>
             </motion.div>
           ))}
         </div>
@@ -99,12 +161,12 @@ export default function ServicesSection() {
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          className="mt-10 text-center"
+          transition={{ duration: 0.6, delay: 0.3 }}
+          className="mt-14 text-center"
         >
           <Link
             href="/servicos"
-            className="inline-flex items-center gap-2 text-[#06B6D4] transition-all hover:gap-3 hover:text-[#22D3EE] font-medium"
+            className="inline-flex items-center gap-2 font-medium text-[#06B6D4] transition-all hover:gap-3 hover:text-[#22D3EE]"
           >
             Ver todos os serviços →
           </Link>
