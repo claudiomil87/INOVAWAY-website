@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { Link } from "@/i18n/navigation";
+import { useTranslations } from "next-intl";
 import Image from "next/image";
 import { useState } from "react";
 import {
@@ -42,103 +43,40 @@ const stagger = {
   visible: { transition: { staggerChildren: 0.1 } },
 };
 
-const upbroFeatures = [
-  {
-    icon: MessageSquare,
-    title: "Multi-canal",
-    desc: "Um bot que atende WhatsApp, Instagram e site ao mesmo tempo, sincronizados.",
-    color: "#00FF41",
-  },
-  {
-    icon: Brain,
-    title: "IA que Aprende",
-    desc: "Quanto mais usa, mais inteligente fica. Conversa como gente, não como robô.",
-    color: "#00BFFF",
-  },
-  {
-    icon: Target,
-    title: "Qualificação Automática",
-    desc: "Separa curioso de comprador antes de chegar pra você. Só leads quentes.",
-    color: "#FFD700",
-  },
-  {
-    icon: Calendar,
-    title: "Agendamento Integrado",
-    desc: "Cliente agenda reunião direto pelo chat. Sem voltar e vir na DM.",
-    color: "#FF6B6B",
-  },
-  {
-    icon: Link2,
-    title: "Conecta com Tudo",
-    desc: "CRM, planilha, e-mail, sistema interno. Integra qualquer coisa com qualquer coisa.",
-    color: "#9B59B6",
-  },
-  {
-    icon: BarChart2,
-    title: "Painel de Controle",
-    desc: "Conversas, taxa de conversão e performance em tempo real. Você no controle.",
-    color: "#FF8C00",
-  },
-];
 
-const hnbcrmFeatures = [
-  {
-    icon: LayoutDashboard,
-    title: "Pipeline Visual",
-    desc: "Arraste e solte seus leads pelo funil de vendas. Igual Trello, mas pra vendas.",
-    color: "#00FF41",
-  },
-  {
-    icon: Users,
-    title: "Gestão de Contatos",
-    desc: "Histórico completo de cada cliente numa tela só. Sem perder nada.",
-    color: "#00BFFF",
-  },
-  {
-    icon: MessageSquare,
-    title: "Conversas Integradas",
-    desc: "Todas as mensagens (WhatsApp, e-mail) dentro do CRM. Tudo no lugar.",
-    color: "#FFD700",
-  },
-  {
-    icon: Brain,
-    title: "IA Integrada",
-    desc: "Sugestões de follow-up, análise de leads, automações inteligentes.",
-    color: "#FF6B6B",
-  },
-  {
-    icon: Lock,
-    title: "Open Source",
-    desc: "O código é seu. Instale onde quiser. Customize como quiser. Sem amarras.",
-    color: "#9B59B6",
-  },
-  {
-    icon: Download,
-    title: "Exportação Total",
-    desc: "Seus dados são seus — exporte quando quiser, como quiser. Sempre.",
-    color: "#FF8C00",
-  },
-];
 
-const gmbFeatures = [
-  { icon: MapPin, text: "Otimização completa do perfil Google Business" },
-  { icon: Star, text: "Gestão e resposta automática de avaliações" },
-  { icon: RefreshCw, text: "Publicações automáticas para manter o perfil ativo" },
-  { icon: BarChart2, text: "Relatório de performance: cliques, ligações e visitas" },
-  { icon: Target, text: "Monitoramento de ranking vs. concorrentes locais" },
-  { icon: Brain, text: "IA responde avaliações com a voz da sua marca" },
-];
-
-const socialProof = [
-  { icon: Rocket, text: "UpBro ativo em +150 empresas" },
-  { icon: BarChart2, text: "HNBCRM com 0 custo mensal" },
-  { icon: Globe2, text: "GMBAssist otimizando +80 perfis" },
-  { icon: Flame, text: "3 produtos. 1 missão: crescer o seu negócio." },
-];
 
 export default function ProdutosPage() {
+  const t = useTranslations('ProdutosPage');
   const [upbroImgError, setUpbroImgError] = useState(false);
   const [hnbcrmImgError, setHnbcrmImgError] = useState(false);
+
+  const upbroFeatures = [
+    { icon: MessageSquare, title: t('upbro.features.0.title'), desc: t('upbro.features.0.desc'), color: "#00FF41" },
+    { icon: Brain, title: t('upbro.features.1.title'), desc: t('upbro.features.1.desc'), color: "#00BFFF" },
+    { icon: Target, title: t('upbro.features.2.title'), desc: t('upbro.features.2.desc'), color: "#FFD700" },
+    { icon: Calendar, title: t('upbro.features.3.title'), desc: t('upbro.features.3.desc'), color: "#FF6B6B" },
+    { icon: Link2, title: t('upbro.features.4.title'), desc: t('upbro.features.4.desc'), color: "#9B59B6" },
+    { icon: BarChart2, title: t('upbro.features.5.title'), desc: t('upbro.features.5.desc'), color: "#FF8C00" },
+  ];
+
+  const hnbcrmFeatures = [
+    { icon: LayoutDashboard, title: t('hnbcrm.features.0.title'), desc: t('hnbcrm.features.0.desc'), color: "#00FF41" },
+    { icon: Users, title: t('hnbcrm.features.1.title'), desc: t('hnbcrm.features.1.desc'), color: "#00BFFF" },
+    { icon: MessageSquare, title: t('hnbcrm.features.2.title'), desc: t('hnbcrm.features.2.desc'), color: "#FFD700" },
+    { icon: Brain, title: t('hnbcrm.features.3.title'), desc: t('hnbcrm.features.3.desc'), color: "#FF6B6B" },
+    { icon: Lock, title: t('hnbcrm.features.4.title'), desc: t('hnbcrm.features.4.desc'), color: "#9B59B6" },
+    { icon: Download, title: t('hnbcrm.features.5.title'), desc: t('hnbcrm.features.5.desc'), color: "#FF8C00" },
+  ];
+
+  const gmbFeatures = [
+    { icon: MapPin, text: t('gmb.features.0') },
+    { icon: Star, text: t('gmb.features.1') },
+    { icon: RefreshCw, text: t('gmb.features.2') },
+    { icon: BarChart2, text: t('gmb.features.3') },
+    { icon: Target, text: t('gmb.features.4') },
+    { icon: Brain, text: t('gmb.features.5') },
+  ];
 
   return (
     <main className="min-h-screen overflow-x-hidden" style={{ background: "#0F172A" }}>
@@ -153,23 +91,22 @@ export default function ProdutosPage() {
           <motion.div variants={fadeUp}>
             <span className="inline-block text-xs font-bold uppercase tracking-widest px-3 py-1 rounded-full mb-6 border"
               style={{ color: "#00FF41", borderColor: "#00FF41", background: "#00FF4110" }}>
-              Nossos Produtos
+              {t('badge')}
             </span>
           </motion.div>
 
           <motion.h1 variants={fadeUp} className="text-4xl md:text-6xl font-black text-white leading-tight mb-6">
-            Ferramentas de <span style={{ color: "#00FF41" }}>Elite.</span>
-            <br />Preço de PME.
+            {t('title')} <span style={{ color: "#00FF41" }}>{t('titleGradient')}</span>
+            <br />{t('titleSuffix')}
           </motion.h1>
 
           <motion.p variants={fadeUp} className="text-lg text-white/70 max-w-2xl mx-auto mb-10 leading-relaxed">
-            Construímos nossas próprias ferramentas porque as do mercado eram caras demais, complicadas demais
-            ou fracas demais. Agora você usa o mesmo arsenal que usamos pra escalar dezenas de negócios.
+            {t('subtitle')}
           </motion.p>
 
           <motion.div variants={fadeUp}>
             <ShimmerButton href="/contato" variant="primary">
-              Quero Conhecer os Produtos — Falar com a Equipe
+              {t('cta')}
             </ShimmerButton>
           </motion.div>
         </motion.div>
@@ -181,7 +118,12 @@ export default function ProdutosPage() {
           animate="visible"
           className="relative mt-14 flex flex-wrap justify-center gap-4 max-w-3xl mx-auto"
         >
-          {socialProof.map((item, i) => {
+          {[
+          { icon: Rocket, text: t('socialProof.0') },
+          { icon: BarChart2, text: t('socialProof.1') },
+          { icon: Globe2, text: t('socialProof.2') },
+          { icon: Flame, text: t('socialProof.3') },
+        ].map((item, i) => {
             const Icon = item.icon;
             return (
               <motion.div
@@ -210,26 +152,25 @@ export default function ProdutosPage() {
             <div className="flex items-center gap-3 mb-4">
               <span className="text-3xl">🤖</span>
               <h2 className="text-3xl md:text-4xl font-black text-white">
-                UpBro — O Vendedor Que{" "}
-                <span style={{ color: "#00FF41" }}>Não Tira Férias</span>
+                {t('upbro.heading')}{" "}
+                <span style={{ color: "#00FF41" }}>{t('upbro.headingGradient')}</span>
               </h2>
             </div>
 
             <p className="text-white/70 leading-relaxed mb-4">
-              UpBro é um chatbot inteligente que atende, conversa, qualifica e vende pelo WhatsApp, Instagram e site —
-              ao mesmo tempo, sem você precisar estar online.
+              {t('upbro.desc1')}
             </p>
             <p className="text-white/70 leading-relaxed mb-6">
-              Não é aquele chatbot idiota que fica repetindo "Olá! Como posso ajudar?".{" "}
-              <strong className="text-white">UpBro entende o contexto, responde como gente, e converte.</strong>
+              {t('upbro.desc2')}{" "}
+              <strong className="text-white">{t('upbro.desc2bold')}</strong>
             </p>
 
             <p className="text-[#00FF41] font-semibold mb-8">
-              Está online às 3h da manhã, no feriado, no Natal. Sem reclamar. Sem errar. Sem custo extra.
+              {t('upbro.desc3')}
             </p>
 
             <ShimmerButton href="/contato" variant="primary">
-              Quero Meu Vendedor de IA — Falar Agora
+              {t('upbro.cta')}
             </ShimmerButton>
           </motion.div>
 
@@ -244,7 +185,7 @@ export default function ProdutosPage() {
               <div className="relative rounded-2xl overflow-hidden border border-white/10">
                 <Image
                   src="/redesign/product-upbro.png"
-                  alt="UpBro — Chatbot IA"
+                  alt="UpBro — AI Chatbot"
                   width={600}
                   height={400}
                   className="w-full object-cover"
@@ -256,7 +197,7 @@ export default function ProdutosPage() {
               <div className="rounded-2xl border border-[#00FF41]/20 bg-[#00FF41]/5 p-12 text-center">
                 <div className="text-6xl mb-4">🤖</div>
                 <p className="text-[#00FF41] font-bold text-xl">UpBro</p>
-                <p className="text-white/50 mt-2">Seu vendedor de IA multi-canal</p>
+                <p className="text-white/50 mt-2">{t('upbro.headingGradient')}</p>
               </div>
             )}
           </motion.div>
@@ -308,7 +249,7 @@ export default function ProdutosPage() {
               <div className="relative rounded-2xl overflow-hidden border border-white/10">
                 <Image
                   src="/redesign/product-hnbcrm.png"
-                  alt="HNBCRM — CRM Gratuito"
+                  alt="HNBCRM — Free CRM"
                   width={600}
                   height={400}
                   className="w-full object-cover"
@@ -320,7 +261,7 @@ export default function ProdutosPage() {
               <div className="rounded-2xl border border-[#00FF41]/20 bg-[#00FF41]/5 p-12 text-center">
                 <div className="text-6xl mb-4">📊</div>
                 <p className="text-[#00FF41] font-bold text-xl">HNBCRM</p>
-                <p className="text-white/50 mt-2">CRM 100% gratuito e open source</p>
+                <p className="text-white/50 mt-2">{t('hnbcrm.freeBadge')} · {t('hnbcrm.openSourceBadge')}</p>
               </div>
             )}
           </motion.div>
@@ -335,35 +276,32 @@ export default function ProdutosPage() {
           >
             <div className="flex flex-wrap items-center gap-3 mb-4">
               <span className="text-xs font-black px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/40 uppercase tracking-wider">
-                100% Grátis
+                {t('hnbcrm.freeBadge')}
               </span>
               <span className="text-xs font-black px-3 py-1 rounded-full bg-blue-500/20 text-blue-400 border border-blue-500/40 uppercase tracking-wider">
-                Open Source
+                {t('hnbcrm.openSourceBadge')}
               </span>
             </div>
 
             <div className="flex items-center gap-3 mb-4">
               <span className="text-3xl">📊</span>
               <h2 className="text-3xl md:text-4xl font-black text-white">
-                HNBCRM — CRM{" "}
-                <span style={{ color: "#00FF41" }}>Gratuito Para Quem Vende</span>
+                {t('hnbcrm.heading')}{" "}
+                <span style={{ color: "#00FF41" }}>{t('hnbcrm.headingGradient')}</span>
               </h2>
             </div>
 
             <p className="text-white/70 leading-relaxed mb-4">
-              HNBCRM é o lugar onde você organiza todos os seus clientes e oportunidades de vendas.
-              Sabe quando você perde aquela anotação no papel? Ou esquece de fazer o follow-up com aquele lead quente?
-              Com HNBCRM, isso <strong className="text-white">nunca mais acontece.</strong>
+              {t('hnbcrm.desc1')}<strong className="text-white">{t('hnbcrm.desc1bold')}</strong>
             </p>
 
             <p className="text-white/70 leading-relaxed mb-4">
-              É gratuito. É open source (o código é seu). Não tem taxa mensal. Não tem plano "premium" que trava funcionalidade básica.
-              Criamos pra usar internamente — e funcionou tão bem que abrimos para todo mundo.
+              {t('hnbcrm.desc2')}
             </p>
 
             <div className="p-4 rounded-xl border border-[#00FF41]/20 bg-[#00FF41]/5 mb-8">
-              <p className="text-[#00FF41] font-bold text-xl">R$0,00.</p>
-              <p className="text-white/60 text-sm">Sem asterisco. Sem letra miúda. Sem pegadinha.</p>
+              <p className="text-[#00FF41] font-bold text-xl">{t('hnbcrm.priceLine')}</p>
+              <p className="text-white/60 text-sm">{t('hnbcrm.priceSubline')}</p>
             </div>
 
             <div className="flex flex-col sm:flex-row gap-3">
@@ -374,7 +312,7 @@ export default function ProdutosPage() {
                 className="flex items-center justify-center gap-2 px-6 py-3 rounded-lg font-bold text-sm transition-all hover:scale-[1.02]"
                 style={{ background: "#00FF41", color: "#0F172A" }}
               >
-                Criar conta grátis <ArrowRight size={16} />
+                {t('hnbcrm.ctaFree')} <ArrowRight size={16} />
               </a>
               <a
                 href="https://github.com/ericmil87/hnbcrm"
@@ -382,7 +320,7 @@ export default function ProdutosPage() {
                 rel="noopener noreferrer"
                 className="flex items-center justify-center gap-2 px-6 py-3 rounded-lg font-bold text-sm border border-white/20 text-white hover:border-white/40 transition-all hover:scale-[1.02]"
               >
-                <Github size={16} /> Ver código no GitHub
+                <Github size={16} /> {t('hnbcrm.ctaGithub')}
               </a>
             </div>
           </motion.div>
@@ -429,18 +367,17 @@ export default function ProdutosPage() {
           <div className="flex items-center gap-3 mb-4">
             <span className="text-3xl">🗺️</span>
             <h2 className="text-2xl md:text-3xl font-black text-white">
-              GMBAssist — Apareça No Google{" "}
-              <span style={{ color: "#00FF41" }}>Antes do Concorrente</span>
+              {t('gmb.heading')}{" "}
+              <span style={{ color: "#00FF41" }}>{t('gmb.headingGradient')}</span>
             </h2>
           </div>
 
           <p className="text-white/70 mb-3 leading-relaxed">
-            Quando alguém busca no Google "restaurante perto de mim" ou "mecânico em [sua cidade]" — o que aparece primeiro é o Google Business Profile.
-            GMBAssist gerencia, otimiza e mantém seu perfil <strong className="text-white">sempre em alta performance.</strong>
+            {t('gmb.desc1')}<strong className="text-white">{t('gmb.desc1bold')}</strong>
           </p>
 
           <p className="text-[#00FF41] font-semibold mb-8">
-            46% das buscas no Google são locais. Seu cliente está procurando você agora. Esteja lá.
+            {t('gmb.desc2')}
           </p>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-10">
@@ -463,12 +400,11 @@ export default function ProdutosPage() {
           </div>
 
           <p className="text-white/50 text-sm mb-6">
-            Clínica, consultório, restaurante, loja, prestador de serviços — se você atende cliente presencialmente,
-            você precisa do GMBAssist.
+            {t('gmb.desc3')}
           </p>
 
           <ShimmerButton href="/contato" variant="primary">
-            Quero Aparecer no Google — Falar Agora
+            {t('gmb.cta')}
           </ShimmerButton>
         </motion.div>
       </section>
@@ -482,21 +418,21 @@ export default function ProdutosPage() {
           className="rounded-2xl border border-[#00FF41]/20 bg-[#00FF41]/5 p-12"
         >
           <h2 className="text-3xl md:text-4xl font-black text-white mb-4">
-            A Tecnologia Que Antes Era Só Para{" "}
-            <span style={{ color: "#00FF41" }}>Grandes Empresas.</span>
-            <br />Agora É Sua.
+            {t('finalCta.heading')}{" "}
+            <span style={{ color: "#00FF41" }}>{t('finalCta.headingGradient')}</span>
+            <br />{t('finalCta.headingSuffix')}
           </h2>
           <p className="text-white/70 mb-3">
-            UpBro + HNBCRM + GMBAssist. Três armas. Uma missão: fazer seu negócio crescer mais rápido do que você imagina.
+            {t('finalCta.desc1')}
           </p>
           <p className="text-white font-bold mb-8">
-            Mas cuidado — trabalhamos com número limitado de clientes por vez para garantir qualidade.
+            {t('finalCta.desc2')}
           </p>
           <ShimmerButton href="/contato" variant="primary">
-            Falar com a Inovaway e Garantir Minha Vaga
+            {t('finalCta.cta')}
           </ShimmerButton>
           <p className="mt-6 text-sm text-white/40">
-            Diagnóstico gratuito • Sem compromisso • Resposta em até 24h
+            {t('finalCta.small')}
           </p>
         </motion.div>
       </section>

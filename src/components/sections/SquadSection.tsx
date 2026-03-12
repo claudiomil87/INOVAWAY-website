@@ -31,6 +31,7 @@ interface BentoAgentCardProps {
 
 function BentoAgentCard({ agent, index, large = false, onSelect }: BentoAgentCardProps) {
   const t = useTranslations("AgentCard");
+  const tAgents = useTranslations("Agents");
   const [tilt, setTilt] = useState({ rotateX: 0, rotateY: 0 });
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
@@ -105,11 +106,11 @@ function BentoAgentCard({ agent, index, large = false, onSelect }: BentoAgentCar
           <p className={`font-bold text-white ${large ? "text-xl mb-1" : "text-base mb-0.5"}`}>
             {agent.emoji} {agent.name}
           </p>
-          <p className="text-xs text-white/50 leading-tight mb-2">{agent.role}</p>
+          <p className="text-xs text-white/50 leading-tight mb-2">{tAgents(`${agent.name}.role`)}</p>
 
           {large && (
             <p className="text-sm text-white/40 italic mb-3 font-mono">
-              &quot;{agent.statusMessage}&quot;
+              &quot;{tAgents(`${agent.name}.statusMessage`)}&quot;
             </p>
           )}
 
@@ -142,6 +143,7 @@ function BentoAgentCard({ agent, index, large = false, onSelect }: BentoAgentCar
 export default function SquadSection() {
   const t = useTranslations("SquadSection");
   const tCard = useTranslations("AgentCard");
+  const tAgents = useTranslations("Agents");
   const [selectedAgent, setSelectedAgent] = useState<Agent | null>(null);
 
   return (
@@ -226,7 +228,7 @@ export default function SquadSection() {
               </div>
               <div>
                 <p className="font-bold text-white">{agent.emoji} {agent.name}</p>
-                <p className="text-xs text-white/50">{agent.role}</p>
+                <p className="text-xs text-white/50">{tAgents(`${agent.name}.role`)}</p>
               </div>
             </motion.div>
           ))}

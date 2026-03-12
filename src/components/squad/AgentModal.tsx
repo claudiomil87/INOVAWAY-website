@@ -1,6 +1,7 @@
 "use client";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
+import { useTranslations } from "next-intl";
 import type { Agent } from "./agents-data";
 
 interface AgentModalProps {
@@ -9,6 +10,7 @@ interface AgentModalProps {
 }
 
 export default function AgentModal({ agent, onClose }: AgentModalProps) {
+  const tAgents = useTranslations("Agents");
   return (
     <AnimatePresence>
       {agent && (
@@ -39,16 +41,16 @@ export default function AgentModal({ agent, onClose }: AgentModalProps) {
                 <Image src={agent.avatar} alt={agent.name} fill className="object-cover" sizes="96px" />
               </div>
               <h2 className="text-2xl font-bold text-white">{agent.emoji} {agent.name}</h2>
-              <p className="text-sm mt-1" style={{ color: agent.color }}>{agent.role}</p>
+              <p className="text-sm mt-1" style={{ color: agent.color }}>{tAgents(`${agent.name}.role`)}</p>
             </div>
 
             {/* Status */}
             <div className="rounded-lg p-3 mb-4 font-mono text-sm text-center" style={{ backgroundColor: `${agent.color}15`, color: agent.color }}>
-              "{agent.statusMessage}"
+              "{tAgents(`${agent.name}.statusMessage`)}"
             </div>
 
             {/* Bio */}
-            <p className="text-white/70 text-sm leading-relaxed mb-4">{agent.bio}</p>
+            <p className="text-white/70 text-sm leading-relaxed mb-4">{tAgents(`${agent.name}.bio`)}</p>
 
             {/* All skills */}
             <div className="flex flex-wrap gap-1.5">

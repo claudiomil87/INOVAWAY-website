@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { Link } from "@/i18n/navigation";
+import { useTranslations } from "next-intl";
 import Image from "next/image";
 import { useState } from "react";
 import {
@@ -32,93 +33,83 @@ const stagger = {
   visible: { transition: { staggerChildren: 0.1 } },
 };
 
-const values = [
-  {
-    icon: Target,
-    title: "Resultado Acima de Tudo",
-    desc: "Não cobramos por horas. Não vendemos processo. Vendemos resultado. Se não funcionar pra você, não funciona pra gente.",
-    color: "#00FF41",
-  },
-  {
-    icon: Handshake,
-    title: "Transparência Sem Desculpa",
-    desc: "Deu errado? A gente fala. Vai atrasar? A gente avisa. Sem enrolação. Sem bullshit. Sem sumir quando o bicho pega.",
-    color: "#00BFFF",
-  },
-  {
-    icon: Rocket,
-    title: "Melhoria Contínua",
-    desc: "Nunca entregamos e 'sumimos'. Nossos sistemas aprendem. Nossa equipe melhora. Seu negócio cresce.",
-    color: "#FFD700",
-  },
-  {
-    icon: Lightbulb,
-    title: "Simplicidade",
-    desc: "Tecnologia complexa que ninguém usa não vale nada. A gente simplifica. Você usa. E vende mais.",
-    color: "#FF6B6B",
-  },
-  {
-    icon: Sprout,
-    title: "Parceria de Verdade",
-    desc: "Seu crescimento é nosso crescimento. Não somos fornecedores. Somos parceiros. Tem diferença.",
-    color: "#9B59B6",
-  },
-];
-
-const comparison = [
-  {
-    market: "Equipe humana (dorme, tira férias, fica doente)",
-    inovaway: "Time de IA + humanos operando 24/7/365",
-  },
-  {
-    market: "Resultado em 6-12 meses",
-    inovaway: "Crescimento visível em 30-90 dias",
-  },
-  {
-    market: "Projeto entregue e abandonado",
-    inovaway: "Melhoria contínua e suporte constante",
-  },
-  {
-    market: "Preço de agência grande",
-    inovaway: "Preço acessível para PME",
-  },
-  {
-    market: "Ferramentas genéricas de terceiros",
-    inovaway: "Produtos próprios (UpBro, HNBCRM, GMBAssist)",
-  },
-  {
-    market: "Foco em entrega de serviço",
-    inovaway: "Foco em resultado financeiro do cliente",
-  },
-];
-
-const testimonials = [
-  {
-    quote: "Em 60 dias com a Inovaway, meu faturamento cresceu 40%. Não acreditei até ver o relatório.",
-    author: "Ricardo M.",
-    role: "Dono de clínica odontológica",
-  },
-  {
-    quote: "Contratei uma agência famosa antes e joguei R$8.000 fora. Com a Inovaway gastei menos e tive resultado real.",
-    author: "Ana Paula S.",
-    role: "E-commerce de moda",
-  },
-  {
-    quote: "O chatbot deles (UpBro) atende meus clientes às 2h da manhã. Já vendi durante o sono.",
-    author: "Carlos T.",
-    role: "Consultor financeiro",
-  },
-];
-
-const socialProof = [
-  { icon: Briefcase, text: "15+ anos de experiência em tecnologia" },
-  { icon: Globe2, text: "+200 empresas transformadas" },
-  { icon: Bot, text: "Time de IA ativo 24/7" },
-  { icon: Stars, text: "Clientes em Brasil, Portugal e EUA" },
-];
 
 export default function SobrePage() {
+  const t = useTranslations('SobrePage');
   const [teamImgError, setTeamImgError] = useState(false);
+
+  const values = [
+    {
+      icon: Target,
+      title: t('values.0.title'),
+      desc: t('values.0.desc'),
+      color: "#00FF41",
+    },
+    {
+      icon: Handshake,
+      title: t('values.1.title'),
+      desc: t('values.1.desc'),
+      color: "#00BFFF",
+    },
+    {
+      icon: Rocket,
+      title: t('values.2.title'),
+      desc: t('values.2.desc'),
+      color: "#FFD700",
+    },
+    {
+      icon: Lightbulb,
+      title: t('values.3.title'),
+      desc: t('values.3.desc'),
+      color: "#FF6B6B",
+    },
+    {
+      icon: Sprout,
+      title: t('values.4.title'),
+      desc: t('values.4.desc'),
+      color: "#9B59B6",
+    },
+  ];
+
+  const comparison = [
+    {
+      market: t('comparison.rows.0.market'),
+      inovaway: t('comparison.rows.0.inovaway'),
+    },
+    {
+      market: t('comparison.rows.1.market'),
+      inovaway: t('comparison.rows.1.inovaway'),
+    },
+    {
+      market: t('comparison.rows.2.market'),
+      inovaway: t('comparison.rows.2.inovaway'),
+    },
+    {
+      market: t('comparison.rows.3.market'),
+      inovaway: t('comparison.rows.3.inovaway'),
+    },
+    {
+      market: t('comparison.rows.4.market'),
+      inovaway: t('comparison.rows.4.inovaway'),
+    },
+    {
+      market: t('comparison.rows.5.market'),
+      inovaway: t('comparison.rows.5.inovaway'),
+    },
+  ];
+
+  const testimonials = [
+    { quote: t('testimonials.0.quote'), author: t('testimonials.0.author'), role: t('testimonials.0.role') },
+    { quote: t('testimonials.1.quote'), author: t('testimonials.1.author'), role: t('testimonials.1.role') },
+    { quote: t('testimonials.2.quote'), author: t('testimonials.2.author'), role: t('testimonials.2.role') },
+  ];
+
+  const socialProof = [
+    { icon: Briefcase, text: t('socialProof.0') },
+    { icon: Globe2, text: t('socialProof.1') },
+    { icon: Bot, text: t('socialProof.2') },
+    { icon: Stars, text: t('socialProof.3') },
+  ];
 
   return (
     <main className="min-h-screen overflow-x-hidden" style={{ background: "#0F172A" }}>
@@ -133,24 +124,23 @@ export default function SobrePage() {
           <motion.div variants={fadeUp}>
             <span className="inline-block text-xs font-bold uppercase tracking-widest px-3 py-1 rounded-full mb-6 border"
               style={{ color: "#00FF41", borderColor: "#00FF41", background: "#00FF4110" }}>
-              Sobre a Inovaway
+              {t('badge')}
             </span>
           </motion.div>
 
           <motion.h1 variants={fadeUp} className="text-4xl md:text-6xl font-black text-white leading-tight mb-6">
-            Somos o Time de Tecnologia Que Seu Negócio{" "}
-            <span style={{ color: "#00FF41" }}>Merecia Ter,</span>
-            <br />Mas Nunca Pôde Pagar.
+            {t('title')}{" "}
+            <span style={{ color: "#00FF41" }}>{t('titleGradient')}</span>
+            <br />{t('titleSuffix')}
           </motion.h1>
 
           <motion.p variants={fadeUp} className="text-lg text-white/70 max-w-2xl mx-auto mb-10 leading-relaxed">
-            A Inovaway nasceu de uma indignação: por que só empresas grandes têm acesso à tecnologia de ponta?
-            A gente veio mudar isso. Para sempre.
+            {t('subtitle')}
           </motion.p>
 
           <motion.div variants={fadeUp}>
             <ShimmerButton href="/contato" variant="primary">
-              Quero Conhecer a Inovaway — Falar Agora
+              {t('cta')}
             </ShimmerButton>
           </motion.div>
         </motion.div>
@@ -186,38 +176,33 @@ export default function SobrePage() {
           viewport={{ once: true }}
           className="rounded-2xl border border-white/10 bg-white/5 p-8 md:p-12"
         >
-          <h2 className="text-2xl md:text-3xl font-black text-white mb-8">Nossa História</h2>
+          <h2 className="text-2xl md:text-3xl font-black text-white mb-8">{t('history.title')}</h2>
 
           <div className="space-y-5 text-white/70 leading-relaxed">
             <p>
-              Não começamos numa garagem.{" "}
-              <span className="text-white font-medium">Mas quase.</span>
+              {t('history.p1')}
+              <span className="text-white font-medium">{t('history.p1Bold')}</span>
             </p>
             <p>
-              Nosso fundador passou <strong className="text-[#00FF41]">mais de 15 anos</strong> no mundo da tecnologia.
-              Trabalhou com grandes empresas, viu como elas operavam, quais ferramentas usavam, por que cresciam
-              enquanto as pequenas lutavam.
+              {t('history.p2')}<strong className="text-[#00FF41]">{t('history.p2Bold')}</strong>{t('history.p2End')}
             </p>
             <p>
-              E a resposta era simples — e injusta:{" "}
-              <strong className="text-white">acesso.</strong>
+              {t('history.p3')}
+              <strong className="text-white">{t('history.p3Bold')}</strong>
             </p>
             <p>
-              Grandes empresas tinham equipes inteiras de TI, designers, marketeiros, analistas de dados.
-              PMEs tinham... uma planilha e um sobrinho que "entendia de computador".
+              {t('history.p4')}
             </p>
-            <p className="text-white font-medium">Isso precisava mudar.</p>
+            <p className="text-white font-medium">{t('history.p5')}</p>
             <p>
-              A <strong className="text-[#00FF41]">Inovaway</strong> nasceu para ser o time de tecnologia que todo
-              pequeno e médio empreendedor merece ter — mas que antes só quem tinha muito dinheiro podia pagar.
+              {t('history.p6')}
             </p>
             <p>
-              Hoje, com inteligência artificial, automação e um time apaixonado, a gente entrega o trabalho de uma
-              agência de R$50.000/mês —{" "}
-              <strong className="text-[#00FF41]">por uma fração desse preço.</strong>
+              {t('history.p7')}
+              <strong className="text-[#00FF41]">{t('history.p7Bold')}</strong>
             </p>
             <p className="text-white">
-              E isso não é exagero. É o que acontece quando você usa tecnologia do jeito certo.
+              {t('history.p8')}
             </p>
           </div>
         </motion.div>
@@ -237,14 +222,12 @@ export default function SobrePage() {
                 style={{ background: "#00FF4115", border: "1px solid #00FF4130" }}>
                 <Target size={24} style={{ color: "#00FF41" }} />
               </div>
-              <h3 className="text-xl font-black text-white mb-4" style={{ color: "#00FF41" }}>🎯 Missão</h3>
+              <h3 className="text-xl font-black text-white mb-4" style={{ color: "#00FF41" }}>{t('mission.title')}</h3>
               <p className="text-white/70 leading-relaxed italic">
-                "Democratizar o acesso à tecnologia de ponta para pequenas e médias empresas — e fazer cada cliente
-                crescer mais rápido do que ele imagina ser possível."
+                {t('mission.quote')}
               </p>
               <p className="text-white/60 text-sm mt-4 leading-relaxed">
-                Não acreditamos que tamanho de empresa define quem merece ter tecnologia boa.
-                Acreditamos que <strong className="text-white">todo negócio com produto sério merece uma chance séria de crescer.</strong>
+                {t('mission.desc')}<strong className="text-white">{t('mission.descBold')}</strong>
               </p>
             </GlowCard>
           </motion.div>
@@ -260,13 +243,12 @@ export default function SobrePage() {
                 style={{ background: "#00BFFF15", border: "1px solid #00BFFF30" }}>
                 <Stars size={24} style={{ color: "#00BFFF" }} />
               </div>
-              <h3 className="text-xl font-black mb-4" style={{ color: "#00BFFF" }}>👁️ Visão</h3>
+              <h3 className="text-xl font-black mb-4" style={{ color: "#00BFFF" }}>{t('vision.title')}</h3>
               <p className="text-white/70 leading-relaxed italic">
-                "Um mundo onde todo empreendedor tem um time de tecnologia de elite ao seu lado — não importa o tamanho
-                do negócio nem o tamanho do bolso."
+                {t('vision.quote')}
               </p>
               <p className="text-white/60 text-sm mt-4 leading-relaxed">
-                Estamos construindo isso. Agora. Um cliente de cada vez.
+                {t('vision.desc')}
               </p>
             </GlowCard>
           </motion.div>
@@ -281,8 +263,8 @@ export default function SobrePage() {
           viewport={{ once: true }}
           className="text-2xl md:text-3xl font-black text-white text-center mb-4"
         >
-          Nossos 5 Valores{" "}
-          <span style={{ color: "#00FF41" }}>(Sem Papo de RH)</span>
+          {t('valuesTitle')}
+          <span style={{ color: "#00FF41" }}>{t('valuesSubtitle')}</span>
         </motion.h2>
         <motion.p
           initial={{ opacity: 0 }}
@@ -290,7 +272,7 @@ export default function SobrePage() {
           viewport={{ once: true }}
           className="text-white/50 text-center mb-12"
         >
-          Princípios reais. Não decoração de parede.
+          {t('valuesDesc')}
         </motion.p>
 
         <motion.div
@@ -328,19 +310,19 @@ export default function SobrePage() {
           viewport={{ once: true }}
         >
           <h2 className="text-2xl md:text-3xl font-black text-white text-center mb-4">
-            Por Que Somos{" "}
-            <span style={{ color: "#00FF41" }}>Fundamentalmente Diferentes</span>
+            {t('comparison.title')}
+            <span style={{ color: "#00FF41" }}>{t('comparison.titleGradient')}</span>
           </h2>
           <p className="text-white/50 text-center mb-12">
-            Existem centenas de agências digitais por aí. Veja a diferença na prática.
+            {t('comparison.subtitle')}
           </p>
 
           <div className="rounded-2xl border border-white/10 overflow-hidden">
             {/* Header */}
             <div className="grid grid-cols-2 text-sm font-black uppercase tracking-wider">
-              <div className="p-4 text-center bg-white/5 text-white/50">O Mercado Oferece</div>
+              <div className="p-4 text-center bg-white/5 text-white/50">{t('comparison.marketHeader')}</div>
               <div className="p-4 text-center text-center" style={{ background: "#00FF4110", color: "#00FF41" }}>
-                A Inovaway Entrega
+                {t('comparison.inovawayHeader')}
               </div>
             </div>
 
@@ -368,12 +350,11 @@ export default function SobrePage() {
 
           <div className="mt-8 p-6 rounded-xl border border-white/10 bg-white/5">
             <p className="text-white/70 text-sm leading-relaxed">
-              Nossa equipe de IA não tem ego. Não tem viés. Não tem mau dia. Ela analisa dados, identifica oportunidades,
-              cria conteúdo, atende cliente e otimiza campanhas — sem parar.
+              {t('comparison.footer')}
             </p>
             <p className="text-white/70 text-sm mt-3 leading-relaxed">
-              Aí você pergunta: "Mas tem humano nisso?" Sim. Sempre. Mas potencializado por IA.{" "}
-              <strong className="text-[#00FF41]">O resultado é uma equipe que produz 10x mais, por 10x menos.</strong>
+              {t('comparison.footer2')}
+              <strong className="text-[#00FF41]">{t('comparison.footer2Bold')}</strong>
             </p>
           </div>
         </motion.div>
@@ -434,19 +415,17 @@ export default function SobrePage() {
             transition={{ duration: 0.7 }}
           >
             <h2 className="text-2xl md:text-3xl font-black text-white mb-4">
-              Nosso Time:{" "}
-              <span style={{ color: "#00FF41" }}>Elite Squad</span>
+              {t('team.title')}
+              <span style={{ color: "#00FF41" }}>{t('team.titleGradient')}</span>
             </h2>
             <p className="text-white/70 leading-relaxed mb-4">
-              Não temos um "departamento de marketing". Temos a Spark. Não temos um "time de dev". Temos a Nova e o Forge.
-              Cada agent é especialista na sua área — treinado, focado, sem distração.
+              {t('team.p1')}
             </p>
             <p className="text-white/70 leading-relaxed mb-4">
-              Cada agent opera de forma autônoma, mas coordenada. Arch orquestra. Cada um executa.
-              O resultado é um time que entrega em dias o que agências levam semanas.
+              {t('team.p2')}
             </p>
             <p className="text-[#00FF41] font-semibold leading-relaxed">
-              Rápido porque é especializado. Barato porque é eficiente. Eficaz porque usa IA do jeito certo.
+              {t('team.p3')}
             </p>
           </motion.div>
         </div>
@@ -460,7 +439,7 @@ export default function SobrePage() {
           viewport={{ once: true }}
           className="text-2xl font-black text-white text-center mb-12"
         >
-          O Que Nossos Clientes Dizem
+          {t('testimonials.title')}
         </motion.h2>
 
         <motion.div
@@ -470,14 +449,14 @@ export default function SobrePage() {
           viewport={{ once: true }}
           className="grid grid-cols-1 md:grid-cols-3 gap-6"
         >
-          {testimonials.map((t, i) => (
+          {testimonials.map((testimonial, i) => (
             <motion.div key={i} variants={fadeUp}>
               <GlowCard glowColor="#00FF41" className="p-6 h-full flex flex-col">
                 <Quote size={20} style={{ color: "#00FF41" }} className="mb-4 opacity-60" />
-                <p className="text-white/70 text-sm leading-relaxed italic flex-1 mb-4">{t.quote}</p>
+                <p className="text-white/70 text-sm leading-relaxed italic flex-1 mb-4">{testimonial.quote}</p>
                 <div>
-                  <p className="text-white font-bold text-sm">— {t.author}</p>
-                  <p className="text-white/40 text-xs">{t.role}</p>
+                  <p className="text-white font-bold text-sm">— {testimonial.author}</p>
+                  <p className="text-white/40 text-xs">{testimonial.role}</p>
                 </div>
               </GlowCard>
             </motion.div>
@@ -495,14 +474,14 @@ export default function SobrePage() {
           style={{ background: "linear-gradient(135deg, #00FF4108, #00BFFF05)" }}
         >
           <h2 className="text-2xl md:text-4xl font-black text-white leading-tight mb-4">
-            "O que grandes empresas pagam{" "}
-            <span style={{ color: "#00FF41" }}>R$50.000/mês</span>{" "}
-            em agência, você tem com a Inovaway por uma fração."
+            {t('impactQuote.title')}
+            <span style={{ color: "#00FF41" }}>{t('impactQuote.titleGradient')}</span>
+            {t('impactQuote.titleEnd')}
           </h2>
           <p className="text-white/60 text-base mt-4 max-w-xl mx-auto">
-            Não porque somos baratos. Mas porque somos{" "}
-            <strong className="text-white">eficientes.</strong>{" "}
-            Inteligência artificial muda o jogo. E a gente usa isso pra você.
+            {t('impactQuote.desc')}
+            <strong className="text-white">{t('impactQuote.descBold')}</strong>
+            {t('impactQuote.descEnd')}
           </p>
         </motion.div>
       </section>
@@ -516,23 +495,23 @@ export default function SobrePage() {
           className="rounded-2xl border border-[#00FF41]/20 bg-[#00FF41]/5 p-12"
         >
           <h2 className="text-3xl md:text-4xl font-black text-white mb-4">
-            Sua Empresa Merece Crescer.{" "}
-            <span style={{ color: "#00FF41" }}>E Você Merece Dormir Tranquilo.</span>
+            {t('finalCta.title')}
+            <span style={{ color: "#00FF41" }}>{t('finalCta.titleGradient')}</span>
           </h2>
           <p className="text-white/70 mb-3">
-            Diagnóstico gratuito. Sem compromisso. Sem enrolação.
+            {t('finalCta.subtitle')}
           </p>
           <p className="text-white/70 mb-3">
-            A gente olha pro seu negócio, identifica o maior gargalo e te diz o que fazer — <strong className="text-white">de graça.</strong>
+            {t('finalCta.subtitle2')}<strong className="text-white">{t('finalCta.subtitle2Bold')}</strong>
           </p>
           <p className="text-white font-bold mb-8">
-            Mas cuidado: <span style={{ color: "#00FF41" }}>abrimos poucas vagas de diagnóstico por mês.</span> Quem chega primeiro, é atendido primeiro.
+            {t('finalCta.subtitle3')}<span style={{ color: "#00FF41" }}>{t('finalCta.subtitle3Bold')}</span>{t('finalCta.subtitle3End')}
           </p>
           <ShimmerButton href="/contato" variant="primary">
-            Quero Meu Diagnóstico Gratuito — Falar com a Inovaway Agora
+            {t('finalCta.cta')}
           </ShimmerButton>
           <p className="mt-6 text-sm text-white/40">
-            Resposta em até 24h • 100% gratuito • Sem compromisso
+            {t('finalCta.small')}
           </p>
         </motion.div>
       </section>

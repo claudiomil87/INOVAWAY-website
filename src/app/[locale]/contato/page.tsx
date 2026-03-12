@@ -2,29 +2,14 @@
 
 import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
-import { useLocale } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import Image from "next/image";
 import { Lock, Zap, Gift } from "lucide-react";
 
 
-const needOptions = [
-  "Quero um site profissional",
-  "Preciso de uma identidade visual",
-  "Quero aparecer no Google",
-  "Preciso de mais clientes",
-  "Meu negócio precisa de proteção digital",
-  "Quero anunciar nas redes sociais",
-  "Não sei por onde começar — me ajudem!",
-];
 
-const trustItems = [
-  { icon: Lock, label: "Seus dados estão 100% seguros. Nunca vamos te encher de spam." },
-  { icon: Zap, label: "Resposta garantida em até 2 horas úteis" },
-  { icon: Gift, label: "O diagnóstico é gratuito. Sem pegadinha, sem compromisso." },
-];
-
-function ResponseTimer() {
+function ResponseTimer({ label, unit, active }: { label: string; unit: string; active: string }) {
   const [display, setDisplay] = useState(42);
   const [fade, setFade] = useState(true);
 
@@ -49,7 +34,7 @@ function ResponseTimer() {
 
   return (
     <div className="rounded-xl border border-[#00FF41]/20 bg-[#00FF41]/5 p-4">
-      <p className="text-xs text-white/60 mb-1">⏱️ Tempo médio de resposta</p>
+      <p className="text-xs text-white/60 mb-1">{label}</p>
       <div
         className="text-3xl font-bold transition-all duration-400"
         style={{
@@ -59,20 +44,37 @@ function ResponseTimer() {
           transition: "opacity 0.4s ease, transform 0.4s ease",
         }}
       >
-        {display} min
+        {display} {unit}
       </div>
       <p className="text-xs text-white/60 mt-1">
-        Squad ativo fora do horário comercial
+        {active}
       </p>
     </div>
   );
 }
 
 export default function ContatoPage() {
+  const t = useTranslations('ContatoPage');
   const locale = useLocale();
   const [selectedNeed, setSelectedNeed] = useState("");
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
+
+  const needOptions = [
+    t('needs.0'),
+    t('needs.1'),
+    t('needs.2'),
+    t('needs.3'),
+    t('needs.4'),
+    t('needs.5'),
+    t('needs.6'),
+  ];
+
+  const trustItems = [
+    { icon: Lock, label: t('trust.0') },
+    { icon: Zap, label: t('trust.1') },
+    { icon: Gift, label: t('trust.2') },
+  ];
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -98,10 +100,10 @@ export default function ContatoPage() {
       if (response.ok) {
         setSubmitted(true);
       } else {
-        alert("Erro ao enviar. Tente novamente.");
+        alert(t('errors.send'));
       }
     } catch {
-      alert("Erro de conexão. Tente novamente.");
+      alert(t('errors.connection'));
     } finally {
       setLoading(false);
     }
@@ -118,24 +120,26 @@ export default function ContatoPage() {
         >
           <div className="text-center mb-6">
             <h1 className="text-3xl font-bold text-white mb-2">
-              Vamos fazer seu negócio{" "}
+              {t('title')}{" "}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#00FF41] to-[#06B6D4]">
-                crescer?
+                {t('titleGradient')}
               </span>
             </h1>
             <p className="text-sm text-white/50">
-              ⚡ Respondemos em até 2 horas úteis. Diagnóstico gratuito.
+              {t('subtitleMobile')}
             </p>
           </div>
 
           {submitted ? (
-            <SuccessMessage />
+            <SuccessMessage t={t} />
           ) : (
             <ContactForm
               selectedNeed={selectedNeed}
               setSelectedNeed={setSelectedNeed}
               loading={loading}
               onSubmit={handleSubmit}
+              t={t}
+              needOptions={needOptions}
             />
           )}
         </motion.div>
@@ -152,18 +156,16 @@ export default function ContatoPage() {
             transition={{ duration: 0.6 }}
           >
             <p className="text-[#00FF41] text-sm font-mono tracking-widest uppercase mb-3">
-              // diagnóstico gratuito
+              {t('badge')}
             </p>
             <h1 className="text-5xl font-bold text-white lg:text-6xl mb-4">
-              Vamos fazer seu negócio{" "}
+              {t('title')}{" "}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#00FF41] to-[#06B6D4]">
-                crescer?
+                {t('titleGradient')}
               </span>
             </h1>
             <p className="text-lg text-white/60 max-w-2xl mx-auto">
-              Preencha o formulário abaixo e receba um diagnóstico gratuito
-              do seu negócio digital. Sem compromisso. Sem enrolação.
-              Só oportunidade de crescer de verdade.
+              {t('subtitle')}
             </p>
           </motion.div>
 
@@ -200,14 +202,17 @@ export default function ContatoPage() {
               {/* Info card */}
               <div className="rounded-2xl border border-white/10 bg-[#1E293B]/80 p-6 space-y-4">
                 <div>
-                  <p className="text-white font-semibold text-lg mb-1">🚀 Spark fala por todos nós:</p>
+                  <p className="text-white font-semibold text-lg mb-1">{t('sparkTitle')}</p>
                   <p className="text-white/60 text-sm leading-relaxed italic">
-                    "Preencha o formulário e em até 2 horas um especialista entra em contato.
-                    Vamos descobrir juntos o que seu negócio precisa pra crescer de verdade."
+                    {t('sparkQuote')}
                   </p>
                 </div>
 
-                <ResponseTimer />
+                <ResponseTimer
+                  label={t('responseTimer.label')}
+                  unit={t('responseTimer.unit')}
+                  active={t('responseTimer.active')}
+                />
 
                 <div className="flex flex-col gap-2 pt-2">
                   {trustItems.map((item) => {
@@ -228,7 +233,7 @@ export default function ContatoPage() {
                   rel="noopener noreferrer"
                   className="flex items-center justify-center gap-2 w-full rounded-xl bg-[#25D366] px-6 py-3 text-sm font-bold text-white hover:opacity-90 transition-opacity"
                 >
-                  <span>💬</span> Falar direto no WhatsApp
+                  <span>💬</span> {t('whatsapp')}
                 </a>
               </div>
             </motion.div>
@@ -240,13 +245,15 @@ export default function ContatoPage() {
               transition={{ duration: 0.6, delay: 0.2 }}
             >
               {submitted ? (
-                <SuccessMessage />
+                <SuccessMessage t={t} />
               ) : (
                 <ContactForm
                   selectedNeed={selectedNeed}
                   setSelectedNeed={setSelectedNeed}
                   loading={loading}
                   onSubmit={handleSubmit}
+                  t={t}
+                  needOptions={needOptions}
                 />
               )}
             </motion.div>
@@ -262,11 +269,15 @@ function ContactForm({
   setSelectedNeed,
   loading,
   onSubmit,
+  t,
+  needOptions,
 }: {
   selectedNeed: string;
   setSelectedNeed: (v: string) => void;
   loading: boolean;
   onSubmit: (e: React.FormEvent) => void;
+  t: (key: string) => string;
+  needOptions: string[];
 }) {
   const inputClass =
     "w-full rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-white placeholder-white/30 focus:border-[#00FF41]/50 focus:outline-none focus:ring-1 focus:ring-[#00FF41]/30 transition-colors text-sm";
@@ -275,34 +286,34 @@ function ContactForm({
   return (
     <div className="rounded-2xl border border-white/10 bg-[#1E293B] p-6 md:p-8">
       <h2 className="text-lg font-semibold text-white mb-6">
-        📋 Conta pra gente sobre seu negócio
+        {t('form.title')}
       </h2>
       <form onSubmit={onSubmit} className="space-y-5">
         {/* Nome + Email */}
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
           <div>
             <label htmlFor="name" className={labelClass}>
-              Seu nome *
+              {t('form.nameLbl')}
             </label>
             <input
               id="name"
               name="name"
               type="text"
               required
-              placeholder="Como podemos te chamar?"
+              placeholder={t('form.namePh')}
               className={inputClass}
             />
           </div>
           <div>
             <label htmlFor="email" className={labelClass}>
-              Seu melhor e-mail *
+              {t('form.emailLbl')}
             </label>
             <input
               id="email"
               name="email"
               type="email"
               required
-              placeholder="exemplo@suaempresa.com.br"
+              placeholder={t('form.emailPh')}
               className={inputClass}
             />
           </div>
@@ -312,27 +323,27 @@ function ContactForm({
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
           <div>
             <label htmlFor="phone" className={labelClass}>
-              Seu WhatsApp *
+              {t('form.phoneLbl')}
             </label>
             <input
               id="phone"
               name="phone"
               type="tel"
               required
-              placeholder="(11) 99999-9999"
+              placeholder={t('form.phonePh')}
               className={inputClass}
             />
           </div>
           <div>
             <label htmlFor="company" className={labelClass}>
-              Nome do seu negócio *
+              {t('form.companyLbl')}
             </label>
             <input
               id="company"
               name="company"
               type="text"
               required
-              placeholder="Como se chama sua empresa?"
+              placeholder={t('form.companyPh')}
               className={inputClass}
             />
           </div>
@@ -342,25 +353,25 @@ function ContactForm({
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
           <div>
             <label htmlFor="segment" className={labelClass}>
-              Qual é o seu ramo?
+              {t('form.segmentLbl')}
             </label>
             <input
               id="segment"
               name="segment"
               type="text"
-              placeholder="Ex: restaurante, clínica, loja de roupas..."
+              placeholder={t('form.segmentPh')}
               className={inputClass}
             />
           </div>
           <div>
             <label htmlFor="website" className={labelClass}>
-              Você já tem um site?
+              {t('form.websiteLbl')}
             </label>
             <input
               id="website"
               name="website"
               type="text"
-              placeholder="www.suaempresa.com.br (ou deixe vazio)"
+              placeholder={t('form.websitePh')}
               className={inputClass}
             />
           </div>
@@ -368,7 +379,7 @@ function ContactForm({
 
         {/* O que mais precisa */}
         <div>
-          <label className={labelClass}>O que você mais precisa agora?</label>
+          <label className={labelClass}>{t('form.needLbl')}</label>
           <div className="flex flex-wrap gap-2">
             {needOptions.map((opt) => (
               <button
@@ -390,13 +401,13 @@ function ContactForm({
         {/* Mensagem */}
         <div>
           <label htmlFor="message" className={labelClass}>
-            Conta mais sobre seu negócio
+            {t('form.messageLbl')}
           </label>
           <textarea
             id="message"
             name="message"
             rows={4}
-            placeholder="Me fala um pouco sobre o que você faz, seus desafios, o que você sonha pra sua empresa..."
+            placeholder={t('form.messagePh')}
             className={`${inputClass} resize-none`}
           />
         </div>
@@ -412,17 +423,17 @@ function ContactForm({
               : "linear-gradient(135deg, #00FF41, #06B6D4)",
           }}
         >
-          {loading ? "⏳ Enviando..." : "Quero meu diagnóstico grátis →"}
+          {loading ? t('form.submitting') : t('form.submit')}
         </button>
 
         <div className="flex flex-wrap justify-center gap-4 pt-1">
           {[
-            { icon: "🔒", text: "100% seguro" },
-            { icon: "⚡", text: "Resposta em 2h" },
-            { icon: "🆓", text: "Sem compromisso" },
-          ].map((t) => (
-            <span key={t.text} className="flex items-center gap-1 text-xs text-white/60">
-              <span>{t.icon}</span> {t.text}
+            { icon: "🔒", text: t('form.trustBadges.secure') },
+            { icon: "⚡", text: t('form.trustBadges.fast') },
+            { icon: "🆓", text: t('form.trustBadges.free') },
+          ].map((badge) => (
+            <span key={badge.text} className="flex items-center gap-1 text-xs text-white/60">
+              <span>{badge.icon}</span> {badge.text}
             </span>
           ))}
         </div>
@@ -431,7 +442,7 @@ function ContactForm({
   );
 }
 
-function SuccessMessage() {
+function SuccessMessage({ t }: { t: (key: string) => string }) {
   return (
     <motion.div
       className="rounded-2xl border border-[#00FF41]/20 bg-[#1E293B] p-10 text-center flex flex-col items-center justify-center min-h-[480px]"
@@ -477,19 +488,16 @@ function SuccessMessage() {
         transition={{ delay: 0.5 }}
       >
         <h2 className="text-3xl font-bold text-white mb-3">
-          🎉 Chegou! Sua mensagem está com a gente.
+          {t('success.title')}
         </h2>
         <p className="text-white/60 max-w-md mx-auto mb-4 leading-relaxed">
-          Recebemos seu pedido e já estamos analisando seu negócio.
+          {t('success.subtitle')}
         </p>
         <p className="text-white/60 max-w-md mx-auto mb-8 leading-relaxed">
-          Em até{" "}
-          <span className="text-[#00FF41] font-semibold">2 horas úteis</span>,
-          um dos nossos especialistas vai entrar em contato pelo WhatsApp ou
-          e-mail que você deixou.
+          {t('success.body').replace('{hours}', t('success.hours'))}
         </p>
         <p className="text-white/60 text-sm mb-8">
-          Enquanto isso, fique à vontade pra conhecer mais sobre o nosso time e o que entregamos pra cada cliente. Até já! 🚀
+          {t('success.afterText')}
         </p>
 
         <div className="flex flex-col sm:flex-row gap-3 justify-center">
@@ -497,13 +505,13 @@ function SuccessMessage() {
             href="/produtos"
             className="rounded-lg bg-[#00FF41] px-6 py-3 text-sm font-bold text-[#0F172A] transition-opacity hover:opacity-90"
           >
-            Conhecer nosso time →
+            {t('success.ctaTeam')}
           </Link>
           <Link
             href="/"
             className="rounded-lg border border-white/20 px-6 py-3 text-sm font-medium text-white hover:border-white/40 transition-colors"
           >
-            ← Voltar para a home
+            {t('success.ctaHome')}
           </Link>
         </div>
       </motion.div>

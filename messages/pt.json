@@ -165,10 +165,18 @@
     "titleGradient": "falam por si",
     "subtitle": "Resultado não é promessa. Resultado é isso aqui:",
     "stats": {
-      "0": { "label": "Projetos entregues" },
-      "1": { "label": "Trabalhando pelo seu negócio" },
-      "2": { "label": "Clientes satisfeitos" },
-      "3": { "label": "Especialistas no seu time" }
+      "0": {
+        "label": "Projetos entregues"
+      },
+      "1": {
+        "label": "Trabalhando pelo seu negócio"
+      },
+      "2": {
+        "label": "Clientes satisfeitos"
+      },
+      "3": {
+        "label": "Especialistas no seu time"
+      }
     }
   },
   "FAQSection": {
@@ -285,9 +293,15 @@
   },
   "SquadStats": {
     "stats": {
-      "0": { "label": "Agents Especializados" },
-      "1": { "label": "Operação Contínua" },
-      "2": { "label": "Tempo Médio de Entrega" }
+      "0": {
+        "label": "Agents Especializados"
+      },
+      "1": {
+        "label": "Operação Contínua"
+      },
+      "2": {
+        "label": "Tempo Médio de Entrega"
+      }
     }
   },
   "SocialProofNotification": {
@@ -392,7 +406,7 @@
     }
   },
   "ServicosPage": {
-    "pageTitle": "Serviços | INOVAWAY",
+    "pageTitle": "Serviços",
     "badge": "Nossos Serviços",
     "title": "Seu Concorrente Já Está",
     "titleAI": "Usando IA.",
@@ -527,7 +541,7 @@
     }
   },
   "ProdutosPage": {
-    "pageTitle": "Nosso Time | INOVAWAY",
+    "pageTitle": "Nosso Time",
     "badge": "Nossos Produtos",
     "title": "Ferramentas de",
     "titleGradient": "Elite.",
@@ -539,10 +553,110 @@
       "1": "HNBCRM com 0 custo mensal",
       "2": "GMBAssist otimizando +80 perfis",
       "3": "3 produtos. 1 missão: crescer o seu negócio."
+    },
+    "upbro": {
+      "heading": "UpBro — O Vendedor Que",
+      "headingGradient": "Não Tira Férias",
+      "desc1": "UpBro é um chatbot inteligente que atende, conversa, qualifica e vende pelo WhatsApp, Instagram e site — ao mesmo tempo, sem você precisar estar online.",
+      "desc2": "Não é aquele chatbot idiota que fica repetindo \"Olá! Como posso ajudar?\".",
+      "desc2bold": "UpBro entende o contexto, responde como gente, e converte.",
+      "desc3": "Está online às 3h da manhã, no feriado, no Natal. Sem reclamar. Sem errar. Sem custo extra.",
+      "cta": "Quero Meu Vendedor de IA — Falar Agora",
+      "features": {
+        "0": {
+          "title": "Multi-canal",
+          "desc": "Um bot que atende WhatsApp, Instagram e site ao mesmo tempo, sincronizados."
+        },
+        "1": {
+          "title": "IA que Aprende",
+          "desc": "Quanto mais usa, mais inteligente fica. Conversa como gente, não como robô."
+        },
+        "2": {
+          "title": "Qualificação Automática",
+          "desc": "Separa curioso de comprador antes de chegar pra você. Só leads quentes."
+        },
+        "3": {
+          "title": "Agendamento Integrado",
+          "desc": "Cliente agenda reunião direto pelo chat. Sem voltar e vir na DM."
+        },
+        "4": {
+          "title": "Conecta com Tudo",
+          "desc": "CRM, planilha, e-mail, sistema interno. Integra qualquer coisa com qualquer coisa."
+        },
+        "5": {
+          "title": "Painel de Controle",
+          "desc": "Conversas, taxa de conversão e performance em tempo real. Você no controle."
+        }
+      }
+    },
+    "hnbcrm": {
+      "freeBadge": "100% Grátis",
+      "openSourceBadge": "Open Source",
+      "heading": "HNBCRM — CRM",
+      "headingGradient": "Gratuito Para Quem Vende",
+      "desc1": "HNBCRM é o lugar onde você organiza todos os seus clientes e oportunidades de vendas. Sabe quando você perde aquela anotação no papel? Ou esquece de fazer o follow-up com aquele lead quente? Com HNBCRM, isso ",
+      "desc1bold": "nunca mais acontece.",
+      "desc2": "É gratuito. É open source (o código é seu). Não tem taxa mensal. Não tem plano \"premium\" que trava funcionalidade básica. Criamos pra usar internamente — e funcionou tão bem que abrimos para todo mundo.",
+      "priceLine": "R$0,00.",
+      "priceSubline": "Sem asterisco. Sem letra miúda. Sem pegadinha.",
+      "ctaFree": "Criar conta grátis",
+      "ctaGithub": "Ver código no GitHub",
+      "features": {
+        "0": {
+          "title": "Pipeline Visual",
+          "desc": "Arraste e solte seus leads pelo funil de vendas. Igual Trello, mas pra vendas."
+        },
+        "1": {
+          "title": "Gestão de Contatos",
+          "desc": "Histórico completo de cada cliente numa tela só. Sem perder nada."
+        },
+        "2": {
+          "title": "Conversas Integradas",
+          "desc": "Todas as mensagens (WhatsApp, e-mail) dentro do CRM. Tudo no lugar."
+        },
+        "3": {
+          "title": "IA Integrada",
+          "desc": "Sugestões de follow-up, análise de leads, automações inteligentes."
+        },
+        "4": {
+          "title": "Open Source",
+          "desc": "O código é seu. Instale onde quiser. Customize como quiser. Sem amarras."
+        },
+        "5": {
+          "title": "Exportação Total",
+          "desc": "Seus dados são seus — exporte quando quiser, como quiser. Sempre."
+        }
+      }
+    },
+    "gmb": {
+      "heading": "GMBAssist — Apareça No Google",
+      "headingGradient": "Antes do Concorrente",
+      "desc1": "Quando alguém busca no Google \"restaurante perto de mim\" ou \"mecânico em [sua cidade]\" — o que aparece primeiro é o Google Business Profile. GMBAssist gerencia, otimiza e mantém seu perfil ",
+      "desc1bold": "sempre em alta performance.",
+      "desc2": "46% das buscas no Google são locais. Seu cliente está procurando você agora. Esteja lá.",
+      "desc3": "Clínica, consultório, restaurante, loja, prestador de serviços — se você atende cliente presencialmente, você precisa do GMBAssist.",
+      "cta": "Quero Aparecer no Google — Falar Agora",
+      "features": {
+        "0": "Otimização completa do perfil Google Business",
+        "1": "Gestão e resposta automática de avaliações",
+        "2": "Publicações automáticas para manter o perfil ativo",
+        "3": "Relatório de performance: cliques, ligações e visitas",
+        "4": "Monitoramento de ranking vs. concorrentes locais",
+        "5": "IA responde avaliações com a voz da sua marca"
+      }
+    },
+    "finalCta": {
+      "heading": "A Tecnologia Que Antes Era Só Para",
+      "headingGradient": "Grandes Empresas.",
+      "headingSuffix": "Agora É Sua.",
+      "desc1": "UpBro + HNBCRM + GMBAssist. Três armas. Uma missão: fazer seu negócio crescer mais rápido do que você imagina.",
+      "desc2": "Mas cuidado — trabalhamos com número limitado de clientes por vez para garantir qualidade.",
+      "cta": "Falar com a Inovaway e Garantir Minha Vaga",
+      "small": "Diagnóstico gratuito • Sem compromisso • Resposta em até 24h"
     }
   },
   "SobrePage": {
-    "pageTitle": "Sobre nós | INOVAWAY",
+    "pageTitle": "Sobre nós",
     "badge": "Nossa História",
     "title": "Nascemos para",
     "titleGradient": "mudar o jogo.",
@@ -570,16 +684,93 @@
         "title": "Parceria de Verdade",
         "desc": "Seu crescimento é nosso crescimento. Não somos fornecedores. Somos parceiros. Tem diferença."
       }
+    },
+    "testimonials": {
+      "title": "O Que Nossos Clientes Dizem",
+      "0": {
+        "quote": "Em 60 dias com a Inovaway, meu faturamento cresceu 40%. Não acreditei até ver o relatório.",
+        "author": "Ricardo M.",
+        "role": "Dono de clínica odontológica"
+      },
+      "1": {
+        "quote": "Contratei uma agência famosa antes e joguei R$8.000 fora. Com a Inovaway gastei menos e tive resultado real.",
+        "author": "Ana Paula S.",
+        "role": "E-commerce de moda"
+      },
+      "2": {
+        "quote": "O chatbot deles (UpBro) atende meus clientes às 2h da manhã. Já vendi durante o sono.",
+        "author": "Carlos T.",
+        "role": "Consultor financeiro"
+      }
     }
   },
   "PrivacidadePage": {
-    "pageTitle": "Política de Privacidade | INOVAWAY",
+    "pageTitle": "Política de Privacidade",
     "pageDescription": "Conheça a Política de Privacidade da INOVAWAY conforme a LGPD.",
-    "lastUpdated": "Última atualização: Janeiro de 2026",
-    "backHome": "← Voltar para a home"
+    "lastUpdated": "Última atualização: Março de 2026",
+    "backHome": "← Voltar para a home",
+    "badge": "Legal",
+    "title": "Política de",
+    "titleGradient": "Privacidade",
+    "subtitle": "Em conformidade com a Lei Geral de Proteção de Dados Pessoais — LGPD (Lei nº 13.709/2018).",
+    "indexTitle": "Índice",
+    "contactTitle": "Dúvidas sobre privacidade?",
+    "contactSubtitle": "Entre em contato com nosso Encarregado de Dados (DPO):",
+    "contactEmail": "contato@inovaway.org",
+    "termsLink": "Ver Termos de Uso →",
+    "sections": {
+      "0": {
+        "title": "1. Introdução",
+        "content": "A INOVAWAY (\"nós\", \"nosso\" ou \"empresa\"), pessoa jurídica registrada e atuante no Brasil, com presença digital em inovaway.org, está comprometida com a proteção da privacidade e dos dados pessoais de seus usuários, clientes e visitantes.\n\nEsta Política de Privacidade descreve como coletamos, usamos, armazenamos, compartilhamos e protegemos suas informações pessoais, em conformidade com a Lei Geral de Proteção de Dados Pessoais (LGPD — Lei nº 13.709/2018) e demais legislações aplicáveis.\n\nAo utilizar nossos serviços, você concorda com as práticas descritas nesta Política. Recomendamos a leitura completa antes de fornecer qualquer dado pessoal."
+      },
+      "1": {
+        "title": "2. Dados Pessoais Coletados",
+        "content": "Coletamos dados pessoais nas seguintes situações:\n\n**2.1 Dados fornecidos diretamente por você:**\n- Nome completo e dados de identificação\n- Endereço de e-mail\n- Número de telefone / WhatsApp\n- Nome da empresa e segmento de atuação\n- Mensagens e conteúdos enviados via formulários de contato\n\n**2.2 Dados coletados automaticamente:**\n- Endereço IP e dados de geolocalização aproximada\n- Tipo e versão do navegador e sistema operacional\n- Páginas visitadas, tempo de permanência e origem do acesso\n- Dados de cookies e tecnologias semelhantes (conforme Seção 7)\n\n**2.3 Dados de uso dos serviços contratados:**\n- Histórico de interações com nossas plataformas (UpBro, HNBCRM, GMBAssist)\n- Dados de automações e integrações configuradas\n- Logs de acesso e atividade nas ferramentas\n\nNão coletamos dados sensíveis (saúde, origem racial, convicção religiosa, dados biométricos etc.) sem consentimento explícito e justificativa legal."
+      },
+      "2": {
+        "title": "3. Finalidade do Tratamento",
+        "content": "Tratamos seus dados pessoais para as seguintes finalidades:\n\n**3.1 Execução contratual:**\n- Prestar os serviços contratados (sites, automações, marketing, consultoria)\n- Manter e aprimorar as plataformas e ferramentas\n- Processar pagamentos e emitir faturas\n\n**3.2 Comunicação e atendimento:**\n- Responder solicitações, dúvidas e mensagens\n- Enviar atualizações sobre projetos em andamento\n- Notificar sobre mudanças nos serviços ou nesta Política\n\n**3.3 Marketing (mediante consentimento):**\n- Enviar newsletters e materiais informativos\n- Apresentar novidades, casos de sucesso e ofertas relevantes\n- Você pode cancelar este consentimento a qualquer momento\n\n**3.4 Legítimo interesse e segurança:**\n- Prevenir fraudes e garantir a segurança das plataformas\n- Cumprir obrigações legais e regulatórias\n- Melhorar a experiência de uso com base em análises agregadas"
+      },
+      "3": {
+        "title": "4. Base Legal (LGPD)",
+        "content": "Tratamos seus dados com base nas seguintes hipóteses legais previstas no Art. 7º da LGPD:\n\n- **Consentimento** (Art. 7º, I): para envio de comunicações de marketing\n- **Execução de contrato** (Art. 7º, V): para prestação dos serviços contratados\n- **Legítimo interesse** (Art. 7º, IX): para melhoria dos serviços e segurança\n- **Cumprimento de obrigação legal** (Art. 7º, II): para atender exigências fiscais, contábeis e regulatórias\n\nQuando o tratamento for baseado em consentimento, você poderá revogá-lo a qualquer momento sem prejuízo dos tratamentos realizados anteriormente."
+      },
+      "4": {
+        "title": "5. Compartilhamento de Dados",
+        "content": "Seus dados pessoais podem ser compartilhados com:\n\n**5.1 Parceiros e fornecedores de tecnologia:**\n- Plataformas de hospedagem e infraestrutura em nuvem\n- Ferramentas de analytics e monitoramento de desempenho\n- Sistemas de automação de marketing e CRM\n- Processadores de pagamento\n\nEsses parceiros processam dados estritamente conforme nossas instruções e estão contratualmente obrigados a manter a confidencialidade.\n\n**5.2 Autoridades e obrigações legais:**\nPodemos compartilhar dados com autoridades governamentais, judiciais ou regulatórias quando exigido por lei, ordem judicial ou para defesa de direitos legais da INOVAWAY.\n\n**Não vendemos, alugamos ou comercializamos dados pessoais de clientes e usuários para terceiros.** Jamais."
+      },
+      "5": {
+        "title": "6. Armazenamento e Retenção",
+        "content": "Seus dados são armazenados em servidores seguros, preferencialmente localizados no Brasil ou em países que garantam nível adequado de proteção conforme a LGPD.\n\n**Prazos de retenção:**\n- Dados de clientes ativos: durante toda a vigência do contrato + 5 anos (obrigação fiscal/legal)\n- Dados de leads e contatos: até 2 anos após o último contato ou até revogação do consentimento\n- Logs de acesso: 6 meses (conforme Marco Civil da Internet — Lei 12.965/2014)\n- Dados de comunicações de marketing: até revogação do consentimento\n\nApós o prazo de retenção, os dados são excluídos de forma segura ou anonimizados."
+      },
+      "6": {
+        "title": "7. Cookies e Tecnologias de Rastreamento",
+        "content": "Utilizamos cookies e tecnologias similares para:\n\n**7.1 Cookies essenciais (necessários):**\nGarantem o funcionamento básico do site. Não podem ser desativados.\n\n**7.2 Cookies de desempenho e analytics:**\nColetamos dados sobre como o site é utilizado (páginas visitadas, tempo de sessão, origem) para melhorar a experiência. Usamos ferramentas como Google Analytics.\n\n**7.3 Cookies de marketing (opcional):**\nUtilizados para personalizar anúncios e medir efetividade de campanhas. Só ativados com seu consentimento.\n\n**Gerenciamento de cookies:**\nVocê pode configurar seu navegador para bloquear ou excluir cookies. Observe que desativar alguns cookies pode afetar a funcionalidade do site.\n\nPara mais informações sobre cookies específicos utilizados, entre em contato com nosso DPO (Seção 9)."
+      },
+      "7": {
+        "title": "8. Seus Direitos como Titular",
+        "content": "Conforme a LGPD (Arts. 17 a 22), você tem os seguintes direitos:\n\n- **Confirmação**: saber se tratamos dados seus\n- **Acesso**: obter cópia dos dados que temos sobre você\n- **Correção**: solicitar correção de dados incompletos, inexatos ou desatualizados\n- **Anonimização / Bloqueio / Eliminação**: de dados desnecessários ou tratados em desconformidade\n- **Portabilidade**: receber seus dados em formato estruturado para transferência a outro fornecedor\n- **Eliminação**: solicitar exclusão dos dados tratados com base em consentimento\n- **Informação**: saber com quem compartilhamos seus dados\n- **Revogação do consentimento**: cancelar autorização de tratamento a qualquer momento\n- **Oposição**: opor-se a tratamento realizado com base em legítimo interesse\n\n**Como exercer seus direitos:**\nEnvie sua solicitação para **contato@inovaway.org** com o assunto \"LGPD — [Direito Solicitado]\".\nResponderemos em até **15 dias úteis**, conforme prazo estabelecido na LGPD."
+      },
+      "8": {
+        "title": "9. Encarregado de Dados (DPO)",
+        "content": "A INOVAWAY designou um Encarregado pelo Tratamento de Dados Pessoais (DPO — Data Protection Officer), responsável por:\n\n- Ser o canal de comunicação entre titulares, a empresa e a ANPD\n- Orientar colaboradores sobre as práticas de proteção de dados\n- Receber e responder reclamações e solicitações dos titulares\n\n**Contato com o DPO:**\nE-mail: contato@inovaway.org\nAssunto: \"DPO / Privacidade de Dados\"\n\nA ANPD (Autoridade Nacional de Proteção de Dados) pode ser contactada em: www.gov.br/anpd"
+      },
+      "9": {
+        "title": "10. Segurança dos Dados",
+        "content": "Adotamos medidas técnicas e organizacionais adequadas para proteger seus dados pessoais contra acesso não autorizado, perda, alteração, divulgação ou destruição, incluindo:\n\n- Criptografia de dados em trânsito (HTTPS/TLS)\n- Controle de acesso baseado em função (RBAC)\n- Monitoramento contínuo de segurança\n- Backups regulares e redundância\n- Revisões periódicas de segurança\n\nEm caso de incidente de segurança que possa afetar seus dados, notificaremos os titulares afetados e a ANPD dentro dos prazos legais."
+      },
+      "10": {
+        "title": "11. Alterações desta Política",
+        "content": "Esta Política pode ser atualizada periodicamente para refletir mudanças nos nossos serviços, práticas ou exigências legais.\n\nQuando houver alterações relevantes, notificaremos por e-mail (se tivermos seu contato) ou por aviso em destaque no site. A data da última atualização estará sempre indicada no rodapé desta página.\n\nRecomendamos revisar esta Política periodicamente."
+      },
+      "11": {
+        "title": "12. Lei Aplicável e Foro",
+        "content": "Esta Política é regida pelas leis da República Federativa do Brasil, em especial pela LGPD (Lei nº 13.709/2018) e pelo Código de Defesa do Consumidor (Lei nº 8.078/1990).\n\nPara dirimir eventuais controvérsias, fica eleito o foro da comarca de domicílio do titular dos dados, nos termos do Art. 22 da LGPD."
+      }
+    }
   },
   "TermosPage": {
-    "pageTitle": "Termos de Uso | INOVAWAY",
+    "pageTitle": "Termos de Uso",
     "pageDescription": "Termos de Uso e Condições Gerais de Serviços da INOVAWAY.",
     "lastUpdated": "Última atualização: Janeiro de 2026",
     "backHome": "← Voltar para a home"
@@ -594,15 +785,15 @@
       "description": "Diagnóstico gratuito do seu negócio digital. Sem compromisso. Resposta em até 2 horas."
     },
     "servicos": {
-      "title": "Serviços | INOVAWAY",
+      "title": "Serviços",
       "description": "Sites, funis de vendas, chatbots com IA, design, marketing digital e proteção digital. Um time de IA trabalhando pelo seu negócio."
     },
     "produtos": {
-      "title": "Nosso Time | INOVAWAY",
+      "title": "Nosso Time",
       "description": "UpBro, HNBCRM e GMBAssist — ferramentas de elite para PMEs brasileiras."
     },
     "sobre": {
-      "title": "Sobre nós | INOVAWAY",
+      "title": "Sobre nós",
       "description": "Conheça a INOVAWAY — a agência de IA criada para mudar o jogo das pequenas e médias empresas."
     }
   }

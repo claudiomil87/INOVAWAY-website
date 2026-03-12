@@ -165,10 +165,18 @@
     "titleGradient": "speak for themselves",
     "subtitle": "Results aren't a promise. Results look like this:",
     "stats": {
-      "0": { "label": "Projects delivered" },
-      "1": { "label": "Working for your business" },
-      "2": { "label": "Satisfied clients" },
-      "3": { "label": "Specialists on your team" }
+      "0": {
+        "label": "Projects delivered"
+      },
+      "1": {
+        "label": "Working for your business"
+      },
+      "2": {
+        "label": "Satisfied clients"
+      },
+      "3": {
+        "label": "Specialists on your team"
+      }
     }
   },
   "FAQSection": {
@@ -285,9 +293,15 @@
   },
   "SquadStats": {
     "stats": {
-      "0": { "label": "Specialized Agents" },
-      "1": { "label": "Continuous Operation" },
-      "2": { "label": "Average Delivery Time" }
+      "0": {
+        "label": "Specialized Agents"
+      },
+      "1": {
+        "label": "Continuous Operation"
+      },
+      "2": {
+        "label": "Average Delivery Time"
+      }
     }
   },
   "SocialProofNotification": {
@@ -392,7 +406,7 @@
     }
   },
   "ServicosPage": {
-    "pageTitle": "Services | INOVAWAY",
+    "pageTitle": "Services",
     "badge": "Our Services",
     "title": "Your Competition is Already",
     "titleAI": "Using AI.",
@@ -527,7 +541,7 @@
     }
   },
   "ProdutosPage": {
-    "pageTitle": "Our Products | INOVAWAY",
+    "pageTitle": "Our Products",
     "badge": "Our Products",
     "title": "Elite-Grade",
     "titleGradient": "Tools.",
@@ -539,50 +553,369 @@
       "1": "HNBCRM with $0 monthly cost",
       "2": "GMBAssist optimizing +80 profiles",
       "3": "3 products. 1 mission: grow your business."
+    },
+    "upbro": {
+      "heading": "UpBro — The Salesperson Who",
+      "headingGradient": "Never Takes a Break",
+      "desc1": "UpBro is an intelligent chatbot that attends, converses, qualifies and sells via WhatsApp, Instagram and your website — simultaneously, without you needing to be online.",
+      "desc2": "This isn't one of those dumb chatbots that keeps repeating \"Hi! How can I help?\". ",
+      "desc2bold": "UpBro understands context, responds like a human, and converts.",
+      "desc3": "It's online at 3am, on holidays, on Christmas. Without complaining. Without errors. Without extra cost.",
+      "cta": "I Want My AI Salesperson — Talk Now",
+      "features": {
+        "0": {
+          "title": "Multi-channel",
+          "desc": "One bot that handles WhatsApp, Instagram and website simultaneously, synchronized."
+        },
+        "1": {
+          "title": "AI That Learns",
+          "desc": "The more it's used, the smarter it gets. Talks like a person, not a robot."
+        },
+        "2": {
+          "title": "Automatic Qualification",
+          "desc": "Separates curious visitors from buyers before they reach you. Only hot leads."
+        },
+        "3": {
+          "title": "Integrated Scheduling",
+          "desc": "Client schedules a meeting directly via chat. No back and forth in DMs."
+        },
+        "4": {
+          "title": "Connects to Everything",
+          "desc": "CRM, spreadsheet, email, internal system. Integrates anything with anything."
+        },
+        "5": {
+          "title": "Control Panel",
+          "desc": "Conversations, conversion rate and performance in real time. You in control."
+        }
+      }
+    },
+    "hnbcrm": {
+      "freeBadge": "100% Free",
+      "openSourceBadge": "Open Source",
+      "heading": "HNBCRM — CRM",
+      "headingGradient": "Free for Those Who Sell",
+      "desc1": "HNBCRM is where you organize all your clients and sales opportunities. You know when you lose that note on paper? Or forget to follow up with that hot lead? With HNBCRM, ",
+      "desc1bold": "that never happens again.",
+      "desc2": "It's free. It's open source (the code is yours). No monthly fee. No 'premium' plan that locks basic functionality. We built it for internal use — and it worked so well we opened it to everyone.",
+      "priceLine": "$0.00.",
+      "priceSubline": "No asterisk. No fine print. No catch.",
+      "ctaFree": "Create free account",
+      "ctaGithub": "View code on GitHub",
+      "imgAlt": "HNBCRM — Free CRM",
+      "imgFallbackLine": "100% free and open source CRM",
+      "features": {
+        "0": {
+          "title": "Visual Pipeline",
+          "desc": "Drag and drop your leads through the sales funnel. Like Trello, but for sales."
+        },
+        "1": {
+          "title": "Contact Management",
+          "desc": "Complete history of each client on one screen. Losing nothing."
+        },
+        "2": {
+          "title": "Integrated Conversations",
+          "desc": "All messages (WhatsApp, email) inside the CRM. Everything in its place."
+        },
+        "3": {
+          "title": "Integrated AI",
+          "desc": "Follow-up suggestions, lead analysis, smart automations."
+        },
+        "4": {
+          "title": "Open Source",
+          "desc": "The code is yours. Install where you want. Customize as you want. No strings attached."
+        },
+        "5": {
+          "title": "Full Export",
+          "desc": "Your data is yours — export whenever you want, however you want. Always."
+        }
+      }
+    },
+    "gmb": {
+      "heading": "GMBAssist — Appear on Google",
+      "headingGradient": "Before Your Competitor",
+      "desc1": "When someone searches Google for 'restaurant near me' or 'mechanic in [your city]' — what appears first is Google Business Profile. GMBAssist manages, optimizes and keeps your profile ",
+      "desc1bold": "always at peak performance.",
+      "desc2": "46% of Google searches are local. Your client is looking for you right now. Be there.",
+      "desc3": "Clinic, office, restaurant, store, service provider — if you serve clients in person, you need GMBAssist.",
+      "cta": "I Want to Appear on Google — Talk Now",
+      "features": {
+        "0": "Complete Google Business profile optimization",
+        "1": "Management and automatic responses to reviews",
+        "2": "Automatic posts to keep the profile active",
+        "3": "Performance report: clicks, calls and visits",
+        "4": "Ranking monitoring vs. local competitors",
+        "5": "AI responds to reviews with your brand voice"
+      }
+    },
+    "finalCta": {
+      "heading": "The Technology That Was Only for",
+      "headingGradient": "Large Corporations.",
+      "headingSuffix": "Now It's Yours.",
+      "desc1": "UpBro + HNBCRM + GMBAssist. Three weapons. One mission: make your business grow faster than you imagine.",
+      "desc2": "But beware — we work with a limited number of clients at a time to guarantee quality.",
+      "cta": "Talk to Inovaway and Reserve My Spot",
+      "small": "Free diagnosis • No commitment • Response within 24h"
     }
   },
   "SobrePage": {
-    "pageTitle": "About Us | INOVAWAY",
+    "pageTitle": "About Us",
     "badge": "Our Story",
-    "title": "We were born to",
-    "titleGradient": "change the game.",
-    "subtitle": "We are the AI agency that small entrepreneurs needed — but that nobody had created yet.",
-    "cta": "I Want to Be Part of This",
-    "values": {
-      "title": "Our Values",
+    "title": "We are the Technology Team Your Business",
+    "titleGradient": "Deserved to Have,",
+    "titleSuffix": "But Never Could Afford.",
+    "subtitle": "Inovaway was born from an indignation: why do only big companies have access to cutting-edge technology? We came to change that. Forever.",
+    "cta": "I Want to Know Inovaway — Talk Now",
+    "socialProof": {
+      "0": "15+ years of technology experience",
+      "1": "+200 businesses transformed",
+      "2": "AI team active 24/7",
+      "3": "Clients in Brazil, Portugal and USA"
+    },
+    "history": {
+      "title": "Our Story",
+      "p1": "We didn't start in a garage. ",
+      "p1Bold": "But almost.",
+      "p2": "Our founder spent ",
+      "p2Bold": "over 15 years",
+      "p2End": " in the technology world. He worked with big companies, saw how they operated, what tools they used, why they grew while small businesses struggled.",
+      "p3": "And the answer was simple — and unfair: ",
+      "p3Bold": "access.",
+      "p4": "Big companies had entire teams of IT, designers, marketers, data analysts. SMBs had... a spreadsheet and a nephew who \"knew about computers\".",
+      "p5": "That needed to change.",
+      "p6": "Inovaway was born to be the technology team that every small and medium entrepreneur deserves to have — but that before only those with a lot of money could afford.",
+      "p7": "Today, with artificial intelligence, automation and a passionate team, we deliver the work of a $50,000/month agency — ",
+      "p7Bold": "for a fraction of that price.",
+      "p8": "And that's not an exaggeration. It's what happens when you use technology the right way."
+    },
+    "mission": {
+      "title": "🎯 Mission",
+      "quote": "\"Democratize access to cutting-edge technology for small and medium businesses — and make each client grow faster than they imagine possible.\"",
+      "desc": "We don't believe that company size defines who deserves good technology. We believe that ",
+      "descBold": "every business with a serious product deserves a serious chance to grow."
+    },
+    "vision": {
+      "title": "👁️ Vision",
+      "quote": "\"A world where every entrepreneur has an elite technology team by their side — no matter the size of the business or the size of the wallet.\"",
+      "desc": "We are building that. Now. One client at a time."
+    },
+    "valuesTitle": "Our 5 Values ",
+    "valuesSubtitle": "(No HR Talk)",
+    "valuesDesc": "Real principles. Not wall decoration.",
+    "comparison": {
+      "title": "Why We Are ",
+      "titleGradient": "Fundamentally Different",
+      "subtitle": "There are hundreds of digital agencies out there. See the difference in practice.",
+      "marketHeader": "The Market Offers",
+      "inovawayHeader": "Inovaway Delivers",
+      "rows": {
+        "0": {
+          "market": "Human team (sleeps, takes vacations, gets sick)",
+          "inovaway": "AI + human team operating 24/7/365"
+        },
+        "1": {
+          "market": "Results in 6-12 months",
+          "inovaway": "Visible growth in 30-90 days"
+        },
+        "2": {
+          "market": "Project delivered and abandoned",
+          "inovaway": "Continuous improvement and constant support"
+        },
+        "3": {
+          "market": "Big agency pricing",
+          "inovaway": "Affordable pricing for SMBs"
+        },
+        "4": {
+          "market": "Generic third-party tools",
+          "inovaway": "Own products (UpBro, HNBCRM, GMBAssist)"
+        },
+        "5": {
+          "market": "Focus on service delivery",
+          "inovaway": "Focus on client's financial results"
+        }
+      },
+      "footer": "Our AI team has no ego. No bias. No bad days. It analyzes data, identifies opportunities, creates content, serves clients and optimizes campaigns — non-stop.",
+      "footer2": "Then you ask: \"But is there a human in this?\" Yes. Always. But powered by AI. ",
+      "footer2Bold": "The result is a team that produces 10x more, for 10x less."
+    },
+    "team": {
+      "title": "Our Team: ",
+      "titleGradient": "Elite Squad",
+      "p1": "We don't have a \"marketing department\". We have Spark. We don't have a \"dev team\". We have Nova and Forge. Each agent is a specialist in their area — trained, focused, no distractions.",
+      "p2": "Each agent operates autonomously, but coordinated. Arch orchestrates. Each one executes. The result is a team that delivers in days what agencies take weeks.",
+      "p3": "Fast because it's specialized. Cheap because it's efficient. Effective because it uses AI the right way."
+    },
+    "testimonials": {
+      "title": "What Our Clients Say",
       "0": {
-        "title": "Results Above All",
-        "desc": "We don't charge by the hour. We don't sell process. We sell results. If it doesn't work for you, it doesn't work for us."
+        "quote": "In 60 days with Inovaway, my revenue grew 40%. I didn't believe it until I saw the report.",
+        "author": "Ricardo M.",
+        "role": "Dental clinic owner"
       },
       "1": {
-        "title": "Radical Transparency",
-        "desc": "Something went wrong? We say so. Running late? We'll tell you. No fluff. No BS. No going silent when things get tough."
+        "quote": "I hired a famous agency before and wasted $1,500. With Inovaway I spent less and got real results.",
+        "author": "Ana Paula S.",
+        "role": "Fashion e-commerce"
       },
       "2": {
-        "title": "Continuous Improvement",
-        "desc": "We never deliver and disappear. Our systems learn. Our team improves. Your business grows."
-      },
-      "3": {
-        "title": "Simplicity",
-        "desc": "Complex technology that nobody uses is worthless. We simplify. You use it. And you sell more."
-      },
-      "4": {
-        "title": "Real Partnership",
-        "desc": "Your growth is our growth. We're not vendors. We're partners. There's a difference."
+        "quote": "Their chatbot (UpBro) attends to my clients at 2am. I've already sold while sleeping.",
+        "author": "Carlos T.",
+        "role": "Financial consultant"
       }
+    },
+    "impactQuote": {
+      "title": "\"What big companies pay ",
+      "titleGradient": "$50,000/month",
+      "titleEnd": " in agency, you have with Inovaway for a fraction.\"",
+      "desc": "Not because we're cheap. But because we're ",
+      "descBold": "efficient.",
+      "descEnd": " Artificial intelligence changes the game. And we use it for you."
+    },
+    "finalCta": {
+      "title": "Your Company Deserves to Grow. ",
+      "titleGradient": "And You Deserve to Sleep Well.",
+      "subtitle": "Free diagnosis. No commitment. No BS.",
+      "subtitle2": "We look at your business, identify the biggest bottleneck and tell you what to do — ",
+      "subtitle2Bold": "for free.",
+      "subtitle3": "But be careful: ",
+      "subtitle3Bold": "we open few diagnosis spots per month.",
+      "subtitle3End": " First come, first served.",
+      "cta": "I Want My Free Diagnosis — Talk to Inovaway Now",
+      "small": "Response within 24h • 100% free • No commitment"
     }
   },
   "PrivacidadePage": {
-    "pageTitle": "Privacy Policy | INOVAWAY",
+    "pageTitle": "Privacy Policy",
     "pageDescription": "Learn about INOVAWAY's Privacy Policy in accordance with LGPD and GDPR.",
-    "lastUpdated": "Last updated: January 2026",
-    "backHome": "← Back to home"
+    "lastUpdated": "Last updated: March 2026",
+    "backHome": "← Back to home",
+    "badge": "Legal",
+    "title": "Privacy",
+    "titleGradient": "Policy",
+    "subtitle": "In accordance with the General Data Protection Law — LGPD (Law No. 13.709/2018).",
+    "indexTitle": "Index",
+    "contactTitle": "Questions about privacy?",
+    "contactSubtitle": "Contact our Data Protection Officer (DPO):",
+    "contactEmail": "contato@inovaway.org",
+    "termsLink": "View Terms of Use →",
+    "sections": {
+      "0": {
+        "title": "1. Introduction",
+        "content": "INOVAWAY (\"we\", \"our\" or \"company\"), a legal entity registered and operating in Brazil, with digital presence at inovaway.org, is committed to protecting the privacy and personal data of its users, customers and visitors.\n\nThis Privacy Policy describes how we collect, use, store, share and protect your personal information, in accordance with the General Data Protection Law (LGPD — Law No. 13.709/2018) and other applicable legislation.\n\nBy using our services, you agree to the practices described in this Policy. We recommend reading it in full before providing any personal data."
+      },
+      "1": {
+        "title": "2. Personal Data Collected",
+        "content": "We collect personal data in the following situations:\n\n**2.1 Data provided directly by you:**\n- Full name and identification data\n- Email address\n- Phone number / WhatsApp\n- Company name and business segment\n- Messages and content sent via contact forms\n\n**2.2 Data collected automatically:**\n- IP address and approximate geolocation data\n- Browser type and version and operating system\n- Pages visited, time spent and access origin\n- Cookie data and similar technologies (see Section 7)\n\n**2.3 Data from contracted services usage:**\n- Interaction history with our platforms (UpBro, HNBCRM, GMBAssist)\n- Automation and integration configuration data\n- Access and activity logs in tools\n\nWe do not collect sensitive data (health, racial origin, religious conviction, biometric data, etc.) without explicit consent and legal justification."
+      },
+      "2": {
+        "title": "3. Purpose of Processing",
+        "content": "We process your personal data for the following purposes:\n\n**3.1 Contract execution:**\n- Provide contracted services (websites, automations, marketing, consulting)\n- Maintain and improve platforms and tools\n- Process payments and issue invoices\n\n**3.2 Communication and support:**\n- Respond to requests, questions and messages\n- Send updates about ongoing projects\n- Notify about changes to services or this Policy\n\n**3.3 Marketing (with consent):**\n- Send newsletters and informational materials\n- Present news, success stories and relevant offers\n- You can cancel this consent at any time\n\n**3.4 Legitimate interest and security:**\n- Prevent fraud and ensure platform security\n- Comply with legal and regulatory obligations\n- Improve user experience based on aggregated analysis"
+      },
+      "3": {
+        "title": "4. Legal Basis (LGPD)",
+        "content": "We process your data based on the following legal hypotheses provided in Art. 7 of the LGPD:\n\n- **Consent** (Art. 7, I): for sending marketing communications\n- **Contract execution** (Art. 7, V): for providing contracted services\n- **Legitimate interest** (Art. 7, IX): for service improvement and security\n- **Compliance with legal obligation** (Art. 7, II): to meet tax, accounting and regulatory requirements\n\nWhen processing is based on consent, you may revoke it at any time without prejudice to processing carried out previously."
+      },
+      "4": {
+        "title": "5. Data Sharing",
+        "content": "Your personal data may be shared with:\n\n**5.1 Technology partners and suppliers:**\n- Cloud hosting and infrastructure platforms\n- Analytics and performance monitoring tools\n- Marketing automation and CRM systems\n- Payment processors\n\nThese partners process data strictly according to our instructions and are contractually obligated to maintain confidentiality.\n\n**5.2 Authorities and legal obligations:**\nWe may share data with governmental, judicial or regulatory authorities when required by law, court order or for defense of INOVAWAY's legal rights.\n\n**We do not sell, rent or commercialize personal data of customers and users to third parties.** Never."
+      },
+      "5": {
+        "title": "6. Storage and Retention",
+        "content": "Your data is stored on secure servers, preferably located in Brazil or in countries that guarantee adequate level of protection as per LGPD.\n\n**Retention periods:**\n- Active customer data: during entire contract term + 5 years (tax/legal obligation)\n- Lead and contact data: up to 2 years after last contact or until consent revocation\n- Access logs: 6 months (per Internet Civil Framework — Law 12.965/2014)\n- Marketing communication data: until consent revocation\n\nAfter the retention period, data is securely deleted or anonymized."
+      },
+      "6": {
+        "title": "7. Cookies and Tracking Technologies",
+        "content": "We use cookies and similar technologies for:\n\n**7.1 Essential cookies (necessary):**\nEnsure basic website functionality. Cannot be disabled.\n\n**7.2 Performance and analytics cookies:**\nWe collect data about how the site is used (pages visited, session time, origin) to improve experience. We use tools like Google Analytics.\n\n**7.3 Marketing cookies (optional):**\nUsed to personalize ads and measure campaign effectiveness. Only activated with your consent.\n\n**Cookie management:**\nYou can configure your browser to block or delete cookies. Note that disabling some cookies may affect site functionality.\n\nFor more information about specific cookies used, contact our DPO (Section 9)."
+      },
+      "7": {
+        "title": "8. Your Rights as Data Subject",
+        "content": "Per LGPD (Arts. 17 to 22), you have the following rights:\n\n- **Confirmation**: know if we process your data\n- **Access**: obtain a copy of data we have about you\n- **Correction**: request correction of incomplete, inaccurate or outdated data\n- **Anonymization / Blocking / Deletion**: of unnecessary data or processed non-compliantly\n- **Portability**: receive your data in structured format for transfer to another provider\n- **Deletion**: request deletion of data processed based on consent\n- **Information**: know with whom we share your data\n- **Consent revocation**: cancel processing authorization at any time\n- **Opposition**: oppose processing carried out based on legitimate interest\n\n**How to exercise your rights:**\nSend your request to **contato@inovaway.org** with subject \"LGPD — [Requested Right]\".\nWe will respond within **15 business days**, as established by LGPD."
+      },
+      "8": {
+        "title": "9. Data Protection Officer (DPO)",
+        "content": "INOVAWAY has designated a Data Protection Officer (DPO), responsible for:\n\n- Being the communication channel between data subjects, the company and ANPD\n- Guiding employees on data protection practices\n- Receiving and responding to complaints and requests from data subjects\n\n**DPO Contact:**\nEmail: contato@inovaway.org\nSubject: \"DPO / Data Privacy\"\n\nANPD (National Data Protection Authority) can be contacted at: www.gov.br/anpd"
+      },
+      "9": {
+        "title": "10. Data Security",
+        "content": "We adopt adequate technical and organizational measures to protect your personal data against unauthorized access, loss, alteration, disclosure or destruction, including:\n\n- Data encryption in transit (HTTPS/TLS)\n- Role-based access control (RBAC)\n- Continuous security monitoring\n- Regular backups and redundancy\n- Periodic security reviews\n\nIn case of a security incident that may affect your data, we will notify affected data subjects and ANPD within legal timeframes."
+      },
+      "10": {
+        "title": "11. Policy Updates",
+        "content": "This Policy may be updated periodically to reflect changes in our services, practices or legal requirements.\n\nWhen there are relevant changes, we will notify by email (if we have your contact) or by prominent notice on the site. The date of the last update will always be indicated at the bottom of this page.\n\nWe recommend reviewing this Policy periodically."
+      },
+      "11": {
+        "title": "12. Applicable Law and Jurisdiction",
+        "content": "This Policy is governed by the laws of the Federative Republic of Brazil, especially the LGPD (Law No. 13.709/2018) and the Consumer Protection Code (Law No. 8.078/1990).\n\nTo resolve any disputes, the jurisdiction of the data subject's domicile district is elected, pursuant to Art. 22 of the LGPD."
+      }
+    }
   },
   "TermosPage": {
-    "pageTitle": "Terms of Use | INOVAWAY",
+    "pageTitle": "Terms of Use",
     "pageDescription": "INOVAWAY Terms of Use and General Service Conditions.",
-    "lastUpdated": "Last updated: January 2026",
-    "backHome": "← Back to home"
+    "lastUpdated": "Last updated: March 2026",
+    "backHome": "← Back to home",
+    "badge": "Legal",
+    "title": "Terms of",
+    "titleGradient": "Use",
+    "subtitle": "General conditions for using the website and services provided by INOVAWAY. Read carefully before contracting.",
+    "indexTitle": "Index",
+    "contactTitle": "Questions about the Terms?",
+    "contactSubtitle": "Contact our legal and commercial team:",
+    "contactEmail": "contato@inovaway.org",
+    "privacyLink": "View Privacy Policy →",
+    "sections": {
+      "0": {
+        "title": "1. Object and Acceptance",
+        "content": "These Terms of Use (\"Terms\") regulate the relationship between **INOVAWAY** (\"Company\", \"we\") and the user or customer (\"User\", \"you\") who accesses the website inovaway.org or contracts services offered by INOVAWAY.\n\nBy accessing the website, filling out any form, contracting services or using INOVAWAY platforms (including UpBro, HNBCRM and GMBAssist), you declare that you have read, understood and fully agreed to these Terms.\n\n**If you do not agree with any provision of these Terms, do not use our services.**\n\nINOVAWAY reserves the right to update these Terms at any time. Changes take effect on the publication date. Continued use of services after publication of changes constitutes acceptance of the new Terms."
+      },
+      "1": {
+        "title": "2. Description of Services",
+        "content": "INOVAWAY offers technology and digital marketing services for small and medium businesses, including but not limited to:\n\n**2.1 Development services:**\n- Creation and maintenance of websites and web applications\n- Development of chatbots and automations (UpBro platform)\n- API integrations with third-party platforms\n- CRM and relationship management systems (HNBCRM)\n\n**2.2 Digital marketing services:**\n- Google My Business presence management (GMBAssist)\n- Creation and management of paid traffic campaigns\n- Content production and visual identity\n- Growth and conversion strategies\n\n**2.3 Consulting and diagnostics:**\n- Business digital analysis and diagnostics\n- Technology strategy and planning\n- Training and capacity building\n\nDetailed specifications of each service are defined in commercial proposal or specific contract signed between the parties."
+      },
+      "2": {
+        "title": "3. Registration and User Account",
+        "content": "To contract services or access restricted platforms, the User must:\n\n- Provide true, complete and updated information\n- Keep their access data (login and password) in absolute secrecy\n- Immediately notify INOVAWAY in case of unauthorized access\n\nThe User is responsible for all actions performed with their access credentials. INOVAWAY is not responsible for damages resulting from unauthorized use of accounts due to the User's failure to protect their credentials.\n\nINOVAWAY reserves the right to suspend or terminate accounts that violate these Terms, without prior notice in cases of serious violation."
+      },
+      "3": {
+        "title": "4. Intellectual Property",
+        "content": "**4.1 INOVAWAY Property:**\nAll content available on the website inovaway.org — including but not limited to texts, images, logos, videos, source code, layout, methodologies and trademarks — is the exclusive property of INOVAWAY or its licensors, protected by the Copyright Law (Law No. 9,610/1998) and the Industrial Property Law (Law No. 9,279/1996).\n\nIt is prohibited to reproduce, distribute, modify, adapt, translate, create derivative works or commercially exploit any content without prior written authorization from INOVAWAY.\n\n**4.2 Property of deliverables to the customer:**\nAfter full payment of amounts due, customized deliverables produced exclusively for the customer (websites, arts, texts on demand) are transferred to the contractor, as specified in the service contract.\n\n**4.3 SaaS Platforms:**\nThe UpBro, HNBCRM and GMBAssist platforms are provided as Software as a Service (SaaS). The customer acquires the right to use (non-exclusive and non-transferable license), not the ownership of the software.\n\n**4.4 User content:**\nBy sharing content with INOVAWAY for service provision purposes, the User declares that they have all necessary rights over that content and grants INOVAWAY a license to use it exclusively for the provision of contracted services."
+      },
+      "4": {
+        "title": "5. Payment and Commercial Conditions",
+        "content": "**5.1 Pricing:**\nService values are defined in commercial proposal approved by the customer. INOVAWAY may change its prices with 30 days prior notice for current contracts.\n\n**5.2 Payment method and deadline:**\nPayment conditions are established in the specific contract. Non-payment within agreed deadlines may result in:\n- Service suspension after 15 days of delay\n- Interest of 1% per month and fine of 2% on the overdue amount\n- Contract termination after 30 days of default\n\n**5.3 Refunds:**\nServices already provided are non-refundable, except in cases of proven INOVAWAY failure. For SaaS services, there is no proportional refund for unused period, unless otherwise specified in the contract.\n\n**5.4 Taxes:**\nQuoted prices do not include applicable taxes, which will be added according to current legislation."
+      },
+      "5": {
+        "title": "6. Responsibilities of the Parties",
+        "content": "**6.1 INOVAWAY Responsibilities:**\n- Provide services with quality and within agreed deadlines\n- Maintain confidentiality of customer information\n- Notify the customer about relevant project issues\n- Protect personal data according to Privacy Policy\n\n**6.2 User/Customer Responsibilities:**\n- Provide accurate information and materials necessary for service execution\n- Make payments within agreed deadlines\n- Respect INOVAWAY's and third parties' intellectual property rights\n- Use services in accordance with Brazilian legislation\n- Not use platforms for illegal, defamatory, deceptive activities or that violate third parties' rights"
+      },
+      "6": {
+        "title": "7. Limitation of Liability",
+        "content": "**7.1 Warranty exclusion:**\nServices are provided \"as is\". INOVAWAY does not guarantee that services will be uninterrupted, error-free or that they will meet specific requirements not previously agreed upon.\n\n**7.2 Damage limitation:**\nUnder no circumstances will INOVAWAY be liable for:\n- Indirect, incidental, consequential, special or punitive damages\n- Loss of profits, revenue, data or business opportunities\n- Damages resulting from third party actions, cyberattacks or infrastructure failures outside INOVAWAY's control\n- Specific marketing or sales results, which depend on external factors not controllable\n\n**7.3 Liability ceiling:**\nINOVAWAY's total liability regarding any claim is limited to the amount paid by the customer in the 3 months prior to the event that generated the claim.\n\n**7.4 Force majeure:**\nINOVAWAY will not be liable for delays or failures resulting from events outside its reasonable control (force majeure), including natural disasters, internet infrastructure failures, pandemics or government acts."
+      },
+      "7": {
+        "title": "8. Acceptable Use",
+        "content": "It is strictly prohibited to use INOVAWAY services and platforms to:\n\n- Violate Brazilian or international laws or regulations\n- Send spam, phishing or unsolicited communications\n- Distribute malware, viruses or malicious code\n- Carry out attacks on third-party systems\n- Collect user data without consent\n- Publish defamatory, pornographic, discriminatory content or that incites violence\n- Infringe copyrights, trademarks or other intellectual property rights\n- Reverse engineer INOVAWAY platforms\n- Practice unfair competition or copy INOVAWAY's proprietary methodologies\n\nNon-compliance with these rules may result in immediate service suspension and civil and criminal liability."
+      },
+      "8": {
+        "title": "9. Privacy and Personal Data",
+        "content": "The processing of personal data by INOVAWAY is governed by our Privacy Policy, available at inovaway.org/privacidade, which is an integral part of these Terms.\n\nBy using our services, you consent to the processing of your data as described in the Privacy Policy, in accordance with LGPD (Law No. 13,709/2018)."
+      },
+      "9": {
+        "title": "10. Confidentiality",
+        "content": "Both parties undertake to maintain in strict confidentiality all confidential information exchanged within the scope of the commercial relationship, including:\n\n- Strategic and business information\n- Customer data and intellectual property\n- Proprietary methodologies, processes and tools\n\nThis confidentiality obligation persists for **2 years** after the termination of the contract or commercial relationship, unless otherwise specified in a specific contract.\n\nInformation that is public domain, that was already previously known by the receiving party or that is legally required by competent authority is not considered confidential."
+      },
+      "10": {
+        "title": "11. Termination and Suspension",
+        "content": "**11.1 Termination by either party:**\nEither party may terminate the contract with **30 days** prior written notice, unless the specific contract establishes a different deadline.\n\n**11.2 Immediate termination by INOVAWAY:**\nINOVAWAY may immediately suspend or terminate services in case of:\n- Violation of these Terms or the specific contract\n- Default exceeding 30 days\n- Use of services for illegal purposes or harmful to third parties\n\n**11.3 Effects of termination:**\nAfter termination, the customer will have access to their data and deliverables for 30 days. After this period, data may be deleted. Amounts due until the termination date remain payable."
+      },
+      "11": {
+        "title": "12. General Provisions",
+        "content": "**12.1 Integrality:**\nThese Terms, together with the Privacy Policy and any specific contract signed, constitute the entire agreement between the parties on the subject.\n\n**12.2 Assignment:**\nThe User cannot assign or transfer their rights and obligations arising from these Terms without prior written consent from INOVAWAY.\n\n**12.3 Independence of clauses:**\nIf any provision of these Terms is considered invalid or unenforceable, the remaining provisions will remain in full force.\n\n**12.4 Tolerance:**\nINOVAWAY's tolerance regarding any non-compliance does not imply waiver of the right to demand subsequent compliance.\n\n**12.5 Communications:**\nFormal communications between the parties must be made in writing, preferably by email (contato@inovaway.org), with receipt confirmation."
+      },
+      "12": {
+        "title": "13. Applicable Law and Jurisdiction",
+        "content": "These Terms are governed exclusively by the laws of the Federative Republic of Brazil.\n\nFor the resolution of any conflict arising from these Terms or services provided, the parties elect the **Forum of the User's domicile district**, pursuant to Art. 101 of the Consumer Protection Code (Law No. 8,078/1990), expressly waiving any other, however privileged it may be.\n\nFor corporate customers, the forum of the District of **Recife/PE** is elected, with waiver of any other.\n\nBefore resorting to the Judiciary, the parties undertake to seek amicable solution within 30 days after formal notification of the conflict.\n\n**Contact:** contato@inovaway.org"
+      }
+    }
   },
   "Metadata": {
     "home": {
@@ -594,15 +927,15 @@
       "description": "Free diagnosis of your digital business. No commitment. Response within 2 hours."
     },
     "servicos": {
-      "title": "Services | INOVAWAY",
+      "title": "Services",
       "description": "Websites, sales funnels, AI chatbots, design, digital marketing and digital protection. An AI team working for your business."
     },
     "produtos": {
-      "title": "Our Products | INOVAWAY",
+      "title": "Our Products",
       "description": "UpBro, HNBCRM and GMBAssist — elite tools for SMBs."
     },
     "sobre": {
-      "title": "About Us | INOVAWAY",
+      "title": "About Us",
       "description": "Meet INOVAWAY — the AI agency created to change the game for small and medium businesses."
     }
   }

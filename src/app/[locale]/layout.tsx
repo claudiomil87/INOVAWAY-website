@@ -47,17 +47,29 @@ export async function generateMetadata({
       template: "%s | INOVAWAY",
     },
     description,
-    keywords: [
-      "AI Agents",
-      "automação",
-      "chatbot",
-      "sites",
-      "inteligência artificial",
-      "INOVAWAY",
-      "agência digital",
-      "IA",
-      "funil de vendas",
-    ],
+    keywords: isEn
+      ? [
+          "AI Agents",
+          "automation",
+          "chatbot",
+          "websites",
+          "artificial intelligence",
+          "INOVAWAY",
+          "digital agency",
+          "AI",
+          "sales funnel",
+        ]
+      : [
+          "AI Agents",
+          "automação",
+          "chatbot",
+          "sites",
+          "inteligência artificial",
+          "INOVAWAY",
+          "agência digital",
+          "IA",
+          "funil de vendas",
+        ],
     authors: [{ name: "INOVAWAY", url: BASE_URL }],
     creator: "INOVAWAY",
     publisher: "INOVAWAY",
@@ -117,21 +129,25 @@ export async function generateMetadata({
   };
 }
 
-const organizationSchema = {
-  "@context": "https://schema.org",
-  "@type": "Organization",
-  name: "INOVAWAY",
-  url: BASE_URL,
-  logo: `${BASE_URL}/logo.png`,
-  description:
-    "Agência de AI Agents autônomos. Sites, chatbots, automações e mais — entregues em horas, não semanas.",
-  contactPoint: {
-    "@type": "ContactPoint",
-    contactType: "customer service",
-    availableLanguage: ["Portuguese", "English"],
-  },
-  sameAs: ["https://instagram.com/inovaway", "https://linkedin.com/company/inovaway"],
-};
+function getOrganizationSchema(locale: string) {
+  const description = locale === "en"
+    ? "AI agency for small and medium businesses. Websites, chatbots, automations and more — delivered in hours, not weeks."
+    : "Agência de AI Agents autônomos. Sites, chatbots, automações e mais — entregues em horas, não semanas.";
+  return {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    name: "INOVAWAY",
+    url: BASE_URL,
+    logo: `${BASE_URL}/logo.png`,
+    description,
+    contactPoint: {
+      "@type": "ContactPoint",
+      contactType: "customer service",
+      availableLanguage: ["Portuguese", "English"],
+    },
+    sameAs: ["https://instagram.com/inovaway", "https://linkedin.com/company/inovaway"],
+  };
+}
 
 const websiteSchema = {
   "@context": "https://schema.org",
@@ -164,6 +180,7 @@ export default async function LocaleLayout({
 
   const messages = await getMessages();
   const htmlLang = locale === "pt" ? "pt-BR" : locale;
+  const organizationSchema = getOrganizationSchema(locale);
 
   return (
     <html
