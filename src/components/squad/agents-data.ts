@@ -123,7 +123,7 @@ export const agents: Agent[] = [
     emoji: "🔍",
     color: "#10B981",
     role: "Analista de Pesquisa & Inteligência",
-    avatar: "/scout-avatar.webp",
+    avatar: "/squad/scout-avatar.webp",
     bio: "Scout não deixa pedra sem virar. Enquanto os outros agents trabalham, Scout já pesquisou 47 fontes, separou o sinal do ruído e entregou um relatório conciso.",
     skills: ["WebResearch", "DataAnalysis", "CompetitiveIntelligence", "Synthesis", "Fact-Checking"],
     statusMessage: "Pesquisa seu mercado e descobre oportunidades",
