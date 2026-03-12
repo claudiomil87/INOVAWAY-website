@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
+import { useLocale } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import Image from "next/image";
 import { Lock, Zap, Gift } from "lucide-react";
@@ -68,6 +69,7 @@ function ResponseTimer() {
 }
 
 export default function ContatoPage() {
+  const locale = useLocale();
   const [selectedNeed, setSelectedNeed] = useState("");
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -90,6 +92,7 @@ export default function ContatoPage() {
           website: formData.get("website"),
           need: selectedNeed,
           message: formData.get("message"),
+          locale: locale,
         }),
       });
       if (response.ok) {

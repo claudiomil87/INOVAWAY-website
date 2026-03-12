@@ -7,6 +7,9 @@ export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
 
+    const localeLabel = body.locale === 'en' ? 'English' : 'Português';
+    const localeTag = body.locale === 'en' ? '[EN]' : '[PT]';
+
     const response = await fetch(HNBCRM_API_URL, {
       method: 'POST',
       headers: {
@@ -14,7 +17,7 @@ export async function POST(request: NextRequest) {
         'X-API-Key': HNBCRM_API_KEY,
       },
       body: JSON.stringify({
-        title: `Lead Site INOVAWAY: ${body.name}`,
+        title: `${localeTag} Lead Site INOVAWAY: ${body.name}`,
         contact: {
           firstName: body.name?.split(' ')[0] || body.name,
           lastName: body.name?.split(' ').slice(1).join(' ') || '',
@@ -26,10 +29,11 @@ export async function POST(request: NextRequest) {
           body.company ? `Empresa: ${body.company}` : null,
           `Serviços de interesse: ${body.services?.length ? body.services.join(', ') : 'Não especificado'}`,
           `Orçamento aproximado: ${body.budget || 'Não informado'}`,
+          `Idioma do site: ${localeLabel}`,
           `\nMensagem do lead:\n${body.message || 'Sem mensagem adicional'}`,
         ].filter(Boolean).join('\n'),
         channel: 'webchat',
-        tags: ['website', 'inovaway.org'],
+        tags: ['website', 'inovaway.org', `locale:${body.locale || 'pt'}`],
         temperature: 'warm',
       }),
     });
