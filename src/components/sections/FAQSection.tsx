@@ -3,29 +3,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronDown } from "lucide-react";
-
-const faqs = [
-  {
-    q: "Preciso entender de tecnologia pra trabalhar com vocês?",
-    a: "Não. Zero. Você fala o que precisa em português mesmo, e a gente traduz pra tecnologia. Você aprova o resultado final e pronto.",
-  },
-  {
-    q: "Quanto tempo leva pra ter resultado?",
-    a: "Depende do que você precisa, mas a maioria dos projetos começa a trazer resultado em menos de 30 dias. Nada de esperar meses.",
-  },
-  {
-    q: "É caro? Não tenho budget de empresa grande.",
-    a: "A gente foi criada pra resolver exatamente isso. Você tem acesso a um time completo pelo preço de um freelancer. Peça um orçamento — você vai se surpreender.",
-  },
-  {
-    q: "E se eu não gostar do resultado?",
-    a: "A gente revisa até você ficar satisfeito. Sem discussão, sem burocracia. Resultado que agrada você é o nosso único objetivo.",
-  },
-  {
-    q: "Vocês atendem fora de São Paulo?",
-    a: "Atendemos qualquer empresa do Brasil — e do mundo. Somos 100% digitais. Se você tem internet, a gente te atende.",
-  },
-];
+import { useTranslations } from "next-intl";
 
 function FAQItem({ q, a, index }: { q: string; a: string; index: number }) {
   const [open, setOpen] = useState(false);
@@ -68,6 +46,13 @@ function FAQItem({ q, a, index }: { q: string; a: string; index: number }) {
 }
 
 export default function FAQSection() {
+  const t = useTranslations("FAQSection");
+
+  const faqs = Array.from({ length: 5 }, (_, i) => ({
+    q: t(`faqs.${i}.q`),
+    a: t(`faqs.${i}.a`),
+  }));
+
   return (
     <section className="px-4 py-16 md:py-24">
       <div className="mx-auto max-w-3xl">
@@ -79,12 +64,12 @@ export default function FAQSection() {
           className="mb-12 text-center"
         >
           <h2 className="text-3xl font-bold text-white md:text-4xl lg:text-5xl">
-            Suas dúvidas,{" "}
+            {t("title")}{" "}
             <span
               className="bg-clip-text text-transparent"
               style={{ backgroundImage: "linear-gradient(135deg, #00FF41, #06B6D4)" }}
             >
-              respondidas de verdade
+              {t("titleGradient")}
             </span>
           </h2>
         </motion.div>

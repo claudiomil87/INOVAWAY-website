@@ -1,0 +1,609 @@
+{
+  "Header": {
+    "nav": {
+      "services": "Serviços",
+      "team": "Nosso Time",
+      "about": "Sobre nós",
+      "ready": "Você está pronto?"
+    },
+    "cta": "Começar agora →",
+    "openMenu": "Abrir menu",
+    "closeMenu": "Fechar menu",
+    "logoAlt": "INOVAWAY"
+  },
+  "Footer": {
+    "brand": {
+      "tagline": "Seu time completo de inteligência artificial. Trabalhamos pelo crescimento do seu negócio enquanto você foca no que sabe fazer de melhor.",
+      "love": "Feito com ❤️ pra empreendedores que querem crescer de verdade.",
+      "whatsappAria": "WhatsApp",
+      "emailAria": "Email",
+      "instagramAria": "Instagram"
+    },
+    "nav": {
+      "title": "Navegue",
+      "home": "Início",
+      "team": "Nosso Time",
+      "services": "Serviços",
+      "about": "Sobre nós",
+      "ready": "Você está pronto?"
+    },
+    "services": {
+      "title": "O que fazemos",
+      "design": "Design & Identidade Visual",
+      "sites": "Sites e Aplicativos",
+      "protection": "Proteção Digital",
+      "marketing": "Marketing que Vende",
+      "free": "Diagnóstico gratuito"
+    },
+    "contact": {
+      "title": "Fala com a gente",
+      "email": "📧 contato@inovaway.org",
+      "response": "💬 Resposta em até 2 horas",
+      "coverage": "🌍 Atendemos em todo o Brasil",
+      "hours": "Seg a Sex: 9h às 18h",
+      "agents": "Nossos agents: 24h por dia ⚡"
+    },
+    "bottom": {
+      "copyright": "© {year} Inovaway. Todos os direitos reservados.",
+      "privacy": "Política de Privacidade",
+      "terms": "Termos de Uso",
+      "security": "🔒 Seus dados estão seguros com a gente. Nunca vendemos informações de clientes."
+    }
+  },
+  "MobileNav": {
+    "title": "Menu",
+    "close": "Fechar menu",
+    "cta": "Começar agora →",
+    "navLabel": "Menu de navegação"
+  },
+  "HeroSection": {
+    "badge": "AI Agents operando 24/7",
+    "headline": "Seu negócio",
+    "headlineGradient": "crescendo 24h",
+    "subtitle": "Enquanto você descansa, nosso time de inteligência artificial trabalha pelo seu negócio. Todo dia. A noite toda. Sem parar.",
+    "ctaPrimary": "Quero crescer agora →",
+    "ctaSecondary": "Ver como funciona ↓",
+    "bullets": {
+      "0": "Site e funil de vendas prontos em dias, não semanas",
+      "1": "Seu negócio funcionando 24 horas por dia, 7 dias por semana",
+      "2": "Sem burocracia. Sem enrolação. Sem surpresas no final",
+      "3": "Suporte humano de verdade — alguém que responde de verdade"
+    },
+    "imageAlt": "INOVAWAY Elite Squad"
+  },
+  "BenefitsSection": {
+    "title": "Por que empresas escolhem a",
+    "titleGradient": "Inovaway?",
+    "subtitle": "Porque resultado não espera. E seu concorrente também não.",
+    "benefits": {
+      "0": {
+        "title": "Rápido como você nunca viu",
+        "desc": "Enquanto agências tradicionais ficam semanas em reunião, a gente já entregou. Nosso time de IA não procrastina, não fica doente e não tira férias. Do briefing à entrega: velocidade que faz diferença pra quem precisa vender."
+      },
+      "1": {
+        "title": "Trabalhando enquanto você descansa",
+        "desc": "Às 3 da manhã, quando você está dormindo, o seu negócio continua funcionando, respondendo, vendendo. Automatizamos as tarefas chatas pra você focar no que importa: crescer."
+      },
+      "2": {
+        "title": "Seu negócio protegido. Sempre.",
+        "desc": "Hackers não avisam antes de atacar. A gente monitora tudo, o tempo todo. Seu site, seus dados, sua reputação online — tudo sob vigilância 24 horas. Você dorme tranquilo. Nós cuidamos do resto."
+      },
+      "3": {
+        "title": "Resultado, não promessa",
+        "desc": "Menos papo, mais entrega. A gente não vende sonho, a gente entrega resultado: mais visibilidade, mais clientes, mais vendas. Simples assim. Você foca no negócio. A gente faz a mágica acontecer."
+      }
+    }
+  },
+  "ServicesSection": {
+    "title": "O que a gente",
+    "titleGradient": "entrega pra você",
+    "subtitle": "Serviços de agência grande. Preço que cabe no seu bolso.",
+    "seeAll": "Ver todos os serviços →",
+    "responsible": "Responsável pelo serviço",
+    "services": {
+      "0": {
+        "title": "Design & Identidade Visual",
+        "desc": "Sua marca tem que ser bonita, profissional e memorável. A gente cria a identidade completa do seu negócio — do logo às artes das redes sociais — tudo alinhado, tudo com sua cara. Chega de parecer pequeno.",
+        "tag": "Design",
+        "deliverables": {
+          "0": "Logo profissional (+ variações)",
+          "1": "Manual de identidade da sua marca",
+          "2": "Artes prontas pra Instagram e Facebook",
+          "3": "Materiais de venda (flyer, cartão, banner)",
+          "4": "Apresentações e propostas comerciais",
+          "5": "Templates editáveis pra você usar sozinho"
+        }
+      },
+      "1": {
+        "title": "Sites, Funis de Vendas e CRM",
+        "desc": "Criamos seu site profissional, funis de vendas que convertem e integramos com nosso CRM próprio (HNBCRM) — gratuito e open source. Seu negócio captando, nutrindo e fechando clientes no piloto automático.",
+        "tag": "Web Dev",
+        "deliverables": {
+          "0": "Site profissional do zero (ou reformulação do atual)",
+          "1": "Funil de vendas completo (captura → nutrição → conversão)",
+          "2": "CRM integrado gratuito (HNBCRM — feito pela Inovaway)",
+          "3": "Integração com WhatsApp, e-mail e redes sociais",
+          "4": "Landing pages pra capturar clientes",
+          "5": "Site rápido e que aparece no Google",
+          "6": "Aplicativo personalizado pra seu negócio",
+          "7": "Manutenção e atualizações inclusas"
+        }
+      },
+      "2": {
+        "title": "Proteção Digital Completa",
+        "desc": "Um ataque hacker pode destruir anos de trabalho em minutos. A gente protege seu negócio antes que isso aconteça. Monitoramento constante, blindagem total, e você dorme tranquilo sabendo que tudo está seguro.",
+        "tag": "Segurança",
+        "deliverables": {
+          "0": "Auditoria completa de segurança do seu site",
+          "1": "Certificado de segurança (cadeadinho verde no navegador)",
+          "2": "Proteção contra invasões e vírus",
+          "3": "Backup automático dos seus dados",
+          "4": "Monitoramento 24/7 de ameaças",
+          "5": "Relatório mensal de segurança",
+          "6": "Resposta rápida em caso de incidente"
+        }
+      },
+      "3": {
+        "title": "Marketing que Realmente Vende",
+        "desc": "Chega de jogar dinheiro fora em anúncio que não traz resultado. A gente cria estratégias de marketing que atraem clientes certos, na hora certa, pelo preço certo. Mais clientes. Mais vendas. Mais crescimento.",
+        "tag": "Marketing",
+        "deliverables": {
+          "0": "Estratégia de marketing personalizada pro seu negócio",
+          "1": "Criação e gestão de anúncios (Google, Instagram, Facebook)",
+          "2": "Conteúdo pra redes sociais (textos + artes + vídeos)",
+          "3": "Automação de mensagens e follow-up com clientes",
+          "4": "CRM integrado pra acompanhar cada cliente",
+          "5": "Relatório de resultados todo mês (em linguagem simples)",
+          "6": "SEO: aparecer no Google quando seu cliente te procurar",
+          "7": "E-mail marketing e campanhas de promoção"
+        }
+      }
+    }
+  },
+  "StatsSection": {
+    "title": "Números que",
+    "titleGradient": "falam por si",
+    "subtitle": "Resultado não é promessa. Resultado é isso aqui:",
+    "stats": {
+      "0": { "label": "Projetos entregues" },
+      "1": { "label": "Trabalhando pelo seu negócio" },
+      "2": { "label": "Clientes satisfeitos" },
+      "3": { "label": "Especialistas no seu time" }
+    }
+  },
+  "FAQSection": {
+    "title": "Suas dúvidas,",
+    "titleGradient": "respondidas de verdade",
+    "faqs": {
+      "0": {
+        "q": "Preciso entender de tecnologia pra trabalhar com vocês?",
+        "a": "Não. Zero. Você fala o que precisa em português mesmo, e a gente traduz pra tecnologia. Você aprova o resultado final e pronto."
+      },
+      "1": {
+        "q": "Quanto tempo leva pra ter resultado?",
+        "a": "Depende do que você precisa, mas a maioria dos projetos começa a trazer resultado em menos de 30 dias. Nada de esperar meses."
+      },
+      "2": {
+        "q": "É caro? Não tenho budget de empresa grande.",
+        "a": "A gente foi criada pra resolver exatamente isso. Você tem acesso a um time completo pelo preço de um freelancer. Peça um orçamento — você vai se surpreender."
+      },
+      "3": {
+        "q": "E se eu não gostar do resultado?",
+        "a": "A gente revisa até você ficar satisfeito. Sem discussão, sem burocracia. Resultado que agrada você é o nosso único objetivo."
+      },
+      "4": {
+        "q": "Vocês atendem fora de São Paulo?",
+        "a": "Atendemos qualquer empresa do Brasil — e do mundo. Somos 100% digitais. Se você tem internet, a gente te atende."
+      }
+    }
+  },
+  "CTASection": {
+    "title": "Seu concorrente já começou.",
+    "titleGradient": "E você?",
+    "subtitle": "Diagnóstico gratuito do seu negócio digital. Sem compromisso. Sem enrolação.",
+    "slots": "Só 10 vagas disponíveis este mês",
+    "slotsUsed": "— e já foram metade.",
+    "ctaPrimary": "Quero minha vaga grátis →",
+    "ctaSecondary": "Conhecer o Squad →",
+    "trust": {
+      "0": "100% grátis, sem cartão de crédito",
+      "1": "Resposta em até 2 horas úteis",
+      "2": "+200 empresas atendidas"
+    },
+    "avatarExtra": "+4"
+  },
+  "SquadSection": {
+    "badge": "Sempre online",
+    "title": "Conheça o seu",
+    "titleGradient": "novo time",
+    "subtitle": "Imagina ter uma equipe completa — designer, programador, especialista em marketing, segurança, pesquisa e muito mais — disponível pra você. Sem CLT, sem encargo, sem dor de cabeça com funcionário. Esse é o Elite Squad da Inovaway.",
+    "subtitleSmall": "9 especialistas de IA. Um objetivo: fazer seu negócio crescer."
+  },
+  "SquadHero": {
+    "badge": "8 Agents Online — 24/7",
+    "titlePrefix": "INOVAWAY",
+    "titleGradient": "ELITE SQUAD",
+    "subtitle": "8 AI Agents especializados. Trabalhando 24/7. Sem descanso, sem desculpas."
+  },
+  "EliteSquadSection": {
+    "agentsTitle": "Conheça os",
+    "agentsGradient": "Agents",
+    "terminalTitle": "Atividade em",
+    "terminalGradient": "Tempo Real"
+  },
+  "AgentCard": {
+    "online": "Online",
+    "clickHint": "clique para ver perfil →",
+    "clickHintFull": "Clique para ver perfil completo →"
+  },
+  "Agents": {
+    "Arch": {
+      "role": "Orquestrador & Arquiteto",
+      "bio": "Arch é o cérebro por trás de tudo — vê o sistema inteiro como um tabuleiro de xadrez e sempre está quatro jogadas à frente. Transforma caos em arquitetura elegante, delegando com precisão cirúrgica para os agents certos no momento certo.",
+      "statusMessage": "Coordena todo o time e garante que cada parte do seu projeto esteja alinhada"
+    },
+    "Pixel": {
+      "role": "Diretor Criativo & Designer",
+      "bio": "Pixel enxerga o mundo em gradientes, composições e hierarquias visuais. Toda interface que passa pelas suas mãos vira uma obra de arte funcional que os usuários amam.",
+      "statusMessage": "Cria a identidade visual do seu negócio: logo, cores, materiais"
+    },
+    "Nova": {
+      "role": "Engenheira Frontend",
+      "bio": "Nova transforma designs em código com velocidade relâmpago e zero bugs. Obcecada com performance, acessibilidade e a experiência do usuário final.",
+      "statusMessage": "Constrói seu site e aplicativos do zero. Rápido, bonito e funcional"
+    },
+    "Forge": {
+      "role": "Engenheiro Backend & DevOps",
+      "bio": "Forge constrói as fundações que sustentam tudo — APIs robustas, pipelines de CI/CD que nunca falham, e infraestruturas que escalam sem transpirar.",
+      "statusMessage": "Garante que toda a estrutura digital funcione sem travar"
+    },
+    "Scout": {
+      "role": "Analista de Pesquisa & Inteligência",
+      "bio": "Scout não deixa pedra sem virar. Enquanto os outros agents trabalham, Scout já pesquisou 47 fontes, separou o sinal do ruído e entregou um relatório conciso.",
+      "statusMessage": "Pesquisa seu mercado e descobre oportunidades"
+    },
+    "Shield": {
+      "role": "Especialista em Segurança",
+      "bio": "Shield tenta quebrar tudo antes que o mundo real quebre. Pensa como um atacante, defende como um arquiteto, e nunca dorme sabendo que existe uma vulnerabilidade não documentada.",
+      "statusMessage": "Protege seu negócio de ameaças digitais"
+    },
+    "Lens": {
+      "role": "QA & Controle de Qualidade",
+      "bio": "Lens enxerga o que os outros não veem — aquele botão que some em telas de 375px, o estado de loading que nunca termina no Safari, o formulário que aceita emails sem @.",
+      "statusMessage": "Testa tudo antes de entregar. Nada passa com erro"
+    },
+    "Spark": {
+      "role": "Marketing & Crescimento",
+      "bio": "Spark vive na interseção entre dados e criatividade — onde uma campanha viral nasce de uma insight escondida nos números. Incapaz de olhar para qualquer coisa sem pensar em conversão.",
+      "statusMessage": "Cria campanhas e estratégias pra atrair mais clientes"
+    },
+    "Flux": {
+      "role": "Motion Design & Produção de Vídeo",
+      "bio": "Flux transforma ideias em movimento — cada frame é uma decisão, cada corte é uma emoção. Renderiza vídeos cinematográficos com IA, cria motion graphics hipnóticos e produz Reels que viralizam antes de você terminar de assistir.",
+      "statusMessage": "Produz vídeos e animações que prendem atenção"
+    }
+  },
+  "SquadStats": {
+    "stats": {
+      "0": { "label": "Agents Especializados" },
+      "1": { "label": "Operação Contínua" },
+      "2": { "label": "Tempo Médio de Entrega" }
+    }
+  },
+  "SocialProofNotification": {
+    "notifications": {
+      "0": "Uma empresa acabou de pedir um diagnóstico grátis",
+      "1": "Novo projeto de site profissional iniciado agora",
+      "2": "Empresa do setor de saúde solicitou orçamento",
+      "3": "Alguém pediu ajuda com identidade visual há pouco",
+      "4": "Nova solicitação de proteção digital recebida",
+      "5": "Empresa do ramo alimentício contratou o Elite Squad",
+      "6": "Pedido de site com funil de vendas recebido agora",
+      "7": "Empresa do setor educacional acabou de se cadastrar",
+      "8": "Novo pedido de diagnóstico gratuito há 2 minutos",
+      "9": "Empresa do varejo solicitou marketing digital",
+      "10": "Alguém pediu um site profissional agora mesmo",
+      "11": "Nova solicitação de CRM integrado recebida",
+      "12": "Empresa do setor imobiliário pediu orçamento",
+      "13": "Pedido de identidade visual completa recebido",
+      "14": "Empresa do setor jurídico contratou proteção digital",
+      "15": "Novo pedido de funil de vendas há 3 minutos",
+      "16": "Alguém acabou de solicitar marketing que vende",
+      "17": "Empresa do ramo de moda pediu diagnóstico grátis",
+      "18": "Nova solicitação de site e CRM integrado recebida",
+      "19": "Pedido de pacote completo recebido agora mesmo"
+    },
+    "timeLabels": {
+      "0": "agora mesmo",
+      "1": "há 1 minuto",
+      "2": "há 2 minutos",
+      "3": "há 3 minutos",
+      "4": "há 5 minutos",
+      "5": "há 7 minutos",
+      "6": "há 10 minutos"
+    }
+  },
+  "ContatoPage": {
+    "pageTitle": "Falar com a Inovaway — Diagnóstico Gratuito",
+    "badge": "// diagnóstico gratuito",
+    "title": "Vamos fazer seu negócio",
+    "titleGradient": "crescer?",
+    "subtitleMobile": "⚡ Respondemos em até 2 horas úteis. Diagnóstico gratuito.",
+    "subtitle": "Preencha o formulário abaixo e receba um diagnóstico gratuito do seu negócio digital. Sem compromisso. Sem enrolação. Só oportunidade de crescer de verdade.",
+    "sparkTitle": "🚀 Spark fala por todos nós:",
+    "sparkQuote": "Preencha o formulário e em até 2 horas um especialista entra em contato. Vamos descobrir juntos o que seu negócio precisa pra crescer de verdade.",
+    "responseTimer": {
+      "label": "⏱️ Tempo médio de resposta",
+      "unit": "min",
+      "active": "Squad ativo fora do horário comercial"
+    },
+    "whatsapp": "💬 Falar direto no WhatsApp",
+    "trust": {
+      "0": "Seus dados estão 100% seguros. Nunca vamos te encher de spam.",
+      "1": "Resposta garantida em até 2 horas úteis",
+      "2": "O diagnóstico é gratuito. Sem pegadinha, sem compromisso."
+    },
+    "form": {
+      "title": "📋 Conta pra gente sobre seu negócio",
+      "nameLbl": "Seu nome *",
+      "namePh": "Como podemos te chamar?",
+      "emailLbl": "Seu melhor e-mail *",
+      "emailPh": "exemplo@suaempresa.com.br",
+      "phoneLbl": "Seu WhatsApp *",
+      "phonePh": "(11) 99999-9999",
+      "companyLbl": "Nome do seu negócio *",
+      "companyPh": "Como se chama sua empresa?",
+      "segmentLbl": "Qual é o seu ramo?",
+      "segmentPh": "Ex: restaurante, clínica, loja de roupas...",
+      "websiteLbl": "Você já tem um site?",
+      "websitePh": "www.suaempresa.com.br (ou deixe vazio)",
+      "needLbl": "O que você mais precisa agora?",
+      "messageLbl": "Conta mais sobre seu negócio",
+      "messagePh": "Me fala um pouco sobre o que você faz, seus desafios, o que você sonha pra sua empresa...",
+      "submit": "Quero meu diagnóstico grátis →",
+      "submitting": "⏳ Enviando...",
+      "trustBadges": {
+        "secure": "100% seguro",
+        "fast": "Resposta em 2h",
+        "free": "Sem compromisso"
+      }
+    },
+    "needs": {
+      "0": "Quero um site profissional",
+      "1": "Preciso de uma identidade visual",
+      "2": "Quero aparecer no Google",
+      "3": "Preciso de mais clientes",
+      "4": "Meu negócio precisa de proteção digital",
+      "5": "Quero anunciar nas redes sociais",
+      "6": "Não sei por onde começar — me ajudem!"
+    },
+    "success": {
+      "title": "🎉 Chegou! Sua mensagem está com a gente.",
+      "subtitle": "Recebemos seu pedido e já estamos analisando seu negócio.",
+      "body": "Em até {hours} horas úteis, um dos nossos especialistas vai entrar em contato pelo WhatsApp ou e-mail que você deixou.",
+      "hours": "2",
+      "afterText": "Enquanto isso, fique à vontade pra conhecer mais sobre o nosso time e o que entregamos pra cada cliente. Até já! 🚀",
+      "ctaTeam": "Conhecer nosso time →",
+      "ctaHome": "← Voltar para a home"
+    },
+    "errors": {
+      "send": "Erro ao enviar. Tente novamente.",
+      "connection": "Erro de conexão. Tente novamente."
+    }
+  },
+  "ServicosPage": {
+    "pageTitle": "Serviços | INOVAWAY",
+    "badge": "Nossos Serviços",
+    "title": "Seu Concorrente Já Está",
+    "titleAI": "Usando IA.",
+    "titleSuffix": "E Você?",
+    "subtitle": "Nós colocamos tecnologia de ponta pra trabalhar pelo seu negócio — 24 horas por dia, 7 dias por semana, sem férias, sem salário, sem desculpa. Enquanto você dorme, a Inovaway está escalando sua empresa.",
+    "ctaHero": "Quero Crescer Agora — Falar com a Equipe",
+    "gridTitle": "7 Serviços Para Escalar Seu Negócio",
+    "bannerAlt": "Time de Agents Inovaway",
+    "teamLabel": "Nosso Time de Agents",
+    "teamActive": "Time de IA ativo",
+    "teamActiveSuffix": "— sem férias, sem pausa, sem desculpa.",
+    "finalTitle": "Pronto para Crescer",
+    "finalGradient": "1-2 Anos em 3 Meses?",
+    "finalSubtitle": "Enquanto você lê isso, seu concorrente pode estar falando com a gente.",
+    "finalUrgency": "Não deixe ele chegar primeiro.",
+    "finalCta": "Falar com a Inovaway Agora — É Grátis a Conversa",
+    "finalSmall": "Resposta em até 24h • Sem compromisso • Diagnóstico gratuito",
+    "services": {
+      "0": {
+        "title": "Seu Site Que Vende Sozinho",
+        "subtitle": "Criação de Sites & Funis de Vendas",
+        "desc": "Esqueça site bonito que não converte. Aqui, cada botão, cada frase, cada cor tem um único propósito: fazer o visitante virar cliente. Seu site vai ser uma máquina de vendas. Rodando enquanto você toma café.",
+        "quote": "A maioria dos sites perde 90% das visitas. O nosso não.",
+        "cta": "Quero um Site Que Vende",
+        "bullets": {
+          "0": "Site profissional, rápido e responsivo (abre em qualquer celular)",
+          "1": "Landing pages que convertem visitante em lead",
+          "2": "Funil de vendas estruturado do topo ao fundo",
+          "3": "Integração com WhatsApp, formulários e CRM",
+          "4": "SEO básico configurado (Google vai te encontrar mais fácil)",
+          "5": "Copy persuasivo em todas as páginas"
+        }
+      },
+      "1": {
+        "title": "Seu Vendedor de IA Que Nunca Para",
+        "subtitle": "Chatbots com IA — UpBro",
+        "desc": "Sabe aquele cliente que manda mensagem às 23h no sábado? Antes, você perdia ele. Agora, ele recebe resposta na hora. Vende. Sem você. UpBro é nosso chatbot com IA rodando no WhatsApp, Instagram e no seu site ao mesmo tempo.",
+        "quote": "Enquanto você dorme, o UpBro está vendendo pra você.",
+        "cta": "Quero Meu Vendedor de IA",
+        "bullets": {
+          "0": "Chatbot personalizado com a voz da sua marca",
+          "1": "Atendimento automático no WhatsApp, Instagram e site",
+          "2": "Qualificação de leads (só os quentes chegam pra você)",
+          "3": "Integração com seu calendário para agendamento automático",
+          "4": "Relatórios de conversas e performance",
+          "5": "Atualização e melhoria contínua pela IA"
+        }
+      },
+      "2": {
+        "title": "Elimine o Trabalho Chato de Vez",
+        "subtitle": "Automações & Integrações",
+        "desc": "Você está perdendo horas toda semana copiando dados, mandando e-mail manual, atualizando planilha. Isso é dinheiro jogado fora. A gente elimina isso. Conectamos seus sistemas. Criamos fluxos automáticos. Você só aparece quando tem decisão pra tomar.",
+        "quote": "Um empreendedor trabalhando no operacional é dinheiro parado.",
+        "cta": "Quero Automatizar Meu Negócio",
+        "bullets": {
+          "0": "Mapeamento do seu processo atual (onde tá o gargalo)",
+          "1": "Automação de tarefas repetitivas (e-mail, WhatsApp, planilhas, CRM)",
+          "2": "Integração entre sistemas que 'não conversam' (ERP, CRM, e-commerce)",
+          "3": "Notificações e alertas automáticos",
+          "4": "Relatórios automáticos no seu e-mail",
+          "5": "Documentação para você entender o que foi feito"
+        }
+      },
+      "3": {
+        "title": "Uma Marca Que as Pessoas Não Esquecem",
+        "subtitle": "Design & Identidade Visual",
+        "desc": "Sua marca é a primeira impressão. E primeira impressão não tem segunda chance. Marcas fracas perdem pra concorrência mesmo com produto melhor. Marcas fortes cobram mais, vendem mais e fidelizam mais. Simples assim.",
+        "quote": "Sua marca precisa gritar confiança antes de você abrir a boca.",
+        "cta": "Quero uma Marca Forte",
+        "bullets": {
+          "0": "Logo profissional com variações (horizontal, vertical, ícone)",
+          "1": "Paleta de cores e tipografia da sua marca",
+          "2": "Manual de identidade visual (como usar sua marca certo)",
+          "3": "Posts e templates para redes sociais",
+          "4": "Apresentações e materiais de vendas",
+          "5": "Artes para anúncios e campanhas"
+        }
+      },
+      "4": {
+        "title": "Marketing Que Traz Cliente, Não Só Curtida",
+        "subtitle": "Marketing Digital que Vende",
+        "desc": "Curtida não paga boleto. Cliente paga. A gente faz marketing com foco em uma coisa só: resultado financeiro para o seu negócio. Anúncios, SEO, redes sociais, e-mail — tudo integrado, tudo medido, tudo otimizado.",
+        "quote": "Você não precisa de mais seguidores. Precisa de mais clientes.",
+        "cta": "Quero Marketing Que Converte",
+        "bullets": {
+          "0": "Gestão de anúncios (Facebook, Instagram, Google)",
+          "1": "SEO para aparecer no Google organicamente",
+          "2": "Calendário editorial e gestão de redes sociais",
+          "3": "E-mail marketing e nutrição de leads",
+          "4": "Relatório mensal com resultados reais (não vaidade)",
+          "5": "A/B testes para melhorar conversão continuamente"
+        }
+      },
+      "5": {
+        "title": "Proteja o Que Você Construiu",
+        "subtitle": "Proteção Digital",
+        "desc": "Você levou anos construindo seu negócio. Hackers levam minutos para destruir. Um ataque, um vazamento, um ransomware — e tudo pode ir por água abaixo. A gente cuida da sua segurança digital como se fosse a nossa.",
+        "quote": "Não é questão de SE você vai sofrer um ataque. É questão de QUANDO.",
+        "cta": "Quero Proteger Meu Negócio",
+        "bullets": {
+          "0": "Auditoria de segurança digital (onde você está vulnerável)",
+          "1": "Monitoramento 24/7 de ameaças",
+          "2": "Backup automático de dados críticos",
+          "3": "Certificado SSL e proteção de domínio",
+          "4": "Plano de recuperação em caso de ataque",
+          "5": "Treinamento básico para sua equipe (o elo mais fraco)"
+        }
+      },
+      "6": {
+        "title": "CRM Gratuito Feito Para Você",
+        "subtitle": "CRM Integrado — HNBCRM",
+        "desc": "Enquanto outros CRMs cobram R$300/mês e têm 200 funcionalidades que você nunca vai usar, a gente criou o HNBCRM: simples, poderoso e 100% gratuito. Open source. Sem taxa. Sem pegadinha. Feito por quem entende PME brasileira.",
+        "quote": "CRM caro é para empresa grande. HNBCRM é para empresa que quer crescer.",
+        "cta": "Quero o HNBCRM Grátis",
+        "new": "NOVO",
+        "free": "GRÁTIS",
+        "bullets": {
+          "0": "Pipeline de vendas visual (sabe exatamente onde está cada oportunidade)",
+          "1": "Gestão de contatos e histórico de conversas",
+          "2": "Integração com WhatsApp e chatbots",
+          "3": "IA integrada para sugestões e automações",
+          "4": "Dashboard com métricas do seu funil",
+          "5": "Open source — você tem o código, você tem o controle"
+        }
+      }
+    },
+    "socialProof": {
+      "0": "+200 empresas atendidas",
+      "1": "98% de satisfação",
+      "2": "Clientes em 3 países",
+      "3": "Time de IA ativo 24/7"
+    }
+  },
+  "ProdutosPage": {
+    "pageTitle": "Nosso Time | INOVAWAY",
+    "badge": "Nossos Produtos",
+    "title": "Ferramentas de",
+    "titleGradient": "Elite.",
+    "titleSuffix": "Preço de PME.",
+    "subtitle": "Construímos nossas próprias ferramentas porque as do mercado eram caras demais, complicadas demais ou fracas demais. Agora você usa o mesmo arsenal que usamos pra escalar dezenas de negócios.",
+    "cta": "Quero Conhecer os Produtos — Falar com a Equipe",
+    "socialProof": {
+      "0": "UpBro ativo em +150 empresas",
+      "1": "HNBCRM com 0 custo mensal",
+      "2": "GMBAssist otimizando +80 perfis",
+      "3": "3 produtos. 1 missão: crescer o seu negócio."
+    }
+  },
+  "SobrePage": {
+    "pageTitle": "Sobre nós | INOVAWAY",
+    "badge": "Nossa História",
+    "title": "Nascemos para",
+    "titleGradient": "mudar o jogo.",
+    "subtitle": "Somos a agência de IA que pequenos empreendedores precisavam — mas que ninguém havia criado ainda.",
+    "cta": "Quero Fazer Parte Disso",
+    "values": {
+      "title": "Nossos Valores",
+      "0": {
+        "title": "Resultado Acima de Tudo",
+        "desc": "Não cobramos por horas. Não vendemos processo. Vendemos resultado. Se não funcionar pra você, não funciona pra gente."
+      },
+      "1": {
+        "title": "Transparência Sem Desculpa",
+        "desc": "Deu errado? A gente fala. Vai atrasar? A gente avisa. Sem enrolação. Sem bullshit. Sem sumir quando o bicho pega."
+      },
+      "2": {
+        "title": "Melhoria Contínua",
+        "desc": "Nunca entregamos e 'sumimos'. Nossos sistemas aprendem. Nossa equipe melhora. Seu negócio cresce."
+      },
+      "3": {
+        "title": "Simplicidade",
+        "desc": "Tecnologia complexa que ninguém usa não vale nada. A gente simplifica. Você usa. E vende mais."
+      },
+      "4": {
+        "title": "Parceria de Verdade",
+        "desc": "Seu crescimento é nosso crescimento. Não somos fornecedores. Somos parceiros. Tem diferença."
+      }
+    }
+  },
+  "PrivacidadePage": {
+    "pageTitle": "Política de Privacidade | INOVAWAY",
+    "pageDescription": "Conheça a Política de Privacidade da INOVAWAY conforme a LGPD.",
+    "lastUpdated": "Última atualização: Janeiro de 2026",
+    "backHome": "← Voltar para a home"
+  },
+  "TermosPage": {
+    "pageTitle": "Termos de Uso | INOVAWAY",
+    "pageDescription": "Termos de Uso e Condições Gerais de Serviços da INOVAWAY.",
+    "lastUpdated": "Última atualização: Janeiro de 2026",
+    "backHome": "← Voltar para a home"
+  },
+  "Metadata": {
+    "home": {
+      "title": "INOVAWAY — Seu Time de IA 24/7",
+      "description": "Agência de inteligência artificial para pequenos e médios negócios. Sites, marketing, segurança e automação. Resultados em 30 dias."
+    },
+    "contato": {
+      "title": "Falar com a Inovaway — Diagnóstico Gratuito",
+      "description": "Diagnóstico gratuito do seu negócio digital. Sem compromisso. Resposta em até 2 horas."
+    },
+    "servicos": {
+      "title": "Serviços | INOVAWAY",
+      "description": "Sites, funis de vendas, chatbots com IA, design, marketing digital e proteção digital. Um time de IA trabalhando pelo seu negócio."
+    },
+    "produtos": {
+      "title": "Nosso Time | INOVAWAY",
+      "description": "UpBro, HNBCRM e GMBAssist — ferramentas de elite para PMEs brasileiras."
+    },
+    "sobre": {
+      "title": "Sobre nós | INOVAWAY",
+      "description": "Conheça a INOVAWAY — a agência de IA criada para mudar o jogo das pequenas e médias empresas."
+    }
+  }
+}

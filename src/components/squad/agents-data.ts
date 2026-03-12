@@ -9,6 +9,74 @@ export interface Agent {
   statusMessage: string;
 }
 
+// Static base config — non-translatable fields
+export const agentsBase = [
+  {
+    name: "Arch",
+    emoji: "🧠",
+    color: "#8B5CF6",
+    avatar: "/squad/arch-avatar.webp",
+    skills: ["Orchestration", "SystemDesign", "TaskDelegation", "Architecture", "StrategicThinking"],
+  },
+  {
+    name: "Pixel",
+    emoji: "🎨",
+    color: "#EC4899",
+    avatar: "/squad/pixel-avatar.webp",
+    skills: ["UIDesign", "BrandIdentity", "ImageGeneration", "VisualHierarchy", "CreativeDirection"],
+  },
+  {
+    name: "Nova",
+    emoji: "💻",
+    color: "#06B6D4",
+    avatar: "/squad/nova-avatar.webp",
+    skills: ["React", "TypeScript", "CSS", "Performance", "Accessibility"],
+  },
+  {
+    name: "Forge",
+    emoji: "⚙️",
+    color: "#F59E0B",
+    avatar: "/squad/forge-avatar.webp",
+    skills: ["Node.js", "Docker", "CI/CD", "APIs", "CloudInfra"],
+  },
+  {
+    name: "Scout",
+    emoji: "🔍",
+    color: "#10B981",
+    avatar: "/squad/scout-avatar.webp",
+    skills: ["WebResearch", "DataAnalysis", "CompetitiveIntelligence", "Synthesis", "Fact-Checking"],
+  },
+  {
+    name: "Shield",
+    emoji: "🛡️",
+    color: "#EF4444",
+    avatar: "/squad/shield-avatar.webp",
+    skills: ["PenTesting", "VulnerabilityAssessment", "OWASP", "ThreatModeling", "SecurityAudit"],
+  },
+  {
+    name: "Lens",
+    emoji: "🔬",
+    color: "#6366F1",
+    avatar: "/squad/lens-avatar.webp",
+    skills: ["FrontendTesting", "E2ETesting", "Playwright", "BugReporting", "UsabilityTesting"],
+  },
+  {
+    name: "Spark",
+    emoji: "🚀",
+    color: "#F97316",
+    avatar: "/squad/spark-avatar.webp",
+    skills: ["GrowthHacking", "ContentStrategy", "SEO", "PaidAds", "CommunityBuilding"],
+  },
+  {
+    name: "Flux",
+    emoji: "🎬",
+    color: "#FF6B6B",
+    avatar: "/squad/flux-avatar.webp",
+    skills: ["MotionDesign", "VideoProduction", "KineticTypography", "AIVideoGen", "Narration"],
+  },
+] as const;
+
+// Fallback PT agents (used in SSR context without translations, e.g. sitemap)
 export const agents: Agent[] = [
   {
     name: "Arch",
@@ -55,7 +123,7 @@ export const agents: Agent[] = [
     emoji: "🔍",
     color: "#10B981",
     role: "Analista de Pesquisa & Inteligência",
-    avatar: "/squad/scout-avatar.webp",
+    avatar: "/scout-avatar.webp",
     bio: "Scout não deixa pedra sem virar. Enquanto os outros agents trabalham, Scout já pesquisou 47 fontes, separou o sinal do ruído e entregou um relatório conciso.",
     skills: ["WebResearch", "DataAnalysis", "CompetitiveIntelligence", "Synthesis", "Fact-Checking"],
     statusMessage: "Pesquisa seu mercado e descobre oportunidades",

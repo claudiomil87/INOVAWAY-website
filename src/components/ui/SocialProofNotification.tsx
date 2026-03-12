@@ -2,42 +2,10 @@
 
 import { useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useTranslations } from "next-intl";
 
-const notifications = [
-  "Uma empresa acabou de pedir um diagnóstico grátis",
-  "Novo projeto de site profissional iniciado agora",
-  "Empresa do setor de saúde solicitou orçamento",
-  "Alguém pediu ajuda com identidade visual há pouco",
-  "Nova solicitação de proteção digital recebida",
-  "Empresa do ramo alimentício contratou o Elite Squad",
-  "Pedido de site com funil de vendas recebido agora",
-  "Empresa do setor educacional acabou de se cadastrar",
-  "Novo pedido de diagnóstico gratuito há 2 minutos",
-  "Empresa do varejo solicitou marketing digital",
-  "Alguém pediu um site profissional agora mesmo",
-  "Nova solicitação de CRM integrado recebida",
-  "Empresa do setor imobiliário pediu orçamento",
-  "Pedido de identidade visual completa recebido",
-  "Empresa do setor jurídico contratou proteção digital",
-  "Novo pedido de funil de vendas há 3 minutos",
-  "Alguém acabou de solicitar marketing que vende",
-  "Empresa do ramo de moda pediu diagnóstico grátis",
-  "Nova solicitação de site e CRM integrado recebida",
-  "Pedido de pacote completo recebido agora mesmo",
-];
-
-const timeLabels = [
-  "agora mesmo",
-  "há 1 minuto",
-  "há 2 minutos",
-  "há 3 minutos",
-  "há 5 minutos",
-  "há 7 minutos",
-  "há 10 minutos",
-];
-
-function getRandomItem<T>(arr: T[]): T {
-  return arr[Math.floor(Math.random() * arr.length)];
+function getRandomIndex(max: number): number {
+  return Math.floor(Math.random() * max);
 }
 
 function getRandomInterval(min: number, max: number): number {
@@ -45,37 +13,40 @@ function getRandomInterval(min: number, max: number): number {
 }
 
 export default function SocialProofNotification() {
+  const t = useTranslations("SocialProofNotification");
   const [visible, setVisible] = useState(false);
   const [current, setCurrent] = useState({ message: "", time: "" });
   const [usedIndices, setUsedIndices] = useState<Set<number>>(new Set());
 
+  const notificationCount = 20;
+  const timeLabelCount = 7;
+
   const showNext = useCallback(() => {
     // Pick a message not recently shown
-    let idx = Math.floor(Math.random() * notifications.length);
+    let idx = getRandomIndex(notificationCount);
     let attempts = 0;
     while (usedIndices.has(idx) && attempts < 10) {
-      idx = Math.floor(Math.random() * notifications.length);
+      idx = getRandomIndex(notificationCount);
       attempts++;
     }
     setUsedIndices((prev) => {
       const next = new Set(prev);
       next.add(idx);
       if (next.size > 5) {
-        // Reset after 5 to allow re-use
         return new Set([idx]);
       }
       return next;
     });
 
     setCurrent({
-      message: notifications[idx],
-      time: getRandomItem(timeLabels),
+      message: t(`notifications.${idx}`),
+      time: t(`timeLabels.${getRandomIndex(timeLabelCount)}`),
     });
     setVisible(true);
 
     // Hide after 4 seconds
     setTimeout(() => setVisible(false), 4000);
-  }, [usedIndices]);
+  }, [usedIndices, t]);
 
   useEffect(() => {
     // Initial delay before first notification (8-15s)

@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
 import Image from "next/image";
+import { useTranslations } from "next-intl";
 import AgentModal from "@/components/squad/AgentModal";
 import SquadTerminal from "@/components/squad/SquadTerminal";
 import SquadStats from "@/components/squad/SquadStats";
@@ -29,6 +30,7 @@ interface BentoAgentCardProps {
 }
 
 function BentoAgentCard({ agent, index, large = false, onSelect }: BentoAgentCardProps) {
+  const t = useTranslations("AgentCard");
   const [tilt, setTilt] = useState({ rotateX: 0, rotateY: 0 });
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
@@ -72,7 +74,7 @@ function BentoAgentCard({ agent, index, large = false, onSelect }: BentoAgentCar
           <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
           <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-400" />
         </span>
-        <span className="text-xs text-emerald-400 font-mono">Online</span>
+        <span className="text-xs text-emerald-400 font-mono">{t("online")}</span>
       </div>
 
       {/* Ambient glow */}
@@ -107,7 +109,7 @@ function BentoAgentCard({ agent, index, large = false, onSelect }: BentoAgentCar
 
           {large && (
             <p className="text-sm text-white/40 italic mb-3 font-mono">
-              "{agent.statusMessage}"
+              &quot;{agent.statusMessage}&quot;
             </p>
           )}
 
@@ -131,13 +133,15 @@ function BentoAgentCard({ agent, index, large = false, onSelect }: BentoAgentCar
       </div>
 
       <p className="mt-3 text-center text-xs text-white/20 transition-opacity duration-200 hover:text-white/40">
-        clique para ver perfil →
+        {t("clickHint")}
       </p>
     </motion.div>
   );
 }
 
 export default function SquadSection() {
+  const t = useTranslations("SquadSection");
+  const tCard = useTranslations("AgentCard");
   const [selectedAgent, setSelectedAgent] = useState<Agent | null>(null);
 
   return (
@@ -153,24 +157,22 @@ export default function SquadSection() {
         >
           <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-[#00FF41]/30 bg-[#00FF41]/10 px-4 py-1.5 text-sm text-[#00FF41]">
             <span className="h-2 w-2 animate-pulse rounded-full bg-[#00FF41]" />
-            Sempre online
+            {t("badge")}
           </div>
           <h2 className="text-3xl font-bold text-white md:text-4xl lg:text-5xl">
-            Conheça o seu{" "}
+            {t("title")}{" "}
             <span
               className="bg-clip-text text-transparent"
               style={{ backgroundImage: "linear-gradient(135deg, #00FF41, #8B5CF6)" }}
             >
-              novo time
+              {t("titleGradient")}
             </span>
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-white/60">
-            Imagina ter uma equipe completa — designer, programador, especialista em marketing,
-            segurança, pesquisa e muito mais — disponível pra você. Sem CLT, sem encargo,
-            sem dor de cabeça com funcionário. Esse é o Elite Squad da Inovaway.
+            {t("subtitle")}
           </p>
           <p className="mx-auto mt-2 max-w-xl text-white/40 text-sm">
-            9 especialistas de IA. Um objetivo: fazer seu negócio crescer.
+            {t("subtitleSmall")}
           </p>
         </motion.div>
 

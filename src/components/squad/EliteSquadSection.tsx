@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import { motion } from "framer-motion";
+import { useTranslations } from "next-intl";
 import SquadHero from "./SquadHero";
 import AgentCard from "./AgentCard";
 import AgentModal from "./AgentModal";
@@ -9,6 +10,7 @@ import SquadStats from "./SquadStats";
 import { agents, type Agent } from "./agents-data";
 
 export default function EliteSquadSection() {
+  const t = useTranslations("EliteSquadSection");
   const [selectedAgent, setSelectedAgent] = useState<Agent | null>(null);
 
   return (
@@ -29,9 +31,9 @@ export default function EliteSquadSection() {
               viewport={{ once: true }}
               className="text-2xl font-bold text-white mb-8 text-center"
             >
-              Conheça os{" "}
+              {t("agentsTitle")}{" "}
               <span className="text-transparent bg-clip-text" style={{ backgroundImage: "linear-gradient(90deg, #06B6D4, #8B5CF6)" }}>
-                Agents
+                {t("agentsGradient")}
               </span>
             </motion.h2>
 
@@ -50,8 +52,8 @@ export default function EliteSquadSection() {
               viewport={{ once: true }}
               className="text-2xl font-bold text-white mb-6 text-center"
             >
-              Atividade em{" "}
-              <span className="text-[#00FF41]">Tempo Real</span>
+              {t("terminalTitle")}{" "}
+              <span className="text-[#00FF41]">{t("terminalGradient")}</span>
             </motion.h2>
             <SquadTerminal />
           </div>

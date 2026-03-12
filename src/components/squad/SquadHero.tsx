@@ -1,7 +1,10 @@
 "use client";
 import { motion } from "framer-motion";
+import { useTranslations } from "next-intl";
 
 export default function SquadHero() {
+  const t = useTranslations("SquadHero");
+
   return (
     <section className="relative overflow-hidden py-24 px-4 text-center">
       {/* Animated grid background */}
@@ -23,7 +26,7 @@ export default function SquadHero() {
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#00FF41] opacity-75" />
             <span className="relative inline-flex h-2 w-2 rounded-full bg-[#00FF41]" />
           </span>
-          8 Agents Online — 24/7
+          {t("badge")}
         </motion.div>
 
         {/* Title */}
@@ -33,9 +36,9 @@ export default function SquadHero() {
           transition={{ duration: 0.6, delay: 0.1 }}
           className="text-5xl font-black tracking-tight text-white sm:text-6xl md:text-7xl mb-6"
         >
-          INOVAWAY{" "}
+          {t("titlePrefix")}{" "}
           <span className="bg-clip-text text-transparent" style={{ backgroundImage: "linear-gradient(135deg, #00FF41, #06B6D4, #8B5CF6)" }}>
-            ELITE SQUAD
+            {t("titleGradient")}
           </span>
         </motion.h1>
 
@@ -46,7 +49,7 @@ export default function SquadHero() {
           transition={{ duration: 0.6, delay: 0.2 }}
           className="text-lg text-white/60 sm:text-xl max-w-xl mx-auto"
         >
-          8 AI Agents especializados. Trabalhando 24/7. Sem descanso, sem desculpas.
+          {t("subtitle")}
         </motion.p>
       </div>
     </section>

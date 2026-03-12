@@ -1,17 +1,13 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
 import { useState, useEffect } from "react";
+import { useTranslations } from "next-intl";
+import { Link } from "@/i18n/navigation";
 import MobileNav from "./MobileNav";
 
-const navLinks = [
-  { href: "/servicos", label: "Serviços" },
-  { href: "/produtos", label: "Nosso Time" },
-  { href: "/sobre", label: "Sobre nós" },
-];
-
 export default function Header() {
+  const t = useTranslations("Header");
   const [mobileOpen, setMobileOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
@@ -21,9 +17,15 @@ export default function Header() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  const navLinks = [
+    { href: "/servicos" as const, label: t("nav.services") },
+    { href: "/produtos" as const, label: t("nav.team") },
+    { href: "/sobre" as const, label: t("nav.about") },
+  ];
+
   const allNavLinks = [
     ...navLinks,
-    { href: "/contato", label: "Você está pronto?" },
+    { href: "/contato" as const, label: t("nav.ready") },
   ];
 
   return (
@@ -47,7 +49,7 @@ export default function Header() {
         >
           <Image
             src="/logos/inovaway-wordmark.png"
-            alt="INOVAWAY"
+            alt={t("logoAlt")}
             width={140}
             height={40}
             priority
@@ -77,7 +79,7 @@ export default function Header() {
             className="relative text-sm font-semibold py-1 group transition-all duration-300"
             style={{ color: "#00FF41", textShadow: "0 0 8px rgba(0,255,65,0.4)" }}
           >
-            Você está pronto?
+            {t("nav.ready")}
             <span
               className="absolute bottom-0 left-0 h-px w-full origin-left scale-x-0 transition-transform duration-300 group-hover:scale-x-100"
               style={{ backgroundColor: "#00FF41" }}
@@ -95,7 +97,7 @@ export default function Header() {
               color: "#0F172A",
             }}
           >
-            Começar agora →
+            {t("cta")}
           </Link>
         </div>
 
@@ -103,7 +105,7 @@ export default function Header() {
         <button
           className="md:hidden flex flex-col items-center justify-center gap-[5px] rounded-md p-2 text-white/70 hover:text-white w-10 h-10"
           onClick={() => setMobileOpen((o) => !o)}
-          aria-label={mobileOpen ? "Fechar menu" : "Abrir menu"}
+          aria-label={mobileOpen ? t("closeMenu") : t("openMenu")}
         >
           <span
             className="block h-0.5 w-5 bg-current transition-all duration-300 origin-center"

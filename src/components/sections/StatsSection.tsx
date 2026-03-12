@@ -2,44 +2,13 @@
 
 import { motion, useInView, useMotionValue, useTransform, animate } from "framer-motion";
 import { useRef, useEffect } from "react";
+import { useTranslations } from "next-intl";
 
-interface StatItem {
-  value: string;
-  label: string;
-  numeric?: number;
-  prefix?: string;
-  suffix?: string;
-  color: string;
-}
-
-const stats: StatItem[] = [
-  {
-    value: "+200",
-    numeric: 200,
-    prefix: "+",
-    suffix: "",
-    label: "Projetos entregues",
-    color: "#00FF41",
-  },
-  {
-    value: "24h",
-    label: "Trabalhando pelo seu negócio",
-    color: "#06B6D4",
-  },
-  {
-    value: "98%",
-    numeric: 98,
-    suffix: "%",
-    label: "Clientes satisfeitos",
-    color: "#8B5CF6",
-  },
-  {
-    value: "9",
-    numeric: 9,
-    suffix: "",
-    label: "Especialistas no seu time",
-    color: "#00FF41",
-  },
+const statsConfig = [
+  { value: "+200", numeric: 200, prefix: "+", suffix: "", color: "#00FF41" },
+  { value: "24h", color: "#06B6D4" },
+  { value: "98%", numeric: 98, suffix: "%", color: "#8B5CF6" },
+  { value: "9", numeric: 9, suffix: "", color: "#00FF41" },
 ];
 
 function AnimatedNumber({ value, suffix = "", prefix = "" }: { value: number; suffix?: string; prefix?: string }) {
@@ -65,6 +34,13 @@ function AnimatedNumber({ value, suffix = "", prefix = "" }: { value: number; su
 }
 
 export default function StatsSection() {
+  const t = useTranslations("StatsSection");
+
+  const stats = statsConfig.map((cfg, i) => ({
+    ...cfg,
+    label: t(`stats.${i}.label`),
+  }));
+
   return (
     <section className="px-4 py-16 md:py-24">
       <div className="mx-auto max-w-7xl">
@@ -76,25 +52,25 @@ export default function StatsSection() {
           className="mb-4 text-center"
         >
           <h2 className="text-3xl font-bold text-white md:text-4xl">
-            Números que{" "}
+            {t("title")}{" "}
             <span
               className="bg-clip-text text-transparent"
               style={{
                 backgroundImage: "linear-gradient(135deg, #00FF41, #06B6D4)",
               }}
             >
-              falam por si
+              {t("titleGradient")}
             </span>
           </h2>
           <p className="mx-auto mt-3 max-w-xl text-white/50">
-            Resultado não é promessa. Resultado é isso aqui:
+            {t("subtitle")}
           </p>
         </motion.div>
 
         <div className="mt-12 grid grid-cols-2 gap-6 md:grid-cols-4">
           {stats.map((stat, i) => (
             <motion.div
-              key={stat.label}
+              key={i}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}

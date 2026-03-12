@@ -2,6 +2,7 @@
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import { useState } from "react";
+import { useTranslations } from "next-intl";
 import type { Agent } from "./agents-data";
 
 interface AgentCardProps {
@@ -11,6 +12,7 @@ interface AgentCardProps {
 }
 
 export default function AgentCard({ agent, index, onSelect }: AgentCardProps) {
+  const t = useTranslations("AgentCard");
   const [hovered, setHovered] = useState(false);
 
   return (
@@ -35,7 +37,7 @@ export default function AgentCard({ agent, index, onSelect }: AgentCardProps) {
           <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75" />
           <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-green-400" />
         </span>
-        <span className="hidden sm:inline text-xs text-green-400 font-mono">Online</span>
+        <span className="hidden sm:inline text-xs text-green-400 font-mono">{t("online")}</span>
       </div>
 
       {/* Avatar — shrink-0 on mobile so it doesn't flex-shrink */}
@@ -63,7 +65,7 @@ export default function AgentCard({ agent, index, onSelect }: AgentCardProps) {
               className="text-left sm:text-center text-xs font-mono mb-3 overflow-hidden"
               style={{ color: agent.color }}
             >
-              "{agent.statusMessage}"
+              &quot;{agent.statusMessage}&quot;
             </motion.p>
           )}
         </AnimatePresence>
@@ -91,7 +93,7 @@ export default function AgentCard({ agent, index, onSelect }: AgentCardProps) {
           animate={{ opacity: hovered ? 1 : 0 }}
           className="mt-2 text-left sm:text-center text-xs text-white/30"
         >
-          Clique para ver perfil completo →
+          {t("clickHintFull")}
         </motion.div>
       </div>
     </motion.div>

@@ -1,8 +1,9 @@
 "use client";
 
-import Link from "next/link";
 import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
+import { useTranslations } from "next-intl";
+import { Link } from "@/i18n/navigation";
 
 interface NavLink {
   href: string;
@@ -16,6 +17,7 @@ interface MobileNavProps {
 }
 
 export default function MobileNav({ links, open, onClose }: MobileNavProps) {
+  const t = useTranslations("MobileNav");
   const [mounted, setMounted] = useState(false);
 
   // Wait for client mount (portal needs document.body)
@@ -64,7 +66,7 @@ export default function MobileNav({ links, open, onClose }: MobileNavProps) {
       <div
         role="dialog"
         aria-modal="true"
-        aria-label="Menu de navegação"
+        aria-label={t("navLabel")}
         style={{
           position: "fixed",
           top: 0,
@@ -99,11 +101,11 @@ export default function MobileNav({ links, open, onClose }: MobileNavProps) {
               color: "#FFFFFF",
             }}
           >
-            Menu
+            {t("title")}
           </span>
           <button
             onClick={onClose}
-            aria-label="Fechar menu"
+            aria-label={t("close")}
             style={{
               padding: "4px",
               color: "rgba(255, 255, 255, 0.6)",
@@ -141,11 +143,11 @@ export default function MobileNav({ links, open, onClose }: MobileNavProps) {
           }}
         >
           {links.map((link) => {
-            const isHighlight = link.label === "Você está pronto?";
+            const isHighlight = link.href === "/contato";
             return (
               <Link
                 key={link.href}
-                href={link.href}
+                href={link.href as "/contato" | "/" | "/servicos" | "/produtos" | "/sobre"}
                 onClick={onClose}
                 style={{
                   display: "flex",
@@ -201,7 +203,7 @@ export default function MobileNav({ links, open, onClose }: MobileNavProps) {
               boxShadow: "0 0 20px rgba(0, 255, 65, 0.3)",
             }}
           >
-            Começar agora →
+            {t("cta")}
           </Link>
         </div>
       </div>

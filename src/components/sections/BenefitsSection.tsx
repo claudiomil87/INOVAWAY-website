@@ -2,36 +2,22 @@
 
 import { motion } from "framer-motion";
 import { Zap, Bot, ShieldCheck, TrendingUp } from "lucide-react";
+import { useTranslations } from "next-intl";
 import GlowCard from "@/components/ui/GlowCard";
 
-const benefits = [
-  {
-    icon: Zap,
-    title: "Rápido como você nunca viu",
-    desc: "Enquanto agências tradicionais ficam semanas em reunião, a gente já entregou. Nosso time de IA não procrastina, não fica doente e não tira férias. Do briefing à entrega: velocidade que faz diferença pra quem precisa vender.",
-    color: "#00FF41",
-  },
-  {
-    icon: Bot,
-    title: "Trabalhando enquanto você descansa",
-    desc: "Às 3 da manhã, quando você está dormindo, o seu negócio continua funcionando, respondendo, vendendo. Automatizamos as tarefas chatas pra você focar no que importa: crescer.",
-    color: "#06B6D4",
-  },
-  {
-    icon: ShieldCheck,
-    title: "Seu negócio protegido. Sempre.",
-    desc: "Hackers não avisam antes de atacar. A gente monitora tudo, o tempo todo. Seu site, seus dados, sua reputação online — tudo sob vigilância 24 horas. Você dorme tranquilo. Nós cuidamos do resto.",
-    color: "#8B5CF6",
-  },
-  {
-    icon: TrendingUp,
-    title: "Resultado, não promessa",
-    desc: "Menos papo, mais entrega. A gente não vende sonho, a gente entrega resultado: mais visibilidade, mais clientes, mais vendas. Simples assim. Você foca no negócio. A gente faz a mágica acontecer.",
-    color: "#00FF41",
-  },
-];
+const benefitIcons = [Zap, Bot, ShieldCheck, TrendingUp];
+const benefitColors = ["#00FF41", "#06B6D4", "#8B5CF6", "#00FF41"];
 
 export default function BenefitsSection() {
+  const t = useTranslations("BenefitsSection");
+
+  const benefits = benefitIcons.map((icon, i) => ({
+    icon,
+    color: benefitColors[i],
+    title: t(`benefits.${i}.title`),
+    desc: t(`benefits.${i}.desc`),
+  }));
+
   return (
     <section className="px-4 py-16 md:py-24">
       <div className="mx-auto max-w-7xl">
@@ -44,16 +30,16 @@ export default function BenefitsSection() {
           className="mb-14 text-center"
         >
           <h2 className="text-3xl font-bold text-white md:text-4xl lg:text-5xl">
-            Por que empresas escolhem a{" "}
+            {t("title")}{" "}
             <span
               className="bg-clip-text text-transparent"
               style={{ backgroundImage: "linear-gradient(135deg, #00FF41, #06B6D4)" }}
             >
-              Inovaway?
+              {t("titleGradient")}
             </span>
           </h2>
           <p className="mx-auto mt-4 max-w-xl text-white/60">
-            Porque resultado não espera. E seu concorrente também não.
+            {t("subtitle")}
           </p>
         </motion.div>
 
@@ -63,7 +49,7 @@ export default function BenefitsSection() {
             const Icon = item.icon;
             return (
               <motion.div
-                key={item.title}
+                key={i}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}

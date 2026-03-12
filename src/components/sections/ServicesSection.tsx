@@ -1,94 +1,62 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Link from "next/link";
 import Image from "next/image";
+import { useTranslations } from "next-intl";
+import { Link } from "@/i18n/navigation";
 
-const services = [
+const servicesConfig = [
   {
-    title: "Design & Identidade Visual",
-    desc: "Sua marca tem que ser bonita, profissional e memorável. A gente cria a identidade completa do seu negócio — do logo às artes das redes sociais — tudo alinhado, tudo com sua cara. Chega de parecer pequeno.",
-    deliverables: [
-      "Logo profissional (+ variações)",
-      "Manual de identidade da sua marca",
-      "Artes prontas pra Instagram e Facebook",
-      "Materiais de venda (flyer, cartão, banner)",
-      "Apresentações e propostas comerciais",
-      "Templates editáveis pra você usar sozinho",
-    ],
     color: "#EC4899",
     agentName: "Pixel",
     agentEmoji: "🎨",
     image: "/redesign/service-pixel-design.png",
     fallbackAvatar: "/squad/pixel-avatar.webp",
     imageRight: false,
-    tag: "Design",
+    deliverableCount: 6,
   },
   {
-    title: "Sites, Funis de Vendas e CRM",
-    desc: "Criamos seu site profissional, funis de vendas que convertem e integramos com nosso CRM próprio (HNBCRM) — gratuito e open source. Seu negócio captando, nutrindo e fechando clientes no piloto automático.",
-    deliverables: [
-      "Site profissional do zero (ou reformulação do atual)",
-      "Funil de vendas completo (captura → nutrição → conversão)",
-      "CRM integrado gratuito (HNBCRM — feito pela Inovaway)",
-      "Integração com WhatsApp, e-mail e redes sociais",
-      "Landing pages pra capturar clientes",
-      "Site rápido e que aparece no Google",
-      "Aplicativo personalizado pra seu negócio",
-      "Manutenção e atualizações inclusas",
-    ],
     color: "#06B6D4",
     agentName: "Nova",
     agentEmoji: "💻",
     image: "/redesign/service-nova-dev.png",
     fallbackAvatar: "/squad/nova-avatar.webp",
     imageRight: true,
-    tag: "Web Dev",
+    deliverableCount: 8,
   },
   {
-    title: "Proteção Digital Completa",
-    desc: "Um ataque hacker pode destruir anos de trabalho em minutos. A gente protege seu negócio antes que isso aconteça. Monitoramento constante, blindagem total, e você dorme tranquilo sabendo que tudo está seguro.",
-    deliverables: [
-      "Auditoria completa de segurança do seu site",
-      "Certificado de segurança (cadeadinho verde no navegador)",
-      "Proteção contra invasões e vírus",
-      "Backup automático dos seus dados",
-      "Monitoramento 24/7 de ameaças",
-      "Relatório mensal de segurança",
-      "Resposta rápida em caso de incidente",
-    ],
     color: "#EF4444",
     agentName: "Shield",
     agentEmoji: "🛡️",
     image: "/redesign/service-shield-security.png",
     fallbackAvatar: "/squad/shield-avatar.webp",
     imageRight: false,
-    tag: "Segurança",
+    deliverableCount: 7,
   },
   {
-    title: "Marketing que Realmente Vende",
-    desc: "Chega de jogar dinheiro fora em anúncio que não traz resultado. A gente cria estratégias de marketing que atraem clientes certos, na hora certa, pelo preço certo. Mais clientes. Mais vendas. Mais crescimento.",
-    deliverables: [
-      "Estratégia de marketing personalizada pro seu negócio",
-      "Criação e gestão de anúncios (Google, Instagram, Facebook)",
-      "Conteúdo pra redes sociais (textos + artes + vídeos)",
-      "Automação de mensagens e follow-up com clientes",
-      "CRM integrado pra acompanhar cada cliente",
-      "Relatório de resultados todo mês (em linguagem simples)",
-      "SEO: aparecer no Google quando seu cliente te procurar",
-      "E-mail marketing e campanhas de promoção",
-    ],
     color: "#F97316",
     agentName: "Spark",
     agentEmoji: "🚀",
     image: "/redesign/service-spark-marketing.png",
     fallbackAvatar: "/squad/spark-avatar.webp",
     imageRight: true,
-    tag: "Marketing",
+    deliverableCount: 8,
   },
 ];
 
 export default function ServicesSection() {
+  const t = useTranslations("ServicesSection");
+
+  const services = servicesConfig.map((cfg, i) => ({
+    ...cfg,
+    title: t(`services.${i}.title`),
+    desc: t(`services.${i}.desc`),
+    tag: t(`services.${i}.tag`),
+    deliverables: Array.from({ length: cfg.deliverableCount }, (_, j) =>
+      t(`services.${i}.deliverables.${j}`)
+    ),
+  }));
+
   return (
     <section className="px-4 py-16 md:py-24">
       <div className="mx-auto max-w-7xl">
@@ -101,16 +69,16 @@ export default function ServicesSection() {
           className="mb-16 text-center"
         >
           <h2 className="text-3xl font-bold text-white md:text-4xl lg:text-5xl">
-            O que a gente{" "}
+            {t("title")}{" "}
             <span
               className="bg-clip-text text-transparent"
               style={{ backgroundImage: "linear-gradient(135deg, #06B6D4, #8B5CF6)" }}
             >
-              entrega pra você
+              {t("titleGradient")}
             </span>
           </h2>
           <p className="mx-auto mt-4 max-w-xl text-white/60">
-            Serviços de agência grande. Preço que cabe no seu bolso.
+            {t("subtitle")}
           </p>
         </motion.div>
 
@@ -118,7 +86,7 @@ export default function ServicesSection() {
         <div className="flex flex-col gap-16">
           {services.map((svc, i) => (
             <motion.div
-              key={svc.title}
+              key={i}
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -137,8 +105,8 @@ export default function ServicesSection() {
                 <p className="text-white/60 leading-relaxed mb-6">{svc.desc}</p>
                 {/* Deliverables list */}
                 <ul className="space-y-2 mb-6">
-                  {svc.deliverables.map((item) => (
-                    <li key={item} className="flex items-start gap-2 text-sm text-white/50">
+                  {svc.deliverables.map((item, j) => (
+                    <li key={j} className="flex items-start gap-2 text-sm text-white/50">
                       <span style={{ color: svc.color }} className="mt-0.5 shrink-0">•</span>
                       {item}
                     </li>
@@ -160,7 +128,7 @@ export default function ServicesSection() {
                   </div>
                   <div>
                     <p className="text-sm font-semibold text-white">{svc.agentEmoji} {svc.agentName}</p>
-                    <p className="text-xs text-white/60">Responsável pelo serviço</p>
+                    <p className="text-xs text-white/60">{t("responsible")}</p>
                   </div>
                 </div>
               </div>
@@ -213,7 +181,7 @@ export default function ServicesSection() {
             href="/servicos"
             className="inline-flex items-center gap-2 font-medium text-[#06B6D4] transition-all hover:gap-3 hover:text-[#22D3EE]"
           >
-            Ver todos os serviços →
+            {t("seeAll")}
           </Link>
         </motion.div>
       </div>

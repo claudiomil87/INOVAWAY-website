@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { CheckCircle } from "lucide-react";
+import { useTranslations } from "next-intl";
 import ShimmerButton from "@/components/ui/ShimmerButton";
 
 const stagger = {
@@ -15,16 +16,18 @@ const fadeUp = {
   show: { opacity: 1, y: 0, transition: { duration: 0.6 } },
 };
 
-const quickBullets = [
-  "Site e funil de vendas prontos em dias, não semanas",
-  "Seu negócio funcionando 24 horas por dia, 7 dias por semana",
-  "Sem burocracia. Sem enrolação. Sem surpresas no final",
-  "Suporte humano de verdade — alguém que responde de verdade",
-];
-
 const heroImagePath = "/redesign/hero-squad-trio.png";
 
 export default function HeroSection() {
+  const t = useTranslations("HeroSection");
+
+  const quickBullets = [
+    t("bullets.0"),
+    t("bullets.1"),
+    t("bullets.2"),
+    t("bullets.3"),
+  ];
+
   return (
     <section className="relative flex min-h-screen items-center justify-center overflow-hidden px-4 pt-24 pb-16">
       {/* ── Grid dot pattern ── */}
@@ -64,7 +67,7 @@ export default function HeroSection() {
             {/* Badge */}
             <motion.div variants={fadeUp} className="mb-6 inline-flex items-center gap-2 rounded-full border border-[#00FF41]/30 bg-[#00FF41]/10 px-4 py-1.5 text-sm text-[#00FF41]">
               <span className="h-2 w-2 animate-pulse rounded-full bg-[#00FF41]" />
-              AI Agents operando 24/7
+              {t("badge")}
             </motion.div>
 
             {/* Headline */}
@@ -72,13 +75,13 @@ export default function HeroSection() {
               variants={fadeUp}
               className="text-5xl font-bold tracking-tight text-white md:text-6xl lg:text-7xl leading-[1.05]"
             >
-              Seu negócio{" "}
+              {t("headline")}{" "}
               <br className="hidden sm:block" />
               <span
                 className="bg-clip-text text-transparent"
                 style={{ backgroundImage: "linear-gradient(135deg, #00FF41 0%, #06B6D4 100%)" }}
               >
-                crescendo 24h
+                {t("headlineGradient")}
               </span>
             </motion.h1>
 
@@ -87,8 +90,7 @@ export default function HeroSection() {
               variants={fadeUp}
               className="mx-auto lg:mx-0 mt-6 max-w-xl text-lg leading-relaxed text-white/60 md:text-xl"
             >
-              Enquanto você descansa, nosso time de inteligência artificial
-              trabalha pelo seu negócio. Todo dia. A noite toda. Sem parar.
+              {t("subtitle")}
             </motion.p>
 
             {/* CTAs */}
@@ -97,10 +99,10 @@ export default function HeroSection() {
               className="mt-10 flex flex-col items-center lg:items-start justify-center lg:justify-start gap-4 sm:flex-row"
             >
               <ShimmerButton href="/contato" variant="primary">
-                Quero crescer agora →
+                {t("ctaPrimary")}
               </ShimmerButton>
               <ShimmerButton href="#squad" variant="secondary">
-                Ver como funciona ↓
+                {t("ctaSecondary")}
               </ShimmerButton>
             </motion.div>
 
@@ -133,7 +135,7 @@ export default function HeroSection() {
               />
               <Image
                 src={heroImagePath}
-                alt="INOVAWAY Elite Squad"
+                alt={t("imageAlt")}
                 width={720}
                 height={540}
                 priority

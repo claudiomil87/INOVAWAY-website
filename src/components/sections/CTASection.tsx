@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { Lock, Zap, Trophy } from "lucide-react";
+import { useTranslations } from "next-intl";
 import ShimmerButton from "@/components/ui/ShimmerButton";
 import MagneticButton from "@/components/ui/MagneticButton";
 
@@ -14,13 +15,16 @@ const squadAvatars = [
   { src: "/squad/scout-avatar.webp", color: "#10B981", name: "Scout" },
 ];
 
-const trustItems = [
-  { icon: Lock, label: "100% grátis, sem cartão de crédito" },
-  { icon: Zap, label: "Resposta em até 2 horas úteis" },
-  { icon: Trophy, label: "+200 empresas atendidas" },
-];
+const trustIcons = [Lock, Zap, Trophy];
 
 export default function CTASection() {
+  const t = useTranslations("CTASection");
+
+  const trustItems = trustIcons.map((icon, i) => ({
+    icon,
+    label: t(`trust.${i}`),
+  }));
+
   return (
     <section className="relative overflow-hidden px-4 py-20 md:py-32">
       {/* Aurora background */}
@@ -65,36 +69,35 @@ export default function CTASection() {
                 </motion.div>
               ))}
               <div className="relative flex h-12 w-12 items-center justify-center rounded-full border-2 border-[#0F172A] bg-[#1E293B] text-xs font-bold text-white/60">
-                +4
+                {t("avatarExtra")}
               </div>
             </div>
           </div>
 
           <h2 className="text-3xl font-bold text-white md:text-5xl lg:text-6xl">
-            Seu concorrente já começou.{" "}
+            {t("title")}{" "}
             <span
               className="bg-clip-text text-transparent"
               style={{ backgroundImage: "linear-gradient(135deg, #00FF41, #8B5CF6)" }}
             >
-              E você?
+              {t("titleGradient")}
             </span>
           </h2>
 
           <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-white/60">
-            Diagnóstico gratuito do seu negócio digital.
-            Sem compromisso. Sem enrolação.{" "}
-            <span className="text-white font-medium">Só 10 vagas disponíveis este mês</span>{" "}
-            — e já foram metade.
+            {t("subtitle")}{" "}
+            <span className="text-white font-medium">{t("slots")}</span>{" "}
+            {t("slotsUsed")}
           </p>
 
           <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
             <MagneticButton>
               <ShimmerButton href="/contato" variant="primary">
-                Quero minha vaga grátis →
+                {t("ctaPrimary")}
               </ShimmerButton>
             </MagneticButton>
             <ShimmerButton href="#squad" variant="secondary">
-              Conhecer o Squad →
+              {t("ctaSecondary")}
             </ShimmerButton>
           </div>
 
