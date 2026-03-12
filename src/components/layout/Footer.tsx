@@ -66,7 +66,7 @@ export default function Footer() {
                 </svg>
               </a>
               <a
-                href="mailto:contato@inovaway.org"
+                href="mailto:inovaway@inovaway.org"
                 className="text-white/60 transition-all duration-300 hover:text-[#00FF41] hover:drop-shadow-[0_0_6px_rgba(0,255,65,0.5)]"
                 aria-label={t("brand.emailAria")}
               >

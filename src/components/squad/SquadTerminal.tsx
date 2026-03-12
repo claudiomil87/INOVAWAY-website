@@ -1,5 +1,6 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
+import { useLocale } from "next-intl";
 import { agents } from "./agents-data";
 
 interface TerminalLine {
@@ -11,7 +12,7 @@ interface TerminalLine {
   message: string;
 }
 
-const agentMessages: Record<string, string[]> = {
+const agentMessagesPt: Record<string, string[]> = {
   Arch: [
     "Delegando tarefa #18 para Nova...",
     "Analisando arquitetura do sistema...",
@@ -68,6 +69,63 @@ const agentMessages: Record<string, string[]> = {
   ],
 };
 
+const agentMessagesEn: Record<string, string[]> = {
+  Arch: [
+    "Delegating task #18 to Nova...",
+    "Analyzing system architecture...",
+    "Orchestrating agents in parallel...",
+    "Decomposing flow into parallel trees..."
+  ],
+  Pixel: [
+    "Generating brand assets...",
+    "Refining color palette...",
+    "Designing new visual components...",
+    "Adjusting typography and hierarchy..."
+  ],
+  Nova: [
+    "Building interactive components...",
+    "Optimizing performance: 98kb → 92kb",
+    "Fixing mobile layout at 375px...",
+    "Lighthouse score: 98/100 ✓"
+  ],
+  Forge: [
+    "Publishing to production... ✓",
+    "Running deploy pipeline...",
+    "Scaling infrastructure 3x",
+    "Docker containers healthy"
+  ],
+  Scout: [
+    "Analyzing market trends...",
+    "Researching 47 sources...",
+    "Synthesizing intelligence report...",
+    "Competitive analysis complete"
+  ],
+  Shield: [
+    "Running security audit...",
+    "Testing OWASP top 10 security...",
+    "Fixing XSS vulnerability...",
+    "Pen test: 0 critical issues"
+  ],
+  Lens: [
+    "E2E suite: 142/142 passed ✓",
+    "Testing across 12 resolutions...",
+    "Logging edge case #37...",
+    "Accessibility audit complete"
+  ],
+  Spark: [
+    "A/B testing headline variations...",
+    "Optimizing conversion funnel...",
+    "CTR improved 23%",
+    "Creating viral content strategy..."
+  ],
+  Flux: [
+    "Rendering 450 frames in parallel...",
+    "Veo 2: generating cinematic clip...",
+    "Composing narration + motion graphics",
+    "Reel ready: 15s vertical @ 30fps ✓"
+  ],
+};
+
 function getTimestamp() {
   return new Date().toLocaleTimeString("pt-BR", {
     hour: "2-digit",
@@ -80,6 +138,8 @@ function getTimestamp() {
 let lineCounter = 0;
 
 export default function SquadTerminal() {
+  const locale = useLocale();
+  const agentMessages = locale === "en" ? agentMessagesEn : agentMessagesPt;
   const [lines, setLines] = useState<TerminalLine[]>([]);
   const containerRef = useRef<HTMLDivElement>(null);
   const agentIndexRef = useRef(0);

@@ -37,7 +37,7 @@
     },
     "contact": {
       "title": "Fala com a gente",
-      "email": "📧 contato@inovaway.org",
+      "email": "📧 inovaway@inovaway.org",
       "response": "💬 Resposta em até 2 horas",
       "coverage": "🌍 Atendemos em todo o Brasil",
       "hours": "Seg a Sex: 9h às 18h",
@@ -351,7 +351,7 @@
       "unit": "min",
       "active": "Squad ativo fora do horário comercial"
     },
-    "whatsapp": "💬 Falar direto no WhatsApp",
+    "whatsapp": "Falar direto no WhatsApp",
     "trust": {
       "0": "Seus dados estão 100% seguros. Nunca vamos te encher de spam.",
       "1": "Resposta garantida em até 2 horas úteis",
@@ -816,7 +816,7 @@
     "indexTitle": "Índice",
     "contactTitle": "Dúvidas sobre privacidade?",
     "contactSubtitle": "Entre em contato com nosso Encarregado de Dados (DPO):",
-    "contactEmail": "contato@inovaway.org",
+    "contactEmail": "inovaway@inovaway.org",
     "termsLink": "Ver Termos de Uso →",
     "sections": {
       "0": {
@@ -849,11 +849,11 @@
       },
       "7": {
         "title": "8. Seus Direitos como Titular",
-        "content": "Conforme a LGPD (Arts. 17 a 22), você tem os seguintes direitos:\n\n- **Confirmação**: saber se tratamos dados seus\n- **Acesso**: obter cópia dos dados que temos sobre você\n- **Correção**: solicitar correção de dados incompletos, inexatos ou desatualizados\n- **Anonimização / Bloqueio / Eliminação**: de dados desnecessários ou tratados em desconformidade\n- **Portabilidade**: receber seus dados em formato estruturado para transferência a outro fornecedor\n- **Eliminação**: solicitar exclusão dos dados tratados com base em consentimento\n- **Informação**: saber com quem compartilhamos seus dados\n- **Revogação do consentimento**: cancelar autorização de tratamento a qualquer momento\n- **Oposição**: opor-se a tratamento realizado com base em legítimo interesse\n\n**Como exercer seus direitos:**\nEnvie sua solicitação para **contato@inovaway.org** com o assunto \"LGPD — [Direito Solicitado]\".\nResponderemos em até **15 dias úteis**, conforme prazo estabelecido na LGPD."
+        "content": "Conforme a LGPD (Arts. 17 a 22), você tem os seguintes direitos:\n\n- **Confirmação**: saber se tratamos dados seus\n- **Acesso**: obter cópia dos dados que temos sobre você\n- **Correção**: solicitar correção de dados incompletos, inexatos ou desatualizados\n- **Anonimização / Bloqueio / Eliminação**: de dados desnecessários ou tratados em desconformidade\n- **Portabilidade**: receber seus dados em formato estruturado para transferência a outro fornecedor\n- **Eliminação**: solicitar exclusão dos dados tratados com base em consentimento\n- **Informação**: saber com quem compartilhamos seus dados\n- **Revogação do consentimento**: cancelar autorização de tratamento a qualquer momento\n- **Oposição**: opor-se a tratamento realizado com base em legítimo interesse\n\n**Como exercer seus direitos:**\nEnvie sua solicitação para **inovaway@inovaway.org** com o assunto \"LGPD — [Direito Solicitado]\".\nResponderemos em até **15 dias úteis**, conforme prazo estabelecido na LGPD."
       },
       "8": {
         "title": "9. Encarregado de Dados (DPO)",
-        "content": "A INOVAWAY designou um Encarregado pelo Tratamento de Dados Pessoais (DPO — Data Protection Officer), responsável por:\n\n- Ser o canal de comunicação entre titulares, a empresa e a ANPD\n- Orientar colaboradores sobre as práticas de proteção de dados\n- Receber e responder reclamações e solicitações dos titulares\n\n**Contato com o DPO:**\nE-mail: contato@inovaway.org\nAssunto: \"DPO / Privacidade de Dados\"\n\nA ANPD (Autoridade Nacional de Proteção de Dados) pode ser contactada em: www.gov.br/anpd"
+        "content": "A INOVAWAY designou um Encarregado pelo Tratamento de Dados Pessoais (DPO — Data Protection Officer), responsável por:\n\n- Ser o canal de comunicação entre titulares, a empresa e a ANPD\n- Orientar colaboradores sobre as práticas de proteção de dados\n- Receber e responder reclamações e solicitações dos titulares\n\n**Contato com o DPO:**\nE-mail: inovaway@inovaway.org\nAssunto: \"DPO / Privacidade de Dados\"\n\nA ANPD (Autoridade Nacional de Proteção de Dados) pode ser contactada em: www.gov.br/anpd"
       },
       "9": {
         "title": "10. Segurança dos Dados",
@@ -872,8 +872,71 @@
   "TermosPage": {
     "pageTitle": "Termos de Uso",
     "pageDescription": "Termos de Uso e Condições Gerais de Serviços da INOVAWAY.",
-    "lastUpdated": "Última atualização: Janeiro de 2026",
-    "backHome": "← Voltar para a home"
+    "lastUpdated": "Última atualização: Março de 2026",
+    "backHome": "← Voltar para a home",
+    "badge": "Legal",
+    "title": "Termos de",
+    "titleGradient": "Uso",
+    "subtitle": "Condições gerais para uso do site e dos serviços prestados pela INOVAWAY. Leia atentamente antes de contratar.",
+    "indexTitle": "Índice",
+    "contactTitle": "Dúvidas sobre os Termos?",
+    "contactSubtitle": "Entre em contato com nossa equipe jurídica e comercial:",
+    "contactEmail": "inovaway@inovaway.org",
+    "privacyLink": "Ver Política de Privacidade →",
+    "sections": {
+      "0": {
+        "title": "1. Objeto e Aceitação",
+        "content": "Estes Termos de Uso (\"Termos\") regulam a relação entre a **INOVAWAY** (\"Empresa\", \"nós\") e o usuário ou cliente (\"Usuário\", \"você\") que acessa o site inovaway.org ou contrata os serviços oferecidos pela INOVAWAY.\n\nAo acessar o site, preencher qualquer formulário, contratar serviços ou utilizar as plataformas da INOVAWAY (incluindo UpBro, HNBCRM e GMBAssist), você declara ter lido, compreendido e concordado integralmente com estes Termos.\n\n**Caso não concorde com qualquer disposição destes Termos, não utilize nossos serviços.**\n\nA INOVAWAY reserva-se o direito de atualizar estes Termos a qualquer momento. As alterações entram em vigor na data de publicação. O uso continuado dos serviços após a publicação das alterações constitui aceitação dos novos Termos."
+      },
+      "1": {
+        "title": "2. Descrição dos Serviços",
+        "content": "A INOVAWAY oferece serviços de tecnologia e marketing digital para pequenas e médias empresas, incluindo, mas não se limitando a:\n\n**2.1 Serviços de desenvolvimento:**\n- Criação e manutenção de sites e aplicações web\n- Desenvolvimento de chatbots e automações (plataforma UpBro)\n- Integrações via API com plataformas de terceiros\n- Sistemas de CRM e gestão de relacionamento (HNBCRM)\n\n**2.2 Serviços de marketing digital:**\n- Gestão de presença no Google Meu Negócio (GMBAssist)\n- Criação e gestão de campanhas de tráfego pago\n- Produção de conteúdo e identidade visual\n- Estratégias de crescimento e conversão\n\n**2.3 Consultoria e diagnósticos:**\n- Análise e diagnóstico digital do negócio\n- Estratégia e planejamento tecnológico\n- Treinamento e capacitação\n\nAs especificações detalhadas de cada serviço são definidas em proposta comercial ou contrato específico assinado entre as partes."
+      },
+      "2": {
+        "title": "3. Cadastro e Conta do Usuário",
+        "content": "Para contratar serviços ou acessar plataformas restritas, o Usuário deverá:\n\n- Fornecer informações verdadeiras, completas e atualizadas\n- Manter seus dados de acesso (login e senha) em absoluto sigilo\n- Notificar imediatamente a INOVAWAY em caso de acesso não autorizado\n\nO Usuário é responsável por todas as ações realizadas com suas credenciais de acesso. A INOVAWAY não se responsabiliza por danos decorrentes do uso não autorizado de contas por falha do Usuário em proteger suas credenciais.\n\nA INOVAWAY reserva-se o direito de suspender ou encerrar contas que violem estes Termos, sem aviso prévio em casos de violação grave."
+      },
+      "3": {
+        "title": "4. Propriedade Intelectual",
+        "content": "**4.1 Propriedade da INOVAWAY:**\nTodo o conteúdo disponível no site inovaway.org — incluindo, mas não se limitando a textos, imagens, logotipos, vídeos, código-fonte, layout, metodologias e marcas — é propriedade exclusiva da INOVAWAY ou de seus licenciantes, protegidos pela Lei de Direitos Autorais (Lei nº 9.610/1998) e pela Lei de Propriedade Industrial (Lei nº 9.279/1996).\n\nÉ vedada a reprodução, distribuição, modificação, adaptação, tradução, criação de obras derivadas ou exploração comercial de qualquer conteúdo sem autorização prévia e escrita da INOVAWAY.\n\n**4.2 Propriedade dos entregáveis ao cliente:**\nApós o pagamento integral dos valores devidos, os entregáveis personalizados produzidos exclusivamente para o cliente (sites, artes, textos sob demanda) são transferidos ao contratante, conforme especificado no contrato de serviços.\n\n**4.3 Plataformas SaaS:**\nAs plataformas UpBro, HNBCRM e GMBAssist são fornecidas como Software como Serviço (SaaS). O cliente adquire o direito de uso (licença não exclusiva e intransferível), não a propriedade do software.\n\n**4.4 Conteúdo do Usuário:**\nAo compartilhar conteúdo com a INOVAWAY para fins de prestação de serviços, o Usuário declara ter todos os direitos necessários sobre esse conteúdo e concede à INOVAWAY licença para utilizá-lo exclusivamente para a prestação dos serviços contratados."
+      },
+      "4": {
+        "title": "5. Pagamento e Condições Comerciais",
+        "content": "**5.1 Precificação:**\nOs valores dos serviços são definidos em proposta comercial aprovada pelo cliente. A INOVAWAY pode alterar seus preços com aviso prévio de 30 dias para contratos vigentes.\n\n**5.2 Forma e prazo de pagamento:**\nAs condições de pagamento são estabelecidas no contrato específico. O não pagamento nos prazos acordados pode resultar em:\n- Suspensão dos serviços após 15 dias de atraso\n- Juros de 1% ao mês e multa de 2% sobre o valor em atraso\n- Rescisão contratual após 30 dias de inadimplência\n\n**5.3 Reembolsos:**\nServiços já prestados não são reembolsáveis, exceto em casos de falha comprovada da INOVAWAY. Para serviços SaaS, não há reembolso proporcional pelo período não utilizado, salvo disposição contrária no contrato.\n\n**5.4 Impostos:**\nOs preços cotados não incluem impostos aplicáveis, que serão acrescidos conforme a legislação vigente."
+      },
+      "5": {
+        "title": "6. Responsabilidades das Partes",
+        "content": "**6.1 Responsabilidades da INOVAWAY:**\n- Prestar os serviços com qualidade e dentro dos prazos acordados\n- Manter sigilo das informações do cliente\n- Notificar o cliente sobre questões relevantes do projeto\n- Proteger dados pessoais conforme a Política de Privacidade\n\n**6.2 Responsabilidades do Usuário/Cliente:**\n- Fornecer informações e materiais corretos e necessários para a execução dos serviços\n- Efetuar pagamentos nos prazos acordados\n- Respeitar os direitos de propriedade intelectual da INOVAWAY e de terceiros\n- Utilizar os serviços em conformidade com a legislação brasileira\n- Não utilizar as plataformas para atividades ilegais, difamatórias, enganosas ou que violem direitos de terceiros"
+      },
+      "6": {
+        "title": "7. Limitação de Responsabilidade",
+        "content": "**7.1 Exclusão de garantia:**\nOs serviços são fornecidos \"como estão\". A INOVAWAY não garante que os serviços serão ininterruptos, livres de erros ou que atenderão a requisitos específicos não previamente acordados.\n\n**7.2 Limitação de danos:**\nEm nenhuma hipótese a INOVAWAY será responsável por:\n- Danos indiretos, incidentais, consequenciais, especiais ou punitivos\n- Perda de lucros, receita, dados ou oportunidades de negócio\n- Danos resultantes de ações de terceiros, ataques cibernéticos ou falhas de infraestrutura fora do controle da INOVAWAY\n- Resultados específicos de marketing ou vendas, que dependem de fatores externos não controláveis\n\n**7.3 Teto de responsabilidade:**\nA responsabilidade total da INOVAWAY em relação a qualquer reclamação é limitada ao valor pago pelo cliente nos 3 meses anteriores ao evento que gerou a reclamação.\n\n**7.4 Força maior:**\nA INOVAWAY não será responsável por atrasos ou falhas resultantes de eventos fora de seu controle razoável (caso fortuito ou força maior), incluindo desastres naturais, falhas de infraestrutura de internet, pandemias ou atos governamentais."
+      },
+      "7": {
+        "title": "8. Uso Aceitável",
+        "content": "É expressamente proibido utilizar os serviços e plataformas da INOVAWAY para:\n\n- Violar leis ou regulamentos brasileiros ou internacionais\n- Enviar spam, phishing ou comunicações não solicitadas\n- Distribuir malware, vírus ou código malicioso\n- Realizar ataques a sistemas de terceiros\n- Coletar dados de usuários sem consentimento\n- Publicar conteúdo difamatório, pornográfico, discriminatório ou que incite violência\n- Infringir direitos autorais, marcas registradas ou outros direitos de propriedade intelectual\n- Realizar engenharia reversa das plataformas da INOVAWAY\n- Praticar concorrência desleal ou copiar metodologias proprietárias da INOVAWAY\n\nO descumprimento dessas regras pode resultar em suspensão imediata dos serviços e responsabilização civil e criminal."
+      },
+      "8": {
+        "title": "9. Privacidade e Dados Pessoais",
+        "content": "O tratamento de dados pessoais pela INOVAWAY é regido pela nossa Política de Privacidade, disponível em inovaway.org/privacidade, que é parte integrante destes Termos.\n\nAo utilizar nossos serviços, você consente com o tratamento de seus dados conforme descrito na Política de Privacidade, em conformidade com a LGPD (Lei nº 13.709/2018)."
+      },
+      "9": {
+        "title": "10. Confidencialidade",
+        "content": "Ambas as partes comprometem-se a manter em estrita confidencialidade todas as informações confidenciais trocadas no âmbito da relação comercial, incluindo:\n\n- Informações estratégicas e de negócio\n- Dados de clientes e propriedade intelectual\n- Metodologias, processos e ferramentas proprietárias\n\nEsta obrigação de confidencialidade persiste por **2 anos** após o encerramento do contrato ou da relação comercial, salvo disposição contrária em contrato específico.\n\nNão são consideradas confidenciais as informações de domínio público, que já eram de conhecimento prévio da parte receptora ou que sejam exigidas legalmente por autoridade competente."
+      },
+      "10": {
+        "title": "11. Encerramento e Suspensão",
+        "content": "**11.1 Rescisão por qualquer das partes:**\nQualquer das partes pode rescindir o contrato com aviso prévio de **30 dias** por escrito, salvo se o contrato específico estabelecer prazo diferente.\n\n**11.2 Rescisão imediata pela INOVAWAY:**\nA INOVAWAY pode suspender ou encerrar imediatamente os serviços em caso de:\n- Violação destes Termos ou do contrato específico\n- Inadimplência superior a 30 dias\n- Uso dos serviços para fins ilegais ou prejudiciais a terceiros\n\n**11.3 Efeitos da rescisão:**\nApós a rescisão, o cliente terá acesso aos seus dados e entregáveis por 30 dias. Após esse prazo, os dados poderão ser excluídos. Os valores devidos até a data de rescisão permanecem exigíveis."
+      },
+      "11": {
+        "title": "12. Disposições Gerais",
+        "content": "**12.1 Integralidade:**\nEstes Termos, juntamente com a Política de Privacidade e qualquer contrato específico assinado, constituem o acordo integral entre as partes sobre o objeto.\n\n**12.2 Cessão:**\nO Usuário não pode ceder ou transferir seus direitos e obrigações decorrentes destes Termos sem consentimento prévio e por escrito da INOVAWAY.\n\n**12.3 Independência de cláusulas:**\nSe qualquer disposição destes Termos for considerada inválida ou inexequível, as demais disposições permanecerão em pleno vigor.\n\n**12.4 Tolerância:**\nA tolerância da INOVAWAY em relação a qualquer descumprimento não implica renúncia ao direito de exigir cumprimento posterior.\n\n**12.5 Comunicações:**\nAs comunicações formais entre as partes devem ser feitas por escrito, preferencialmente por e-mail (inovaway@inovaway.org), com confirmação de recebimento."
+      },
+      "12": {
+        "title": "13. Lei Aplicável e Foro",
+        "content": "Estes Termos são regidos exclusivamente pelas leis da República Federativa do Brasil.\n\nPara a resolução de qualquer conflito decorrente destes Termos ou dos serviços prestados, as partes elegem o **Foro da comarca do domicílio do Usuário**, nos termos do Art. 101 do Código de Defesa do Consumidor (Lei nº 8.078/1990), renunciando expressamente a qualquer outro, por mais privilegiado que seja.\n\nPara clientes corporativos, fica eleito o foro da Comarca de **Recife/PE**, com renúncia a qualquer outro.\n\nAntes de recorrer ao Judiciário, as partes comprometem-se a buscar solução amigável no prazo de 30 dias após notificação formal do conflito.\n\n**Contato:** inovaway@inovaway.org"
+      }
+    }
   },
   "Metadata": {
     "home": {
