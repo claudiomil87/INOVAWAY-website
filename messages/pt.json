@@ -702,6 +702,106 @@
         "author": "Carlos T.",
         "role": "Consultor financeiro"
       }
+    },
+    "titleSuffix": "Mas Nunca Pôde Pagar.",
+    "socialProof": {
+      "0": "15+ anos de experiência em tecnologia",
+      "1": "+200 empresas transformadas",
+      "2": "Time de IA ativo 24/7",
+      "3": "Clientes em Brasil, Portugal e EUA"
+    },
+    "history": {
+      "title": "Nossa História",
+      "p1": "Não começamos numa garagem. ",
+      "p1Bold": "Mas quase.",
+      "p2": "Nosso fundador passou ",
+      "p2Bold": "mais de 15 anos",
+      "p2End": " no mundo da tecnologia. Trabalhou com grandes empresas, viu como elas operavam, quais ferramentas usavam, por que cresciam enquanto as pequenas lutavam.",
+      "p3": "E a resposta era simples — e injusta: ",
+      "p3Bold": "acesso.",
+      "p4": "Grandes empresas tinham equipes inteiras de TI, designers, marketeiros, analistas de dados. PMEs tinham... uma planilha e um sobrinho que \"entendia de computador\".",
+      "p5": "Isso precisava mudar.",
+      "p6": "A Inovaway nasceu para ser o time de tecnologia que todo pequeno e médio empreendedor merece ter — mas que antes só quem tinha muito dinheiro podia pagar.",
+      "p7": "Hoje, com inteligência artificial, automação e um time apaixonado, a gente entrega o trabalho de uma agência de R$50.000/mês — ",
+      "p7Bold": "por uma fração desse preço.",
+      "p8": "E isso não é exagero. É o que acontece quando você usa tecnologia do jeito certo."
+    },
+    "mission": {
+      "title": "🎯 Missão",
+      "quote": "\"Democratizar o acesso à tecnologia de ponta para pequenas e médias empresas — e fazer cada cliente crescer mais rápido do que ele imagina ser possível.\"",
+      "desc": "Não acreditamos que tamanho de empresa define quem merece ter tecnologia boa. Acreditamos que ",
+      "descBold": "todo negócio com produto sério merece uma chance séria de crescer."
+    },
+    "vision": {
+      "title": "👁️ Visão",
+      "quote": "\"Um mundo onde todo empreendedor tem um time de tecnologia de elite ao seu lado — não importa o tamanho do negócio nem o tamanho do bolso.\"",
+      "desc": "Estamos construindo isso. Agora. Um cliente de cada vez."
+    },
+    "valuesTitle": "Nossos 5 Valores ",
+    "valuesSubtitle": "(Sem Papo de RH)",
+    "valuesDesc": "Princípios reais. Não decoração de parede.",
+    "comparison": {
+      "title": "Por Que Somos ",
+      "titleGradient": "Fundamentalmente Diferentes",
+      "subtitle": "Existem centenas de agências digitais por aí. Veja a diferença na prática.",
+      "marketHeader": "O Mercado Oferece",
+      "inovawayHeader": "A Inovaway Entrega",
+      "rows": {
+        "0": {
+          "market": "Equipe humana (dorme, tira férias, fica doente)",
+          "inovaway": "Time de IA + humanos operando 24/7/365"
+        },
+        "1": {
+          "market": "Resultado em 6-12 meses",
+          "inovaway": "Crescimento visível em 30-90 dias"
+        },
+        "2": {
+          "market": "Projeto entregue e abandonado",
+          "inovaway": "Melhoria contínua e suporte constante"
+        },
+        "3": {
+          "market": "Preço de agência grande",
+          "inovaway": "Preço acessível para PME"
+        },
+        "4": {
+          "market": "Ferramentas genéricas de terceiros",
+          "inovaway": "Produtos próprios (UpBro, HNBCRM, GMBAssist)"
+        },
+        "5": {
+          "market": "Foco em entrega de serviço",
+          "inovaway": "Foco em resultado financeiro do cliente"
+        }
+      },
+      "footer": "Nossa equipe de IA não tem ego. Não tem viés. Não tem mau dia. Ela analisa dados, identifica oportunidades, cria conteúdo, atende cliente e otimiza campanhas — sem parar.",
+      "footer2": "Aí você pergunta: \"Mas tem humano nisso?\" Sim. Sempre. Mas potencializado por IA. ",
+      "footer2Bold": "O resultado é uma equipe que produz 10x mais, por 10x menos."
+    },
+    "team": {
+      "title": "Nosso Time: ",
+      "titleGradient": "Elite Squad",
+      "p1": "Não temos um \"departamento de marketing\". Temos a Spark. Não temos um \"time de dev\". Temos a Nova e o Forge. Cada agent é especialista na sua área — treinado, focado, sem distração.",
+      "p2": "Cada agent opera de forma autônoma, mas coordenada. Arch orquestra. Cada um executa. O resultado é um time que entrega em dias o que agências levam semanas.",
+      "p3": "Rápido porque é especializado. Barato porque é eficiente. Eficaz porque usa IA do jeito certo."
+    },
+    "impactQuote": {
+      "title": "\"O que grandes empresas pagam ",
+      "titleGradient": "R$50.000/mês",
+      "titleEnd": " em agência, você tem com a Inovaway por uma fração.\"",
+      "desc": "Não porque somos baratos. Mas porque somos ",
+      "descBold": "eficientes.",
+      "descEnd": " Inteligência artificial muda o jogo. E a gente usa isso pra você."
+    },
+    "finalCta": {
+      "title": "Sua Empresa Merece Crescer. ",
+      "titleGradient": "E Você Merece Dormir Tranquilo.",
+      "subtitle": "Diagnóstico gratuito. Sem compromisso. Sem enrolação.",
+      "subtitle2": "A gente olha pro seu negócio, identifica o maior gargalo e te diz o que fazer — ",
+      "subtitle2Bold": "de graça.",
+      "subtitle3": "Mas cuidado: ",
+      "subtitle3Bold": "abrimos poucas vagas de diagnóstico por mês.",
+      "subtitle3End": " Quem chega primeiro, é atendido primeiro.",
+      "cta": "Quero Meu Diagnóstico Gratuito — Falar com a Inovaway Agora",
+      "small": "Resposta em até 24h • 100% gratuito • Sem compromisso"
     }
   },
   "PrivacidadePage": {

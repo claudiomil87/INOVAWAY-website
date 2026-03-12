@@ -781,6 +781,28 @@
       "subtitle3End": " First come, first served.",
       "cta": "I Want My Free Diagnosis — Talk to Inovaway Now",
       "small": "Response within 24h • 100% free • No commitment"
+    },
+    "values": {
+      "0": {
+        "title": "Results Above All",
+        "desc": "We don't charge by the hour. We don't sell process. We sell results. If it doesn't work for you, it doesn't work for us."
+      },
+      "1": {
+        "title": "Transparency Without Excuses",
+        "desc": "Something went wrong? We say it. Going to be late? We warn you. No beating around the bush. No BS. No disappearing when things get tough."
+      },
+      "2": {
+        "title": "Continuous Improvement",
+        "desc": "We never deliver and 'disappear'. Our systems learn. Our team improves. Your business grows."
+      },
+      "3": {
+        "title": "Simplicity",
+        "desc": "Complex technology that nobody uses is worthless. We simplify. You use it. And you sell more."
+      },
+      "4": {
+        "title": "True Partnership",
+        "desc": "Your growth is our growth. We're not suppliers. We're partners. There's a difference."
+      }
     }
   },
   "PrivacidadePage": {
