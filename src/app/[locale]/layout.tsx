@@ -102,10 +102,10 @@ export async function generateMetadata({
       alternateLocale: isEn ? "pt_BR" : "en_US",
       images: [
         {
-          url: "/og-image.png",
+          url: isEn ? "/og-en.png" : "/og-pt.png",
           width: 1200,
           height: 630,
-          alt: "INOVAWAY — AI Agents 24/7",
+          alt: isEn ? "INOVAWAY — Your 24/7 AI Team" : "INOVAWAY — Seu Time de IA 24/7",
         },
       ],
     },
@@ -113,7 +113,7 @@ export async function generateMetadata({
       card: "summary_large_image",
       title,
       description,
-      images: ["/og-image.png"],
+      images: [isEn ? "/og-en.png" : "/og-pt.png"],
       creator: "@inovaway",
       site: "@inovaway",
     },
