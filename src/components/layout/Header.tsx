@@ -5,6 +5,7 @@ import { useState, useEffect } from "react";
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import MobileNav from "./MobileNav";
+import LanguageSwitcher from "@/components/ui/LanguageSwitcher";
 
 export default function Header() {
   const t = useTranslations("Header");
@@ -89,6 +90,7 @@ export default function Header() {
 
         {/* CTA — desktop */}
         <div className="hidden md:flex items-center gap-4">
+          <LanguageSwitcher />
           <Link
             href="/contato"
             className="rounded-lg px-4 py-2 text-sm font-bold transition-all duration-300"

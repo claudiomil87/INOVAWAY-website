@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
+import LanguageSwitcher from "@/components/ui/LanguageSwitcher";
 
 interface NavLink {
   href: string;
@@ -205,6 +206,9 @@ export default function MobileNav({ links, open, onClose }: MobileNavProps) {
           >
             {t("cta")}
           </Link>
+          <div style={{ marginTop: "12px", display: "flex", justifyContent: "center" }}>
+            <LanguageSwitcher />
+          </div>
         </div>
       </div>
     </>,
