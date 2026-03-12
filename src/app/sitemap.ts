@@ -4,7 +4,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = "https://inovaway.org";
   const lastModified = new Date("2026-03-07");
 
-  const ptPages = [
+  const pages = [
     { path: "", priority: 1.0, freq: "weekly" },
     { path: "/servicos", priority: 0.9, freq: "monthly" },
     { path: "/produtos", priority: 0.9, freq: "monthly" },
@@ -14,19 +14,35 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: "/termos", priority: 0.3, freq: "yearly" },
   ] as const;
 
-  const ptEntries: MetadataRoute.Sitemap = ptPages.map(({ path, priority, freq }) => ({
-    url: `${baseUrl}${path}`,
-    lastModified,
-    changeFrequency: freq,
-    priority,
-  }));
+  const entries: MetadataRoute.Sitemap = pages.flatMap(({ path, priority, freq }) => {
+    const ptUrl = `${baseUrl}${path}`;
+    const enUrl = `${baseUrl}/en${path}`;
 
-  const enEntries: MetadataRoute.Sitemap = ptPages.map(({ path, priority, freq }) => ({
-    url: `${baseUrl}/en${path}`,
-    lastModified,
-    changeFrequency: freq,
-    priority: priority * 0.9, // slightly lower for EN
-  }));
+    const sharedAlternates = {
+      languages: {
+        "pt-BR": ptUrl,
+        en: enUrl,
+        "x-default": ptUrl,
+      },
+    };
 
-  return [...ptEntries, ...enEntries];
+    return [
+      {
+        url: ptUrl,
+        lastModified,
+        changeFrequency: freq,
+        priority,
+        alternates: sharedAlternates,
+      },
+      {
+        url: enUrl,
+        lastModified,
+        changeFrequency: freq,
+        priority: priority * 0.9,
+        alternates: sharedAlternates,
+      },
+    ];
+  });
+
+  return entries;
 }

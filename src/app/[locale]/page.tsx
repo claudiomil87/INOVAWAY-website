@@ -9,23 +9,43 @@ import FAQSection from "@/components/sections/FAQSection";
 import CTASection from "@/components/sections/CTASection";
 import SocialProofNotification from "@/components/ui/SocialProofNotification";
 
-export async function generateMetadata(): Promise<Metadata> {
-  const t = await getTranslations("Metadata.home");
+const BASE_URL = "https://inovaway.org";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "Metadata.home" });
+  const isEn = locale === "en";
+  const canonical = isEn ? `${BASE_URL}/en` : BASE_URL;
+
   return {
     title: t("title"),
     description: t("description"),
+    alternates: {
+      canonical,
+      languages: {
+        "pt-BR": BASE_URL,
+        en: `${BASE_URL}/en`,
+        "x-default": BASE_URL,
+      },
+    },
     openGraph: {
       title: t("title"),
       description: t("description"),
-      url: "https://inovaway.org",
+      url: canonical,
       type: "website",
       siteName: "INOVAWAY",
+      locale: isEn ? "en_US" : "pt_BR",
+      alternateLocale: isEn ? "pt_BR" : "en_US",
       images: [
         {
           url: "/og-image.png",
           width: 1200,
           height: 630,
-          alt: "INOVAWAY — AI Agents que trabalham 24/7 para seu negócio",
+          alt: t("title"),
         },
       ],
     },

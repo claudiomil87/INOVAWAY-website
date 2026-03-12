@@ -1,46 +1,70 @@
 import { Link } from "@/i18n/navigation";
 import { Metadata } from "next";
 
-export const metadata: Metadata = {
-  title: "Política de Privacidade | INOVAWAY",
-  description:
-    "Conheça a Política de Privacidade da INOVAWAY conforme a LGPD (Lei 13.709/2018). Saiba como coletamos, usamos e protegemos seus dados pessoais com segurança.",
-  keywords: [
-    "política de privacidade",
-    "LGPD",
-    "proteção de dados",
-    "privacidade",
-    "INOVAWAY",
-    "Lei 13.709",
-    "dados pessoais",
-  ],
-  openGraph: {
-    title: "Política de Privacidade | INOVAWAY",
-    description:
-      "Conheça a Política de Privacidade da INOVAWAY conforme a LGPD (Lei 13.709/2018). Saiba como coletamos, usamos e protegemos seus dados pessoais com segurança.",
-    url: "https://inovaway.org/privacidade",
-    type: "website",
-    locale: "pt_BR",
-    siteName: "INOVAWAY",
-    images: [
-      {
-        url: "/og-image.png",
-        width: 1200,
-        height: 630,
-        alt: "Política de Privacidade — INOVAWAY",
-      },
+const BASE_URL = "https://inovaway.org";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const isEn = locale === "en";
+  const path = "/privacidade";
+  const canonical = isEn ? `${BASE_URL}/en${path}` : `${BASE_URL}${path}`;
+
+  const title = isEn ? "Privacy Policy | INOVAWAY" : "Política de Privacidade | INOVAWAY";
+  const description = isEn
+    ? "Read INOVAWAY's Privacy Policy. Learn how we collect, use, and protect your personal data in compliance with applicable law."
+    : "Conheça a Política de Privacidade da INOVAWAY conforme a LGPD (Lei 13.709/2018). Saiba como coletamos, usamos e protegemos seus dados pessoais com segurança.";
+
+  return {
+    title,
+    description,
+    keywords: [
+      "política de privacidade",
+      "LGPD",
+      "proteção de dados",
+      "privacidade",
+      "INOVAWAY",
+      "Lei 13.709",
+      "dados pessoais",
     ],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Política de Privacidade | INOVAWAY",
-    description:
-      "Conheça a Política de Privacidade da INOVAWAY conforme a LGPD. Saiba como coletamos, usamos e protegemos seus dados pessoais.",
-    images: ["/og-image.png"],
-    creator: "@inovaway",
-    site: "@inovaway",
-  },
-};
+    alternates: {
+      canonical,
+      languages: {
+        "pt-BR": `${BASE_URL}${path}`,
+        en: `${BASE_URL}/en${path}`,
+        "x-default": `${BASE_URL}${path}`,
+      },
+    },
+    openGraph: {
+      title,
+      description,
+      url: canonical,
+      type: "website",
+      locale: isEn ? "en_US" : "pt_BR",
+      alternateLocale: isEn ? "pt_BR" : "en_US",
+      siteName: "INOVAWAY",
+      images: [
+        {
+          url: "/og-image.png",
+          width: 1200,
+          height: 630,
+          alt: title,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      images: ["/og-image.png"],
+      creator: "@inovaway",
+      site: "@inovaway",
+    },
+  };
+}
 
 const sections = [
   {

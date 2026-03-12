@@ -21,81 +21,108 @@ const jetbrainsMono = JetBrains_Mono({
   display: "swap",
 });
 
-export const metadata: Metadata = {
-  metadataBase: new URL("https://inovaway.org"),
-  title: {
-    default: "INOVAWAY — AI Agents que trabalham 24/7 para seu negócio",
-    template: "%s | INOVAWAY",
-  },
-  description:
-    "Agência de AI Agents autônomos. Sites, chatbots, automações e mais — entregues em horas, não semanas.",
-  keywords: [
-    "AI Agents",
-    "automação",
-    "chatbot",
-    "sites",
-    "inteligência artificial",
-    "INOVAWAY",
-    "agência digital",
-    "IA",
-    "funil de vendas",
-  ],
-  authors: [{ name: "INOVAWAY", url: "https://inovaway.org" }],
-  creator: "INOVAWAY",
-  publisher: "INOVAWAY",
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
+const BASE_URL = "https://inovaway.org";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const isEn = locale === "en";
+
+  const title = isEn
+    ? "INOVAWAY — Your 24/7 AI Team"
+    : "INOVAWAY — AI Agents que trabalham 24/7 para seu negócio";
+  const description = isEn
+    ? "AI agency for small and medium businesses. Websites, marketing, security and automation. Results in 30 days."
+    : "Agência de AI Agents autônomos. Sites, chatbots, automações e mais — entregues em horas, não semanas.";
+
+  const canonical = isEn ? `${BASE_URL}/en` : BASE_URL;
+
+  return {
+    metadataBase: new URL(BASE_URL),
+    title: {
+      default: title,
+      template: "%s | INOVAWAY",
+    },
+    description,
+    keywords: [
+      "AI Agents",
+      "automação",
+      "chatbot",
+      "sites",
+      "inteligência artificial",
+      "INOVAWAY",
+      "agência digital",
+      "IA",
+      "funil de vendas",
+    ],
+    authors: [{ name: "INOVAWAY", url: BASE_URL }],
+    creator: "INOVAWAY",
+    publisher: "INOVAWAY",
+    alternates: {
+      canonical,
+      languages: {
+        "pt-BR": BASE_URL,
+        en: `${BASE_URL}/en`,
+        "x-default": BASE_URL,
+      },
+    },
+    robots: {
       index: true,
       follow: true,
-      "max-video-preview": -1,
-      "max-image-preview": "large",
-      "max-snippet": -1,
-    },
-  },
-  openGraph: {
-    type: "website",
-    url: "https://inovaway.org",
-    siteName: "INOVAWAY",
-    title: "INOVAWAY — AI Agents que trabalham 24/7 para seu negócio",
-    description:
-      "Agência de AI Agents autônomos. Sites, chatbots, automações e mais — entregues em horas, não semanas.",
-    images: [
-      {
-        url: "/og-image.png",
-        width: 1200,
-        height: 630,
-        alt: "INOVAWAY — AI Agents 24/7",
+      googleBot: {
+        index: true,
+        follow: true,
+        "max-video-preview": -1,
+        "max-image-preview": "large",
+        "max-snippet": -1,
       },
-    ],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "INOVAWAY — AI Agents que trabalham 24/7 para seu negócio",
-    description:
-      "Agência de AI Agents autônomos. Sites, chatbots, automações e mais — entregues em horas, não semanas.",
-    images: ["/og-image.png"],
-    creator: "@inovaway",
-    site: "@inovaway",
-  },
-  manifest: "/manifest.json",
-  icons: {
-    icon: [
-      { url: "/favicon.ico", sizes: "32x32" },
-      { url: "/icon-192.png", sizes: "192x192", type: "image/png" },
-      { url: "/icon-512.png", sizes: "512x512", type: "image/png" },
-    ],
-    apple: "/apple-touch-icon.png",
-  },
-};
+    },
+    openGraph: {
+      type: "website",
+      url: canonical,
+      siteName: "INOVAWAY",
+      title,
+      description,
+      locale: isEn ? "en_US" : "pt_BR",
+      alternateLocale: isEn ? "pt_BR" : "en_US",
+      images: [
+        {
+          url: "/og-image.png",
+          width: 1200,
+          height: 630,
+          alt: "INOVAWAY — AI Agents 24/7",
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      images: ["/og-image.png"],
+      creator: "@inovaway",
+      site: "@inovaway",
+    },
+    manifest: "/manifest.json",
+    icons: {
+      icon: [
+        { url: "/favicon.ico", sizes: "32x32" },
+        { url: "/icon-192.png", sizes: "192x192", type: "image/png" },
+        { url: "/icon-512.png", sizes: "512x512", type: "image/png" },
+      ],
+      apple: "/apple-touch-icon.png",
+    },
+  };
+}
 
 const organizationSchema = {
   "@context": "https://schema.org",
   "@type": "Organization",
   name: "INOVAWAY",
-  url: "https://inovaway.org",
-  logo: "https://inovaway.org/logo.png",
+  url: BASE_URL,
+  logo: `${BASE_URL}/logo.png`,
   description:
     "Agência de AI Agents autônomos. Sites, chatbots, automações e mais — entregues em horas, não semanas.",
   contactPoint: {
@@ -110,12 +137,12 @@ const websiteSchema = {
   "@context": "https://schema.org",
   "@type": "WebSite",
   name: "INOVAWAY",
-  url: "https://inovaway.org",
+  url: BASE_URL,
   potentialAction: {
     "@type": "SearchAction",
     target: {
       "@type": "EntryPoint",
-      urlTemplate: "https://inovaway.org/?q={search_term_string}",
+      urlTemplate: `${BASE_URL}/?q={search_term_string}`,
     },
     "query-input": "required name=search_term_string",
   },

@@ -1,47 +1,71 @@
 import { Link } from "@/i18n/navigation";
 import { Metadata } from "next";
 
-export const metadata: Metadata = {
-  title: "Termos de Uso | INOVAWAY",
-  description:
-    "Termos de Uso e Condições Gerais de Serviços da INOVAWAY. Leia antes de contratar ou utilizar nossas plataformas UpBro, HNBCRM e GMBAssist. Atualizado 2026.",
-  keywords: [
-    "termos de uso",
-    "condições gerais",
-    "INOVAWAY",
-    "UpBro",
-    "HNBCRM",
-    "GMBAssist",
-    "contrato de serviços",
-    "política de uso",
-  ],
-  openGraph: {
-    title: "Termos de Uso | INOVAWAY",
-    description:
-      "Termos de Uso e Condições Gerais de Serviços da INOVAWAY. Leia antes de contratar ou utilizar nossas plataformas UpBro, HNBCRM e GMBAssist. Atualizado 2026.",
-    url: "https://inovaway.org/termos",
-    type: "website",
-    locale: "pt_BR",
-    siteName: "INOVAWAY",
-    images: [
-      {
-        url: "/og-image.png",
-        width: 1200,
-        height: 630,
-        alt: "Termos de Uso — INOVAWAY",
-      },
+const BASE_URL = "https://inovaway.org";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const isEn = locale === "en";
+  const path = "/termos";
+  const canonical = isEn ? `${BASE_URL}/en${path}` : `${BASE_URL}${path}`;
+
+  const title = isEn ? "Terms of Use | INOVAWAY" : "Termos de Uso | INOVAWAY";
+  const description = isEn
+    ? "Terms of Use and General Conditions of INOVAWAY Services. Read before contracting or using UpBro, HNBCRM and GMBAssist. Updated 2026."
+    : "Termos de Uso e Condições Gerais de Serviços da INOVAWAY. Leia antes de contratar ou utilizar nossas plataformas UpBro, HNBCRM e GMBAssist. Atualizado 2026.";
+
+  return {
+    title,
+    description,
+    keywords: [
+      "termos de uso",
+      "condições gerais",
+      "INOVAWAY",
+      "UpBro",
+      "HNBCRM",
+      "GMBAssist",
+      "contrato de serviços",
+      "política de uso",
     ],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Termos de Uso | INOVAWAY",
-    description:
-      "Termos de Uso e Condições Gerais da INOVAWAY. Leia antes de contratar ou utilizar as plataformas UpBro, HNBCRM e GMBAssist.",
-    images: ["/og-image.png"],
-    creator: "@inovaway",
-    site: "@inovaway",
-  },
-};
+    alternates: {
+      canonical,
+      languages: {
+        "pt-BR": `${BASE_URL}${path}`,
+        en: `${BASE_URL}/en${path}`,
+        "x-default": `${BASE_URL}${path}`,
+      },
+    },
+    openGraph: {
+      title,
+      description,
+      url: canonical,
+      type: "website",
+      locale: isEn ? "en_US" : "pt_BR",
+      alternateLocale: isEn ? "pt_BR" : "en_US",
+      siteName: "INOVAWAY",
+      images: [
+        {
+          url: "/og-image.png",
+          width: 1200,
+          height: 630,
+          alt: title,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      images: ["/og-image.png"],
+      creator: "@inovaway",
+      site: "@inovaway",
+    },
+  };
+}
 
 const sections = [
   {
