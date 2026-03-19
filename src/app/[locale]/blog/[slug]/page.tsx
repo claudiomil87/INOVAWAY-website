@@ -9,7 +9,10 @@ import TableOfContents from "@/components/blog/TableOfContents";
 import ShareButtons from "@/components/blog/ShareButtons";
 import RelatedPosts from "@/components/blog/RelatedPosts";
 import MDXContent from "@/components/blog/MDXContent";
+import FAQSchema from "@/components/blog/FAQSchema";
+import AuthorBox from "@/components/blog/AuthorBox";
 import Image from "next/image";
+import { getFAQs } from "@/lib/faq-data";
 
 const BASE_URL = "https://inovaway.org";
 
@@ -199,6 +202,7 @@ export default async function PostPage({ params }: PostPageProps) {
 
   const blogPostingSchema = getBlogPostingSchema(post, locale, postUrl);
   const breadcrumbSchema = getBreadcrumbSchema(post, locale, postUrl);
+  const faqs = getFAQs(slug, locale);
 
   return (
     <main
@@ -220,6 +224,7 @@ export default async function PostPage({ params }: PostPageProps) {
           dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
         />
       )}
+      {faqs.length > 0 && <FAQSchema faqs={faqs} />}
 
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Hero image */}
@@ -251,6 +256,9 @@ export default async function PostPage({ params }: PostPageProps) {
             <div className="prose prose-invert max-w-none">
               <MDXContent code={post.body} />
             </div>
+
+            {/* Author box — E-E-A-T */}
+            <AuthorBox locale={locale} />
 
             {/* Share buttons */}
             <div
