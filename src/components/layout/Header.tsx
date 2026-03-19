@@ -22,6 +22,7 @@ export default function Header() {
     { href: "/servicos" as const, label: t("nav.services") },
     { href: "/produtos" as const, label: t("nav.team") },
     { href: "/sobre" as const, label: t("nav.about") },
+    { href: "/blog" as const, label: t("nav.blog") },
   ];
 
   const allNavLinks = [

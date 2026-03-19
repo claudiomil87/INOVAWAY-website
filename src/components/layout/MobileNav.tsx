@@ -148,7 +148,7 @@ export default function MobileNav({ links, open, onClose }: MobileNavProps) {
             return (
               <Link
                 key={link.href}
-                href={link.href as "/contato" | "/" | "/servicos" | "/produtos" | "/sobre"}
+                href={link.href as "/contato" | "/" | "/servicos" | "/produtos" | "/sobre" | "/blog"}
                 onClick={onClose}
                 style={{
                   display: "flex",

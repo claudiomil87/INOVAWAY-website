@@ -4,7 +4,8 @@
       "services": "Serviços",
       "team": "Nosso Time",
       "about": "Sobre nós",
-      "ready": "Você está pronto?"
+      "ready": "Você está pronto?",
+      "blog": "Blog"
     },
     "cta": "Começar agora →",
     "openMenu": "Abrir menu",
@@ -25,7 +26,8 @@
       "team": "Nosso Time",
       "services": "Serviços",
       "about": "Sobre nós",
-      "ready": "Você está pronto?"
+      "ready": "Você está pronto?",
+      "blog": "Blog"
     },
     "services": {
       "title": "O que fazemos",
@@ -663,7 +665,6 @@
     "subtitle": "Somos a agência de IA que pequenos empreendedores precisavam — mas que ninguém havia criado ainda.",
     "cta": "Quero Fazer Parte Disso",
     "values": {
-      "title": "Nossos Valores",
       "0": {
         "title": "Resultado Acima de Tudo",
         "desc": "Não cobramos por horas. Não vendemos processo. Vendemos resultado. Se não funcionar pra você, não funciona pra gente."
@@ -683,10 +684,10 @@
       "4": {
         "title": "Parceria de Verdade",
         "desc": "Seu crescimento é nosso crescimento. Não somos fornecedores. Somos parceiros. Tem diferença."
-      }
+      },
+      "title": "Nossos Valores"
     },
     "testimonials": {
-      "title": "O Que Nossos Clientes Dizem",
       "0": {
         "quote": "Em 60 dias com a Inovaway, meu faturamento cresceu 40%. Não acreditei até ver o relatório.",
         "author": "Ricardo M.",
@@ -701,7 +702,8 @@
         "quote": "O chatbot deles (UpBro) atende meus clientes às 2h da manhã. Já vendi durante o sono.",
         "author": "Carlos T.",
         "role": "Consultor financeiro"
-      }
+      },
+      "title": "O Que Nossos Clientes Dizem"
     },
     "titleSuffix": "Mas Nunca Pôde Pagar.",
     "socialProof": {
@@ -958,6 +960,23 @@
     "sobre": {
       "title": "Sobre nós",
       "description": "Conheça a INOVAWAY — a agência de IA criada para mudar o jogo das pequenas e médias empresas."
+    }
+  },
+  "Blog": {
+    "title": "Blog INOVAWAY",
+    "description": "Insights, estratégias e novidades sobre AI agents, automação e crescimento de negócios.",
+    "readMore": "Ler mais",
+    "allPosts": "Todos os posts",
+    "relatedPosts": "Posts relacionados",
+    "sharePost": "Compartilhar",
+    "tags": "Tags",
+    "search": "Buscar",
+    "noResults": "Nenhum post encontrado.",
+    "pageTitle": "Blog — INOVAWAY",
+    "pagination": {
+      "prev": "Anterior",
+      "next": "Próximo",
+      "page": "Página"
     }
   }
 }

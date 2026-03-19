@@ -55,6 +55,22 @@ const nextConfig: NextConfig = {
       },
     ];
   },
+
+  webpack(config) {
+    config.plugins = config.plugins || [];
+    // eslint-disable-next-line @typescript-eslint/no-require-imports
+    const { VeliteWebpackPlugin } = require("velite/webpack");
+    config.plugins.unshift(new VeliteWebpackPlugin());
+
+    // Resolve @velite alias to the generated velite output directory
+    config.resolve = config.resolve || {};
+    config.resolve.alias = {
+      ...config.resolve.alias,
+      "@velite": require("path").resolve(__dirname, ".velite"),
+    };
+
+    return config;
+  },
 };
 
 export default withNextIntl(nextConfig);

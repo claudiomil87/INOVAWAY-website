@@ -12,6 +12,7 @@ export default function Footer() {
       { href: "/produtos" as const, label: t("nav.team") },
       { href: "/servicos" as const, label: t("nav.services") },
       { href: "/sobre" as const, label: t("nav.about") },
+      { href: "/blog" as const, label: t("nav.blog") },
       { href: "/contato" as const, label: t("nav.ready") },
     ],
     servicos: [

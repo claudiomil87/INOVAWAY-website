@@ -4,7 +4,8 @@
       "services": "Services",
       "team": "Our Team",
       "about": "About Us",
-      "ready": "Are you ready?"
+      "ready": "Are you ready?",
+      "blog": "Blog"
     },
     "cta": "Get started →",
     "openMenu": "Open menu",
@@ -25,7 +26,8 @@
       "team": "Our Team",
       "services": "Services",
       "about": "About Us",
-      "ready": "Are you ready?"
+      "ready": "Are you ready?",
+      "blog": "Blog"
     },
     "services": {
       "title": "What we do",
@@ -745,7 +747,6 @@
       "p3": "Fast because it's specialized. Cheap because it's efficient. Effective because it uses AI the right way."
     },
     "testimonials": {
-      "title": "What Our Clients Say",
       "0": {
         "quote": "In 60 days with Inovaway, my revenue grew 40%. I didn't believe it until I saw the report.",
         "author": "Ricardo M.",
@@ -760,7 +761,8 @@
         "quote": "Their chatbot (UpBro) attends to my clients at 2am. I've already sold while sleeping.",
         "author": "Carlos T.",
         "role": "Financial consultant"
-      }
+      },
+      "title": "What Our Clients Say"
     },
     "impactQuote": {
       "title": "\"What big companies pay ",
@@ -959,6 +961,23 @@
     "sobre": {
       "title": "About Us",
       "description": "Meet INOVAWAY — the AI agency created to change the game for small and medium businesses."
+    }
+  },
+  "Blog": {
+    "title": "INOVAWAY Blog",
+    "description": "Insights, strategies and news about AI agents, automation and business growth.",
+    "readMore": "Read more",
+    "allPosts": "All posts",
+    "relatedPosts": "Related posts",
+    "sharePost": "Share",
+    "tags": "Tags",
+    "search": "Search",
+    "noResults": "No posts found.",
+    "pageTitle": "Blog — INOVAWAY",
+    "pagination": {
+      "prev": "Previous",
+      "next": "Next",
+      "page": "Page"
     }
   }
 }
