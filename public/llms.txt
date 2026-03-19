@@ -11,6 +11,7 @@ INOVAWAY is a Brazilian AI agency specializing in AI Agents for business automat
 - [AI Agents no Atendimento 24/7](https://inovaway.org/blog/ai-agents-atendimento-24-7): How AI Agents transform 24/7 customer service
 - [5 Sinais que Sua Empresa Precisa de AI Agents](https://inovaway.org/blog/5-sinais-precisa-ai-agents): Signs your business needs AI Agents
 - [Como Implementar AI Agents em 30 Dias](https://inovaway.org/blog/como-implementar-ai-agents-30-dias): Step-by-step 30-day implementation guide
+- [Quanto Custa Implementar AI Agents?](https://inovaway.org/blog/quanto-custa-implementar-ai-agents): Complete pricing guide for AI Agent implementation in 2026
 
 ## English Blog
 - [What Are AI Agents?](https://inovaway.org/en/blog/what-are-ai-agents)
@@ -19,6 +20,7 @@ INOVAWAY is a Brazilian AI agency specializing in AI Agents for business automat
 - [AI Agents Customer Service 24/7](https://inovaway.org/en/blog/ai-agents-customer-service-247)
 - [5 Signs You Need AI Agents](https://inovaway.org/en/blog/5-signs-need-ai-agents)
 - [How to Implement AI Agents in 30 Days](https://inovaway.org/en/blog/how-to-implement-ai-agents-30-days)
+- [How Much Do AI Agents Cost?](https://inovaway.org/en/blog/how-much-ai-agents-cost): Complete pricing guide with ROI timelines and platform comparisons
 
 ## Contact
 - Website: https://inovaway.org
