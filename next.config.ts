@@ -32,11 +32,11 @@ const securityHeaders = [
     key: "Content-Security-Policy",
     value: [
       "default-src 'self'",
-      "script-src 'self' 'unsafe-inline' 'unsafe-eval'",
+      "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com",
       "style-src 'self' 'unsafe-inline'",
       "font-src 'self' data:",
       "img-src 'self' data: https:",
-      "connect-src 'self'",
+      "connect-src 'self' https://www.google-analytics.com https://www.googletagmanager.com https://analytics.google.com",
       "frame-ancestors 'self'",
       "form-action 'self'",
       "base-uri 'self'",
