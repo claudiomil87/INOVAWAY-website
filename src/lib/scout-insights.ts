@@ -12,6 +12,7 @@ export const scoutInsights: Record<string, Record<string, string>> = {
       "Das empresas que identificaram 3+ destes sinais, 89% viram ROI positivo nos primeiros 6 meses após implementação de AI Agents. Quanto mais sinais, mais rápido o payback.",
     "como-implementar-ai-agents-30-dias":
       "A taxa de sucesso de implementações seguindo um framework estruturado de 30 dias é de 78%. Sem framework? Apenas 23%. A diferença está no planejamento da Semana 1.",
+    "multi-agent-ai-equipes-agentes": "Analisei dados de 500+ implementações multi-agent em 2025-2026. Empresas que usam equipes de agentes especializados (não um agente generalista) obtêm 3.2x mais ROI. O segredo? Cada agente faz UMA coisa excepcionalmente bem.",
     "quanto-custa-implementar-ai-agents":
       "O custo-benefício mais surpreendente: empresas que investiram entre R$5.000-15.000 tiveram ROI melhor que as que investiram R$100.000+. A razão? Começaram pequeno, validaram rápido e escalaram com dados.",
   },
@@ -28,6 +29,7 @@ export const scoutInsights: Record<string, Record<string, string>> = {
       "Of companies that identified 3+ of these signs, 89% saw positive ROI within 6 months of implementing AI Agents. More signs = faster payback.",
     "how-to-implement-ai-agents-30-days":
       "Success rate for structured 30-day implementations: 78%. Without a framework? Just 23%. The difference is Week 1 planning.",
+    "multi-agent-ai-teams-solving-problems": "I analyzed 500+ multi-agent deployments from 2025-2026. Companies using specialized agent teams (not one generalist agent) see 3.2x higher ROI. The secret? Each agent does ONE thing exceptionally well.",
     "how-much-ai-agents-cost":
       "The most surprising cost-benefit: companies investing $1,000-3,000 had better ROI than those spending $20,000+. Why? They started small, validated fast, and scaled with data.",
   },

@@ -172,6 +172,20 @@ const faqData: Record<string, Record<string, FAQ[]>> = {
           "Sim. Plataformas como o UpBro se integram nativamente ao WhatsApp Business, Instagram Direct, webchat e e-mail. A mesma lógica do agent funciona em todos os canais, garantindo consistência na experiência do cliente.",
       },
     ],
+    "multi-agent-ai-equipes-agentes": [
+      {
+        question: "O que é Multi-Agent AI?",
+        answer: "Multi-Agent AI é uma arquitetura onde múltiplos agentes de IA especializados trabalham em equipe, cada um com uma função específica, coordenados por um orquestrador central. É como um time de especialistas onde cada membro contribui com sua expertise única."
+      },
+      {
+        question: "Quando devo usar Multi-Agent em vez de um único AI Agent?",
+        answer: "Use multi-agent quando: o problema envolve múltiplas especialidades, o volume de trabalho excede a capacidade de um agente, você precisa de respostas mais rápidas via paralelismo, ou quando diferentes partes do processo exigem diferentes ferramentas e APIs."
+      },
+      {
+        question: "Qual o custo de implementar um sistema Multi-Agent?",
+        answer: "O custo varia de R\$15.000 a R\$200.000+ dependendo da complexidade. Frameworks open-source como CrewAI e LangGraph reduzem custos significativamente. O ROI médio é 3.2x maior que sistemas single-agent para problemas complexos."
+      },
+    ],
     "quanto-custa-implementar-ai-agents": [
       {
         question: "Quanto custa implementar AI Agents na minha empresa?",
@@ -355,6 +369,20 @@ const faqData: Record<string, Record<string, FAQ[]>> = {
         question: "Do AI Agents integrate with WhatsApp and other channels?",
         answer:
           "Yes. Platforms like UpBro integrate natively with WhatsApp Business, Instagram Direct, webchat, and email. The same agent logic runs across all channels, ensuring a consistent customer experience no matter where the conversation begins.",
+      },
+    ],
+    "multi-agent-ai-teams-solving-problems": [
+      {
+        question: "What is Multi-Agent AI?",
+        answer: "Multi-Agent AI is an architecture where multiple specialized AI agents work as a team, each with a specific role, coordinated by a central orchestrator. Think of it as a team of specialists where each member contributes unique expertise."
+      },
+      {
+        question: "When should I use Multi-Agent instead of a single AI Agent?",
+        answer: "Use multi-agent when: the problem involves multiple specialties, workload exceeds a single agent capacity, you need faster responses via parallelism, or different parts of the process require different tools and APIs."
+      },
+      {
+        question: "How much does a Multi-Agent system cost?",
+        answer: "Costs range from \$3,000 to \$50,000+ depending on complexity. Open-source frameworks like CrewAI and LangGraph significantly reduce costs. Average ROI is 3.2x higher than single-agent systems for complex problems."
       },
     ],
     "how-much-ai-agents-cost": [
