@@ -208,7 +208,14 @@ export default async function LocaleLayout({
         />
       </head>
       <body className="min-h-screen bg-navy font-sans antialiased overflow-x-hidden">
-        <GoogleAnalytics />
+        {/* Google Analytics - direct script tags for reliability */}
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-HQTYWZXZ5G"
+          strategy="afterInteractive"
+        />
+        <Script id="ga4-init" strategy="afterInteractive">
+          {`window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-HQTYWZXZ5G');`}
+        </Script>
         <WebVitals />
         <NextIntlClientProvider locale={locale} messages={messages}>
           <TranslationProvider>
