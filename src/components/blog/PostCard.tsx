@@ -15,11 +15,11 @@ export default function PostCard({ post, locale }: PostCardProps) {
   return (
     <Link
       href={`/blog/${post.slug}` as never}
-      className="block cursor-pointer"
+      className="block cursor-pointer h-full"
       aria-label={post.title}
     >
       <article
-        className="group flex flex-col rounded-xl overflow-hidden transition-all duration-300 hover:-translate-y-1"
+        className="group flex flex-col h-full rounded-xl overflow-hidden transition-all duration-300 hover:-translate-y-1"
         style={{
           background: "rgba(255,255,255,0.03)",
           border: "1px solid rgba(255,255,255,0.08)",
@@ -28,7 +28,7 @@ export default function PostCard({ post, locale }: PostCardProps) {
       >
         {/* Image */}
         {post.image && (
-          <div className="relative h-48 w-full overflow-hidden">
+          <div className="relative w-full overflow-hidden aspect-[16/9]">
             <Image
               src={post.image}
               alt={post.title}

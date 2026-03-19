@@ -1,26 +1,37 @@
 'use client';
 
 import { useLocale } from 'next-intl';
-import { useRouter, usePathname } from '@/i18n/navigation';
 import { motion } from 'framer-motion';
-import { useTransition } from 'react';
+import { useState } from 'react';
 
 export default function LanguageSwitcher() {
   const locale = useLocale();
-  const router = useRouter();
-  const pathname = usePathname();
-  const [isPending, startTransition] = useTransition();
+  const [isPending, setIsPending] = useState(false);
 
   const targetLocale = locale === 'pt' ? 'en' : 'pt';
   const label = locale === 'pt' ? '🇺🇸 EN' : '🇧🇷 PT';
 
   function handleSwitch() {
+    if (isPending) return;
+    setIsPending(true);
+
     // Save cookie for 1 year
     document.cookie = `NEXT_LOCALE=${targetLocale}; path=/; max-age=31536000; SameSite=Lax`;
 
-    startTransition(() => {
-      router.replace(pathname, { locale: targetLocale });
-    });
+    // Build the target URL manually (localePrefix: "as-needed")
+    const currentPath = window.location.pathname;
+    let newPath: string;
+
+    if (targetLocale === 'en') {
+      // Going to EN: add /en/ prefix (remove any existing first)
+      const cleanPath = currentPath.replace(/^\/en(\/|$)/, '/');
+      newPath = `/en${cleanPath === '/' ? '' : cleanPath}`;
+    } else {
+      // Going to PT: strip /en/ prefix
+      newPath = currentPath.replace(/^\/en(\/|$)/, '/') || '/';
+    }
+
+    window.location.href = newPath;
   }
 
   return (
