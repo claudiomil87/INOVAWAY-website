@@ -192,12 +192,10 @@ export default async function LocaleLayout({
       suppressHydrationWarning
     >
       <head>
-        {process.env.NEXT_PUBLIC_GSC_VERIFICATION && (
-          <meta
-            name="google-site-verification"
-            content={process.env.NEXT_PUBLIC_GSC_VERIFICATION}
-          />
-        )}
+        <meta
+          name="google-site-verification"
+          content="l2iE3iqJE7puRkJR3O1MbIzntxHXBTw8KnvRt6GTwLw"
+        />
         <Script
           id="schema-organization"
           type="application/ld+json"
