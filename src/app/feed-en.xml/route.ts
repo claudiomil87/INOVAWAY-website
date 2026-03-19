@@ -22,8 +22,16 @@ export async function GET() {
       const title = escapeXml(post.title);
       const author = escapeXml(post.author);
       const tags = post.tags.map((t) => `<category>${escapeXml(t)}</category>`).join("\n      ");
-      const image = post.image
-        ? `<enclosure url="${escapeXml(post.image)}" type="image/jpeg" length="0" />`
+      const imageUrl = post.image
+        ? (post.image.startsWith("http") ? post.image : `${BASE_URL}${post.image}`)
+        : null;
+      const imageMime = imageUrl?.endsWith(".png")
+        ? "image/png"
+        : imageUrl?.endsWith(".webp")
+        ? "image/webp"
+        : "image/jpeg";
+      const image = imageUrl
+        ? `<enclosure url="${escapeXml(imageUrl)}" type="${imageMime}" length="0" />`
         : "";
 
       return `

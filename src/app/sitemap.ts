@@ -47,20 +47,26 @@ export default function sitemap(): MetadataRoute.Sitemap {
   });
 
   // Blog post entries — both PT and EN, with hreflang alternates
-  // We get PT posts and find matching EN slugs
+  // We use the `translationSlug` frontmatter field for accurate cross-locale slug mapping.
   const ptPosts = getAllPosts("pt");
   const enPosts = getAllPosts("en");
 
   // Build a slug → EN post map for fast lookup
   const enBySlug = new Map(enPosts.map((p) => [p.slug, p]));
 
+  // Track EN slugs already covered by a PT post's translationSlug mapping
+  const coveredEnSlugs = new Set<string>();
+
   const blogEntries: MetadataRoute.Sitemap = ptPosts.flatMap((ptPost) => {
     const ptUrl = `${baseUrl}/blog/${ptPost.slug}`;
     const postDate = new Date(ptPost.date);
 
-    // Try to find matching EN post (same slug)
-    const enPost = enBySlug.get(ptPost.slug);
+    // Prefer translationSlug for accurate EN URL; fallback to same-slug lookup
+    const enSlug = ptPost.translationSlug ?? ptPost.slug;
+    const enPost = enBySlug.get(enSlug);
     const enUrl = enPost ? `${baseUrl}/en/blog/${enPost.slug}` : `${baseUrl}/en/blog`;
+
+    if (enPost) coveredEnSlugs.add(enPost.slug);
 
     const alternates = {
       languages: {
@@ -93,12 +99,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
     return entries;
   });
 
-  // Also add EN-only posts (those without a PT counterpart)
-  const ptSlugs = new Set(ptPosts.map((p) => p.slug));
+  // Also add EN-only posts (those without a PT counterpart via translationSlug)
   const enOnlyEntries: MetadataRoute.Sitemap = enPosts
-    .filter((p) => !ptSlugs.has(p.slug))
+    .filter((p) => !coveredEnSlugs.has(p.slug))
     .map((enPost) => {
       const enUrl = `${baseUrl}/en/blog/${enPost.slug}`;
+      // Check if EN post has a translationSlug pointing to a PT post
+      const ptSlug = enPost.translationSlug;
+      const ptPost = ptSlug ? ptPosts.find((p) => p.slug === ptSlug) : undefined;
+      const ptUrl = ptPost ? `${baseUrl}/blog/${ptPost.slug}` : undefined;
+
       return {
         url: enUrl,
         lastModified: new Date(enPost.date),
@@ -107,7 +117,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
         alternates: {
           languages: {
             en: enUrl,
-            "x-default": enUrl,
+            ...(ptUrl ? { "pt-BR": ptUrl, "x-default": ptUrl } : { "x-default": enUrl }),
           },
         },
       };

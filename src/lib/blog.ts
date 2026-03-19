@@ -19,6 +19,18 @@ export function getPostBySlug(slug: string, locale: string): Post | undefined {
 }
 
 /**
+ * Get the translated version of a post, using the `translationSlug` field in frontmatter.
+ * Returns undefined if no translation exists.
+ */
+export function getTranslatedPost(slug: string, fromLocale: string): Post | undefined {
+  const currentPost = getPostBySlug(slug, fromLocale);
+  if (!currentPost?.translationSlug) return undefined;
+
+  const targetLocale = fromLocale === "pt" ? "en" : "pt";
+  return getPostBySlug(currentPost.translationSlug, targetLocale);
+}
+
+/**
  * Get all unique tags for a locale.
  */
 export function getAllTags(locale: string): string[] {

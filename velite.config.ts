@@ -17,6 +17,7 @@ const posts = defineCollection({
       tags: s.array(s.string()).default([]),
       image: s.string().optional(),
       locale: s.enum(["pt", "en"]),
+      translationSlug: s.string().optional(),
       readingTime: s.string().optional(),
       body: s.markdown(),
       toc: s.toc(),

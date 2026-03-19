@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Script from "next/script";
-import { getAllPosts, getPostBySlug, getRelatedPosts } from "@/lib/blog";
+import { getAllPosts, getPostBySlug, getRelatedPosts, getTranslatedPost } from "@/lib/blog";
 import { routing } from "@/i18n/routing";
 import PostHeader from "@/components/blog/PostHeader";
 import TableOfContents from "@/components/blog/TableOfContents";
@@ -45,15 +45,22 @@ export async function generateMetadata({
   const ogLocale = locale === "pt" ? "pt_BR" : "en_US";
   const ogAlternateLocale = locale === "pt" ? "en_US" : "pt_BR";
 
+  // Resolve the correct translated slug via the translationSlug frontmatter field
+  const translatedPost = getTranslatedPost(slug, locale);
+  const ptSlug = locale === "pt" ? slug : (translatedPost?.slug ?? slug);
+  const enSlug = locale === "en" ? slug : (translatedPost?.slug ?? slug);
+  const ptUrl = `${BASE_URL}/blog/${ptSlug}`;
+  const enUrl = `${BASE_URL}/en/blog/${enSlug}`;
+
   return {
     title: `${post.title} — INOVAWAY Blog`,
     description: post.description,
     alternates: {
       canonical: canonicalUrl,
       languages: {
-        "pt-BR": `${BASE_URL}/blog/${slug}`,
-        en: `${BASE_URL}/en/blog/${slug}`,
-        "x-default": `${BASE_URL}/blog/${slug}`,
+        "pt-BR": ptUrl,
+        en: enUrl,
+        "x-default": ptUrl,
       },
     },
     openGraph: {
