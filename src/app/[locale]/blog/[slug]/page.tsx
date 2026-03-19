@@ -1,6 +1,7 @@
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Script from "next/script";
+import { getTranslations } from "next-intl/server";
 import { getAllPosts, getPostBySlug, getRelatedPosts, getTranslatedPost } from "@/lib/blog";
 import { routing } from "@/i18n/routing";
 import PostHeader from "@/components/blog/PostHeader";
@@ -189,6 +190,7 @@ export default async function PostPage({ params }: PostPageProps) {
 
   if (!post) notFound();
 
+  const t = await getTranslations({ locale, namespace: "Blog" });
   const relatedPosts = getRelatedPosts(slug, locale, 3);
   const postUrl =
     locale === "pt"
@@ -264,8 +266,8 @@ export default async function PostPage({ params }: PostPageProps) {
 
           {/* Sidebar — TOC */}
           {post.toc && post.toc.length > 0 && (
-            <aside className="hidden lg:block w-64 shrink-0">
-              <TableOfContents toc={post.toc} />
+            <aside className="hidden lg:block w-64 shrink-0 self-start sticky top-24">
+              <TableOfContents toc={post.toc} label={t("tocTitle")} />
             </aside>
           )}
         </div>

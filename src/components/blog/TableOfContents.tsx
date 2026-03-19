@@ -18,6 +18,7 @@ interface FlatTocItem {
 interface TableOfContentsProps {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   toc: any[];
+  label?: string;
 }
 
 function flattenToc(items: TocItem[], level = 0): FlatTocItem[] {
@@ -31,7 +32,7 @@ function flattenToc(items: TocItem[], level = 0): FlatTocItem[] {
   return flat;
 }
 
-export default function TableOfContents({ toc }: TableOfContentsProps) {
+export default function TableOfContents({ toc, label = "Conteúdo" }: TableOfContentsProps) {
   const [activeId, setActiveId] = useState<string>("");
   const flatItems = flattenToc(toc as TocItem[]);
 
@@ -62,7 +63,7 @@ export default function TableOfContents({ toc }: TableOfContentsProps) {
 
   return (
     <nav
-      className="sticky top-24 max-h-[calc(100vh-8rem)] overflow-y-auto rounded-xl p-5"
+      className="max-h-[calc(100vh-8rem)] overflow-y-auto rounded-xl p-5"
       style={{
         background: "rgba(255,255,255,0.03)",
         border: "1px solid rgba(255,255,255,0.08)",
@@ -73,7 +74,7 @@ export default function TableOfContents({ toc }: TableOfContentsProps) {
         className="mb-3 text-xs font-semibold uppercase tracking-wider"
         style={{ color: "#06B6D4" }}
       >
-        Conteúdo
+        {label}
       </p>
       <ul className="space-y-1">
         {flatItems.map((item, i) => {
