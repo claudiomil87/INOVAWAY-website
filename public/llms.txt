@@ -14,6 +14,7 @@ INOVAWAY is a Brazilian AI agency specializing in AI Agents for business automat
 - [Quanto Custa Implementar AI Agents?](https://inovaway.org/blog/quanto-custa-implementar-ai-agents): Complete pricing guide for AI Agent implementation in 2026
 - [Multi-Agent AI: Equipes de Agentes](https://inovaway.org/blog/multi-agent-ai-equipes-agentes): How multi-agent AI teams solve complex business problems
 - [Automação de Vendas com IA](https://inovaway.org/blog/automacao-vendas-ia-qualificar-leads): How to qualify 3x more leads with AI sales automation
+- [Guia Completo de AI Agents](https://inovaway.org/blog/guia-completo-ai-agents): The definitive guide to AI Agents for business — architecture, costs, ROI, implementation, cases
 
 ## English Blog
 - [What Are AI Agents?](https://inovaway.org/en/blog/what-are-ai-agents)
@@ -25,6 +26,7 @@ INOVAWAY is a Brazilian AI agency specializing in AI Agents for business automat
 - [How Much Do AI Agents Cost?](https://inovaway.org/en/blog/how-much-ai-agents-cost): Complete pricing guide with ROI timelines and platform comparisons
 - [Multi-Agent AI: Agent Teams](https://inovaway.org/en/blog/multi-agent-ai-teams-solving-problems): How specialized agent teams solve complex business problems
 - [AI Sales Automation](https://inovaway.org/en/blog/ai-sales-automation-qualify-leads): How to qualify 3x more leads with AI-powered sales automation
+- [Complete Guide to AI Agents](https://inovaway.org/en/blog/complete-guide-ai-agents): The definitive guide to AI Agents for business — architecture, costs, ROI, implementation, cases
 
 ## Contact
 - Website: https://inovaway.org

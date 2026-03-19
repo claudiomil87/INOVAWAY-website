@@ -12,6 +12,7 @@ export const scoutInsights: Record<string, Record<string, string>> = {
       "Das empresas que identificaram 3+ destes sinais, 89% viram ROI positivo nos primeiros 6 meses após implementação de AI Agents. Quanto mais sinais, mais rápido o payback.",
     "como-implementar-ai-agents-30-dias":
       "A taxa de sucesso de implementações seguindo um framework estruturado de 30 dias é de 78%. Sem framework? Apenas 23%. A diferença está no planejamento da Semana 1.",
+    "guia-completo-ai-agents": "Este é o conteúdo mais completo sobre AI Agents em português. Analisei 50+ fontes e condensei tudo em um guia de 5000+ palavras. Se você ler apenas um artigo sobre AI Agents, que seja este.",
     "automacao-vendas-ia-qualificar-leads": "Empresas que implementaram AI Agents no pipeline de vendas viram ROI médio de 210%. Mas o dado mais interessante: o tempo de resposta ao lead caiu de 42h para 1.2 minutos. No mercado B2B, velocidade de resposta é o maior preditor de conversão.",
     "multi-agent-ai-equipes-agentes": "Analisei dados de 500+ implementações multi-agent em 2025-2026. Empresas que usam equipes de agentes especializados (não um agente generalista) obtêm 3.2x mais ROI. O segredo? Cada agente faz UMA coisa excepcionalmente bem.",
     "quanto-custa-implementar-ai-agents":
@@ -30,6 +31,7 @@ export const scoutInsights: Record<string, Record<string, string>> = {
       "Of companies that identified 3+ of these signs, 89% saw positive ROI within 6 months of implementing AI Agents. More signs = faster payback.",
     "how-to-implement-ai-agents-30-days":
       "Success rate for structured 30-day implementations: 78%. Without a framework? Just 23%. The difference is Week 1 planning.",
+    "complete-guide-ai-agents": "This is the most comprehensive AI Agents resource in one place. I analyzed 50+ sources and condensed everything into a 5000+ word guide. If you read only one article about AI Agents, make it this one.",
     "ai-sales-automation-qualify-leads": "Companies deploying AI Agents in their sales pipeline saw 210% average ROI. But the most interesting data point: lead response time dropped from 42h to 1.2 minutes. In B2B, response speed is the #1 predictor of conversion.",
     "multi-agent-ai-teams-solving-problems": "I analyzed 500+ multi-agent deployments from 2025-2026. Companies using specialized agent teams (not one generalist agent) see 3.2x higher ROI. The secret? Each agent does ONE thing exceptionally well.",
     "how-much-ai-agents-cost":
