@@ -21,13 +21,16 @@ export default function middleware(request: NextRequest) {
     (loc) => pathname === `/${loc}` || pathname.startsWith(`/${loc}/`)
   );
 
-  // Bug 1 fix: For paths without a locale prefix (= default PT locale), the explicit
-  // URL must take priority over any NEXT_LOCALE cookie. Without this, a user with
-  // NEXT_LOCALE=en visiting /blog/o-que-sao-ai-agents gets redirected to
-  // /en/blog/o-que-sao-ai-agents which returns 404 because the EN slug differs.
+  // For paths without a locale prefix: this IS the PT locale (default, unprefixed).
+  // The URL is the source of truth — no prefix means PT, period.
   //
-  // We strip NEXT_LOCALE from the Cookie header so intlMiddleware sees no cookie
-  // preference and falls back to the path-based detection (default locale = PT).
+  // We FORCE NEXT_LOCALE=pt so intlMiddleware serves PT content regardless of:
+  // - Any existing NEXT_LOCALE=en cookie (from previous EN visit)
+  // - Accept-Language: en header (browser preference)
+  // - x-vercel-ip-country geo-detection
+  //
+  // Without this, a user with Accept-Language: en visiting /blog would get
+  // redirected to /en/blog, breaking explicit PT URLs.
   if (!hasLocalePrefix) {
     const existingCookies = request.headers.get("cookie") ?? "";
     const strippedCookies = existingCookies
@@ -36,7 +39,7 @@ export default function middleware(request: NextRequest) {
       .join(";");
 
     const modifiedHeaders = new Headers(request.headers);
-    modifiedHeaders.set("cookie", strippedCookies);
+    modifiedHeaders.set("cookie", `${strippedCookies}; NEXT_LOCALE=pt`);
 
     const modifiedRequest = new NextRequest(request.url, {
       headers: modifiedHeaders,
