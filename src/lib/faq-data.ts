@@ -172,6 +172,28 @@ const faqData: Record<string, Record<string, FAQ[]>> = {
           "Sim. Plataformas como o UpBro se integram nativamente ao WhatsApp Business, Instagram Direct, webchat e e-mail. A mesma lógica do agent funciona em todos os canais, garantindo consistência na experiência do cliente.",
       },
     ],
+    "quanto-custa-implementar-ai-agents": [
+      {
+        question: "Quanto custa implementar AI Agents na minha empresa?",
+        answer:
+          "O custo varia de R$5.000 a R$500.000+ dependendo da complexidade. Soluções no-code com plataformas como Relevance AI ou Voiceflow custam R$500-2.000/mês. Projetos custom com LangChain ou CrewAI variam de R$15.000-100.000 de implementação mais R$2.000-10.000/mês de operação.",
+      },
+      {
+        question: "Qual o ROI médio de AI Agents?",
+        answer:
+          "O ROI médio é de 200-400% no primeiro ano, com payback entre 6-18 meses. Empresas que começam com processos de alto volume e baixa complexidade (como atendimento ao cliente) tendem a ver retorno mais rápido — geralmente em 3-6 meses.",
+      },
+      {
+        question: "AI Agent é mais barato que contratar funcionário?",
+        answer:
+          "Na maioria dos casos, sim. Um AI Agent de atendimento custa R$1.000-5.000/mês e opera 24/7, enquanto um atendente CLT custa R$4.000-8.000/mês com encargos e trabalha 8h/dia. O agent pode substituir 2-5 funcionários em tarefas repetitivas, mas funciona melhor como complemento à equipe humana.",
+      },
+      {
+        question: "Quais são os custos ocultos de AI Agents?",
+        answer:
+          "Os principais custos ocultos são: tokens de API (GPT-4, Claude) que escalam com volume, treinamento e ajuste fino do agente, integração com sistemas legados, e manutenção contínua. Planeje 20-30% adicional sobre o custo de implementação para estes itens.",
+      },
+    ],
   },
 
   // ────────────────────────────────────────────────────
@@ -333,6 +355,28 @@ const faqData: Record<string, Record<string, FAQ[]>> = {
         question: "Do AI Agents integrate with WhatsApp and other channels?",
         answer:
           "Yes. Platforms like UpBro integrate natively with WhatsApp Business, Instagram Direct, webchat, and email. The same agent logic runs across all channels, ensuring a consistent customer experience no matter where the conversation begins.",
+      },
+    ],
+    "how-much-ai-agents-cost": [
+      {
+        question: "How much does it cost to implement AI Agents?",
+        answer:
+          "Costs range from $1,000 to $500,000+ depending on complexity. No-code platforms like Relevance AI or Voiceflow cost $100-400/month. Custom projects with LangChain or CrewAI range from $3,000-20,000 for implementation plus $500-2,000/month for operations.",
+      },
+      {
+        question: "What is the average ROI of AI Agents?",
+        answer:
+          "Average ROI is 200-400% in the first year, with payback between 6-18 months. Companies that start with high-volume, low-complexity processes like customer service tend to see returns faster — typically within 3-6 months.",
+      },
+      {
+        question: "Are AI Agents cheaper than hiring employees?",
+        answer:
+          "In most cases, yes. A customer service AI Agent costs $200-1,000/month and operates 24/7, while a full-time employee costs $3,000-6,000/month with benefits and works 8 hours/day. An agent can replace 2-5 employees in repetitive tasks, but works best as a complement to your human team.",
+      },
+      {
+        question: "What are the hidden costs of AI Agents?",
+        answer:
+          "The main hidden costs are: API tokens (GPT-4, Claude) that scale with volume, agent training and fine-tuning, integration with legacy systems, and ongoing maintenance. Plan for an additional 20-30% on top of implementation costs for these items.",
       },
     ],
   },
