@@ -6,6 +6,7 @@ import { getMessages } from "next-intl/server";
 import { routing } from "@/i18n/routing";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
+import { WebVitals } from "@/components/WebVitals";
 import Script from "next/script";
 import "../globals.css";
 
@@ -201,6 +202,7 @@ export default async function LocaleLayout({
         />
       </head>
       <body className="min-h-screen bg-navy font-sans antialiased overflow-x-hidden">
+        <WebVitals />
         <NextIntlClientProvider locale={locale} messages={messages}>
           <div className="flex min-h-screen flex-col">
             <Header />

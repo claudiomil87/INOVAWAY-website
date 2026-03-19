@@ -3,3 +3,16 @@ Allow: /
 Disallow: /api/
 
 Sitemap: https://inovaway.org/sitemap.xml
+
+# LLM Crawlers
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Anthropic-AI
+Allow: /
