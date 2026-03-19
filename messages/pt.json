@@ -963,8 +963,8 @@
     }
   },
   "Blog": {
-    "title": "Blog INOVAWAY",
-    "description": "Insights, estratégias e novidades sobre AI agents, automação e crescimento de negócios.",
+    "title": "INOVAWAY Intelligence",
+    "description": "Liderança de pensamento em AI agents, automação e o futuro dos negócios.",
     "readMore": "Ler mais",
     "allPosts": "Todos os posts",
     "relatedPosts": "Posts relacionados",
@@ -972,7 +972,7 @@
     "tags": "Tags",
     "search": "Buscar",
     "noResults": "Nenhum post encontrado.",
-    "pageTitle": "Blog — INOVAWAY",
+    "pageTitle": "INOVAWAY Intelligence — AI Agents, Automação e Negócios",
     "pagination": {
       "prev": "Anterior",
       "next": "Próximo",
