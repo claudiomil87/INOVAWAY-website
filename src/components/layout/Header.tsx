@@ -2,13 +2,14 @@
 
 import Image from "next/image";
 import { useState, useEffect } from "react";
-import { useTranslations } from "next-intl";
+import { useTranslations, useLocale } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import MobileNav from "./MobileNav";
 import LanguageSwitcher from "@/components/ui/LanguageSwitcher";
 
 export default function Header() {
   const t = useTranslations("Header");
+  const locale = useLocale();
   const [mobileOpen, setMobileOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
@@ -18,11 +19,17 @@ export default function Header() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  const calcHref =
+    locale === "en"
+      ? ("/roi-calculator" as const)
+      : ("/calculadora-roi" as const);
+
   const navLinks = [
     { href: "/servicos" as const, label: t("nav.services") },
     { href: "/produtos" as const, label: t("nav.team") },
     { href: "/sobre" as const, label: t("nav.about") },
     { href: "/blog" as const, label: t("nav.blog") },
+    { href: calcHref, label: t("nav.calculator") },
   ];
 
   const allNavLinks = [

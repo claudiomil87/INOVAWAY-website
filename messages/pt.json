@@ -5,7 +5,8 @@
       "team": "Nosso Time",
       "about": "Sobre nós",
       "ready": "Você está pronto?",
-      "blog": "Blog"
+      "blog": "Blog",
+      "calculator": "Calculadora ROI"
     },
     "cta": "Começar agora →",
     "openMenu": "Abrir menu",
@@ -989,5 +990,85 @@
     "badge": "Intel Verificada · INOVAWAY Intelligence",
     "quickTakesTitle": "O QUE SCOUT VIU NOS DADOS",
     "quickTakesSignature": "Analista INOVAWAY Intelligence"
+  },
+  "ROICalculator": {
+    "meta": {
+      "title": "Calculadora de ROI — AI Agents",
+      "description": "Calcule o retorno sobre investimento de implementar AI Agents no seu negócio. Descubra quanto você pode economizar."
+    },
+    "hero": {
+      "badge": "🔍 Calculado por Scout Intelligence",
+      "title": "Calculadora de ROI",
+      "subtitle": "AI Agents para o seu negócio",
+      "description": "Descubra quanto você pode economizar implementando AI Agents. Preencha o formulário e veja o resultado em segundos."
+    },
+    "form": {
+      "title": "Seus dados",
+      "atendimentos": {
+        "label": "Atendimentos por mês",
+        "placeholder": "Ex: 500",
+        "help": "Quantos atendimentos (chat, email, suporte) sua equipe faz por mês?"
+      },
+      "custo": {
+        "label": "Custo médio por atendimento (R$)",
+        "placeholder": "Ex: 15",
+        "help": "Custo direto por atendimento (salário + overhead)"
+      },
+      "horas": {
+        "label": "Horas em tarefas repetitivas por semana",
+        "help": "Horas gastas em tarefas manuais/repetitivas pela equipe toda"
+      },
+      "equipe": {
+        "label": "Tamanho da equipe",
+        "options": {
+          "1-5": "1 a 5 pessoas",
+          "6-15": "6 a 15 pessoas",
+          "16-50": "16 a 50 pessoas",
+          "50+": "Mais de 50 pessoas"
+        }
+      },
+      "setor": {
+        "label": "Setor",
+        "options": {
+          "Varejo": "Varejo / E-commerce",
+          "Saude": "Saúde",
+          "Financeiro": "Financeiro",
+          "Juridico": "Jurídico",
+          "Tech": "Tech / SaaS",
+          "Outro": "Outro"
+        }
+      },
+      "calculate": "Calcular meu ROI →"
+    },
+    "results": {
+      "title": "Seu potencial de economia",
+      "monthly": "Economia mensal estimada",
+      "annual": "Economia anual",
+      "hours": "Horas recuperadas por mês",
+      "roi": "ROI estimado (12 meses)",
+      "payback": "Payback estimado",
+      "paybackUnit": "meses",
+      "hoursUnit": "horas/mês",
+      "chart": {
+        "before": "Antes (custo atual)",
+        "after": "Após AI Agents"
+      },
+      "badge": "🔍 Calculado por Scout Intelligence",
+      "disclaimer": "* Estimativas baseadas em médias do setor. Resultados reais podem variar.",
+      "cta": {
+        "title": "Quer um diagnóstico personalizado?",
+        "button": "Fale conosco →"
+      }
+    },
+    "lead": {
+      "title": "Receba o relatório completo no seu email",
+      "description": "Enviamos uma análise detalhada com o plano de implementação personalizado para o seu setor.",
+      "emailLabel": "Seu email",
+      "emailPlaceholder": "seuemail@empresa.com",
+      "button": "Enviar Relatório",
+      "sending": "Enviando...",
+      "success": "✅ Relatório enviado! Verifique seu email em breve.",
+      "error": "Erro ao enviar. Tente novamente."
+    }
   }
 }
