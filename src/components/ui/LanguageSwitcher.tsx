@@ -3,10 +3,12 @@
 import { useLocale } from 'next-intl';
 import { motion } from 'framer-motion';
 import { useState } from 'react';
+import { useTranslationSlug } from '@/contexts/TranslationContext';
 
 export default function LanguageSwitcher() {
   const locale = useLocale();
   const [isPending, setIsPending] = useState(false);
+  const { translationSlug } = useTranslationSlug();
 
   const targetLocale = locale === 'pt' ? 'en' : 'pt';
   const label = locale === 'pt' ? '🇺🇸 EN' : '🇧🇷 PT';
@@ -18,17 +20,28 @@ export default function LanguageSwitcher() {
     // Save cookie for 1 year
     document.cookie = `NEXT_LOCALE=${targetLocale}; path=/; max-age=31536000; SameSite=Lax`;
 
-    // Build the target URL manually (localePrefix: "as-needed")
     const currentPath = window.location.pathname;
     let newPath: string;
 
-    if (targetLocale === 'en') {
-      // Going to EN: add /en/ prefix (remove any existing first)
-      const cleanPath = currentPath.replace(/^\/en(\/|$)/, '/');
-      newPath = `/en${cleanPath === '/' ? '' : cleanPath}`;
+    // Check if we're on a blog post page and have a translationSlug
+    // Blog post pattern: /blog/[slug] (PT) or /en/blog/[slug] (EN)
+    const blogPostMatch = currentPath.match(/^(\/en)?\/blog\/([^/]+)\/?$/);
+
+    if (blogPostMatch && translationSlug) {
+      // Use the translationSlug for cross-locale navigation
+      if (targetLocale === 'en') {
+        newPath = `/en/blog/${translationSlug}`;
+      } else {
+        newPath = `/blog/${translationSlug}`;
+      }
     } else {
-      // Going to PT: strip /en/ prefix
-      newPath = currentPath.replace(/^\/en(\/|$)/, '/') || '/';
+      // Default behavior for non-blog-post pages
+      if (targetLocale === 'en') {
+        const cleanPath = currentPath.replace(/^\/en(\/|$)/, '/');
+        newPath = `/en${cleanPath === '/' ? '' : cleanPath}`;
+      } else {
+        newPath = currentPath.replace(/^\/en(\/|$)/, '/') || '/';
+      }
     }
 
     window.location.href = newPath;

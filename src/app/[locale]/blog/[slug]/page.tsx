@@ -10,6 +10,7 @@ import ShareButtons from "@/components/blog/ShareButtons";
 import RelatedPosts from "@/components/blog/RelatedPosts";
 import MDXContent from "@/components/blog/MDXContent";
 import FAQSchema from "@/components/blog/FAQSchema";
+import TranslationSlugSetter from "@/components/blog/TranslationSlugSetter";
 import AuthorBox from "@/components/blog/AuthorBox";
 import ScoutBadge from "@/components/blog/ScoutBadge";
 import ScoutQuickTakes from "@/components/blog/ScoutQuickTakes";
@@ -229,6 +230,7 @@ export default async function PostPage({ params }: PostPageProps) {
         />
       )}
       {faqs.length > 0 && <FAQSchema faqs={faqs} />}
+      <TranslationSlugSetter translationSlug={post.translationSlug ?? null} />
 
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Hero image */}

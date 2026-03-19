@@ -7,6 +7,7 @@ import { routing } from "@/i18n/routing";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import { WebVitals } from "@/components/WebVitals";
+import { TranslationProvider } from "@/contexts/TranslationContext";
 import Script from "next/script";
 import "../globals.css";
 
@@ -204,11 +205,13 @@ export default async function LocaleLayout({
       <body className="min-h-screen bg-navy font-sans antialiased overflow-x-hidden">
         <WebVitals />
         <NextIntlClientProvider locale={locale} messages={messages}>
-          <div className="flex min-h-screen flex-col">
-            <Header />
-            <main className="flex-1 overflow-x-hidden">{children}</main>
-            <Footer />
-          </div>
+          <TranslationProvider>
+            <div className="flex min-h-screen flex-col">
+              <Header />
+              <main className="flex-1 overflow-x-hidden">{children}</main>
+              <Footer />
+            </div>
+          </TranslationProvider>
         </NextIntlClientProvider>
       </body>
     </html>
