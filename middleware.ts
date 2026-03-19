@@ -45,22 +45,35 @@ export default function middleware(request: NextRequest) {
     return intlMiddleware(modifiedRequest);
   }
 
-  // For paths that already have a locale prefix (/en/...), use normal intl handling.
-  // Cookie-based detection is fine here because the URL is already locale-prefixed.
+  // For paths that already have a locale prefix (/en/...), the URL is the explicit
+  // user choice. We extract the locale from the URL and set it as cookie so
+  // intlMiddleware respects it. This prevents geo-detection (x-vercel-ip-country)
+  // from overriding the user's explicit locale choice.
+  //
+  // Example: Brazilian user visits /en/blog → URL says "en", so we honor "en"
+  // regardless of x-vercel-ip-country=BR.
+  const urlLocale = routing.locales.find(
+    (loc) => pathname === `/${loc}` || pathname.startsWith(`/${loc}/`)
+  );
 
-  // Priority: Vercel geo header (x-vercel-ip-country) — only for locale-prefixed paths
-  // (the un-prefixed PT case is handled above)
-  const cookieLocale = request.cookies.get("NEXT_LOCALE")?.value;
-  const country = request.headers.get("x-vercel-ip-country");
-  if (country && !cookieLocale) {
-    const geoLocale = country === "BR" ? "pt" : "en";
-    const requestWithLocale = new NextRequest(request.url, {
-      headers: new Headers(request.headers),
+  if (urlLocale) {
+    // Strip any geo-detection influence: set cookie to match URL locale
+    const existingCookies = request.headers.get("cookie") ?? "";
+    const strippedCookies = existingCookies
+      .split(";")
+      .filter((c) => !c.trim().startsWith("NEXT_LOCALE="))
+      .join(";");
+
+    const modifiedHeaders = new Headers(request.headers);
+    modifiedHeaders.set("cookie", `${strippedCookies}; NEXT_LOCALE=${urlLocale}`);
+
+    const modifiedRequest = new NextRequest(request.url, {
+      headers: modifiedHeaders,
     });
-    requestWithLocale.cookies.set("NEXT_LOCALE", geoLocale);
-    const response = intlMiddleware(requestWithLocale);
+
+    const response = intlMiddleware(modifiedRequest);
     if (response) {
-      response.cookies.set("NEXT_LOCALE", geoLocale, {
+      response.cookies.set("NEXT_LOCALE", urlLocale, {
         path: "/",
         maxAge: 60 * 60 * 24 * 30, // 30 days
       });
@@ -68,7 +81,7 @@ export default function middleware(request: NextRequest) {
     return response;
   }
 
-  // Default: let intlMiddleware handle (cookie + Accept-Language + defaultLocale fallback)
+  // Default fallback (shouldn't reach here due to hasLocalePrefix check above)
   return intlMiddleware(request);
 }
 
