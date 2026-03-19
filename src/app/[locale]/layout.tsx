@@ -9,6 +9,7 @@ import Footer from "@/components/layout/Footer";
 import { WebVitals } from "@/components/WebVitals";
 import { TranslationProvider } from "@/contexts/TranslationContext";
 import Script from "next/script";
+import { GoogleAnalytics } from "@/components/GoogleAnalytics";
 import "../globals.css";
 
 const inter = Inter({
@@ -191,6 +192,12 @@ export default async function LocaleLayout({
       suppressHydrationWarning
     >
       <head>
+        {process.env.NEXT_PUBLIC_GSC_VERIFICATION && (
+          <meta
+            name="google-site-verification"
+            content={process.env.NEXT_PUBLIC_GSC_VERIFICATION}
+          />
+        )}
         <Script
           id="schema-organization"
           type="application/ld+json"
@@ -203,6 +210,7 @@ export default async function LocaleLayout({
         />
       </head>
       <body className="min-h-screen bg-navy font-sans antialiased overflow-x-hidden">
+        <GoogleAnalytics />
         <WebVitals />
         <NextIntlClientProvider locale={locale} messages={messages}>
           <TranslationProvider>
