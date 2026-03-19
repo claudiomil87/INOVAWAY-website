@@ -7,7 +7,6 @@ import PostHeader from "@/components/blog/PostHeader";
 import TableOfContents from "@/components/blog/TableOfContents";
 import ShareButtons from "@/components/blog/ShareButtons";
 import RelatedPosts from "@/components/blog/RelatedPosts";
-import { mdxComponents } from "@/components/blog/MDXComponents";
 import MDXContent from "@/components/blog/MDXContent";
 import Image from "next/image";
 
@@ -241,7 +240,7 @@ export default async function PostPage({ params }: PostPageProps) {
 
             {/* MDX content */}
             <div className="prose prose-invert max-w-none">
-              <MDXContent code={post.body} components={mdxComponents} />
+              <MDXContent code={post.body} />
             </div>
 
             {/* Share buttons */}

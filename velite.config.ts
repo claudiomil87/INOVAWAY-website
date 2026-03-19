@@ -18,7 +18,7 @@ const posts = defineCollection({
       image: s.string().optional(),
       locale: s.enum(["pt", "en"]),
       readingTime: s.string().optional(),
-      body: s.mdx(),
+      body: s.markdown(),
       toc: s.toc(),
     })
     .transform((data) => ({
@@ -38,7 +38,7 @@ export default defineConfig({
     clean: true,
   },
   collections: { posts },
-  mdx: {
+  markdown: {
     remarkPlugins: [remarkGfm],
     rehypePlugins: [
       rehypeSlug,
