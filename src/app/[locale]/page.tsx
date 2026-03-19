@@ -8,6 +8,8 @@ import StatsSection from "@/components/sections/StatsSection";
 import FAQSection from "@/components/sections/FAQSection";
 import CTASection from "@/components/sections/CTASection";
 import SocialProofNotification from "@/components/ui/SocialProofNotification";
+import IntelligenceFeedSection from "@/components/sections/IntelligenceFeedSection";
+import { getAllPosts } from "@/lib/blog";
 
 const BASE_URL = "https://inovaway.org";
 
@@ -60,7 +62,14 @@ export async function generateMetadata({
   };
 }
 
-export default function HomePage() {
+export default async function HomePage({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+  const latestPosts = getAllPosts(locale).slice(0, 3);
+
   return (
     <>
       {/* 1. Hero — tagline + CTA + bullets + aurora bg */}
@@ -73,9 +82,11 @@ export default function HomePage() {
       <ServicesSection />
       {/* 5. Stats — números animados */}
       <StatsSection />
-      {/* 6. FAQ — perguntas frequentes */}
+      {/* 6. Intelligence Feed — últimos posts do blog */}
+      <IntelligenceFeedSection posts={latestPosts} locale={locale} />
+      {/* 7. FAQ — perguntas frequentes */}
       <FAQSection />
-      {/* 7. CTA — final com squad formation */}
+      {/* 8. CTA — final com squad formation */}
       <CTASection />
       {/* Social Proof Notifications — toast no canto inferior esquerdo */}
       <SocialProofNotification />

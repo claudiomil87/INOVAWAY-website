@@ -979,5 +979,15 @@
       "page": "Página"
     },
     "tocTitle": "Conteúdo"
+  },
+  "IntelligenceFeed": {
+    "liveBadge": "AO VIVO 🔴",
+    "subtitle": "Insights exclusivos sobre AI Agents para o seu negócio",
+    "cta": "Ver todos os briefings"
+  },
+  "Scout": {
+    "badge": "Intel Verificada · INOVAWAY Intelligence",
+    "quickTakesTitle": "O QUE SCOUT VIU NOS DADOS",
+    "quickTakesSignature": "Analista INOVAWAY Intelligence"
   }
 }

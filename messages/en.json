@@ -980,5 +980,15 @@
       "page": "Page"
     },
     "tocTitle": "Contents"
+  },
+  "IntelligenceFeed": {
+    "liveBadge": "LIVE 🔴",
+    "subtitle": "Exclusive AI Agent insights for your business",
+    "cta": "View all briefings"
+  },
+  "Scout": {
+    "badge": "Verified Intel · INOVAWAY Intelligence",
+    "quickTakesTitle": "WHAT SCOUT FOUND IN THE DATA",
+    "quickTakesSignature": "INOVAWAY Intelligence Analyst"
   }
 }

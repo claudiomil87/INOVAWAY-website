@@ -11,8 +11,11 @@ import RelatedPosts from "@/components/blog/RelatedPosts";
 import MDXContent from "@/components/blog/MDXContent";
 import FAQSchema from "@/components/blog/FAQSchema";
 import AuthorBox from "@/components/blog/AuthorBox";
+import ScoutBadge from "@/components/blog/ScoutBadge";
+import ScoutQuickTakes from "@/components/blog/ScoutQuickTakes";
 import Image from "next/image";
 import { getFAQs } from "@/lib/faq-data";
+import { getScoutInsight } from "@/lib/scout-insights";
 
 const BASE_URL = "https://inovaway.org";
 
@@ -203,6 +206,7 @@ export default async function PostPage({ params }: PostPageProps) {
   const blogPostingSchema = getBlogPostingSchema(post, locale, postUrl);
   const breadcrumbSchema = getBreadcrumbSchema(post, locale, postUrl);
   const faqs = getFAQs(slug, locale);
+  const scoutInsight = getScoutInsight(slug, locale);
 
   return (
     <main
@@ -251,11 +255,19 @@ export default async function PostPage({ params }: PostPageProps) {
           {/* Main content */}
           <article className="min-w-0 flex-1">
             <PostHeader post={post} locale={locale} />
+            <div className="mb-6">
+              <ScoutBadge locale={locale} />
+            </div>
 
             {/* MDX content */}
             <div className="prose prose-invert max-w-none">
               <MDXContent code={post.body} />
             </div>
+
+            {/* Scout Quick Takes — intelligence insight */}
+            {scoutInsight && (
+              <ScoutQuickTakes insight={scoutInsight} />
+            )}
 
             {/* Author box — E-E-A-T */}
             <AuthorBox locale={locale} />
