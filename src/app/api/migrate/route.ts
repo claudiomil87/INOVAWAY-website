@@ -4,6 +4,8 @@ import pg from 'pg'
 const MIGRATION_SECRET = 'inovaway-migrate-2026-03-25-temp'
 
 export async function POST(req: Request) {
+  // Temporarily allow self-signed certs for Supabase pooler
+  process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0'
   try {
     const { secret } = await req.json()
     if (secret !== MIGRATION_SECRET) {
@@ -22,15 +24,15 @@ export async function POST(req: Request) {
 
     for (const region of regions) {
       connectionStrings.push(
-        `postgresql://postgres.${projectRef}:${dbPassword}@${region}.pooler.supabase.com:5432/postgres?sslmode=require`
+        `postgresql://postgres.${projectRef}:${dbPassword}@${region}.pooler.supabase.com:5432/postgres`
       )
       connectionStrings.push(
-        `postgresql://postgres.${projectRef}:${dbPassword}@${region}.pooler.supabase.com:6543/postgres?sslmode=require`
+        `postgresql://postgres.${projectRef}:${dbPassword}@${region}.pooler.supabase.com:6543/postgres`
       )
     }
     // Direct connection (IPv6)
     connectionStrings.push(
-      `postgresql://postgres:${dbPassword}@db.${projectRef}.supabase.co:5432/postgres?sslmode=require`
+      `postgresql://postgres:${dbPassword}@db.${projectRef}.supabase.co:5432/postgres`
     )
 
     const errors: string[] = []
@@ -39,7 +41,7 @@ export async function POST(req: Request) {
       try {
         const client = new pg.Client({
           connectionString: connStr,
-          ssl: true,
+          ssl: process.env.NODE_ENV === 'production' ? { rejectUnauthorized: false } : false,
           connectionTimeoutMillis: 8000,
         })
 
