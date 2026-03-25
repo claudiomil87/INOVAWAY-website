@@ -3,7 +3,8 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronDown } from "lucide-react";
-import { useTranslations } from "next-intl";
+import { useTranslations, useLocale } from "next-intl";
+import { getFAQs } from "@/lib/faq-data";
 
 function FAQItem({ q, a, index }: { q: string; a: string; index: number }) {
   const [open, setOpen] = useState(false);
@@ -13,7 +14,7 @@ function FAQItem({ q, a, index }: { q: string; a: string; index: number }) {
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      transition={{ duration: 0.4, delay: index * 0.08 }}
+      transition={{ duration: 0.4, delay: Math.min(index * 0.05, 0.4) }}
       className="border-b"
       style={{ borderColor: "rgba(255,255,255,0.08)" }}
     >
@@ -45,13 +46,32 @@ function FAQItem({ q, a, index }: { q: string; a: string; index: number }) {
   );
 }
 
-export default function FAQSection() {
-  const t = useTranslations("FAQSection");
+interface FAQSectionProps {
+  slug?: string;
+  /** Override title (uses translation key 'title' by default) */
+  title?: string;
+  /** Override gradient title segment (uses translation key 'titleGradient' by default) */
+  titleGradient?: string;
+}
 
-  const faqs = Array.from({ length: 5 }, (_, i) => ({
-    q: t(`faqs.${i}.q`),
-    a: t(`faqs.${i}.a`),
+export default function FAQSection({ slug, title, titleGradient }: FAQSectionProps) {
+  const t = useTranslations("FAQSection");
+  const locale = useLocale();
+
+  // If a slug is provided and has matching FAQs, use them; otherwise fall back to translations
+  const slugFAQs = slug ? getFAQs(slug, locale) : [];
+  const useSlug = slug && slugFAQs.length > 0;
+
+  type NormalizedFAQ = { question: string; answer: string };
+  const translationFAQs: NormalizedFAQ[] = Array.from({ length: 5 }, (_, i) => ({
+    question: t(`faqs.${i}.q`),
+    answer: t(`faqs.${i}.a`),
   }));
+
+  const faqs: NormalizedFAQ[] = useSlug ? slugFAQs : translationFAQs;
+
+  const displayTitle = title ?? t("title");
+  const displayGradient = titleGradient ?? t("titleGradient");
 
   return (
     <section className="px-4 py-16 md:py-24">
@@ -64,19 +84,21 @@ export default function FAQSection() {
           className="mb-12 text-center"
         >
           <h2 className="text-3xl font-bold text-white md:text-4xl lg:text-5xl">
-            {t("title")}{" "}
+            {displayTitle}{" "}
             <span
               className="bg-clip-text text-transparent"
-              style={{ backgroundImage: "linear-gradient(135deg, #00FF41, #06B6D4)" }}
+              style={{
+                backgroundImage: "linear-gradient(135deg, #00FF41, #06B6D4)",
+              }}
             >
-              {t("titleGradient")}
+              {displayGradient}
             </span>
           </h2>
         </motion.div>
 
         <div className="rounded-2xl border border-white/10 bg-[#1E293B]/50 px-6 md:px-10">
           {faqs.map((item, i) => (
-            <FAQItem key={i} q={item.q} a={item.a} index={i} />
+            <FAQItem key={i} q={item.question} a={item.answer} index={i} />
           ))}
         </div>
       </div>

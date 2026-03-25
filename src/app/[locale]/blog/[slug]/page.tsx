@@ -10,6 +10,7 @@ import ShareButtons from "@/components/blog/ShareButtons";
 import RelatedPosts from "@/components/blog/RelatedPosts";
 import MDXContent from "@/components/blog/MDXContent";
 import FAQSchema from "@/components/blog/FAQSchema";
+import FAQSection from "@/components/sections/FAQSection";
 import TranslationSlugSetter from "@/components/blog/TranslationSlugSetter";
 import AuthorBox from "@/components/blog/AuthorBox";
 import ScoutBadge from "@/components/blog/ScoutBadge";
@@ -282,6 +283,11 @@ export default async function PostPage({ params }: PostPageProps) {
             >
               <ShareButtons title={post.title} url={postUrl} />
             </div>
+
+            {/* FAQ — rendered from faq-data.ts keyed by post slug */}
+            {faqs.length > 0 && (
+              <FAQSection slug={slug} />
+            )}
 
             <BlogCommentsLoader postSlug={slug} locale={locale} />
 
