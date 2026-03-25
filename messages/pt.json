@@ -981,6 +981,50 @@
     },
     "tocTitle": "Conteúdo"
   },
+  "BlogComments": {
+    "form": {
+      "name": "Nome *",
+      "email": "Email *",
+      "company": "Empresa (opcional)",
+      "comment": "Seu comentário *",
+      "lgpd": "Li e aceito a Política de Privacidade e autorizo o armazenamento do meu email",
+      "marketing": "Aceito receber conteúdos e novidades da INOVAWAY por email",
+      "namePlaceholder": "Seu nome",
+      "emailPlaceholder": "seu@email.com",
+      "companyPlaceholder": "Sua empresa",
+      "commentPlaceholder": "Escreva seu comentário...",
+      "submit": "Publicar comentário",
+      "submitting": "Enviando...",
+      "success": "Comentário enviado com sucesso! Será exibido após aprovação.",
+      "successThanks": "Obrigado por contribuir com a discussão!",
+      "lgpdError": "Você precisa aceitar a Política de Privacidade para comentar.",
+      "connectionError": "Erro de conexão. Verifique sua internet e tente novamente.",
+      "genericError": "Erro ao enviar comentário. Tente novamente."
+    },
+    "list": {
+      "loading": "Carregando comentários...",
+      "error": "Erro ao carregar comentários.",
+      "connectionError": "Erro de conexão ao carregar comentários.",
+      "retry": "Tentar novamente",
+      "empty": "Seja o primeiro a comentar!",
+      "emptySubtitle": "Compartilhe seus pensamentos sobre este post.",
+      "reply": "Responder",
+      "replying": "Respondendo a {name}"
+    },
+    "relativeTime": {
+      "justNow": "agora mesmo",
+      "minute": "há {count} min",
+      "minutes": "há {count} mins",
+      "hour": "há {count} hora",
+      "hours": "há {count} horas",
+      "day": "há {count} dia",
+      "days": "há {count} dias",
+      "month": "há {count} mês",
+      "months": "há {count} meses",
+      "year": "há {count} ano",
+      "years": "há {count} anos"
+    }
+  },
   "IntelligenceFeed": {
     "liveBadge": "AO VIVO 🔴",
     "subtitle": "Insights exclusivos sobre AI Agents para o seu negócio",

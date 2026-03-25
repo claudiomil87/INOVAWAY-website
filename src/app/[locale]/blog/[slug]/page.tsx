@@ -17,6 +17,7 @@ import ScoutQuickTakes from "@/components/blog/ScoutQuickTakes";
 import Image from "next/image";
 import { getFAQs } from "@/lib/faq-data";
 import { getScoutInsight } from "@/lib/scout-insights";
+import BlogCommentsLoader from "@/components/blog/BlogCommentsLoader";
 
 const BASE_URL = "https://inovaway.org";
 
@@ -281,6 +282,8 @@ export default async function PostPage({ params }: PostPageProps) {
             >
               <ShareButtons title={post.title} url={postUrl} />
             </div>
+
+            <BlogCommentsLoader postSlug={slug} locale={locale} />
 
             {/* Related posts */}
             <RelatedPosts posts={relatedPosts} locale={locale} />

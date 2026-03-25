@@ -982,6 +982,50 @@
     },
     "tocTitle": "Contents"
   },
+  "BlogComments": {
+    "form": {
+      "name": "Name *",
+      "email": "Email *",
+      "company": "Company (optional)",
+      "comment": "Your comment *",
+      "lgpd": "I accept the Privacy Policy and authorize storage of my email",
+      "marketing": "I agree to receive INOVAWAY content and news by email",
+      "namePlaceholder": "Your name",
+      "emailPlaceholder": "your@email.com",
+      "companyPlaceholder": "Your company",
+      "commentPlaceholder": "Write your comment...",
+      "submit": "Post comment",
+      "submitting": "Sending...",
+      "success": "Comment sent successfully! It will be displayed after approval.",
+      "successThanks": "Thank you for contributing to the discussion!",
+      "lgpdError": "You must accept the Privacy Policy to comment.",
+      "connectionError": "Connection error. Please check your internet and try again.",
+      "genericError": "Error sending comment. Please try again."
+    },
+    "list": {
+      "loading": "Loading comments...",
+      "error": "Error loading comments.",
+      "connectionError": "Connection error loading comments.",
+      "retry": "Try again",
+      "empty": "Be the first to comment!",
+      "emptySubtitle": "Share your thoughts about this post.",
+      "reply": "Reply",
+      "replying": "Replying to {name}"
+    },
+    "relativeTime": {
+      "justNow": "just now",
+      "minute": "{count} min ago",
+      "minutes": "{count} mins ago",
+      "hour": "{count} hour ago",
+      "hours": "{count} hours ago",
+      "day": "{count} day ago",
+      "days": "{count} days ago",
+      "month": "{count} month ago",
+      "months": "{count} months ago",
+      "year": "{count} year ago",
+      "years": "{count} years ago"
+    }
+  },
   "IntelligenceFeed": {
     "liveBadge": "LIVE 🔴",
     "subtitle": "Exclusive AI Agent insights for your business",
