@@ -40,7 +40,6 @@ import { supabaseAdmin } from '@/lib/supabase';
 import { sendCommentLeadToCRM } from '@/lib/hnbcrm';
 import {
   checkSpam,
-  isRateLimited,
   sanitizeText,
   isValidEmail,
   getClientIp,
@@ -65,29 +64,42 @@ interface CommentRowResult {
 
 // ─── CORS Headers ────────────────────────────────────────────────────────────
 
-const CORS_HEADERS = {
-  'Access-Control-Allow-Origin': 'https://inovaway.org',
-  'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
-  'Access-Control-Allow-Headers': 'Content-Type',
-};
+const ALLOWED_ORIGINS = ['https://inovaway.org', 'https://www.inovaway.org'];
 
-export async function OPTIONS() {
-  return new NextResponse(null, { status: 204, headers: CORS_HEADERS });
+function getCorsHeaders(request?: NextRequest): Record<string, string> {
+  const origin = request?.headers.get('origin') ?? '';
+  const allowedOrigin = ALLOWED_ORIGINS.includes(origin) ? origin : ALLOWED_ORIGINS[0];
+  return {
+    'Access-Control-Allow-Origin': allowedOrigin,
+    'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
+    'Access-Control-Allow-Headers': 'Content-Type',
+  };
+}
+
+// Static CORS_HEADERS for GET responses (no origin needed)
+const CORS_HEADERS = getCorsHeaders();
+
+export async function OPTIONS(request: NextRequest) {
+  return new NextResponse(null, { status: 204, headers: getCorsHeaders(request) });
 }
 
 // ─── POST /api/comments ──────────────────────────────────────────────────────
 
 export async function POST(request: NextRequest): Promise<NextResponse<CreateCommentResponse>> {
+  const corsHeaders = getCorsHeaders(request);
   try {
     const body = (await request.json()) as CreateCommentRequest;
     const ip = getClientIp(request);
+
+    // Determine locale for user-facing messages
+    const locale = body.post_slug?.startsWith('en') ? 'en' : 'pt';
 
     // 1a. Classic honeypot check — bots fill the "website" field
     if (body.website && body.website.trim().length > 0) {
       // Return 200 to not reveal the honeypot to bots
       return NextResponse.json(
         { success: true },
-        { status: 200, headers: CORS_HEADERS }
+        { status: 200, headers: corsHeaders }
       );
     }
 
@@ -97,25 +109,29 @@ export async function POST(request: NextRequest): Promise<NextResponse<CreateCom
       if (elapsed < 3000) {
         return NextResponse.json(
           { success: false, error: 'Envio muito rápido. Por favor, tente novamente.' },
-          { status: 400, headers: CORS_HEADERS }
+          { status: 400, headers: corsHeaders }
         );
       }
     }
 
-    // 1c. Cloudflare Turnstile validation (only if secret key is configured)
+    // 1c. Cloudflare Turnstile validation (hardened)
     const turnstileSecret = process.env.TURNSTILE_SECRET_KEY?.trim();
-    if (turnstileSecret) {
-      const token = body._turnstile;
-      if (!token) {
+    if (!turnstileSecret) {
+      if (process.env.NODE_ENV === 'production') {
+        console.warn('[Comments API] ⚠️ TURNSTILE_SECRET_KEY not configured — Turnstile validation disabled in production!');
+      }
+    } else {
+      // Turnstile is configured — token is REQUIRED
+      if (!body._turnstile) {
         return NextResponse.json(
           { success: false, error: 'Verificação de segurança necessária.' },
-          { status: 400, headers: CORS_HEADERS }
+          { status: 400, headers: corsHeaders }
         );
       }
       const clientIp = getClientIp(request);
       const turnstileParams: Record<string, string> = {
         secret: turnstileSecret,
-        response: token,
+        response: body._turnstile,
       };
       if (clientIp) turnstileParams.remoteip = clientIp;
       const verifyRes = await fetch('https://challenges.cloudflare.com/turnstile/v0/siteverify', {
@@ -126,7 +142,7 @@ export async function POST(request: NextRequest): Promise<NextResponse<CreateCom
       if (!verifyData.success) {
         return NextResponse.json(
           { success: false, error: 'Verificação de segurança falhou. Tente novamente.' },
-          { status: 403, headers: CORS_HEADERS }
+          { status: 403, headers: corsHeaders }
         );
       }
     }
@@ -139,7 +155,7 @@ export async function POST(request: NextRequest): Promise<NextResponse<CreateCom
       if (!body[field] || String(body[field]).trim() === '') {
         return NextResponse.json(
           { success: false, error: `Campo obrigatório ausente: ${field}` },
-          { status: 400, headers: CORS_HEADERS }
+          { status: 400, headers: corsHeaders }
         );
       }
     }
@@ -148,7 +164,7 @@ export async function POST(request: NextRequest): Promise<NextResponse<CreateCom
     if (!body.consent_lgpd) {
       return NextResponse.json(
         { success: false, error: 'Consentimento LGPD é obrigatório.' },
-        { status: 400, headers: CORS_HEADERS }
+        { status: 400, headers: corsHeaders }
       );
     }
 
@@ -156,7 +172,7 @@ export async function POST(request: NextRequest): Promise<NextResponse<CreateCom
     if (!isValidEmail(body.author_email)) {
       return NextResponse.json(
         { success: false, error: 'Email inválido.' },
-        { status: 400, headers: CORS_HEADERS }
+        { status: 400, headers: corsHeaders }
       );
     }
 
@@ -164,15 +180,37 @@ export async function POST(request: NextRequest): Promise<NextResponse<CreateCom
     if (body.content.length > 2000) {
       return NextResponse.json(
         { success: false, error: 'Comentário muito longo (máximo 2000 caracteres).' },
-        { status: 400, headers: CORS_HEADERS }
+        { status: 400, headers: corsHeaders }
       );
     }
 
-    // 6. Rate limiting
-    if (isRateLimited(body.author_email)) {
+    // 5b. UUID validation for parent_id
+    const UUID_REGEX = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
+    if (body.parent_id && !UUID_REGEX.test(body.parent_id)) {
       return NextResponse.json(
-        { success: false, error: 'Limite de comentários atingido. Tente novamente amanhã.' },
-        { status: 429, headers: CORS_HEADERS }
+        { success: false, error: 'parent_id inválido.' },
+        { status: 400, headers: corsHeaders }
+      );
+    }
+
+    // 6. Persistent rate limiting via Supabase (survives serverless cold starts)
+    const MAX_COMMENTS_PER_DAY = 5;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const { count: rlCount, error: rlError } = await (supabaseAdmin as any)
+      .from('comments')
+      .select('id', { count: 'exact', head: true })
+      .eq('author_email', body.author_email.trim().toLowerCase())
+      .gte('created_at', new Date(Date.now() - 86400000).toISOString()) as { count: number | null; error: Error | null };
+
+    if (!rlError && rlCount !== null && rlCount >= MAX_COMMENTS_PER_DAY) {
+      return NextResponse.json(
+        {
+          success: false,
+          error: locale === 'pt'
+            ? 'Limite diário de comentários atingido. Tente novamente amanhã.'
+            : 'Daily comment limit reached. Try again tomorrow.',
+        },
+        { status: 429, headers: corsHeaders }
       );
     }
 
@@ -211,7 +249,7 @@ export async function POST(request: NextRequest): Promise<NextResponse<CreateCom
       console.error('[Comments API] Insert error:', insertError);
       return NextResponse.json(
         { success: false, error: 'Erro ao salvar comentário. Tente novamente.' },
-        { status: 500, headers: CORS_HEADERS }
+        { status: 500, headers: corsHeaders }
       );
     }
 
@@ -271,7 +309,7 @@ export async function POST(request: NextRequest): Promise<NextResponse<CreateCom
 
     return NextResponse.json(
       { success: true, comment: publicComment },
-      { status: 201, headers: CORS_HEADERS }
+      { status: 201, headers: corsHeaders }
     );
   } catch (err) {
     console.error('[Comments API] Unexpected error:', err);

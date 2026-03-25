@@ -53,7 +53,7 @@ export default function CommentForm({
     author_company: '',
     content: '',
     consent_lgpd: true,
-    consent_marketing: true,
+    consent_marketing: false,
     website: '', // honeypot
   });
 
@@ -121,7 +121,7 @@ export default function CommentForm({
       author_company: '',
       content: '',
       consent_lgpd: true,
-      consent_marketing: true,
+      consent_marketing: false,
       website: '',
     });
     setTurnstileToken(undefined);

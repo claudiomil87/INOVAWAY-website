@@ -36,7 +36,7 @@ const securityHeaders = [
       "style-src 'self' 'unsafe-inline'",
       "font-src 'self' data:",
       "img-src 'self' data: https:",
-      "connect-src 'self' https://www.google-analytics.com https://www.googletagmanager.com https://analytics.google.com https://challenges.cloudflare.com",
+      "connect-src 'self' https://www.google-analytics.com https://www.googletagmanager.com https://analytics.google.com https://challenges.cloudflare.com https://iqrucqeanmbdpscohtoj.supabase.co",
       "frame-src 'self' https://challenges.cloudflare.com",
       "frame-ancestors 'self'",
       "form-action 'self'",

@@ -42,43 +42,6 @@ export function checkSpam(content: string): SpamCheckResult {
   return { isSpam: false };
 }
 
-// ─── Rate Limiting (in-memory, edge-safe) ────────────────────────────────────
-
-interface RateLimitEntry {
-  count: number;
-  resetAt: number; // Unix timestamp ms
-}
-
-// Simple in-memory store — resets on cold start (acceptable for edge/serverless)
-// For production scale, replace with Vercel KV or Redis.
-const rateLimitStore = new Map<string, RateLimitEntry>();
-
-const MAX_COMMENTS_PER_EMAIL_PER_DAY = 3;
-const ONE_DAY_MS = 24 * 60 * 60 * 1000;
-
-/**
- * Check if an email has exceeded the comment rate limit (3/day).
- * Returns true if rate limit exceeded.
- */
-export function isRateLimited(email: string): boolean {
-  const key = email.toLowerCase();
-  const now = Date.now();
-  const entry = rateLimitStore.get(key);
-
-  if (!entry || now > entry.resetAt) {
-    // First comment today — allow
-    rateLimitStore.set(key, { count: 1, resetAt: now + ONE_DAY_MS });
-    return false;
-  }
-
-  if (entry.count >= MAX_COMMENTS_PER_EMAIL_PER_DAY) {
-    return true;
-  }
-
-  entry.count++;
-  return false;
-}
-
 // ─── Input Sanitization ──────────────────────────────────────────────────────
 
 /**
