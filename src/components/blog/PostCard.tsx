@@ -1,3 +1,6 @@
+'use client';
+
+import { useState } from "react";
 import Image from "next/image";
 import { Link } from "@/i18n/navigation";
 import { Post, formatDate } from "@/lib/blog";
@@ -11,6 +14,7 @@ interface PostCardProps {
 
 export default function PostCard({ post, locale }: PostCardProps) {
   const t = useTranslations("Blog");
+  const [imgError, setImgError] = useState(false);
 
   return (
     <Link
@@ -29,12 +33,22 @@ export default function PostCard({ post, locale }: PostCardProps) {
         {/* Image */}
         {post.image && (
           <div className="relative w-full overflow-hidden aspect-[16/9]">
-            <Image
-              src={post.image}
-              alt={post.title}
-              fill
-              className="object-cover transition-transform duration-500 group-hover:scale-105"
-            />
+            {imgError ? (
+              <div
+                className="w-full h-full flex items-center justify-center absolute inset-0"
+                style={{ background: "linear-gradient(135deg, #0F172A, #1E293B)" }}
+              >
+                <span className="text-white/30 text-lg font-bold">INOVAWAY</span>
+              </div>
+            ) : (
+              <Image
+                src={post.image}
+                alt={post.title}
+                fill
+                className="object-cover transition-transform duration-500 group-hover:scale-105"
+                onError={() => setImgError(true)}
+              />
+            )}
             <div
               className="absolute inset-0"
               style={{

@@ -290,7 +290,11 @@ export default function CommentForm({
         <button
           type="submit"
           disabled={isSubmitting}
-          className="px-6 py-2 bg-gradient-to-r from-cyan-600 to-green-600 text-white font-medium rounded-md hover:from-cyan-500 hover:to-green-500 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:ring-offset-2 focus:ring-offset-slate-900 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200"
+          className="w-full rounded-lg px-6 py-3 text-base font-bold transition-all duration-300 hover:shadow-[0_0_20px_rgba(0,255,65,0.4)] disabled:opacity-50 disabled:cursor-not-allowed"
+          style={{
+            background: "linear-gradient(135deg, #00FF41, #06B6D4)",
+            color: "#0F172A",
+          }}
         >
           {isSubmitting ? (
             <span className="flex items-center">
