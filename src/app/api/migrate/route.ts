@@ -39,7 +39,7 @@ export async function POST(req: Request) {
       try {
         const client = new pg.Client({
           connectionString: connStr,
-          ssl: { rejectUnauthorized: false },
+          ssl: true,
           connectionTimeoutMillis: 8000,
         })
 
