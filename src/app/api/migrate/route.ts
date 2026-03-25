@@ -10,98 +10,124 @@ export async function POST(req: Request) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
     }
 
-    const supabaseUrl = process.env.SUPABASE_URL
-    if (!supabaseUrl) {
-      return NextResponse.json({ error: 'SUPABASE_URL not set' }, { status: 500 })
+    const dbPassword = process.env.SUPABASE_DB_PASSWORD
+    const projectRef = 'iqrucqeanmbdpscohtoj'
+
+    if (!dbPassword) {
+      return NextResponse.json({ error: 'SUPABASE_DB_PASSWORD not set' }, { status: 500 })
     }
 
-    // Extract project ref from URL
-    const projectRef = new URL(supabaseUrl).hostname.split('.')[0]
-    
-    // Connect via Supabase's direct connection (IPv6) or pooler
-    // Vercel supports IPv6, so direct connection should work from Vercel!
-    const databaseUrl = process.env.DATABASE_URL || 
-      `postgresql://postgres:${process.env.SUPABASE_DB_PASSWORD}@db.${projectRef}.supabase.co:5432/postgres`
+    const regions = ['aws-0-sa-east-1', 'aws-0-us-east-1', 'aws-0-us-east-2', 'aws-0-us-west-1', 'aws-0-eu-central-1']
+    const connectionStrings: string[] = []
 
-    const client = new pg.Client({
-      connectionString: databaseUrl,
-      ssl: { rejectUnauthorized: false }
-    })
+    for (const region of regions) {
+      connectionStrings.push(
+        `postgresql://postgres.${projectRef}:${dbPassword}@${region}.pooler.supabase.com:5432/postgres?sslmode=require`
+      )
+      connectionStrings.push(
+        `postgresql://postgres.${projectRef}:${dbPassword}@${region}.pooler.supabase.com:6543/postgres?sslmode=require`
+      )
+    }
+    // Direct connection (IPv6)
+    connectionStrings.push(
+      `postgresql://postgres:${dbPassword}@db.${projectRef}.supabase.co:5432/postgres?sslmode=require`
+    )
 
-    await client.connect()
+    const errors: string[] = []
 
-    const migration = `
-      CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
+    for (const connStr of connectionStrings) {
+      try {
+        const client = new pg.Client({
+          connectionString: connStr,
+          ssl: { rejectUnauthorized: false },
+          connectionTimeoutMillis: 8000,
+        })
 
-      CREATE TABLE IF NOT EXISTS public.comments (
-        id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
-        post_slug TEXT NOT NULL,
-        author_name TEXT NOT NULL,
-        author_email TEXT NOT NULL,
-        author_company TEXT,
-        content TEXT NOT NULL,
-        status TEXT NOT NULL DEFAULT 'pending' CHECK (status IN ('pending', 'approved', 'spam')),
-        parent_id UUID REFERENCES public.comments(id) ON DELETE CASCADE,
-        crm_synced BOOLEAN NOT NULL DEFAULT false,
-        crm_contact_id TEXT,
-        created_at TIMESTAMPTZ NOT NULL DEFAULT now(),
-        approved_at TIMESTAMPTZ,
-        ip_address TEXT
-      );
+        await client.connect()
 
-      CREATE INDEX IF NOT EXISTS idx_comments_post_slug ON public.comments(post_slug);
-      CREATE INDEX IF NOT EXISTS idx_comments_status ON public.comments(status);
-      CREATE INDEX IF NOT EXISTS idx_comments_parent_id ON public.comments(parent_id);
-      CREATE INDEX IF NOT EXISTS idx_comments_author_email ON public.comments(author_email);
-      CREATE INDEX IF NOT EXISTS idx_comments_created_at ON public.comments(created_at DESC);
+        const migration = `
+          CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
+          CREATE TABLE IF NOT EXISTS public.comments (
+            id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
+            post_slug TEXT NOT NULL,
+            author_name TEXT NOT NULL,
+            author_email TEXT NOT NULL,
+            author_company TEXT,
+            content TEXT NOT NULL,
+            status TEXT NOT NULL DEFAULT 'pending' CHECK (status IN ('pending', 'approved', 'spam')),
+            parent_id UUID REFERENCES public.comments(id) ON DELETE CASCADE,
+            crm_synced BOOLEAN NOT NULL DEFAULT false,
+            crm_contact_id TEXT,
+            created_at TIMESTAMPTZ NOT NULL DEFAULT now(),
+            approved_at TIMESTAMPTZ,
+            ip_address TEXT
+          );
+          CREATE INDEX IF NOT EXISTS idx_comments_post_slug ON public.comments(post_slug);
+          CREATE INDEX IF NOT EXISTS idx_comments_status ON public.comments(status);
+          CREATE INDEX IF NOT EXISTS idx_comments_parent_id ON public.comments(parent_id);
+          CREATE INDEX IF NOT EXISTS idx_comments_author_email ON public.comments(author_email);
+          CREATE INDEX IF NOT EXISTS idx_comments_created_at ON public.comments(created_at DESC);
+          CREATE TABLE IF NOT EXISTS public.comment_consents (
+            id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
+            comment_id UUID NOT NULL REFERENCES public.comments(id) ON DELETE CASCADE,
+            email TEXT NOT NULL,
+            consent_text TEXT NOT NULL,
+            consent_marketing BOOLEAN NOT NULL DEFAULT false,
+            ip_address TEXT,
+            consented_at TIMESTAMPTZ NOT NULL DEFAULT now()
+          );
+          CREATE INDEX IF NOT EXISTS idx_consents_comment_id ON public.comment_consents(comment_id);
+          CREATE INDEX IF NOT EXISTS idx_consents_email ON public.comment_consents(email);
+          ALTER TABLE public.comments ENABLE ROW LEVEL SECURITY;
+          ALTER TABLE public.comment_consents ENABLE ROW LEVEL SECURITY;
+        `
 
-      CREATE TABLE IF NOT EXISTS public.comment_consents (
-        id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
-        comment_id UUID NOT NULL REFERENCES public.comments(id) ON DELETE CASCADE,
-        email TEXT NOT NULL,
-        consent_text TEXT NOT NULL,
-        consent_marketing BOOLEAN NOT NULL DEFAULT false,
-        ip_address TEXT,
-        consented_at TIMESTAMPTZ NOT NULL DEFAULT now()
-      );
+        await client.query(migration)
 
-      CREATE INDEX IF NOT EXISTS idx_consents_comment_id ON public.comment_consents(comment_id);
-      CREATE INDEX IF NOT EXISTS idx_consents_email ON public.comment_consents(email);
+        // Create RLS policies (ignore if already exist)
+        const policyQueries = [
+          `DO $$ BEGIN IF NOT EXISTS (SELECT 1 FROM pg_policies WHERE policyname = 'Public can read approved comments') THEN CREATE POLICY "Public can read approved comments" ON public.comments FOR SELECT USING (status = 'approved'); END IF; END $$`,
+          `DO $$ BEGIN IF NOT EXISTS (SELECT 1 FROM pg_policies WHERE policyname = 'No anonymous inserts') THEN CREATE POLICY "No anonymous inserts" ON public.comments FOR INSERT WITH CHECK (false); END IF; END $$`,
+          `DO $$ BEGIN IF NOT EXISTS (SELECT 1 FROM pg_policies WHERE policyname = 'No anonymous inserts on consents') THEN CREATE POLICY "No anonymous inserts on consents" ON public.comment_consents FOR INSERT WITH CHECK (false); END IF; END $$`,
+        ]
 
-      ALTER TABLE public.comments ENABLE ROW LEVEL SECURITY;
-      ALTER TABLE public.comment_consents ENABLE ROW LEVEL SECURITY;
+        for (const pq of policyQueries) {
+          await client.query(pq)
+        }
 
-      DO $$ BEGIN
-        IF NOT EXISTS (SELECT 1 FROM pg_policies WHERE policyname = 'Public can read approved comments') THEN
-          CREATE POLICY "Public can read approved comments" ON public.comments FOR SELECT USING (status = 'approved');
-        END IF;
-      END $$;
+        // Verify
+        const { rows } = await client.query(
+          "SELECT table_name FROM information_schema.tables WHERE table_schema = 'public' AND table_name IN ('comments', 'comment_consents')"
+        )
 
-      DO $$ BEGIN
-        IF NOT EXISTS (SELECT 1 FROM pg_policies WHERE policyname = 'No anonymous inserts') THEN
-          CREATE POLICY "No anonymous inserts" ON public.comments FOR INSERT WITH CHECK (false);
-        END IF;
-      END $$;
+        await client.end()
 
-      DO $$ BEGIN
-        IF NOT EXISTS (SELECT 1 FROM pg_policies WHERE policyname = 'No anonymous inserts on consents') THEN
-          CREATE POLICY "No anonymous inserts on consents" ON public.comment_consents FOR INSERT WITH CHECK (false);
-        END IF;
-      END $$;
-    `
+        const host = connStr.split('@')[1]?.split('/')[0] || 'unknown'
 
-    await client.query(migration)
-    await client.end()
+        return NextResponse.json({
+          success: true,
+          tables: rows.map((r: { table_name: string }) => r.table_name),
+          connection: host,
+          message: 'Migration completed! DELETE this route now.',
+        })
+      } catch (e: unknown) {
+        const msg = e instanceof Error ? e.message : String(e)
+        const host = connStr.split('@')[1]?.split('?')[0] || 'unknown'
+        errors.push(host + ': ' + msg)
+        continue
+      }
+    }
 
-    return NextResponse.json({ 
-      success: true, 
-      message: 'Migration completed successfully. Tables created: comments, comment_consents',
-      note: 'DELETE THIS ROUTE AFTER USE - /api/migrate'
-    })
-  } catch (error: any) {
-    return NextResponse.json({ 
-      error: error.message,
-      hint: 'Make sure SUPABASE_DB_PASSWORD or DATABASE_URL env var is set'
-    }, { status: 500 })
+    return NextResponse.json(
+      {
+        error: 'Could not connect to any database endpoint',
+        attempts: errors,
+        hint: 'Check SUPABASE_DB_PASSWORD and project region',
+      },
+      { status: 500 }
+    )
+  } catch (error: unknown) {
+    const msg = error instanceof Error ? error.message : String(error)
+    return NextResponse.json({ error: msg }, { status: 500 })
   }
 }
