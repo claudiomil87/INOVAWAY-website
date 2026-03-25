@@ -133,6 +133,15 @@ interface CommentItemProps {
   onReplySuccess?: () => void;
 }
 
+function formatAbsoluteDate(dateString: string, locale: string): string {
+  const date = new Date(dateString);
+  return date.toLocaleDateString(locale === 'pt' ? 'pt-BR' : 'en-US', {
+    day: 'numeric',
+    month: 'short',
+    year: 'numeric',
+  });
+}
+
 function CommentItem({
   comment,
   postSlug,
@@ -143,7 +152,18 @@ function CommentItem({
   onReplySuccess,
 }: CommentItemProps) {
   const [showReplyForm, setShowReplyForm] = useState(false);
+  const [relativeTime, setRelativeTime] = useState<string | null>(null);
   const itemRef = useRef<HTMLDivElement>(null);
+
+  // Hydration-safe: compute relative time only on the client
+  useEffect(() => {
+    setRelativeTime(formatRelativeTime(comment.created_at, locale));
+    // Update every minute for recency accuracy
+    const interval = setInterval(() => {
+      setRelativeTime(formatRelativeTime(comment.created_at, locale));
+    }, 60_000);
+    return () => clearInterval(interval);
+  }, [comment.created_at, locale]);
 
   // Scroll-to + highlight for new comment
   useEffect(() => {
@@ -204,8 +224,8 @@ function CommentItem({
             {comment.author_company && (
               <span className="text-slate-400 text-xs">· {comment.author_company}</span>
             )}
-            <span className="text-slate-500 text-xs">
-              · {formatRelativeTime(comment.created_at, locale)}
+            <span className="text-slate-500 text-xs" suppressHydrationWarning>
+              · {relativeTime ?? formatAbsoluteDate(comment.created_at, locale)}
             </span>
             {comment.is_pending && (
               <span className="text-slate-500 text-xs animate-pulse">
