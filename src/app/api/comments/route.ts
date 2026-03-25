@@ -82,13 +82,53 @@ export async function POST(request: NextRequest): Promise<NextResponse<CreateCom
     const body = (await request.json()) as CreateCommentRequest;
     const ip = getClientIp(request);
 
-    // 1. Honeypot check — bots fill the "website" field
+    // 1a. Classic honeypot check — bots fill the "website" field
     if (body.website && body.website.trim().length > 0) {
       // Return 200 to not reveal the honeypot to bots
       return NextResponse.json(
         { success: true },
         { status: 200, headers: CORS_HEADERS }
       );
+    }
+
+    // 1b. Timing honeypot — reject submissions faster than 3 seconds
+    if (body._ts) {
+      const elapsed = Date.now() - Number(body._ts);
+      if (elapsed < 3000) {
+        return NextResponse.json(
+          { success: false, error: 'Envio muito rápido. Por favor, tente novamente.' },
+          { status: 400, headers: CORS_HEADERS }
+        );
+      }
+    }
+
+    // 1c. Cloudflare Turnstile validation (only if secret key is configured)
+    const turnstileSecret = process.env.TURNSTILE_SECRET_KEY;
+    if (turnstileSecret) {
+      const token = body._turnstile;
+      if (!token) {
+        return NextResponse.json(
+          { success: false, error: 'Verificação de segurança necessária.' },
+          { status: 400, headers: CORS_HEADERS }
+        );
+      }
+      const clientIp = getClientIp(request);
+      const turnstileParams: Record<string, string> = {
+        secret: turnstileSecret,
+        response: token,
+      };
+      if (clientIp) turnstileParams.remoteip = clientIp;
+      const verifyRes = await fetch('https://challenges.cloudflare.com/turnstile/v0/siteverify', {
+        method: 'POST',
+        body: new URLSearchParams(turnstileParams),
+      });
+      const verifyData = (await verifyRes.json()) as { success: boolean };
+      if (!verifyData.success) {
+        return NextResponse.json(
+          { success: false, error: 'Verificação de segurança falhou. Tente novamente.' },
+          { status: 403, headers: CORS_HEADERS }
+        );
+      }
     }
 
     // 2. Required fields validation
@@ -280,7 +320,9 @@ export async function GET(request: NextRequest): Promise<NextResponse<GetComment
         status: 200,
         headers: {
           ...CORS_HEADERS,
-          'Cache-Control': 'public, s-maxage=60, stale-while-revalidate=120',
+          // No CDN caching — comments are dynamic (Realtime) and stale reads after submit
+          'Cache-Control': 'no-store, no-cache, must-revalidate',
+          'Pragma': 'no-cache',
         },
       }
     );

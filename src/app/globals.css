@@ -342,3 +342,18 @@
 
 .blog-content strong { color: #ffffff; font-weight: 700; }
 .blog-content em { color: rgba(255,255,255,0.75); }
+
+/* ── Comment highlight animation (pós-submit optimistic) ──────────────────── */
+@keyframes commentHighlight {
+  0%   { background: rgba(99, 102, 241, 0.15); box-shadow: 0 0 0 1px rgba(99, 102, 241, 0.4); border-radius: 0.5rem; }
+  60%  { background: rgba(99, 102, 241, 0.07); box-shadow: 0 0 0 1px rgba(99, 102, 241, 0.2); }
+  100% { background: transparent; box-shadow: none; }
+}
+
+.comment-new {
+  animation: commentHighlight 2.5s ease-out forwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .comment-new { animation: none; }
+}

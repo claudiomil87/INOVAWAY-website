@@ -1,19 +1,52 @@
 'use client';
 
-import { useState } from 'react';
-import type { CreateCommentRequest, CreateCommentResponse } from '@/types/comments';
+import { useState, useEffect, useRef } from 'react';
+
+// ── Turnstile types (no npm package needed — loaded via script tag) ──────────
+declare global {
+  interface Window {
+    turnstile?: {
+      render: (el: HTMLElement, opts: Record<string, unknown>) => string;
+      reset: (widgetId: string) => void;
+      remove: (widgetId: string) => void;
+      getResponse: (widgetId: string) => string | undefined;
+    };
+  }
+}
+
+interface OptimisticFormData {
+  author_name: string;
+  author_email: string;
+  author_company?: string;
+  content: string;
+  consent_lgpd: boolean;
+  consent_marketing: boolean;
+  website: string;
+  _ts: number;
+  _turnstile?: string;
+  parent_id?: string;
+}
 
 interface CommentFormProps {
   postSlug: string;
   locale: string;
   parentId?: string;
+  /** New optimistic submit handler from BlogComments */
+  onOptimisticSubmit?: (data: OptimisticFormData, onReset: () => void) => Promise<void>;
+  /** Legacy success callback — kept for backwards compat with reply forms */
   onSuccess?: () => void;
 }
 
-export default function CommentForm({ postSlug, locale, parentId, onSuccess }: CommentFormProps) {
+const TURNSTILE_SITE_KEY = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY;
+
+export default function CommentForm({
+  postSlug,
+  locale,
+  parentId,
+  onOptimisticSubmit,
+  onSuccess,
+}: CommentFormProps) {
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState<{ type: 'success' | 'error'; message: string } | null>(null);
-  
   const [formData, setFormData] = useState({
     author_name: '',
     author_email: '',
@@ -21,104 +54,111 @@ export default function CommentForm({ postSlug, locale, parentId, onSuccess }: C
     content: '',
     consent_lgpd: false,
     consent_marketing: false,
-    website: '', // Honeypot field
+    website: '', // honeypot
   });
+
+  // Timing honeypot: record when the form was mounted
+  const formLoadTime = useRef<number>(Date.now());
+
+  // Turnstile widget
+  const turnstileRef = useRef<HTMLDivElement>(null);
+  const turnstileWidgetId = useRef<string | null>(null);
+  const [turnstileToken, setTurnstileToken] = useState<string | undefined>(undefined);
+
+  // Load Turnstile script if site key is configured
+  useEffect(() => {
+    if (!TURNSTILE_SITE_KEY) return;
+
+    const scriptId = 'cf-turnstile-script';
+    if (document.getElementById(scriptId)) {
+      // Script already loaded — render widget if container exists
+      if (turnstileRef.current && !turnstileWidgetId.current && window.turnstile) {
+        turnstileWidgetId.current = window.turnstile.render(turnstileRef.current, {
+          sitekey: TURNSTILE_SITE_KEY,
+          theme: 'dark',
+          callback: (token: string) => setTurnstileToken(token),
+          'expired-callback': () => setTurnstileToken(undefined),
+        });
+      }
+      return;
+    }
+
+    const script = document.createElement('script');
+    script.id = scriptId;
+    script.src = 'https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit';
+    script.async = true;
+    script.defer = true;
+    script.onload = () => {
+      if (turnstileRef.current && window.turnstile) {
+        turnstileWidgetId.current = window.turnstile.render(turnstileRef.current, {
+          sitekey: TURNSTILE_SITE_KEY,
+          theme: 'dark',
+          callback: (token: string) => setTurnstileToken(token),
+          'expired-callback': () => setTurnstileToken(undefined),
+        });
+      }
+    };
+    document.body.appendChild(script);
+
+    return () => {
+      if (turnstileWidgetId.current && window.turnstile) {
+        window.turnstile.remove(turnstileWidgetId.current);
+        turnstileWidgetId.current = null;
+      }
+    };
+  }, []);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value, type } = e.target;
     const checked = type === 'checkbox' ? (e.target as HTMLInputElement).checked : undefined;
-    
-    setFormData(prev => ({
-      ...prev,
-      [name]: type === 'checkbox' ? checked : value
-    }));
+    setFormData((prev) => ({ ...prev, [name]: type === 'checkbox' ? checked : value }));
+  };
+
+  const resetForm = () => {
+    setFormData({
+      author_name: '',
+      author_email: '',
+      author_company: '',
+      content: '',
+      consent_lgpd: false,
+      consent_marketing: false,
+      website: '',
+    });
+    setTurnstileToken(undefined);
+    formLoadTime.current = Date.now(); // reset timing
+    if (turnstileWidgetId.current && window.turnstile) {
+      window.turnstile.reset(turnstileWidgetId.current);
+    }
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
-    if (!formData.consent_lgpd) {
-      setSubmitStatus({
-        type: 'error',
-        message: locale === 'pt' 
-          ? 'Você precisa aceitar os termos de privacidade para comentar.' 
-          : 'You must accept the privacy terms to comment.'
-      });
-      return;
-    }
 
-    if (!formData.content.trim()) {
-      setSubmitStatus({
-        type: 'error',
-        message: locale === 'pt' 
-          ? 'Por favor, escreva seu comentário.' 
-          : 'Please write your comment.'
-      });
-      return;
-    }
+    if (!formData.consent_lgpd) return;
+    if (!formData.content.trim()) return;
 
     setIsSubmitting(true);
-    setSubmitStatus(null);
+
+    const submitData: OptimisticFormData = {
+      author_name: formData.author_name,
+      author_email: formData.author_email,
+      author_company: formData.author_company || undefined,
+      content: formData.content,
+      consent_lgpd: formData.consent_lgpd,
+      consent_marketing: formData.consent_marketing,
+      website: formData.website,
+      _ts: formLoadTime.current,
+      _turnstile: turnstileToken,
+      parent_id: parentId,
+    };
 
     try {
-      const requestBody: CreateCommentRequest = {
-        post_slug: postSlug,
-        author_name: formData.author_name.trim(),
-        author_email: formData.author_email.trim().toLowerCase(),
-        author_company: formData.author_company.trim() || undefined,
-        content: formData.content.trim(),
-        parent_id: parentId, // Add parentId if it exists
-        consent_lgpd: true,
-        consent_marketing: formData.consent_marketing,
-        website: formData.website, // Honeypot - should be empty
-      };
-
-      const response = await fetch('/api/comments', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(requestBody),
-      });
-
-      const result: CreateCommentResponse = await response.json();
-
-      if (result.success) {
-        setSubmitStatus({
-          type: 'success',
-          message: locale === 'pt' 
-            ? 'Comentário enviado com sucesso! Aparecerá após moderação.' 
-            : 'Comment submitted successfully! Will appear after moderation.'
-        });
-        
-        // Reset form
-        setFormData({
-          author_name: '',
-          author_email: '',
-          author_company: '',
-          content: '',
-          consent_lgpd: false,
-          consent_marketing: false,
-          website: '',
-        });
-        
-        // Call success callback
-        onSuccess?.();
-      } else {
-        setSubmitStatus({
-          type: 'error',
-          message: result.error || (locale === 'pt' 
-            ? 'Erro ao enviar comentário. Tente novamente.' 
-            : 'Error sending comment. Please try again.')
+      if (onOptimisticSubmit) {
+        await onOptimisticSubmit(submitData, () => {
+          resetForm();
+          onSuccess?.();
         });
       }
-    } catch (error) {
-      setSubmitStatus({
-        type: 'error',
-        message: locale === 'pt' 
-          ? 'Erro de conexão. Tente novamente.' 
-          : 'Connection error. Please try again.'
-      });
     } finally {
       setIsSubmitting(false);
     }
@@ -126,17 +166,21 @@ export default function CommentForm({ postSlug, locale, parentId, onSuccess }: C
 
   return (
     <form onSubmit={handleSubmit} className="space-y-4">
-      {/* Honeypot field - hidden from users but bots might fill it */}
+      {/* Classic honeypot — hidden from users, bots fill it */}
       <input
         type="text"
         name="website"
         value={formData.website}
         onChange={handleChange}
-        className="hidden"
+        style={{ position: 'absolute', left: '-9999px', opacity: 0, tabIndex: -1 } as React.CSSProperties}
         tabIndex={-1}
         autoComplete="off"
+        aria-hidden="true"
       />
-      
+
+      {/* Timing honeypot — hidden timestamp (no user interaction needed) */}
+      <input type="hidden" name="_ts" value={formLoadTime.current} readOnly />
+
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div>
           <label htmlFor="author_name" className="block text-sm font-medium text-slate-300 mb-1">
@@ -153,7 +197,7 @@ export default function CommentForm({ postSlug, locale, parentId, onSuccess }: C
             placeholder={locale === 'pt' ? 'Seu nome' : 'Your name'}
           />
         </div>
-        
+
         <div>
           <label htmlFor="author_email" className="block text-sm font-medium text-slate-300 mb-1">
             {locale === 'pt' ? 'Email *' : 'Email *'}
@@ -170,7 +214,7 @@ export default function CommentForm({ postSlug, locale, parentId, onSuccess }: C
           />
         </div>
       </div>
-      
+
       <div>
         <label htmlFor="author_company" className="block text-sm font-medium text-slate-300 mb-1">
           {locale === 'pt' ? 'Empresa (opcional)' : 'Company (optional)'}
@@ -185,7 +229,7 @@ export default function CommentForm({ postSlug, locale, parentId, onSuccess }: C
           placeholder={locale === 'pt' ? 'Sua empresa' : 'Your company'}
         />
       </div>
-      
+
       <div>
         <label htmlFor="content" className="block text-sm font-medium text-slate-300 mb-1">
           {locale === 'pt' ? 'Comentário *' : 'Comment *'}
@@ -201,7 +245,7 @@ export default function CommentForm({ postSlug, locale, parentId, onSuccess }: C
           placeholder={locale === 'pt' ? 'Escreva seu comentário...' : 'Write your comment...'}
         />
       </div>
-      
+
       <div className="space-y-3">
         <div className="flex items-start">
           <div className="flex items-center h-5">
@@ -217,13 +261,13 @@ export default function CommentForm({ postSlug, locale, parentId, onSuccess }: C
           </div>
           <div className="ml-3 text-sm">
             <label htmlFor="consent_lgpd" className="text-slate-300">
-              {locale === 'pt' 
-                ? 'Aceito os termos de privacidade e autorizo o tratamento dos meus dados conforme a LGPD. *' 
+              {locale === 'pt'
+                ? 'Aceito os termos de privacidade e autorizo o tratamento dos meus dados conforme a LGPD. *'
                 : 'I accept the privacy terms and authorize the processing of my data according to GDPR. *'}
             </label>
           </div>
         </div>
-        
+
         <div className="flex items-start">
           <div className="flex items-center h-5">
             <input
@@ -237,22 +281,19 @@ export default function CommentForm({ postSlug, locale, parentId, onSuccess }: C
           </div>
           <div className="ml-3 text-sm">
             <label htmlFor="consent_marketing" className="text-slate-300">
-              {locale === 'pt' 
-                ? 'Quero receber conteúdos e novidades da INOVAWAY (opcional)' 
+              {locale === 'pt'
+                ? 'Quero receber conteúdos e novidades da INOVAWAY (opcional)'
                 : 'I want to receive content and news from INOVAWAY (optional)'}
             </label>
           </div>
         </div>
       </div>
-      
-      {submitStatus && (
-        <div className={`p-3 rounded-md ${submitStatus.type === 'success' ? 'bg-green-900/50 border border-green-800' : 'bg-red-900/50 border border-red-800'}`}>
-          <p className={submitStatus.type === 'success' ? 'text-green-200' : 'text-red-200'}>
-            {submitStatus.message}
-          </p>
-        </div>
+
+      {/* Cloudflare Turnstile — rendered only if NEXT_PUBLIC_TURNSTILE_SITE_KEY is set */}
+      {TURNSTILE_SITE_KEY && (
+        <div ref={turnstileRef} className="cf-turnstile" />
       )}
-      
+
       <div className="pt-2">
         <button
           type="submit"
@@ -261,14 +302,25 @@ export default function CommentForm({ postSlug, locale, parentId, onSuccess }: C
         >
           {isSubmitting ? (
             <span className="flex items-center">
-              <svg className="animate-spin -ml-1 mr-2 h-4 w-4 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+              <svg
+                className="animate-spin -ml-1 mr-2 h-4 w-4 text-white"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+              >
+                <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+                <path
+                  className="opacity-75"
+                  fill="currentColor"
+                  d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                />
               </svg>
               {locale === 'pt' ? 'Enviando...' : 'Sending...'}
             </span>
+          ) : locale === 'pt' ? (
+            'Enviar Comentário'
           ) : (
-            locale === 'pt' ? 'Enviar Comentário' : 'Send Comment'
+            'Send Comment'
           )}
         </button>
       </div>

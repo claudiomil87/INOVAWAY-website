@@ -10,6 +10,7 @@ import { WebVitals } from "@/components/WebVitals";
 import { TranslationProvider } from "@/contexts/TranslationContext";
 import Script from "next/script";
 import { GoogleAnalytics } from "@/components/GoogleAnalytics";
+import { Toaster } from "sonner";
 import "../globals.css";
 
 const inter = Inter({
@@ -225,6 +226,17 @@ export default async function LocaleLayout({
             </div>
           </TranslationProvider>
         </NextIntlClientProvider>
+        <Toaster
+          position="bottom-right"
+          theme="dark"
+          toastOptions={{
+            style: {
+              background: '#1E293B',
+              border: '1px solid rgba(6,182,212,0.3)',
+              color: '#F1F5F9',
+            },
+          }}
+        />
       </body>
     </html>
   );

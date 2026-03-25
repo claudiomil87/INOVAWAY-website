@@ -1,9 +1,11 @@
 "use client";
 
-import { useState, useEffect, useRef } from 'react';
-import type { GetCommentsResponse } from '@/types/comments';
+import { useState, useEffect, useRef, useCallback } from 'react';
+import { toast } from 'sonner';
+import type { GetCommentsResponse, Comment, CreateCommentResponse } from '@/types/comments';
 import CommentList from './CommentList';
 import CommentForm from './CommentForm';
+import { useRealtimeComments } from '@/hooks/useRealtimeComments';
 
 interface BlogCommentsProps {
   postSlug: string;
@@ -11,40 +13,41 @@ interface BlogCommentsProps {
 }
 
 export default function BlogComments({ postSlug, locale = 'pt' }: BlogCommentsProps) {
-  const [comments, setComments] = useState<import('@/types/comments').Comment[]>([]);
+  const [comments, setComments] = useState<Comment[]>([]);
   const [commentCount, setCommentCount] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [isVisible, setIsVisible] = useState(false);
+  const [latestCommentId, setLatestCommentId] = useState<string | null>(null);
   const sectionRef = useRef<HTMLDivElement>(null);
 
-  // Fetch comment count
+  // ── Supabase Realtime subscription ──────────────────────────────────────
+  useRealtimeComments(postSlug, setComments);
+
+  // ── Initial data fetch ───────────────────────────────────────────────────
   useEffect(() => {
-    const fetchCommentCount = async () => {
+    const fetchComments = async () => {
       try {
         const response = await fetch(`/api/comments?slug=${encodeURIComponent(postSlug)}`);
         const data: GetCommentsResponse = await response.json();
-        
+
         if (data.success) {
           setCommentCount(data.total);
-          // Load comments immediately if there are any
-          if (data.total > 0) {
-            setComments(data.comments);
-          }
+          setComments(data.comments);
         } else {
           setError(data.error || (locale === 'pt' ? 'Erro ao carregar comentários' : 'Error loading comments'));
         }
-      } catch (err) {
+      } catch {
         setError(locale === 'pt' ? 'Erro de conexão' : 'Connection error');
       } finally {
         setIsLoading(false);
       }
     };
 
-    fetchCommentCount();
+    fetchComments();
   }, [postSlug, locale]);
 
-  // Intersection Observer for lazy loading
+  // ── Intersection Observer for lazy visibility ────────────────────────────
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -55,76 +58,147 @@ export default function BlogComments({ postSlug, locale = 'pt' }: BlogCommentsPr
           }
         });
       },
-      {
-        threshold: 0.1,
-        rootMargin: '50px',
-      }
+      { threshold: 0.1, rootMargin: '50px' }
     );
 
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-
-    return () => {
-      observer.disconnect();
-    };
+    if (sectionRef.current) observer.observe(sectionRef.current);
+    return () => observer.disconnect();
   }, []);
 
-  // Load comments when section becomes visible
-  useEffect(() => {
-    if (isVisible && commentCount > 0 && comments.length === 0) {
-      const fetchComments = async () => {
-        try {
-          const response = await fetch(`/api/comments?slug=${encodeURIComponent(postSlug)}`);
-          const data: GetCommentsResponse = await response.json();
-          
-          if (data.success) {
-            setComments(data.comments);
-          }
-        } catch (err) {
-          setError(locale === 'pt' ? 'Erro ao carregar comentários' : 'Error loading comments');
-        }
+  // ── Optimistic submit handler ────────────────────────────────────────────
+  const handleOptimisticSubmit = useCallback(
+    async (
+      formData: {
+        author_name: string;
+        author_email: string;
+        author_company?: string;
+        content: string;
+        consent_lgpd: boolean;
+        consent_marketing: boolean;
+        website: string;
+        _ts: number;
+        _turnstile?: string;
+        parent_id?: string;
+      },
+      onFormReset: () => void
+    ) => {
+      const tempId = `temp-${Date.now()}`;
+      const optimisticComment: Comment = {
+        id: tempId,
+        post_slug: postSlug,
+        author_name: formData.author_name,
+        author_company: formData.author_company || null,
+        content: formData.content,
+        parent_id: formData.parent_id || null,
+        created_at: new Date().toISOString(),
+        replies: [],
+        is_pending: true,
       };
 
-      fetchComments();
-    }
-  }, [isVisible, commentCount, comments.length, postSlug, locale]);
-
-  const handleCommentSuccess = () => {
-    // Refresh comments by incrementing the key to force re-render
-    setComments([]); // Clear current comments
-    setIsLoading(true);
-    
-    // Fetch updated comments
-    const fetchUpdatedComments = async () => {
-      try {
-        const response = await fetch(`/api/comments?slug=${encodeURIComponent(postSlug)}`);
-        const data: GetCommentsResponse = await response.json();
-        
-        if (data.success) {
-          setComments(data.comments);
-          setCommentCount(data.total);
-        }
-      } catch (err) {
-        setError(locale === 'pt' ? 'Erro ao atualizar comentários' : 'Error updating comments');
-      } finally {
-        setIsLoading(false);
+      // 1. Add optimistic comment immediately
+      if (!formData.parent_id) {
+        setComments((prev) => [optimisticComment, ...prev]);
+      } else {
+        setComments((prev) =>
+          prev.map((c) => {
+            if (c.id === formData.parent_id) {
+              return { ...c, replies: [...(c.replies ?? []), optimisticComment] };
+            }
+            return c;
+          })
+        );
       }
-    };
 
-    fetchUpdatedComments();
-  };
+      try {
+        const response = await fetch('/api/comments', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            post_slug: postSlug,
+            author_name: formData.author_name.trim(),
+            author_email: formData.author_email.trim().toLowerCase(),
+            author_company: formData.author_company?.trim() || undefined,
+            content: formData.content.trim(),
+            parent_id: formData.parent_id,
+            consent_lgpd: formData.consent_lgpd,
+            consent_marketing: formData.consent_marketing,
+            website: formData.website,
+            _ts: formData._ts,
+            _turnstile: formData._turnstile,
+          }),
+        });
+
+        const result: CreateCommentResponse = await response.json();
+
+        if (result.success && result.comment) {
+          const realComment = { ...result.comment, replies: [], is_pending: false };
+
+          // Replace temp with real comment
+          if (!formData.parent_id) {
+            setComments((prev) =>
+              prev.map((c) => (c.id === tempId ? realComment : c))
+            );
+          } else {
+            setComments((prev) =>
+              prev.map((c) => {
+                if (c.id === formData.parent_id) {
+                  return {
+                    ...c,
+                    replies: (c.replies ?? []).map((r) =>
+                      r.id === tempId ? realComment : r
+                    ),
+                  };
+                }
+                return c;
+              })
+            );
+          }
+
+          setCommentCount((n) => n + 1);
+          setLatestCommentId(realComment.id);
+          toast.success(
+            locale === 'pt' ? 'Comentário enviado com sucesso! 🎉' : 'Comment submitted successfully! 🎉'
+          );
+          onFormReset();
+        } else {
+          throw new Error(result.error || 'Unknown error');
+        }
+      } catch (err: unknown) {
+        // Rollback: remove optimistic comment
+        if (!formData.parent_id) {
+          setComments((prev) => prev.filter((c) => c.id !== tempId));
+        } else {
+          setComments((prev) =>
+            prev.map((c) => {
+              if (c.id === formData.parent_id) {
+                return {
+                  ...c,
+                  replies: (c.replies ?? []).filter((r) => r.id !== tempId),
+                };
+              }
+              return c;
+            })
+          );
+        }
+
+        const msg = err instanceof Error ? err.message : String(err);
+        toast.error(
+          msg.includes('rápido') || msg.includes('Too fast')
+            ? (locale === 'pt' ? 'Envio muito rápido. Tente novamente.' : 'Submission too fast. Try again.')
+            : (locale === 'pt' ? 'Erro ao enviar. Tente novamente.' : 'Error sending. Please try again.')
+        );
+      }
+    },
+    [postSlug, locale]
+  );
 
   const getCommentText = (count: number) => {
-    if (locale === 'pt') {
-      return count === 1 ? '1 comentário' : `${count} comentários`;
-    } else {
-      return count === 1 ? '1 comment' : `${count} comments`;
-    }
+    if (locale === 'pt') return count === 1 ? '1 comentário' : `${count} comentários`;
+    return count === 1 ? '1 comment' : `${count} comments`;
   };
 
   return (
-    <div 
+    <div
       ref={sectionRef}
       className="mt-12 pt-8 border-t border-slate-800"
       style={{
@@ -141,43 +215,40 @@ export default function BlogComments({ postSlug, locale = 'pt' }: BlogCommentsPr
           </h2>
           {isLoading ? (
             <div className="flex items-center space-x-2">
-              <div className="w-4 h-4 border-2 border-cyan-500 border-t-transparent rounded-full animate-spin"></div>
+              <div className="w-4 h-4 border-2 border-cyan-500 border-t-transparent rounded-full animate-spin" />
               <span className="text-slate-400">
                 {locale === 'pt' ? 'Carregando comentários...' : 'Loading comments...'}
               </span>
             </div>
           ) : error ? (
-            <div className="text-red-400">
-              {error}
-            </div>
+            <div className="text-red-400">{error}</div>
           ) : (
-            <p className="text-slate-400">
-              {getCommentText(commentCount)}
-            </p>
+            <p className="text-slate-400">{getCommentText(commentCount)}</p>
           )}
         </div>
 
         {isVisible && (
           <div className="space-y-8">
             <div className="bg-slate-900/50 rounded-xl p-6 border border-slate-800">
-              <CommentList 
+              <CommentList
                 postSlug={postSlug}
-                comments={comments} 
+                comments={comments}
                 locale={locale}
-                onReplySuccess={handleCommentSuccess}
+                latestCommentId={latestCommentId}
+                onOptimisticSubmit={handleOptimisticSubmit}
               />
             </div>
-            
-            <div className="h-px bg-slate-800 my-8"></div>
-            
+
+            <div className="h-px bg-slate-800 my-8" />
+
             <div className="bg-slate-900/50 rounded-xl p-6 border border-slate-800">
               <h3 className="text-lg font-semibold text-white mb-4">
                 {locale === 'pt' ? 'Deixe um comentário' : 'Leave a comment'}
               </h3>
-              <CommentForm 
-                postSlug={postSlug} 
-                locale={locale} 
-                onSuccess={handleCommentSuccess}
+              <CommentForm
+                postSlug={postSlug}
+                locale={locale}
+                onOptimisticSubmit={handleOptimisticSubmit}
               />
             </div>
           </div>

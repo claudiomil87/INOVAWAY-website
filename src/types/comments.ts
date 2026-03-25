@@ -51,6 +51,10 @@ export interface CreateCommentRequest {
   consent_marketing?: boolean;
   /** Honeypot — must be empty (bots fill it) */
   website?: string;
+  /** Timing honeypot — timestamp when the form was loaded (ms since epoch) */
+  _ts?: number;
+  /** Cloudflare Turnstile token (optional, validated if TURNSTILE_SECRET_KEY is set) */
+  _turnstile?: string;
 }
 
 /** Public comment returned by GET /api/comments */
@@ -65,6 +69,8 @@ export interface Comment {
   created_at: string;
   /** Nested replies (populated by threading logic) */
   replies?: Comment[];
+  /** True while the comment is being submitted (optimistic update) */
+  is_pending?: boolean;
 }
 
 /** Response from POST /api/comments */
