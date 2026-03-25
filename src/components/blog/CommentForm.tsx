@@ -52,8 +52,8 @@ export default function CommentForm({
     author_email: '',
     author_company: '',
     content: '',
-    consent_lgpd: false,
-    consent_marketing: false,
+    consent_lgpd: true,
+    consent_marketing: true,
     website: '', // honeypot
   });
 
@@ -120,8 +120,8 @@ export default function CommentForm({
       author_email: '',
       author_company: '',
       content: '',
-      consent_lgpd: false,
-      consent_marketing: false,
+      consent_lgpd: true,
+      consent_marketing: true,
       website: '',
     });
     setTurnstileToken(undefined);
@@ -183,7 +183,7 @@ export default function CommentForm({
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div>
-          <label htmlFor="author_name" className="block text-sm font-medium text-slate-300 mb-1">
+          <label htmlFor="author_name" className="block text-sm font-medium text-slate-400 mb-1">
             {locale === 'pt' ? 'Nome *' : 'Name *'}
           </label>
           <input
@@ -193,13 +193,13 @@ export default function CommentForm({
             value={formData.author_name}
             onChange={handleChange}
             required
-            className="w-full px-3 py-2 bg-slate-800 border border-slate-600 rounded-md text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-transparent"
+            className="w-full px-3 py-2 bg-slate-900/50 border border-slate-700/50 rounded-lg text-white placeholder-slate-500 focus:outline-none focus:ring-1 focus:ring-cyan-500/50 focus:border-cyan-500/50 transition-colors"
             placeholder={locale === 'pt' ? 'Seu nome' : 'Your name'}
           />
         </div>
 
         <div>
-          <label htmlFor="author_email" className="block text-sm font-medium text-slate-300 mb-1">
+          <label htmlFor="author_email" className="block text-sm font-medium text-slate-400 mb-1">
             {locale === 'pt' ? 'Email *' : 'Email *'}
           </label>
           <input
@@ -209,14 +209,14 @@ export default function CommentForm({
             value={formData.author_email}
             onChange={handleChange}
             required
-            className="w-full px-3 py-2 bg-slate-800 border border-slate-600 rounded-md text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-transparent"
+            className="w-full px-3 py-2 bg-slate-900/50 border border-slate-700/50 rounded-lg text-white placeholder-slate-500 focus:outline-none focus:ring-1 focus:ring-cyan-500/50 focus:border-cyan-500/50 transition-colors"
             placeholder={locale === 'pt' ? 'seu@email.com' : 'your@email.com'}
           />
         </div>
       </div>
 
       <div>
-        <label htmlFor="author_company" className="block text-sm font-medium text-slate-300 mb-1">
+        <label htmlFor="author_company" className="block text-sm font-medium text-slate-400 mb-1">
           {locale === 'pt' ? 'Empresa (opcional)' : 'Company (optional)'}
         </label>
         <input
@@ -225,13 +225,13 @@ export default function CommentForm({
           name="author_company"
           value={formData.author_company}
           onChange={handleChange}
-          className="w-full px-3 py-2 bg-slate-800 border border-slate-600 rounded-md text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-transparent"
+          className="w-full px-3 py-2 bg-slate-900/50 border border-slate-700/50 rounded-lg text-white placeholder-slate-500 focus:outline-none focus:ring-1 focus:ring-cyan-500/50 focus:border-cyan-500/50 transition-colors"
           placeholder={locale === 'pt' ? 'Sua empresa' : 'Your company'}
         />
       </div>
 
       <div>
-        <label htmlFor="content" className="block text-sm font-medium text-slate-300 mb-1">
+        <label htmlFor="content" className="block text-sm font-medium text-slate-400 mb-1">
           {locale === 'pt' ? 'Comentário *' : 'Comment *'}
         </label>
         <textarea
@@ -241,51 +241,43 @@ export default function CommentForm({
           onChange={handleChange}
           required
           rows={4}
-          className="w-full px-3 py-2 bg-slate-800 border border-slate-600 rounded-md text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-transparent resize-vertical"
+          className="w-full px-3 py-2 bg-slate-900/50 border border-slate-700/50 rounded-lg text-white placeholder-slate-500 focus:outline-none focus:ring-1 focus:ring-cyan-500/50 focus:border-cyan-500/50 transition-colors resize-vertical"
           placeholder={locale === 'pt' ? 'Escreva seu comentário...' : 'Write your comment...'}
         />
       </div>
 
       <div className="space-y-3">
-        <div className="flex items-start">
-          <div className="flex items-center h-5">
-            <input
-              id="consent_lgpd"
-              name="consent_lgpd"
-              type="checkbox"
-              checked={formData.consent_lgpd}
-              onChange={handleChange}
-              required
-              className="w-4 h-4 text-cyan-600 bg-slate-800 border-slate-600 rounded focus:ring-cyan-500 focus:ring-2"
-            />
-          </div>
-          <div className="ml-3 text-sm">
-            <label htmlFor="consent_lgpd" className="text-slate-300">
-              {locale === 'pt'
-                ? 'Aceito os termos de privacidade e autorizo o tratamento dos meus dados conforme a LGPD. *'
-                : 'I accept the privacy terms and authorize the processing of my data according to GDPR. *'}
-            </label>
-          </div>
+        <div className="flex items-start gap-3">
+          <input
+            id="consent_lgpd"
+            name="consent_lgpd"
+            type="checkbox"
+            checked={formData.consent_lgpd}
+            onChange={handleChange}
+            required
+            className="mt-0.5 w-4 h-4 accent-cyan-500 bg-slate-900/50 border-slate-700 rounded cursor-pointer"
+          />
+          <label htmlFor="consent_lgpd" className="text-sm text-slate-400 cursor-pointer leading-relaxed">
+            {locale === 'pt'
+              ? 'Aceito os termos de privacidade e autorizo o tratamento dos meus dados conforme a LGPD. *'
+              : 'I accept the privacy terms and authorize the processing of my data according to GDPR. *'}
+          </label>
         </div>
 
-        <div className="flex items-start">
-          <div className="flex items-center h-5">
-            <input
-              id="consent_marketing"
-              name="consent_marketing"
-              type="checkbox"
-              checked={formData.consent_marketing}
-              onChange={handleChange}
-              className="w-4 h-4 text-cyan-600 bg-slate-800 border-slate-600 rounded focus:ring-cyan-500 focus:ring-2"
-            />
-          </div>
-          <div className="ml-3 text-sm">
-            <label htmlFor="consent_marketing" className="text-slate-300">
-              {locale === 'pt'
-                ? 'Quero receber conteúdos e novidades da INOVAWAY (opcional)'
-                : 'I want to receive content and news from INOVAWAY (optional)'}
-            </label>
-          </div>
+        <div className="flex items-start gap-3">
+          <input
+            id="consent_marketing"
+            name="consent_marketing"
+            type="checkbox"
+            checked={formData.consent_marketing}
+            onChange={handleChange}
+            className="mt-0.5 w-4 h-4 accent-cyan-500 bg-slate-900/50 border-slate-700 rounded cursor-pointer"
+          />
+          <label htmlFor="consent_marketing" className="text-sm text-slate-400 cursor-pointer leading-relaxed">
+            {locale === 'pt'
+              ? 'Quero receber conteúdos e novidades da INOVAWAY (opcional)'
+              : 'I want to receive content and news from INOVAWAY (optional)'}
+          </label>
         </div>
       </div>
 

@@ -296,14 +296,12 @@ export default function CommentList({
 
   if (comments.length === 0) {
     return (
-      <div
-        className="text-center py-8 rounded-xl"
-        style={{ background: 'rgba(15,23,42,0.5)', border: '1px solid rgba(255,255,255,0.06)' }}
-      >
-        <p className="text-slate-400 text-sm">
+      <div className="text-center py-6">
+        <span className="text-2xl mb-3 block" aria-hidden="true">💬</span>
+        <p className="text-slate-500 text-sm">
           {locale === 'pt' ? 'Seja o primeiro a comentar!' : 'Be the first to comment!'}
         </p>
-        <p className="text-slate-500 text-xs mt-1">
+        <p className="text-slate-600 text-xs mt-1">
           {locale === 'pt'
             ? 'Compartilhe seus pensamentos sobre este post.'
             : 'Share your thoughts about this post.'}

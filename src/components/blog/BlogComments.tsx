@@ -228,21 +228,19 @@ export default function BlogComments({ postSlug, locale = 'pt' }: BlogCommentsPr
         </div>
 
         {isVisible && (
-          <div className="space-y-8">
-            <div className="bg-slate-900/50 rounded-xl p-6 border border-slate-800">
-              <CommentList
-                postSlug={postSlug}
-                comments={comments}
-                locale={locale}
-                latestCommentId={latestCommentId}
-                onOptimisticSubmit={handleOptimisticSubmit}
-              />
-            </div>
+          <div className="space-y-10">
+            <CommentList
+              postSlug={postSlug}
+              comments={comments}
+              locale={locale}
+              latestCommentId={latestCommentId}
+              onOptimisticSubmit={handleOptimisticSubmit}
+            />
 
-            <div className="h-px bg-slate-800 my-8" />
+            <div className="h-px bg-slate-800/60" />
 
-            <div className="bg-slate-900/50 rounded-xl p-6 border border-slate-800">
-              <h3 className="text-lg font-semibold text-white mb-4">
+            <div>
+              <h3 className="text-lg font-semibold text-white mb-5">
                 {locale === 'pt' ? 'Deixe um comentário' : 'Leave a comment'}
               </h3>
               <CommentForm
