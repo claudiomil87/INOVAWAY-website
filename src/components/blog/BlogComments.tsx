@@ -200,14 +200,10 @@ export default function BlogComments({ postSlug, locale = 'pt' }: BlogCommentsPr
   return (
     <div
       ref={sectionRef}
-      className="mt-12 pt-8 border-t border-slate-800"
-      style={{
-        borderTop: '1px solid transparent',
-        backgroundImage: 'linear-gradient(to right, transparent, #06b6d4, #059669, transparent)',
-        backgroundClip: 'content-box',
-        backgroundOrigin: 'border-box',
-      }}
+      className="mt-16"
     >
+      {/* Gradient separator line */}
+      <div className="h-px mb-10" style={{ background: 'linear-gradient(to right, transparent, #06b6d4, #059669, transparent)' }} />
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mb-8">
           <h2 className="text-2xl font-bold text-white mb-2">

@@ -103,7 +103,7 @@ export async function POST(request: NextRequest): Promise<NextResponse<CreateCom
     }
 
     // 1c. Cloudflare Turnstile validation (only if secret key is configured)
-    const turnstileSecret = process.env.TURNSTILE_SECRET_KEY;
+    const turnstileSecret = process.env.TURNSTILE_SECRET_KEY?.trim();
     if (turnstileSecret) {
       const token = body._turnstile;
       if (!token) {

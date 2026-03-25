@@ -37,7 +37,7 @@ interface CommentFormProps {
   onSuccess?: () => void;
 }
 
-const TURNSTILE_SITE_KEY = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY;
+const TURNSTILE_SITE_KEY = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY?.trim();
 
 export default function CommentForm({
   postSlug,
