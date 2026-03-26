@@ -2,6 +2,7 @@ import { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 import { getAllPosts, getAllTags } from "@/lib/blog";
 import PostCard from "@/components/blog/PostCard";
+import TagFilter from "@/components/blog/TagFilter";
 import { Link } from "@/i18n/navigation";
 
 const POSTS_PER_PAGE = 9;
@@ -85,43 +86,13 @@ export default async function BlogPage({ params, searchParams }: BlogPageProps) 
           </p>
         </div>
 
-        {/* Tag filter - Mobile: horizontal scroll, Desktop: wrap */}
+        {/* Tag filter - Mobile: horizontal scroll, Desktop: smart collapse */}
         {allTags.length > 0 && (
-          <div className="mb-8 relative">
-            {/* Fade gradients for mobile scroll indication */}
-            <div className="pointer-events-none absolute left-0 top-0 bottom-0 w-8 z-10 md:hidden"
-                 style={{ background: "linear-gradient(to right, #0F172A, transparent)" }} />
-            <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-8 z-10 md:hidden"
-                 style={{ background: "linear-gradient(to left, #0F172A, transparent)" }} />
-            
-            <div className="flex gap-2 overflow-x-auto scrollbar-hide snap-x snap-mandatory pb-2 md:flex-wrap md:justify-center md:overflow-visible md:pb-0">
-              <Link
-                href={"/blog" as never}
-                className="rounded-full px-3 py-1 text-sm font-medium transition-all duration-200 snap-start shrink-0"
-                style={{
-                  background: !tagParam ? "rgba(0,255,65,0.15)" : "rgba(255,255,255,0.05)",
-                  color: !tagParam ? "#00FF41" : "rgba(255,255,255,0.5)",
-                  border: !tagParam ? "1px solid rgba(0,255,65,0.3)" : "1px solid rgba(255,255,255,0.1)",
-                }}
-              >
-                {t("allPosts")}
-              </Link>
-              {allTags.map((tag) => (
-                <Link
-                  key={tag}
-                  href={`/blog?tag=${tag}` as never}
-                  className="rounded-full px-3 py-1 text-sm font-medium transition-all duration-200 snap-start shrink-0"
-                  style={{
-                    background: tagParam === tag ? "rgba(6,182,212,0.15)" : "rgba(255,255,255,0.05)",
-                    color: tagParam === tag ? "#06B6D4" : "rgba(255,255,255,0.5)",
-                    border: tagParam === tag ? "1px solid rgba(6,182,212,0.3)" : "1px solid rgba(255,255,255,0.1)",
-                  }}
-                >
-                  {tag}
-                </Link>
-              ))}
-            </div>
-          </div>
+          <TagFilter
+            tags={allTags}
+            currentTag={tagParam}
+            allPostsLabel={t("allPosts")}
+          />
         )}
 
         {/* Posts grid */}
