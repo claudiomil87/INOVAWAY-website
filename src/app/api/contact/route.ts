@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { notifyDiscord } from '@/lib/discord-notify';
 
 const HNBCRM_API_URL = 'https://tacit-chicken-195.convex.site/api/v1/inbound/lead';
 const HNBCRM_API_KEY = process.env.HNBCRM_API_KEY!;
@@ -45,6 +46,19 @@ export async function POST(request: NextRequest) {
         { error: data.error || 'Erro ao enviar' },
         { status: response.status }
       );
+    }
+
+    const DISCORD_WEBHOOK_LEADS = process.env.DISCORD_WEBHOOK_LEADS;
+    if (DISCORD_WEBHOOK_LEADS) {
+      void notifyDiscord(DISCORD_WEBHOOK_LEADS, {
+        embeds: [{
+          title: '🎯 Novo Lead — Formulário de Contato',
+          description: `**👤 Nome:** ${body.name}\n**📧 Email:** ${body.email}\n**📱 Telefone:** ${body.phone || 'N/A'}\n**🏢 Empresa:** ${body.company || 'N/A'}\n**🔧 Serviços:** ${body.services?.join(', ') || 'N/A'}\n**💰 Orçamento:** ${body.budget || 'N/A'}\n**💬 Mensagem:** "${(body.message || '').slice(0, 200)}"\n**Locale:** ${localeLabel}`,
+          color: 0xFF6B00, // orange - hot lead
+          timestamp: new Date().toISOString(),
+          footer: { text: 'INOVAWAY Leads • formulário de contato' },
+        }],
+      });
     }
 
     return NextResponse.json({ success: true, leadId: data.leadId });

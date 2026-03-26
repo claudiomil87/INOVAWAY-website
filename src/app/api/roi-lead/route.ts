@@ -7,11 +7,11 @@ const HNBCRM_API_KEY = process.env.HNBCRM_API_KEY!;
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
-    const { name, email } = body;
+    const { email, locale, estimatedSaving } = body;
 
-    if (!name || !email) {
+    if (!email || !estimatedSaving) {
       return NextResponse.json(
-        { error: 'Nome e email são obrigatórios.' },
+        { error: 'Email e economia estimada são obrigatórios.' },
         { status: 400 }
       );
     }
@@ -31,15 +31,13 @@ export async function POST(request: NextRequest) {
         'X-API-Key': HNBCRM_API_KEY,
       },
       body: JSON.stringify({
-        title: `[BRIEFING] Lead Newsletter Classificada: ${name}`,
+        title: `[ROI Calculator] Lead: ${email}`,
         contact: {
-          firstName: name.split(' ')[0] || name,
-          lastName: name.split(' ').slice(1).join(' ') || '',
           email: email,
         },
-        message: `Lead capturado via página de Briefing Classificado INOVAWAY.\n\nNome: ${name}\nEmail: ${email}`,
-        channel: 'briefing-landing',
-        tags: ['newsletter', 'briefing-classificado', 'lead-magnet', 'inovaway'],
+        message: `Lead capturado via Calculadora de ROI INOVAWAY.\n\nEmail: ${email}\nEconomia estimada: ${estimatedSaving}\nLocale: ${locale || 'pt'}`,
+        channel: 'roi-calculator',
+        tags: ['roi-calculator', 'lead-magnet', 'inovaway', `locale:${locale || 'pt'}`],
         temperature: 'hot',
       }),
     });
@@ -49,7 +47,7 @@ export async function POST(request: NextRequest) {
     if (!response.ok) {
       console.error('HNBCRM error:', data);
       return NextResponse.json(
-        { error: data.error || 'Erro ao registrar lead.' },
+        { error: data.error || 'Erro ao registrar lead do ROI.' },
         { status: response.status }
       );
     }
@@ -58,18 +56,18 @@ export async function POST(request: NextRequest) {
     if (DISCORD_WEBHOOK_LEADS) {
       void notifyDiscord(DISCORD_WEBHOOK_LEADS, {
         embeds: [{
-          title: '🎯 Novo Lead — Briefing Classificado',
-          description: `**👤 Nome:** ${name}\n**📧 Email:** ${email}\n**🔥 Temperatura:** Hot\n**📝 Origem:** Newsletter Briefing Classificado`,
-          color: 0x8B5CF6, // purple - newsletter lead
+          title: '🎯 Novo Lead — Calculadora ROI',
+          description: `**📧 Email:** ${email}\n**🔥 Temperatura:** Hot\n**📝 Origem:** Calculadora de ROI\n**📊 Resultado:** ${estimatedSaving}`,
+          color: 0x00FF41, // green - ROI lead
           timestamp: new Date().toISOString(),
-          footer: { text: 'INOVAWAY Leads • briefing-classificado' },
+          footer: { text: 'INOVAWAY Leads • roi-calculator' },
         }],
       });
     }
 
     return NextResponse.json({ success: true, leadId: data.leadId });
   } catch (error) {
-    console.error('Briefing API error:', error);
+    console.error('ROI Lead API error:', error);
     return NextResponse.json({ error: 'Erro interno do servidor.' }, { status: 500 });
   }
 }

@@ -144,26 +144,22 @@ export default function CalculadoraROIPage() {
     if (!email || !results) return;
     setLeadStatus("sending");
 
-    const setorLabel = t(`form.setor.options.${setor}`);
     const payload = {
-      name: "ROI Calculator",
       email,
-      message: `ROI Calculator: ${formatCurrency(results.annual, locale)}/ano, ${Math.round(results.roi)}% ROI, setor: ${setorLabel}`,
-      source: "roi-calculator",
+      locale,
+      estimatedSaving: formatCurrency(results.annual, locale),
     };
 
     try {
-      const res = await fetch(
-        "https://tacit-chicken-195.convex.site/api/v1/inbound/lead",
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(payload),
-        }
-      );
+      const res = await fetch("/api/roi-lead", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
       if (!res.ok) throw new Error("API error");
       setLeadStatus("success");
-    } catch {
+    } catch (error) {
+      console.error("Failed to send ROI lead:", error);
       setLeadStatus("error");
     }
   }
