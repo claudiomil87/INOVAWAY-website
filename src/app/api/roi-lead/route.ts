@@ -36,7 +36,7 @@ export async function POST(request: NextRequest) {
           email: email,
         },
         message: `Lead capturado via Calculadora de ROI INOVAWAY.\n\nEmail: ${email}\nEconomia estimada: ${estimatedSaving}\nLocale: ${locale || 'pt'}`,
-        channel: 'roi-calculator',
+        channel: 'webchat',
         tags: ['roi-calculator', 'lead-magnet', 'inovaway', `locale:${locale || 'pt'}`],
         temperature: 'hot',
       }),
