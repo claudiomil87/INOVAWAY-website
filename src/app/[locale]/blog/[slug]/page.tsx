@@ -2,23 +2,10 @@ import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Script from "next/script";
 import { getTranslations } from "next-intl/server";
-import { getAllPosts, getPostBySlug, getRelatedPosts, getTranslatedPost } from "@/lib/blog";
+import { getAllPosts, getPostBySlug, getRelatedPosts, getTranslatedPost, getPreviousPosts } from "@/lib/blog";
 import { routing } from "@/i18n/routing";
-import PostHeader from "@/components/blog/PostHeader";
 import TableOfContents from "@/components/blog/TableOfContents";
-import ShareButtons from "@/components/blog/ShareButtons";
-import RelatedPosts from "@/components/blog/RelatedPosts";
-import MDXContent from "@/components/blog/MDXContent";
-import FAQSchema from "@/components/blog/FAQSchema";
-import FAQSection from "@/components/sections/FAQSection";
-import TranslationSlugSetter from "@/components/blog/TranslationSlugSetter";
-import AuthorBox from "@/components/blog/AuthorBox";
-import ScoutBadge from "@/components/blog/ScoutBadge";
-import ScoutQuickTakes from "@/components/blog/ScoutQuickTakes";
-import Image from "next/image";
-import { getFAQs } from "@/lib/faq-data";
-import { getScoutInsight } from "@/lib/scout-insights";
-import BlogCommentsLoader from "@/components/blog/BlogCommentsLoader";
+import InfinitePostLoader from "@/components/blog/InfinitePostLoader";
 
 const BASE_URL = "https://inovaway.org";
 
@@ -201,6 +188,7 @@ export default async function PostPage({ params }: PostPageProps) {
 
   const t = await getTranslations({ locale, namespace: "Blog" });
   const relatedPosts = getRelatedPosts(slug, locale, 3);
+  const previousPosts = getPreviousPosts(slug, locale, 20); // Get up to 20 previous posts for infinite scroll
   const postUrl =
     locale === "pt"
       ? `${BASE_URL}/blog/${slug}`
@@ -208,8 +196,12 @@ export default async function PostPage({ params }: PostPageProps) {
 
   const blogPostingSchema = getBlogPostingSchema(post, locale, postUrl);
   const breadcrumbSchema = getBreadcrumbSchema(post, locale, postUrl);
-  const faqs = getFAQs(slug, locale);
-  const scoutInsight = getScoutInsight(slug, locale);
+
+  // Add related posts to initial post
+  const initialPostWithRelated = {
+    ...post,
+    relatedPosts,
+  };
 
   return (
     <main
@@ -231,71 +223,19 @@ export default async function PostPage({ params }: PostPageProps) {
           dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
         />
       )}
-      {faqs.length > 0 && <FAQSchema faqs={faqs} />}
-      <TranslationSlugSetter translationSlug={post.translationSlug ?? null} />
 
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        {/* Hero image */}
-        {post.image && (
-          <div className="relative mb-10 h-64 sm:h-80 lg:h-96 w-full overflow-hidden rounded-2xl">
-            <Image
-              src={post.image}
-              alt={post.title}
-              fill
-              className="object-cover"
-              priority
-            />
-            <div
-              className="absolute inset-0"
-              style={{
-                background:
-                  "linear-gradient(to bottom, transparent 40%, rgba(15,23,42,0.9))",
-              }}
+        <div className="flex flex-col lg:flex-row gap-10">
+          {/* Main content with infinite scroll */}
+          <div className="min-w-0 flex-1">
+            <InfinitePostLoader
+              initialPost={initialPostWithRelated}
+              initialLocale={locale as "pt" | "en"}
+              nextPosts={previousPosts}
             />
           </div>
-        )}
 
-        <div className="flex flex-col lg:flex-row gap-10">
-          {/* Main content */}
-          <article className="min-w-0 flex-1">
-            <PostHeader post={post} locale={locale} />
-            <div className="mb-6">
-              <ScoutBadge locale={locale} />
-            </div>
-
-            {/* MDX content */}
-            <div className="prose prose-invert max-w-none">
-              <MDXContent code={post.body} />
-            </div>
-
-            {/* Scout Quick Takes — intelligence insight */}
-            {scoutInsight && (
-              <ScoutQuickTakes insight={scoutInsight} />
-            )}
-
-            {/* Author box — E-E-A-T */}
-            <AuthorBox locale={locale} />
-
-            {/* Share buttons */}
-            <div
-              className="mt-10 pt-6"
-              style={{ borderTop: "1px solid rgba(255,255,255,0.08)" }}
-            >
-              <ShareButtons title={post.title} url={postUrl} />
-            </div>
-
-            {/* FAQ — rendered from faq-data.ts keyed by post slug */}
-            {faqs.length > 0 && (
-              <FAQSection slug={slug} />
-            )}
-
-            <BlogCommentsLoader postSlug={slug} locale={locale} />
-
-            {/* Related posts */}
-            <RelatedPosts posts={relatedPosts} locale={locale} />
-          </article>
-
-          {/* Sidebar — TOC */}
+          {/* Sidebar — TOC (only shows for first post) */}
           {post.toc && post.toc.length > 0 && (
             <aside className="hidden lg:block w-64 shrink-0 self-start sticky top-24">
               <TableOfContents toc={post.toc} label={t("tocTitle")} />

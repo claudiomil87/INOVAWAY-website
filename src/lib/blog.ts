@@ -70,3 +70,17 @@ export function formatDate(dateStr: string, locale: string): string {
     day: "numeric",
   });
 }
+
+/**
+ * Get previous posts (older posts) for infinite scroll.
+ * Returns posts that come after the current post in chronological order (older posts).
+ */
+export function getPreviousPosts(slug: string, locale: string, limit = 10): Post[] {
+  const allPosts = getAllPosts(locale);
+  const currentIndex = allPosts.findIndex((post) => post.slug === slug);
+  
+  if (currentIndex === -1) return [];
+  
+  // Get posts that come after the current post (older posts)
+  return allPosts.slice(currentIndex + 1, currentIndex + 1 + limit);
+}
