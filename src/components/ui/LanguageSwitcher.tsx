@@ -27,12 +27,17 @@ export default function LanguageSwitcher() {
     // Blog post pattern: /blog/[slug] (PT) or /en/blog/[slug] (EN)
     const blogPostMatch = currentPath.match(/^(\/en)?\/blog\/([^/]+)\/?$/);
 
-    if (blogPostMatch && translationSlug) {
-      // Use the translationSlug for cross-locale navigation
-      if (targetLocale === 'en') {
-        newPath = `/en/blog/${translationSlug}`;
+    if (blogPostMatch) {
+      if (translationSlug) {
+        // Use the translationSlug for cross-locale navigation
+        if (targetLocale === 'en') {
+          newPath = `/en/blog/${translationSlug}`;
+        } else {
+          newPath = `/blog/${translationSlug}`;
+        }
       } else {
-        newPath = `/blog/${translationSlug}`;
+        // If no translationSlug, redirect to the main blog page for the target locale
+        newPath = targetLocale === 'en' ? '/en/blog' : '/blog';
       }
     } else {
       // Default behavior for non-blog-post pages
