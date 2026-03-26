@@ -38,6 +38,10 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { supabaseAdmin } from '@/lib/supabase';
 import { sendCommentLeadToCRM } from '@/lib/hnbcrm';
+import { notifyDiscord } from '@/lib/discord-notify';
+
+const DISCORD_WEBHOOK_COMMENTS = process.env.DISCORD_WEBHOOK_COMMENTS;
+const DISCORD_WEBHOOK_LEADS = process.env.DISCORD_WEBHOOK_LEADS;
 import {
   checkSpam,
   sanitizeText,
@@ -253,7 +257,35 @@ export async function POST(request: NextRequest): Promise<NextResponse<CreateCom
       );
     }
 
-    // 10. Save LGPD consent record
+    // 10. Discord Notification for New Comment (fire-and-forget)
+    if (DISCORD_WEBHOOK_COMMENTS) {
+      const commentColor = status === 'approved' ? 0x00ff41 : 0xff4444;
+      const commentStatusText = status === 'approved' ? '✅ Aprovado' : '🚫 Spam';
+
+      void notifyDiscord(DISCORD_WEBHOOK_COMMENTS, {
+        embeds: [
+          {
+            title: '🗨️ Novo Comentário no Blog',
+            description: `**📝 Post:** [${comment.post_slug}](https://inovaway.org/blog/${comment.post_slug})
+` +
+                         `**👤 Autor:** ${sanitizedName} (${body.author_email})
+` +
+                         (sanitizedCompany ? `**🏢 Empresa:** ${sanitizedCompany}
+` : '') +
+                         `**💬 Comentário:** "${sanitizedContent.slice(0, 200)}..."
+` +
+                         `**📊 Status:** ${commentStatusText}`,
+            color: commentColor,
+            timestamp: new Date().toISOString(),
+            footer: {
+              text: 'INOVAWAY Blog Comments',
+            },
+          },
+        ],
+      });
+    }
+
+    // 11. Save LGPD consent record
     const consentText =
       'Ao comentar, você concorda com a nossa Política de Privacidade e autoriza o armazenamento dos seus dados para fins de moderação e resposta ao seu comentário.';
 
@@ -273,10 +305,30 @@ export async function POST(request: NextRequest): Promise<NextResponse<CreateCom
       // Non-fatal — comment was saved, log the error
     }
 
-    // 11. HNBCRM lead — only if user consented to marketing AND comment is not spam
+    // 11. HNBCRM lead + Discord Lead Alert — only if user consented to marketing AND comment is not spam
     if (body.consent_marketing && status === 'approved') {
       // Fire-and-forget — never block the response
       const commentId = comment.id;
+
+      // Discord Lead Notification
+      if (DISCORD_WEBHOOK_LEADS) {
+        void notifyDiscord(DISCORD_WEBHOOK_LEADS, {
+          embeds: [{
+            title: '🎯 Novo Lead Capturado!',
+            description:
+              `**👤 Nome:** ${sanitizedName}\n` +
+              `**📧 Email:** ${body.author_email}\n` +
+              (sanitizedCompany ? `**🏢 Empresa:** ${sanitizedCompany}\n` : '') +
+              `**🔥 Temperatura:** Warm\n` +
+              `**📝 Origem:** Comentário no post [${comment.post_slug}](https://inovaway.org/blog/${comment.post_slug})\n` +
+              `**💬 Comentário:** "${sanitizedContent.slice(0, 150)}..."`,
+            color: 0x06b6d4,
+            timestamp: new Date().toISOString(),
+            footer: { text: 'INOVAWAY Leads • blog-comment • HNBCRM sync' },
+          }],
+        });
+      }
+
       void sendCommentLeadToCRM({
         authorName: sanitizedName,
         authorEmail: body.author_email.toLowerCase().trim(),
