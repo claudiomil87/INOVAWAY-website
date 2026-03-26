@@ -61,6 +61,26 @@ const nextConfig: NextConfig = {
     ];
   },
 
+  async redirects() {
+    return [
+      {
+        source: '/en/blog/ia-para-vendas-whatsapp',
+        destination: '/en/blog/ai-whatsapp-sales-guide-2026',
+        permanent: true,
+      },
+      {
+        source: '/en/blog/ai-agents-hotelaria-hospitalidade',
+        destination: '/en/blog/ai-agents-hospitality-hotels-2026',
+        permanent: true,
+      },
+      {
+        source: '/en/blog/ai-agents-restaurantes-negocios-locais',
+        destination: '/en/blog/ai-agents-restaurants-local-business-2026',
+        permanent: true,
+      },
+    ];
+  },
+
   webpack(config) {
     config.plugins = config.plugins || [];
     // eslint-disable-next-line @typescript-eslint/no-require-imports
