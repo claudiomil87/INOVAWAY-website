@@ -357,3 +357,12 @@
 @media (prefers-reduced-motion: reduce) {
   .comment-new { animation: none; }
 }
+
+/* ── Scrollbar hide utility for mobile tag filter ── */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
