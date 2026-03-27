@@ -63,6 +63,7 @@ const nextConfig: NextConfig = {
 
   async redirects() {
     return [
+      // Blog redirects (slug PT -> EN)
       {
         source: '/en/blog/ia-para-vendas-whatsapp',
         destination: '/en/blog/ai-whatsapp-sales-guide-2026',
@@ -76,6 +77,37 @@ const nextConfig: NextConfig = {
       {
         source: '/en/blog/ai-agents-restaurantes-negocios-locais',
         destination: '/en/blog/ai-agents-restaurants-local-business-2026',
+        permanent: true,
+      },
+      // SEO: Slugs em inglês redirecionam para slugs em português no locale EN
+      {
+        source: '/en/contact',
+        destination: '/en/contato',
+        permanent: true,
+      },
+      {
+        source: '/en/about',
+        destination: '/en/sobre',
+        permanent: true,
+      },
+      {
+        source: '/en/services',
+        destination: '/en/servicos',
+        permanent: true,
+      },
+      {
+        source: '/en/products',
+        destination: '/en/produtos',
+        permanent: true,
+      },
+      {
+        source: '/en/privacy',
+        destination: '/en/privacidade',
+        permanent: true,
+      },
+      {
+        source: '/en/terms',
+        destination: '/en/termos',
         permanent: true,
       },
     ];
