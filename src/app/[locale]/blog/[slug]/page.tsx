@@ -6,6 +6,7 @@ import { getAllPosts, getPostBySlug, getRelatedPosts, getTranslatedPost, getPrev
 import { routing } from "@/i18n/routing";
 import TableOfContents from "@/components/blog/TableOfContents";
 import InfinitePostLoader from "@/components/blog/InfinitePostLoader";
+import TranslationSlugSetter from "@/components/blog/TranslationSlugSetter";
 
 const BASE_URL = "https://inovaway.org";
 
@@ -189,6 +190,7 @@ export default async function PostPage({ params }: PostPageProps) {
   const t = await getTranslations({ locale, namespace: "Blog" });
   const relatedPosts = getRelatedPosts(slug, locale, 3);
   const previousPosts = getPreviousPosts(slug, locale, 20); // Get up to 20 previous posts for infinite scroll
+  const translatedPost = getTranslatedPost(slug, locale);
   const postUrl =
     locale === "pt"
       ? `${BASE_URL}/blog/${slug}`
@@ -208,6 +210,7 @@ export default async function PostPage({ params }: PostPageProps) {
       className="min-h-screen pt-24 pb-20"
       style={{ background: "#0F172A" }}
     >
+      <TranslationSlugSetter translationSlug={translatedPost?.slug ?? null} />
       {/* Schema.org JSON-LD */}
       {blogPostingSchema && (
         <Script
