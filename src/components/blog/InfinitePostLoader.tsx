@@ -9,6 +9,7 @@ import ScoutQuickTakes from "./ScoutQuickTakes";
 import AuthorBox from "./AuthorBox";
 import ShareButtons from "./ShareButtons";
 import FAQSection from "@/components/sections/FAQSection";
+import FAQSchema from "@/components/blog/FAQSchema";
 import BlogCommentsLoader from "./BlogCommentsLoader";
 import RelatedPosts from "./RelatedPosts";
 import Image from "next/image";
@@ -278,7 +279,10 @@ export default function InfinitePostLoader({
 
         {/* FAQ */}
         {loadedPost.faqs.length > 0 && (
-          <FAQSection slug={loadedPost.slug} />
+          <>
+            <FAQSchema faqs={loadedPost.faqs} />
+            <FAQSection slug={loadedPost.slug} />
+          </>
         )}
 
         <BlogCommentsLoader postSlug={loadedPost.slug} locale={loadedPost.locale} />

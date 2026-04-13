@@ -421,6 +421,94 @@ const faqData: Record<string, Record<string, FAQ[]>> = {
           "Os principais custos ocultos são: tokens de API (GPT-4, Claude) que escalam com volume, treinamento e ajuste fino do agente, integração com sistemas legados, e manutenção contínua. Planeje 20-30% adicional sobre o custo de implementação para estes itens.",
       },
     ],
+
+    "guia-completo-ai-agents": [
+      {
+        question: "Qual a diferença entre AI Agent e assistente virtual como Siri?",
+        answer: "Assistentes virtuais como Siri e Alexa são projetados para uso pessoal com comandos de voz e serviços de consumidor. AI Agents corporativos executam processos de negócio: acessam APIs internas, operam sistemas de gestão e tomam decisões baseadas em regras de negócio. A sofisticação e o escopo são fundamentalmente diferentes."
+      },
+      {
+        question: "AI Agents funcionam sem conexão com a internet?",
+        answer: "Agentes baseados em modelos de nuvem (GPT-4, Claude) exigem internet. Para operação offline ou ambientes com restrições de rede, use modelos locais como Llama 3 ou Mistral rodados na infraestrutura interna. O desempenho é ligeiramente inferior, mas a privacidade é total."
+      },
+      {
+        question: "Quantas tarefas simultâneas um AI Agent consegue executar?",
+        answer: "Tecnicamente, um sistema de AI Agent pode ser escalado para centenas ou milhares de tarefas em paralelo, dependendo da infraestrutura de nuvem. O limite prático é definido pelo custo de tokens de API e capacidade da infraestrutura. Arquiteturas multi-agent com orquestrador central são ideais para alto volume."
+      }
+    ],
+
+    "ia-marketing-digital-agentes-automatizam-campanhas": [
+      {
+        question: "AI Agents conseguem gerenciar campanhas de marketing sozinhos?",
+        answer: "Sim. AI Agents podem criar, testar e otimizar campanhas de marketing digital automaticamente — desde a segmentação de público até o ajuste de lances em tráfego pago. Eles analisam métricas em tempo real e fazem otimizações contínuas sem intervenção humana."
+      },
+      {
+        question: "Como AI Agents melhoram o ROI de campanhas de marketing?",
+        answer: "AI Agents otimizam campanhas 24/7, testando variações de criativos, horários e públicos em velocidade impossível para humanos. Empresas relatam melhoria de 30-50% no ROAS (Return on Ad Spend) após implementar automação inteligente em suas campanhas."
+      }
+    ],
+
+    "automacao-vendas-ia-qualificar-leads": [
+      {
+        question: "AI Agent de vendas pode qualificar leads automaticamente?",
+        answer: "Sim. O AI Agent conduz conversas estruturadas via WhatsApp ou e-mail, coleta informações sobre orçamento, urgência e poder de decisão, e entrega ao time comercial apenas os leads qualificados — eliminando o trabalho manual de triagem."
+      },
+      {
+        question: "Qual o ganho de produtividade com AI Agents de vendas?",
+        answer: "Equipes comerciais reportam qualificar 5x mais leads com o mesmo headcount. O agente trabalha 24/7, nunca esquece de fazer follow-up e mantém consistência total na abordagem, liberando vendedores para fechar negócios."
+      }
+    ],
+
+    "ia-saude-automacao-hospitalar-atendimento-paciente": [
+      {
+        question: "AI Agents na saúde respeitam a LGPD e normas do CFM?",
+        answer: "Sim, quando configurados corretamente. É essencial envolver equipes jurídica e de compliance desde o início. O processamento de dados de pacientes deve seguir a LGPD e resoluções da ANS/CFM, com consentimento explícito e logs auditáveis de todas as interações."
+      },
+      {
+        question: "AI Agents podem auxiliar no triagem de pacientes?",
+        answer: "Sim. Agents de triagem coletam sintomas, histórico e priorizam atendimentos conforme gravidade, reduzindo tempo de espera e melhorando a eficiência operacional. O resultado final é sempre revisado por um profissional de saúde."
+      }
+    ],
+
+    "ia-para-escritorios-advocacia": [
+      {
+        question: "AI Agents substituem advogados?",
+        answer: "Não. AI Agents são ferramentas de apoio que automatizam tarefas repetitivas como análise de contratos, pesquisa jurisprudencial e organização de prazos. O julgamento jurídico, a estratégia processual e a relação com clientes continuam sendo exclusivamente humanos."
+      },
+      {
+        question: "Qual o ROI de AI Agents para escritórios de advocacia?",
+        answer: "Escritórios que adotam AI Agents reportam ROI de 300-600% no primeiro ano. Um caso internacional reportou 671% de ROI. O ganho principal vem da redução de horas em tarefas administrativas e pesquisa, permitindo que advogados foquem em trabalho de maior valor."
+      }
+    ],
+
+    "ia-para-contabilidade-automacao-fiscal": [
+      {
+        question: "AI Agents podem automatizar a área fiscal e contábil?",
+        answer: "Sim. AI Agents automatizam conciliação bancária, classificação de documentos, apuração de impostos e geração de relatórios fiscais. Para escritórios de contabilidade com alto volume de clientes, o ganho de eficiência é de 40-60%."
+      }
+    ],
+
+    "ia-para-rh-recrutamento-selecao": [
+      {
+        question: "AI Agents podem melhorar o recrutamento e seleção?",
+        answer: "Sim. O AI Agent tria currículos, agenda entrevistas, conduz screening inicial por chat e entrega ao recrutador apenas candidatos que atendem aos critérios definidos. Isso reduz o tempo de contratação em até 70%."
+      }
+    ],
+
+    "ia-pequenas-empresas-sem-programacao-ferramentas": [
+      {
+        question: "Pequenas empresas conseguem usar AI Agents sem saber programar?",
+        answer: "Sim. Ferramentas no-code como n8n, Zapier AI e Voiceflow permitem criar agents funcionais sem escrever código. Uma loja com 2 funcionários pode ter um AI Agent respondendo no WhatsApp 24/7 por menos de R$ 500/mês."
+      }
+    ],
+
+    "ia-para-vendas-whatsapp": [
+      {
+        question: "Como usar AI Agents para vender pelo WhatsApp?",
+        answer: "Conecte um AI Agent à API Oficial do WhatsApp Business. O agent pode qualificar leads, responder dúvidas sobre produtos, enviar catálogos e até processar pedidos — tudo de forma automatizada. O UpBro da INOVAWAY já vem pré-integrado ao WhatsApp."
+      }
+    ],
+
   },
 
   // ────────────────────────────────────────────────────
@@ -833,6 +921,64 @@ const faqData: Record<string, Record<string, FAQ[]>> = {
           "The main hidden costs are: API tokens (GPT-4, Claude) that scale with volume, agent training and fine-tuning, integration with legacy systems, and ongoing maintenance. Plan for an additional 20-30% on top of implementation costs for these items.",
       },
     ],
+
+    "complete-guide-ai-agents": [
+      {
+        question: "What is the difference between an AI Agent and a virtual assistant like Siri?",
+        answer: "Virtual assistants like Siri and Alexa are designed for personal use with voice commands and consumer services. Corporate AI Agents are built to execute business processes: access internal APIs, operate management systems, and make decisions based on business rules. The sophistication and scope are fundamentally different."
+      },
+      {
+        question: "Do AI Agents work without an internet connection?",
+        answer: "Cloud-based agents (GPT-4, Claude) require internet. For offline operation or network-restricted environments, use local models like Llama 3 or Mistral running on internal infrastructure. Performance is slightly lower, but privacy is complete."
+      }
+    ],
+
+    "ai-digital-marketing-agents-automate-campaigns": [
+      {
+        question: "Can AI Agents manage marketing campaigns independently?",
+        answer: "Yes. AI Agents can create, test, and optimize digital marketing campaigns automatically — from audience targeting to ad spend adjustments. They analyze metrics in real time and make continuous optimizations without human intervention."
+      },
+      {
+        question: "How do AI Agents improve marketing campaign ROI?",
+        answer: "AI Agents optimize campaigns 24/7, testing creative variations, timing, and audiences at speeds impossible for humans. Companies report 30-50% improvement in ROAS (Return on Ad Spend) after implementing intelligent automation in their campaigns."
+      }
+    ],
+
+    "ai-sales-automation-qualify-leads": [
+      {
+        question: "Can an AI Sales Agent qualify leads automatically?",
+        answer: "Yes. The AI Agent conducts structured conversations via WhatsApp or email, collects information about budget, urgency, and decision-making authority, and delivers only qualified leads to the sales team — eliminating manual screening work."
+      }
+    ],
+
+    "ai-healthcare-hospital-automation-patient-care": [
+      {
+        question: "Do healthcare AI Agents comply with data protection regulations?",
+        answer: "Yes, when properly configured. It's essential to involve legal and compliance teams from the start. Patient data processing must follow applicable health regulations and data protection laws, with explicit consent and auditable logs of all interactions."
+      }
+    ],
+
+    "ai-for-law-firms-automation": [
+      {
+        question: "Can AI Agents replace lawyers?",
+        answer: "No. AI Agents are support tools that automate repetitive tasks like contract analysis, legal research, and deadline management. Legal judgment, case strategy, and client relationships remain exclusively human responsibilities."
+      }
+    ],
+
+    "ai-small-business-no-code-accessible-tools": [
+      {
+        question: "Can small businesses use AI Agents without coding skills?",
+        answer: "Yes. No-code tools like n8n, Zapier AI, and Voiceflow allow creating functional agents without writing code. A small shop with 2 employees can have an AI Agent responding on WhatsApp 24/7 for less than $100/month."
+      }
+    ],
+
+    "ai-whatsapp-sales-guide-2026": [
+      {
+        question: "How do I use AI Agents to sell via WhatsApp?",
+        answer: "Connect an AI Agent to the Official WhatsApp Business API. The agent can qualify leads, answer product questions, send catalogs, and even process orders — all automatically. INOVAWAY's UpBro comes pre-integrated with WhatsApp Business."
+      }
+    ],
+
   },
 };
 
