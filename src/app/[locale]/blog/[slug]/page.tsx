@@ -7,6 +7,7 @@ import { routing } from "@/i18n/routing";
 import TableOfContents from "@/components/blog/TableOfContents";
 import InfinitePostLoader from "@/components/blog/InfinitePostLoader";
 import TranslationSlugSetter from "@/components/blog/TranslationSlugSetter";
+import NewsletterSignup from "@/components/blog/NewsletterSignup";
 
 const BASE_URL = "https://inovaway.org";
 
@@ -238,12 +239,13 @@ export default async function PostPage({ params }: PostPageProps) {
             />
           </div>
 
-          {/* Sidebar — TOC (only shows for first post) */}
-          {post.toc && post.toc.length > 0 && (
-            <aside className="hidden lg:block w-64 shrink-0 self-start sticky top-24">
+          {/* Sidebar — TOC + Newsletter */}
+          <aside className="hidden lg:block w-64 shrink-0 self-start sticky top-24 space-y-6">
+            {post.toc && post.toc.length > 0 && (
               <TableOfContents toc={post.toc} label={t("tocTitle")} />
-            </aside>
-          )}
+            )}
+            <NewsletterSignup locale={locale} variant="sidebar" />
+          </aside>
         </div>
       </div>
     </main>

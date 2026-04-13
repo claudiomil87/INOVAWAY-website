@@ -1114,5 +1114,32 @@
       "success": "✅ Relatório enviado! Verifique seu email em breve.",
       "error": "Erro ao enviar. Tente novamente."
     }
+  },
+  "Newsletter": {
+    "title": "Newsletter INOVAWAY Intelligence",
+    "description": "Insights semanais sobre AI Agents, automação e o futuro dos negócios. Direto no seu email.",
+    "form": {
+      "email": "Email",
+      "emailPlaceholder": "seu@email.com",
+      "lgpd": "Li e aceito a Política de Privacidade e autorizo o armazenamento do meu email.",
+      "marketing": "Quero receber novidades e conteúdo exclusivo da INOVAWAY.",
+      "lgpdError": "Você precisa aceitar a Política de Privacidade para se inscrever.",
+      "submit": "Inscrever na Newsletter",
+      "submitting": "Inscrevendo...",
+      "successTitle": "Verifique seu email! 📬",
+      "successMessage": "Enviamos um link de confirmação. Clique para ativar sua inscrição na newsletter.",
+      "connectionError": "Erro de conexão. Verifique sua internet e tente novamente.",
+      "genericError": "Erro ao cadastrar. Tente novamente."
+    },
+    "confirmation": {
+      "successTitle": "Inscrição Confirmada! ✅",
+      "successMessage": "Você agora faz parte da INOVAWAY Intelligence. Prepare-se para insights semanais sobre AI Agents, automação e negócios.",
+      "alreadyTitle": "Já Confirmado ✨",
+      "alreadyMessage": "Sua inscrição já estava ativa. Você está recebendo nossos briefings normalmente.",
+      "errorTitle": "Erro na Confirmação",
+      "errorMessage": "Não foi possível confirmar sua inscrição. O link pode ter expirado. Tente se inscrever novamente.",
+      "backToBlog": "Ir para o Blog",
+      "backToHome": "Voltar ao Início"
+    }
   }
 }

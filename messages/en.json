@@ -1115,5 +1115,32 @@
       "success": "✅ Report sent! Check your email soon.",
       "error": "Error sending. Please try again."
     }
+  },
+  "Newsletter": {
+    "title": "INOVAWAY Intelligence Newsletter",
+    "description": "Weekly insights on AI Agents, automation, and the future of business. Straight to your inbox.",
+    "form": {
+      "email": "Email",
+      "emailPlaceholder": "you@email.com",
+      "lgpd": "I accept the Privacy Policy and authorize the storage of my email.",
+      "marketing": "I want to receive news and exclusive content from INOVAWAY.",
+      "lgpdError": "You must accept the Privacy Policy to subscribe.",
+      "submit": "Subscribe to Newsletter",
+      "submitting": "Subscribing...",
+      "successTitle": "Check your email! 📬",
+      "successMessage": "We sent a confirmation link. Click it to activate your newsletter subscription.",
+      "connectionError": "Connection error. Check your internet and try again.",
+      "genericError": "Error subscribing. Please try again."
+    },
+    "confirmation": {
+      "successTitle": "Subscription Confirmed! ✅",
+      "successMessage": "You're now part of INOVAWAY Intelligence. Get ready for weekly insights on AI Agents, automation, and business.",
+      "alreadyTitle": "Already Confirmed ✨",
+      "alreadyMessage": "Your subscription was already active. You're receiving our briefings normally.",
+      "errorTitle": "Confirmation Error",
+      "errorMessage": "Couldn't confirm your subscription. The link may have expired. Try subscribing again.",
+      "backToBlog": "Go to Blog",
+      "backToHome": "Back to Home"
+    }
   }
 }

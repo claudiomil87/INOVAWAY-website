@@ -3,6 +3,7 @@ import { getTranslations } from "next-intl/server";
 import { getAllPosts, getAllTags } from "@/lib/blog";
 import PostCard from "@/components/blog/PostCard";
 import TagFilter from "@/components/blog/TagFilter";
+import NewsletterSignup from "@/components/blog/NewsletterSignup";
 import { Link } from "@/i18n/navigation";
 
 const POSTS_PER_PAGE = 9;
@@ -107,6 +108,11 @@ export default async function BlogPage({ params, searchParams }: BlogPageProps) 
             ))}
           </div>
         )}
+
+        {/* Newsletter CTA */}
+        <div className="mt-12 max-w-xl mx-auto">
+          <NewsletterSignup locale={locale} variant="inline" />
+        </div>
 
         {/* Pagination */}
         {totalPages > 1 && (
