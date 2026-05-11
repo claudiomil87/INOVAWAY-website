@@ -495,7 +495,7 @@ const faqData: Record<string, Record<string, FAQ[]>> = {
       }
     ],
 
-    "ia-pequenas-empresas-sem-programacao-ferramentas": [
+    "plataformas-agentes-ia-gratuitas-pmes": [
       {
         question: "Pequenas empresas conseguem usar AI Agents sem saber programar?",
         answer: "Sim. Ferramentas no-code como n8n, Zapier AI e Voiceflow permitem criar agents funcionais sem escrever código. Uma loja com 2 funcionários pode ter um AI Agent respondendo no WhatsApp 24/7 por menos de R$ 500/mês."
@@ -965,7 +965,7 @@ const faqData: Record<string, Record<string, FAQ[]>> = {
       }
     ],
 
-    "ai-small-business-no-code-accessible-tools": [
+    "free-ai-agent-platforms-small-business": [
       {
         question: "Can small businesses use AI Agents without coding skills?",
         answer: "Yes. No-code tools like n8n, Zapier AI, and Voiceflow allow creating functional agents without writing code. A small shop with 2 employees can have an AI Agent responding on WhatsApp 24/7 for less than $100/month."
