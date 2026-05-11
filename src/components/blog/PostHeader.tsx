@@ -1,5 +1,6 @@
 import { Post, formatDate } from "@/lib/blog";
 import { Clock, Calendar, User } from "lucide-react";
+import LastUpdatedBadge from "./LastUpdatedBadge";
 
 interface PostHeaderProps {
   post: Post;
@@ -59,6 +60,8 @@ export default function PostHeader({ post, locale }: PostHeaderProps) {
           {post.readingTime}
         </span>
       </div>
+      {/* Last Updated badge — shows only when updatedAt differs from date */}
+      <LastUpdatedBadge date={post.date} updatedAt={post.updatedAt} locale={locale} />
     </header>
   );
 }

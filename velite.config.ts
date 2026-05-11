@@ -12,6 +12,7 @@ const posts = defineCollection({
       title: s.string().max(200),
       slug: s.string(),
       date: s.isodate(),
+      updatedAt: s.isodate().optional(),
       author: s.string().default("INOVAWAY"),
       description: s.string().max(500),
       tags: s.array(s.string()).default([]),

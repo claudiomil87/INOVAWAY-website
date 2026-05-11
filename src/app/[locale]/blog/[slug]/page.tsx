@@ -115,7 +115,7 @@ function getBlogPostingSchema(
     description: post.description,
     url: postUrl,
     datePublished: new Date(post.date).toISOString(),
-    dateModified: new Date(post.date).toISOString(),
+    dateModified: new Date(post.updatedAt ?? post.date).toISOString(),
     author: {
       "@type": "Organization",
       name: post.author,
